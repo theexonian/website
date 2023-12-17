@@ -1,23 +1,24 @@
 import Image from "next/image";
 
-export default function PreviewCenter() {
+export default function PreviewSeniorOfTheWeek() {
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			<div className="">
-				<Image
-					src={"/Main.png"}
-					width="0"
-					height="0"
-					sizes="25vw"
-					className="w-full h-auto"
-					alt={"Logo of The Exonian"}
-				/>
-			</div>
 			<div className="flex justify-between">
-				<div className="">
+				<div className="w-2/3 pr-3">
+					<h3 className="font-bold">Life</h3>
 					<h1 className="font-serif font-medium text-xl py-2">
-						The Multifaced Harkness Table Becomes the Becoming
+						Why Monkeys are Clearly More Monkey Than They Appear
 					</h1>
+				</div>
+				<div className="w-1/3">
+					<Image
+						src={"/Small.png"}
+						width="0"
+						height="0"
+						sizes="25vw"
+						className="w-full h-auto"
+						alt={"Logo of The Exonian"}
+					/>
 				</div>
 			</div>
             <div className="py-3">
