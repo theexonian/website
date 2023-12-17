@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PreviewSeniorOfTheWeek() {
 	return (
-		<div className="max-w-[250px]">
+		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="flex justify-between">
 				<div className="w-2/3 pr-3">
 					<h3 className="font-bold">Life</h3>

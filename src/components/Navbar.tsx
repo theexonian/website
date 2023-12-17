@@ -1,17 +1,19 @@
 import Image from "next/image";
+import PathAnimation from '@/components/PathAnimation'
 
 export default function Navbar() {
 	return (
 		<>
-			<div className="w-screen h-auto bg-gradient-to-r from-[#8d2931] to-[#e0303f] text-white flex justify-between px-14 py-1 text-xs font-bold">
+			<div className="w-screen h-auto items-center min-h-[35px] bg-gradient-to-r from-[#000000] to-[#000000] text-white flex justify-between px-14 py-1 text-xs font-bold">
 				<p>
 					Phillips Exeter Academy
 				</p>
 				<p>
-					About The Exonian
+					Subscribe | About
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
+				{/* <PathAnimation animated={true}/> */}
 				<div className="w-1/4 py-3">
 					{/* TODO: Optimize responsive scaling of the the logo */}
 					<Image

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PreviewWithDesc() {
 	return (
-		<div className="max-w-[250px]">
+        <div className="w-full p-3 border-neutral-300 border-b">
 			<div className="flex justify-between">
 				<div className="">
 					<h3 className="font-bold">Life</h3>
