@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PathAnimation from '@/components/PathAnimation'
+import 'animate.css';
 
 export default function Navbar() {
 	return (
@@ -16,25 +17,43 @@ export default function Navbar() {
 				{/* <PathAnimation animated={true}/> */}
 				<div className="w-1/4 py-3">
 					{/* TODO: Optimize responsive scaling of the the logo */}
-					<Image
-						src={"/Exonian-logo.png"}
-						width="0"
-						height="0"
-						sizes="25vw"
-						className="w-full h-auto"
-						alt={"Logo of The Exonian"}
-					/>
+					<a href="/">
+						<Image
+							src={"/Exonian-logo.png"}
+							width="0"
+							height="0"
+							sizes="25vw"
+							className="w-full h-auto"
+							alt={"Logo of The Exonian"}
+						/>
+					</a>
 				</div>
-				<div className="flex text-sm">Wednesday, July 5th, 2023</div>
+				<div className="flex text-sm">Sunday, Dec 17th, 2023</div>
 				<ul className="flex flex-row font-medium gap-8 py-2">
-					<li>Home</li>
-					<li>News</li>
-					<li>Life</li>
-					<li>Opinions</li>
-					<li>Sports</li>
-					<li>Humor</li>
-					<li>Crossword</li>
-					<li>Archive</li>
+					<a href="">
+						<li>Home</li>
+					</a>
+					<a href="">
+						<li>News</li>
+					</a>
+					<a href="">
+						<li>Life</li>
+					</a>
+					<a href="">
+						<li>Opinions</li>
+					</a>
+					<a href="">
+						<li>Sports</li>
+					</a>
+					<a href="">
+						<li>Humor</li>
+					</a>
+					<a href="https://crossword.theexonian.net">
+						<li>Crossword</li>
+					</a>
+					<a href="">
+						<li>Archive</li>
+					</a>
 				</ul>
 			</div>
 		</>

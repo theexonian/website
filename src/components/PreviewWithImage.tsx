@@ -5,7 +5,7 @@ export default function PreviewSeniorOfTheWeek() {
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="flex justify-between">
 				<div className="w-2/3 pr-3">
-					<h3 className="font-bold">Life</h3>
+					<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">Life</h3>
 					<h1 className="font-serif font-medium text-xl py-2">
 						Why Monkeys are Clearly More Monkey Than They Appear
 					</h1>
