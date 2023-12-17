@@ -14,17 +14,17 @@ export default function Home() {
           <hr className="w-full border-neutral-300"/>
           <hr className="w-full border-neutral-300"/>
           <div className="grid grid-cols-4">
-						<div className="col-span-1 px-8">
+						<div className="col-span-1 px-4 2xl:px-8">
 							<PreviewSeniorOfTheWeek/>
 							<PreviewWithImage/>
 							<PreviewNoDesc/>
               <PreviewWithImage/>
 						</div>
-						<div className="col-span-2 px-8 border-neutral-300 border-x">
-							<PreviewCenter/>
+						<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
+							<a href="/article"><PreviewCenter/></a>
               <PreviewCenter/>
 						</div>
-						<div className="col-span-1 px-8">
+						<div className="col-span-1 px-4 2xl:px-8">
 							<PreviewNoDesc/>
               <PreviewWithImage/>
 							<PreviewSeniorOfTheWeek/>

@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import 'animate.css';
 
 export const metadata = {
 	title: "The Exonian | Phillips Exeter Academy",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className="overflow-x-hidden">
+			<body className="overflow-x-hidden animate__animated animate__fadeIn">
 				<Navbar />
 				{children}
 			</body>
