@@ -4,23 +4,21 @@ export default function PreviewSeniorOfTheWeek() {
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="flex justify-between">
-				<div className="w-2/3 pr-3">
+				<div className="w-full pr-3">
 					<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">Life</h3>
 					<h1 className="font-serif font-medium text-xl py-2">
 						Why Monkeys are Clearly More Monkey Than They Appear
 					</h1>
 				</div>
-				<div className="w-1/3">
-					<Image
-						src={"/Small.png"}
-						width="0"
-						height="0"
-						sizes="25vw"
-						className="w-full h-auto"
-						alt={"Logo of The Exonian"}
-					/>
-				</div>
 			</div>
+			<Image
+				src={"/Small.png"}
+				width="0"
+				height="0"
+				sizes="25vw"
+				className="w-full h-auto"
+				alt={"Logo of The Exonian"}
+			/>
             <div className="py-3">
                 <p className="text-xs text-[#4E4E4E]">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,

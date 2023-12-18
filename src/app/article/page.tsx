@@ -11,8 +11,7 @@ export default function Page() {
 					<article className="prose 2xl:prose-lg pt-8 font-serif ml-32 2xl:ml-64 prose-figcaption:font-sans prose-p:indent-8">
 						<h3 className="font-bold text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">Life</h3>
 						<h1>
-							Academy Hosts 2023-2024 George Bennett Fellow: Emma
-							Zimmerman
+							Academy Hosts 2023-2024 George Bennett Fellow: Emma Zimmerman
 						</h1>
 						<span className="p-0 m-0">
 							By:

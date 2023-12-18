@@ -7,10 +7,10 @@ export default function Navbar() {
 		<>
 			<div className="w-screen h-auto items-center min-h-[35px] bg-gradient-to-r from-[#000000] to-[#000000] text-white flex justify-between px-14 py-1 text-xs font-bold">
 				<p>
-					Phillips Exeter Academy
+					<a href="https://www.exeter.edu">Phillips Exeter Academy</a>
 				</p>
 				<p>
-					Subscribe | About
+					<a href="https://fs30.formsite.com/exeter/TESub_Prod/index.html">Subscribe</a> | Masthead | About
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
@@ -53,6 +53,9 @@ export default function Navbar() {
 					</a>
 					<a href="">
 						<li>Archive</li>
+					</a>
+					<a href="">
+						<li>Latest Issue</li>
 					</a>
 				</ul>
 			</div>
