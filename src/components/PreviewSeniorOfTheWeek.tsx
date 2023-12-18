@@ -7,7 +7,7 @@ export default function PreviewSeniorOfTheWeek() {
 				<div className="w-2/3 pr-3">
 					<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">Life</h3>
 					<h1 className="font-serif font-medium text-xl py-2">
-						Senior of the Week: Lorem Ipsum
+						Senior of the Week: Joonyoung Heo
 					</h1>
 				</div>
 				<div className="w-1/3">

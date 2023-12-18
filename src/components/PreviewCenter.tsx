@@ -17,7 +17,7 @@ export default function PreviewCenter() {
 				<div className="flex justify-between">
 					<div className="">
 						<h1 className="font-serif font-medium text-3xl py-2">
-							The Multifaced Harkness Table Becomes the Becoming
+							The Exonian Board Proposes Placing Submission Boxes On The New Website
 						</h1>
 					</div>
 				</div>
