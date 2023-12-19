@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function PreviewSeniorOfTheWeek() {
+export default function PreviewWithImage() {
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="flex justify-between">
