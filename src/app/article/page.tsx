@@ -15,11 +15,11 @@ export default function Page() {
 						</h1>
 						<span className="p-0 m-0">
 							By:
-							<a className="hover:text-red-500 duration-200 font-bold no-underline" href=""> AMY LIN</a>
+							<a className="hover:text-red-500 duration-200 font-bold no-underline" href="/writers"> AMY LIN</a>
 							,
-							<a className="hover:text-red-500 duration-200 font-bold no-underline" href=""> MAX MANTEL</a>
+							<a className="hover:text-red-500 duration-200 font-bold no-underline" href="/writers"> MAX MANTEL</a>
 							, and
-							<a className="hover:text-red-500 duration-200 font-bold no-underline" href=""> ROXANE PARK</a>
+							<a className="hover:text-red-500 duration-200 font-bold no-underline" href="/writers"> ROXANE PARK</a>
 						</span>
 						<br/>
 						<span className="p-0 m-0">
