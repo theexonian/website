@@ -29,11 +29,11 @@ export default function Navbar() {
 					</a>
 				</div>
 				<div className="flex text-sm">Sunday, Dec 17th, 2023</div>
-				<ul className="flex flex-row font-medium gap-8 py-2">
+				<ul className="flex flex-row font-medium gap-8 py-2 text-neutral-800">
 					<a href="">
 						<li>Home</li>
 					</a>
-					<a href="">
+					<a href="/news">
 						<li>News</li>
 					</a>
 					<a href="">
