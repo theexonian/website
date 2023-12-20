@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import 'animate.css';
@@ -17,7 +18,17 @@ export default function RootLayout({
 		<html lang="en">
 			<body className="overflow-x-hidden animate__animated animate__fadeIn">
 				<Navbar />
-				{children}
+				{/* @TODO: needs a lot of optimization */}
+				<div className="flex w-screen h-auto items-center justify-center">
+					<main className="flex w-3/4 max-w-[1600px] h-auto min-h-screen">
+						<div className="w-full flex flex-col flex-wrap gap-1">
+							<hr className="w-full border-neutral-300" />
+							<hr className="w-full border-neutral-300" />
+							{children}
+						</div>
+					</main>
+				</div>
+				<Footer />
 			</body>
 		</html>
 	);
