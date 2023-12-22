@@ -1,11 +1,9 @@
+import FancyBigTitle from "@/components/FancyBigTitle"
+
 export default function Page() {
 	return (
 		<div className="font-serif py-5">
-			<h1 className="text-7xl font-semibold -my-2">About</h1>
-			<h1>
-				<i>The Exonian, Established 1878</i>
-			</h1>
-			<hr className="w-1/3 border-black" />
+			<FancyBigTitle title="About" lowerText="The Exonian, Established 1878"/>
 			<div className="max-w-[700px] prose py-5">
 				<h2>
 					<i>
@@ -55,7 +53,7 @@ export default function Page() {
 					<i>Letters to the Editor</i> in a timely fashion and to edit
 					them for content and clarity.
 				</p>
-			</div>
+			BF</div>
 		</div>
 	);
 }

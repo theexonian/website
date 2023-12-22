@@ -6,7 +6,7 @@ import PreviewCenter from "@/components/PreviewCenter";
 import PreviewWithImage from "@/components/PreviewWithImage";
 import RowPreviewWithImage from "@/components/RowPreviewWithImage";
 
-export default function Home() {
+export default function Page() {
 	return (
 		<>
 			<div className="py-8">
@@ -17,9 +17,7 @@ export default function Home() {
 			</div>
 			<div className="grid grid-cols-4">
 				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
-					<a href="/article">
-						<PreviewCenter />
-					</a>
+					<PreviewCenter />
 				</div>
 				<div className="col-span-1 px-4 2xl:px-8">
 					<PreviewSeniorOfTheWeek />
@@ -41,9 +39,7 @@ export default function Home() {
 					<PreviewWithImage />
 				</div>
 				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
-					<a href="/article">
-						<PreviewCenter />
-					</a>
+					<PreviewCenter />
 				</div>
 			</div>
 			<div className="py-10"></div>

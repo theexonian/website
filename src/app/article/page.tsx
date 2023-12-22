@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { BiFontFamily, BiPrinter } from "react-icons/bi";
+import { HiOutlineNewspaper } from "react-icons/hi";
 
 export default function Page() {
 	return (
@@ -36,7 +39,22 @@ export default function Page() {
 				</a>
 			</span>
 			<br />
-			<span className="p-0 m-0">Dec. 17, 2023 at 5:30 am ET</span>
+			<span className="p-0 m-0">Published: Dec. 17, 2023 at 5:30 am ET</span>
+			<div className="flex flex-row gap-5">
+				<div className="flex items-center gap-2 text-red-700">
+					<IoShareSocialOutline className="text-xl" /> Share
+				</div>
+				<div className="flex items-center gap-2 text-red-700">
+					<BiFontFamily className="text-xl" /> Font
+				</div>
+				<div className="flex items-center gap-2 text-red-700">
+					<HiOutlineNewspaper className="text-xl" /> Publication
+				</div>
+				<div className="flex items-center gap-2 text-red-700">
+					<BiPrinter className="text-xl" /> Print
+				</div>
+			</div>
+			<hr className="border-neutral-400"/>
 			<figure>
 				<Image
 					src={"/Article.png"}
