@@ -1,17 +1,12 @@
 import Image from "next/image";
 import { MdOutlineEmail } from "react-icons/md";
 import RowPreviewWithImage from "@/components/RowPreviewWithImage";
+import FancyBigTitle from "@/components/FancyBigTitle";
 
 export default function Page() {
 	return (
 		<>
-			<div className="font-serif py-5">
-				<h1 className="text-7xl font-semibold -my-2">Masthead</h1>
-				<h1>
-					of the <i>146th Board</i> of <i>The Exonian</i>
-				</h1>
-				<hr className="w-1/3 border-black" />
-			</div>
+			<FancyBigTitle title="Masthead" lowerText="of the 146th Board of The Exonian"/>
 			<Image
 				src={"/Masthead.png"}
 				width="0"

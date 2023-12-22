@@ -5,8 +5,9 @@ import PreviewWithDesc from "@/components/PreviewWithDesc";
 import PreviewCenter from "@/components/PreviewCenter";
 import PreviewWithImage from "@/components/PreviewWithImage";
 import RowPreviewWithImage from "@/components/RowPreviewWithImage";
+import FancyBigTitle from "@/components/FancyBigTitle";
 
-export default function Home() {
+export default function Page() {
 	return (
 		<>
 			<div className="font-serif pt-5">
@@ -16,6 +17,7 @@ export default function Home() {
 				</h1>
 				<hr className="w-1/3 border-black" />
 			</div>
+			<FancyBigTitle title="Exonian Web Boards" lowerText="15 boards and counting."/>
 			<div className="prose font-serif pl-16">
 				<div>
 					<h2>The 15th Exonian Web Board</h2>
