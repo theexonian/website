@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-export default function RowPreviewWithImage() {
+export default function RowPreview() {
 	return (
+		// @TODO: refactor for props
 		<div className="w-full flex items-center py-3 border-neutral-300 border-b gap-4">
 			<div className="w-2/5 hover:brightness-110 duration-500">
 				<Image

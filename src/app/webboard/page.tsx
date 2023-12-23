@@ -3,8 +3,8 @@ import PreviewSeniorOfTheWeek from "@/components/PreviewSeniorOfTheWeek";
 import PreviewNoDesc from "@/components/PreviewNoDesc";
 import PreviewWithDesc from "@/components/PreviewWithDesc";
 import PreviewCenter from "@/components/PreviewCenter";
-import PreviewWithImage from "@/components/PreviewWithImage";
-import RowPreviewWithImage from "@/components/RowPreviewWithImage";
+import Preview from "@/components/Preview";
+import RowPreview from "@/components/RowPreview";
 import FancyBigTitle from "@/components/FancyBigTitle";
 
 export default function Page() {

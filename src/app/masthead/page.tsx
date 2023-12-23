@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MdOutlineEmail } from "react-icons/md";
-import RowPreviewWithImage from "@/components/RowPreviewWithImage";
+import RowPreview from "@/components/RowPreview";
 import FancyBigTitle from "@/components/FancyBigTitle";
 
 export default function Page() {
