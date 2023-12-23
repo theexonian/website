@@ -1,3 +1,5 @@
+import * as Constants from "@/components/Constants"
+
 export default function Page() {
 	return (
 		<>
@@ -195,7 +197,7 @@ export default function Page() {
 				</p>
 				<p>
 					<strong>
-						The 146th&nbsp;Board of&nbsp;<em>The Exonian</em>, just
+						The {Constants.BOARD_NUMBER}&nbsp;Board of&nbsp;<em>The Exonian</em>, just
 						as the Boards before it, must continue to push the
 						envelope in a thoughtful manner to deliver impactful
 						information to the Exeter community.
