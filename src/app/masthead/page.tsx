@@ -1,4 +1,5 @@
 import Image from "next/image";
+import * as Constants from "@/components/Constants"
 import { MdOutlineEmail } from "react-icons/md";
 import RowPreview from "@/components/RowPreview";
 import FancyBigTitle from "@/components/FancyBigTitle";
@@ -6,7 +7,7 @@ import FancyBigTitle from "@/components/FancyBigTitle";
 export default function Page() {
 	return (
 		<>
-			<FancyBigTitle title="Masthead" lowerText="of the 146th Board of The Exonian"/>
+			<FancyBigTitle title="Masthead" lowerText={"of the " + (Constants.BOARD_NUMBER) + " Board of The Exonian"}/>
 			<Image
 				src={"/Masthead.png"}
 				width="0"
@@ -61,7 +62,7 @@ export default function Page() {
 
 				<p>
 					The Exonian welcomes Letters to the Editor sent to the care
-					of rhpark@exeter.edu. The Exonian reserves the right to
+					of <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>. The Exonian reserves the right to
 					print Letters to the Editor in a timely fashion and to edit
 					them for content and clarity.
 				</p>

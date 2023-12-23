@@ -1,4 +1,5 @@
 import FancyBigTitle from "@/components/FancyBigTitle";
+import * as Constants from "@/components/Constants"
 
 export default function Page() {
 	return (
@@ -11,8 +12,8 @@ export default function Page() {
 					</em>
 					The Exonian
 					<em>
-						, please submit your inquiry to Roxane Park ‘25 at
-						rhpark@exeter.edu
+						, please submit your inquiry to {Constants.EIC_NAME} {Constants.EIC_GRAD_YEAR} at&nbsp;
+						<a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>
 					</em>
 				</p>
 				<p>
@@ -64,7 +65,7 @@ export default function Page() {
 					<em>
 						&nbsp;in print or online, including content from the
 						digital archives, you may submit your inquiry by
-						emailing elevine@exeter.edu
+						emailing {Constants.EIC_NAME} {Constants.EIC_GRAD_YEAR} at <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>
 					</em>
 					<br />
 				</p>

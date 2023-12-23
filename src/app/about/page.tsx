@@ -1,4 +1,5 @@
 import FancyBigTitle from "@/components/FancyBigTitle"
+import * as Constants from "@/components/Constants"
 
 export default function Page() {
 	return (
@@ -20,8 +21,8 @@ export default function Page() {
 					board, the Web Board and the Business Board — directed by
 					the Editor-in-Chief. The Editorial Board, comprised of
 					section and layout editors, directs article production and
-					print appearance. The Web Board updates the site
-					theexonian.net weekly and manages long-term endeavors. The
+					print appearance. The Web Board updates this site
+					(theexonian.net) weekly and manages long-term endeavors. The
 					Business Board directs all finances and outreach of{" "}
 					<i>The Exonian</i>, including subscriptions and social
 					media.
@@ -35,25 +36,25 @@ export default function Page() {
 					Contacting <i>The Exonian</i>
 				</h3>
 				<p>
-					To subscribe to or advertise on <i>THe Exonian</i>, contact{" "}
-					<a href="">exonian@gmail.com</a> or call{" "}
-					<a href="">603-777-4100</a>.
+					To subscribe to or advertise on <i>The Exonian</i>, contact{" "}
+					<a href="mailto:exonian@gmail.com">exonian@gmail.com</a> or call{" "}
+					<a href="tel:6037774100">603-777-4100</a>.
 				</p>
 				<p>
 					A subscription to the paper costs $90 off campus and $150
 					overseas.
 				</p>
-				{/* @TODO: refactor to have all references of EIC email updated centrally */}
+				{/* @TODO: refactor to have all references of EIC email, board number, EIC name, etc. updated centrally */}
 				<p>
 					The Exonian welcomes <i>Letters to the Editor</i> sent to
-					the care of <a href="">rhpark@exeter.edu</a>.
+					the care of <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>.
 				</p>
 				<p>
 					The Exonian reserves the right to print{" "}
 					<i>Letters to the Editor</i> in a timely fashion and to edit
 					them for content and clarity.
 				</p>
-			BF</div>
+			</div>
 		</div>
 	);
 }
