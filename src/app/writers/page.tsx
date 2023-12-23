@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MdOutlineEmail } from "react-icons/md";
-import RowPreviewWithImage from "@/components/RowPreviewWithImage";
+import RowPreview from "@/components/RowPreview";
 
 export default function Page() {
 	return (
@@ -33,11 +33,11 @@ export default function Page() {
 			<div className="w-3/4 flex flex-col justify-center font-serif py-10">
 				<hr className="border-black w-1/2" />
 				<h1 className="text-2xl font-semibold">Latest Articles</h1>
-				<RowPreviewWithImage />
-				<RowPreviewWithImage />
-				<RowPreviewWithImage />
-				<RowPreviewWithImage />
-				<RowPreviewWithImage />
+				<RowPreview />
+				<RowPreview />
+				<RowPreview />
+				<RowPreview />
+				<RowPreview />
 			</div>
 		</>
 	);
