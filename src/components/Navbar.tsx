@@ -1,7 +1,9 @@
+"use client"
 import Image from "next/image";
 import PathAnimation from "@/components/PathAnimation";
 import { FaFacebook, FaFacebookF, FaInstagram, FaSearch } from "react-icons/fa";
 import "animate.css";
+import { useMediaQuery } from 'react-responsive'
 
 export default function Navbar() {
 	const currentDate = new Date();
@@ -14,6 +16,9 @@ export default function Navbar() {
 		return number + suffix;
 	}
 	var dateString = weekNames[currentDate.getDay()] + ", " + monthNames[currentDate.getMonth()] + " " + appendSuffix(currentDate.getDate()) + ", " + currentDate.getFullYear();
+	const isMobile = useMediaQuery({
+		query: '(max-width: 768px)'
+	})
 
 	return (
 		<>
@@ -56,7 +61,7 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row text-sm gap-8 py-2 text-neutral-700">
+				<ul className={isMobile ? ("flex flex-row text-xs gap-4 py-2 text-neutral-700") : ("flex flex-row text-sm gap-8 py-2 text-neutral-700")}>
 					<a href="">
 						<li className="hover:text-neutral-500 duration-200">
 							Home
