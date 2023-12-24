@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image";
 import "animate.css";
+import MediaQuery from 'react-responsive'
 
 export default function Navbar() {
 	return (
@@ -33,6 +35,7 @@ export default function Navbar() {
 						</p>
                         {/* @TODO: add socials here */}
 					</div>
+					<MediaQuery minWidth={768}>
 					<div className="flex flex-col justify-start gap-2 text-right">
 						<ul className="text-sm gap-8 py-2 text-neutral-700">
 							<a href="">
@@ -64,6 +67,7 @@ export default function Navbar() {
 							</a>
 						</ul>
 					</div>
+					</MediaQuery>
 				</div>
 			</div>
 		</>

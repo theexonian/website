@@ -1,4 +1,6 @@
 import Image from "next/image";
+import MediaQuery from 'react-responsive'
+import { useMediaQuery } from 'react-responsive'
 
 interface PreviewProps {
 	title: string;
@@ -12,6 +14,12 @@ interface PreviewProps {
 
 export default function Preview(props: PreviewProps) {
 	const { title, genre, description, date, author, image, imageCenter } = props;
+	const isComputer = useMediaQuery({
+		query: '(min-width: 1224px)'
+	})
+	const isTabletMobile = useMediaQuery({
+		query: '(max-width: 1224px)'
+	})
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			{imageCenter ? (
@@ -23,12 +31,17 @@ export default function Preview(props: PreviewProps) {
 									{genre}
 								</h3>
 							)}
+							{isTabletMobile ? (
+							<h1 className="font-serif font-small text-sm py-2 hover:text-neutral-300 duration-200">
+								{title}
+							</h1>) : (
 							<h1 className="font-serif font-medium text-xl py-2 hover:text-neutral-600 duration-200">
 								{title}
-							</h1>
+							</h1>)
+							}
 						</div>
 					</div>
-					{image && (
+					{image && isComputer && (
 						<div className="hover:brightness-110 duration-500 py-2">
 							<Image
 								src={image}
@@ -50,11 +63,16 @@ export default function Preview(props: PreviewProps) {
 									{genre}
 								</h3>
 							)}
-							<h1 className="font-serif font-medium text-xl py-2 hover:text-neutral-600 duration-200">
-								{title}
-							</h1>
+							{isTabletMobile ? (
+								<h1 className="font-serif font-small text-sm py-2 hover:text-neutral-300 duration-200">
+									{title}
+								</h1>) : (
+								<h1 className="font-serif font-small text-xl py-2 hover:text-neutral-600 duration-200">
+									{title}
+								</h1>)
+							}
 						</div>
-						{image && (
+						{image && isComputer && (
 							<div className="w-1/3 hover:brightness-110 duration-500">
 								<Image
 									src={image}

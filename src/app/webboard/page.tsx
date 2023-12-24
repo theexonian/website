@@ -7,13 +7,13 @@ import FancyBigTitle from "@/components/FancyBigTitle";
 export default function Page() {
 	return (
 		<>
-			<div className="font-serif pt-5">
+			{/* <div className="font-serif pt-5">
 				<h1 className="text-7xl font-semibold -my-2">Exonian Web Boards</h1>
 				<h1>
                     <i>15 boards and counting.</i>
 				</h1>
 				<hr className="w-1/3 border-black" />
-			</div>
+			</div> */}
 			<FancyBigTitle title="Exonian Web Boards" lowerText="15 boards and counting."/>
 			<div className="prose font-serif pl-16">
 				<div>
