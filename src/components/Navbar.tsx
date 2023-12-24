@@ -19,14 +19,14 @@ export default function Navbar() {
 		<>
 			<div className="w-screen h-auto items-center min-h-[35px] bg-gradient-to-r from-[#000000] to-[#000000] text-white flex justify-between px-14 py-1 text-xs font-bold">
 				<p>
-					<a href="https://www.exeter.edu">Phillips Exeter Academy</a>
+					<a href="https://www.exeter.edu" className="hover:text-red-400">Phillips Exeter Academy</a>
 				</p>
 				<p>
-					<a href="https://fs30.formsite.com/exeter/TESub_Prod/index.html">
+					<a href="https://fs30.formsite.com/exeter/TESub_Prod/index.html" className="hover:text-red-400">
 						Subscribe
 					</a>{" "}
-					| <a href="/masthead">Masthead</a> |{" "}
-					<a href="/about">About</a>
+					| <a href="/masthead" className="hover:text-red-400">Masthead</a> |{" "}
+					<a href="/about" className="hover:text-red-400">About</a>
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
