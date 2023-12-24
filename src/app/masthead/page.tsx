@@ -1,7 +1,5 @@
 import Image from "next/image";
 import * as Constants from "@/components/Constants"
-import { MdOutlineEmail } from "react-icons/md";
-import RowPreview from "@/components/RowPreview";
 import FancyBigTitle from "@/components/FancyBigTitle";
 
 export default function Page() {
@@ -20,10 +18,10 @@ export default function Page() {
 				<h1>How We Operate</h1>
 				<hr className="w-3/4 border-neutral-500" />
 				<p>
-					The Exonian is comprised of three boards, an Executive
+					<em>The Exonian</em> is comprised of three boards, an Executive
 					Board, an Upper Board and a Lower Board. These three boards
-					exist for all three branches of The Exonian. The Executive
-					Board of The Exonian includes students from Editorial Board,
+					exist for all three branches of <em>The Exonian</em>. The Executive
+					Board of <em>The Exonian</em> includes students from Editorial Board,
 					Business Board and Web Board and is directed by the
 					Editor-in-Chief.
 				</p>
@@ -51,19 +49,19 @@ export default function Page() {
 
 				<p>
 					The Web Board’s Upper Board, listed above, controls all
-					aspects of The Exonian’s web presence. They are in charge of
-					all longterm projects and appearance of the website.
+					aspects of <em>The Exonian</em>’s web presence. They are in charge of
+					all long-term projects and appearance of the website.
 				</p>
 
 				<p>
-					The leadership of The Exonian transitions every year to the
+					The leadership of <em>The Exonian</em> transitions every year to the
 					grade below the current board, typically in the winter term.
 				</p>
 
 				<p>
-					The Exonian welcomes Letters to the Editor sent to the care
+					<em>The Exonian</em> welcomes <em>Letters to the Editor</em> sent to the care
 					of <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>. The Exonian reserves the right to
-					print Letters to the Editor in a timely fashion and to edit
+					print <em>Letters to the Editor</em> in a timely fashion and to edit
 					them for content and clarity.
 				</p>
 			</div>
