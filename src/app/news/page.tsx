@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PreviewCenter from "@/components/PreviewCenter";
 import Preview from "@/components/Preview";
 import RowPreview from "@/components/RowPreview";

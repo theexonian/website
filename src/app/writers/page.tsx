@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { MdOutlineEmail } from "react-icons/md";
 import RowPreview from "@/components/RowPreview";
 

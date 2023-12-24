@@ -14,7 +14,7 @@ export default function Page() {
 				</h2>
 				<p>
 					The paper is run by students at Phillips Exeter Academy in
-					Exeter, New Hampshire and published bi-weekly.
+					Exeter, New Hampshire, and published bi-weekly.
 				</p>
 				<p>
 					The paper is comprised of three main boards — the Editorial
