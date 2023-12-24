@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 "use client"
 import Image from "next/image";
-=======
->>>>>>> 5188c71b11ba611947b833b1def02dbcf935971b
+
 import PreviewCenter from "@/components/PreviewCenter";
 import Preview from "@/components/Preview";
 import RowPreview from "@/components/RowPreview";
