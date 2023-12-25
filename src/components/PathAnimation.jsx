@@ -1,4 +1,3 @@
-'use client';
 import { motion, animate } from "framer-motion";
 
 const icon = {

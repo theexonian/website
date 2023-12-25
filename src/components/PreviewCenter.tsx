@@ -29,14 +29,14 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 				<a href="">
 					<div className="flex justify-between">
 						<div className="">
-							<h1 className="font-serif font-medium text-3xl py-2 hover:text-neutral-600 duration-200">
+							<h1 className="font-serif font-medium text-3xl md:text-xl py-2 hover:text-neutral-600 duration-200">
 								{title}
 							</h1>
 						</div>
 					</div>
 					{description && (
 						<div>
-							<p className="text-xs text-[#4E4E4E] hover:text-neutral-500 duration-200">
+							<p className="text-xs md:text-2xs text-[#4E4E4E] hover:text-neutral-500 duration-200">
 								{description}
 							</p>
 						</div>

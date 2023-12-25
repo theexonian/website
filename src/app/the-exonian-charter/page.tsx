@@ -4,14 +4,14 @@ export default function Page() {
 	return (
 		<>
 			<div className="font-serif py-5">
-				<h1 className="text-7xl font-semibold -my-2">
+				<h1 className="text-6xl lg:text-5xl md:text-3xl font-semibold -my-2">
 					<i>The Exonian</i> Charter
 				</h1>
 			</div>
-			<div className="prose font-serif">
-				<h1>
+			<div className="prose md:prose-sm font-serif">
+				<h2>
 					<i>The Exonian</i> Bylaws
-				</h1>
+				</h2>
 				<p>
 					<strong>Preamble</strong>
 				</p>
@@ -149,7 +149,7 @@ export default function Page() {
 				</ul>
 			</div>
 			<div className="prose font-serif">
-				<h1><i>The Exonian</i> Values Statement</h1>
+				<h2><i>The Exonian</i> Values Statement</h2>
 				<p>
 					<em>
 						Adopted on February 2, 2020 by the 142nd Executive

@@ -5,13 +5,13 @@ export default function Page() {
 	return (
 		<div className="font-serif py-5">
 			<FancyBigTitle title="About" lowerText="The Exonian, Established 1878"/>
-			<div className="max-w-[700px] prose py-5">
-				<h2>
+			<div className="max-w-[700px] prose md:prose-sm py-5">
+				<h3>
 					<i>
 						The Exonian is the oldest continuously-running
 						preparatory school newspaper in America.
 					</i>
-				</h2>
+				</h3>
 				<p>
 					The paper is run by students at Phillips Exeter Academy in
 					Exeter, New Hampshire, and published bi-weekly.

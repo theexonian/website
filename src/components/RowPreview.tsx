@@ -1,24 +1,9 @@
-"use client"
 import Image from "next/image";
-import MediaQuery from 'react-responsive'
-import { useMediaQuery } from 'react-responsive'
 
 export default function RowPreview() {
 	return (
 		// @TODO: refactor for props
 		<div className="w-full flex items-center py-3 border-neutral-300 border-b gap-4">
-			<MediaQuery minWidth={768}>
-				<div className="w-2/5 hover:brightness-110 duration-500">
-					<Image
-						src={"/Small.png"}
-						width="0"
-						height="0"
-						sizes="25vw"
-						className="w-full h-auto"
-						alt={"Logo of The Exonian"}
-					/>
-				</div>
-			</MediaQuery>
 			<div className="flex flex-col flex-wrap">
 				<a href="">
 					<div className="w-full pr-3">
