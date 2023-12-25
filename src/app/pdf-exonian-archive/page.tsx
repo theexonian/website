@@ -3,7 +3,7 @@ import FancyBigTitle from "@/components/FancyBigTitle";
 export default function Page() {
 	return (
 		<>
-			<div className="prose font-serif">
+			<div className="prose md:prose-sm font-serif">
 				<FancyBigTitle title="PDF Exonian Archives (2013-Present)" />
 				<p>
 					Click on a date or photo below to access the PDF of any
@@ -16,7 +16,7 @@ export default function Page() {
 					.
 				</p>
 			</div>
-			<div className="h-96 w-96 bg-slate-500"></div>
+			<div className="h-80 w-80 bg-slate-500"></div>
 			<div className="border grid grid-cols-4 gap-5 w-full">
 				<div className="h-48 bg-slate-500"></div>
 				<div className="h-48 bg-slate-500"></div>
@@ -29,11 +29,11 @@ export default function Page() {
 			</div>
 			<div className="grid grid-cols-4 py-5">
 				<div className="prose font-serif py-3">
-					<h2>
+					<h4>
 						<strong>
 							<em>143rd Exonian Board</em>
 						</strong>
-					</h2>
+					</h4>
 					<p>
 						<a href="/s/04082021.pdf" target="_blank">
 							April 8, 2021
@@ -70,11 +70,11 @@ export default function Page() {
 					</p>
 				</div>
 				<div className="prose font-serif py-3">
-					<h2>
+					<h4>
 						<strong>
 							<em>142nd Exonian Board</em>
 						</strong>
-					</h2>
+					</h4>
 					<p>
 						<a href="/s/20201015_01_142_017.pdf">
 							October 15, 2020
@@ -137,11 +137,11 @@ export default function Page() {
 					</p>
 				</div>
 				<div className="prose font-serif py-3">
-					<h2>
+					<h4>
 						<strong>
 							<em>141st Exonian Board</em>
 						</strong>
-					</h2>
+					</h4>
 					<p>
 						<a
 							href="http://static1.squarespace.com/static/5e640a2d05f12c0e70f29557/5e6d3b1e0119b124120f915f/5e6d3b1f0119b124120f91d3/1584216863229/121919.pdf?format=original"
@@ -359,11 +359,11 @@ export default function Page() {
 					</p>
 				</div>
 				<div className="prose font-serif py-3">
-					<h2>
+					<h4>
 						<strong>
 							<em>140th Exonian Board</em>
 						</strong>
-					</h2>
+					</h4>
 					<p>
 						<a
 							href="http://static1.squarespace.com/static/5e640a2d05f12c0e70f29557/5e6d3b1e0119b124120f915f/5e6d3b1f0119b124120f92ef/1584216863840/111518.pdf?format=original"

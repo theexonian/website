@@ -14,8 +14,8 @@ export default function Page() {
 				className="w-full h-auto"
 				alt={"Logo of The Exonian"}
 			/>
-			<div className="prose font-serif py-24">
-				<h1>How We Operate</h1>
+			<div className="prose font-serif pt-20">
+				<h2>How We Operate</h2>
 				<hr className="w-3/4 border-neutral-500" />
 				<p>
 					<em>The Exonian</em> is comprised of three boards, an Executive

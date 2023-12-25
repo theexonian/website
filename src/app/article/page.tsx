@@ -6,7 +6,7 @@ import { HiOutlineNewspaper } from "react-icons/hi";
 export default function Page() {
 	return (
 		<div className="w-full flex justify-center">
-			<article className="prose 2xl:prose-lg pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+			<article className="prose md:prose-sm pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 				<h3 className="font-bold text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">
 					Life
 				</h3>

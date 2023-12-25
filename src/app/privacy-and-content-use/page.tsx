@@ -4,7 +4,7 @@ import * as Constants from "@/components/Constants"
 export default function Page() {
 	return (
 		<>
-			<div className="prose font-serif">
+			<div className="prose md:prose-sm font-serif">
 				<FancyBigTitle title="Media and Content Use Policy" />
 				<p>
 					<em>

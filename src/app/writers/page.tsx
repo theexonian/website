@@ -17,7 +17,7 @@ export default function Page() {
 				</div>
 			</div>
 			<div className="w-full flex justify-center font-serif text-neutral-500 font-thin">
-				<div className="w-1/2 text-center">
+				<div className="w-1/2 md:w-2/3 text-center text-sm md:text-xs">
 					<p>
 						Esse culpa labore tempor minim culpa dolor. Exercitation
 						tempor esse aliquip adipisicing dolor anim aliqua labore
@@ -31,7 +31,7 @@ export default function Page() {
 			</div>
 			<div className="w-3/4 flex flex-col justify-center font-serif py-10">
 				<hr className="border-black w-1/2" />
-				<h1 className="text-2xl font-semibold">Latest Articles</h1>
+				<h1 className="text-2xl pt-3 font-semibold">Latest Articles</h1>
 				<RowPreview />
 				<RowPreview />
 				<RowPreview />

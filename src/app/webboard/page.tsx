@@ -4,7 +4,7 @@ export default function Page() {
 	return (
 		<>
 			<FancyBigTitle title="Exonian Web Boards" lowerText="15 boards and counting."/>
-			<div className="prose font-serif">
+			<div className="prose md:prose-sm font-serif">
 				<div>
 					<h2>The 15th Exonian Web Board</h2>
 					<h3>Chief Digital Editors</h3>
