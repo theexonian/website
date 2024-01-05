@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -15,7 +15,7 @@
     "@strapi/plugin-users-permissions": "4.16.2",
     "@strapi/plugin-i18n": "4.16.2",
     "@strapi/plugin-cloud": "4.16.2",
-    "pg": "8.8.0",
+    "mysql": "2.18.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
@@ -25,7 +25,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "e203fbc9-be4b-4a41-9212-7e923cc4d79f"
+    "uuid": "acd4770a-e915-4ed4-81b3-1051a3fd5bdc"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
