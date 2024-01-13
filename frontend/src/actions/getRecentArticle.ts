@@ -1,14 +1,12 @@
-import axios from 'axios';
-
 export async function getRecentArticle() {
-	const response = await axios.get('http://127.0.0.1:1337/api/articles', {
+	const response = await fetch('http://127.0.0.1:1337/api/articles', {
 		headers: {
 			Authorization:
 				'Bearer e9dfcb43ebd0d2063bd563822849fce5fb6baaae2d9f69e625d40a50092f09e74afa8d6b7afff13593cd51ba298f5f6570e3b2ed0ffe8fb3beccc8eb8e957486fa8f875963dd1e6d058c2c0a184c621578c1503349a126d3ef098e1c322ae50aa7cb70569fac6bcd6bdbab63183dc5636322f2c910d44fc81ebd1b4ceecc9cd9',
 		},
 	});
 
-	const articles = response.data.data;
+	const data = await response.json();
 
-	return articles[0];
+	return data.data[0];
 }
