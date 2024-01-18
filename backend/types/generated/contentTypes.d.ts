@@ -793,6 +793,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::article.article'
     >;
     description: Attribute.Text;
+    fullname: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
