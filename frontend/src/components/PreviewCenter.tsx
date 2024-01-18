@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { getRecentArticle } from "@/actions/getRecentArticle"
 
-export default function PreviewCenter() {
+export default async function PreviewCenter(){
+	const article = await getRecentArticle();
+	
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="">
@@ -17,22 +20,18 @@ export default function PreviewCenter() {
 				<div className="flex justify-between">
 					<div className="">
 						<h1 className="font-serif font-medium text-3xl py-2">
-							The Exonian Board Proposes Placing Submission Boxes On The New Website
+							{article.title}
 						</h1>
 					</div>
 				</div>
 				<div className="py-3">
 					<p className="text-xs text-[#4E4E4E]">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. At erat pellentesque adipiscing commodo
-						elit at. Accumsan in nisl nisi scelerisque eu ultrices
-						vitae auctor eu.
+						{article.content}
 					</p>
 				</div>
 				<div className="">
-					<p className="text-xs text-[#6C6C6C]">By: Byran Huang</p>
-					<p className="text-xs text-[#6C6C6C]">10/12/23</p>
+					<p className="text-xs text-[#6C6C6C]">By: {(article.authors.toString())}</p>
+					<p className="text-xs text-[#6C6C6C]">{new Date(article.publishedAt).toLocaleDateString()}</p>
 				</div>
 			</div>
 		</div>
