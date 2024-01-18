@@ -73,6 +73,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "fullname": {
+      "type": "string"
     }
   }
 }
