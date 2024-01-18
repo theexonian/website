@@ -45,9 +45,7 @@ export default function Home() {
 							<PreviewWithImage />
 						</div>
 						<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
-							<a href="/article">
-								<PreviewCenter />
-							</a>
+							<PreviewCenter />
 						</div>
 					</div>
 					<div className="py-10"></div>
