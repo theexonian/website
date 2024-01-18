@@ -5,6 +5,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
 	const article = await getArticleById(slug);
 
+	if (!article) return null;
+
 	return (
 		<div className="flex w-screen h-auto items-center justify-center">
 			{/* TODO: Optimize min-h requirement */}
