@@ -15,31 +15,23 @@ export interface ArticlesResponse extends BaseAPIResponse {
 	data: Array<Article>;
 }
 
-export interface ArticleSlugResponse extends BaseAPIResponse {
-	data: Article;
-}
 
 interface Article {
 	id: number;
-	attributes: {
-		title: string;
-		slug: string;
-		content: string;
-		createdAt: string;
-		updatedAt: string;
-		publishedAt: string;
-		authors: {
-			data: Array<Author>;
-		};
-	};
+
+	title: string;
+	slug: string;
+	content: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	authors: Array<Author>;
 }
 
 interface Author {
 	id: number;
-	attributes: {
-		username: string;
-		email: string;
-		description: string;
-		fullname: string;
-	};
+	username: string;
+	email: string;
+	description: string;
+	fullname: string;
 }
