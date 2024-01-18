@@ -13,4 +13,3 @@ export async function fetchNoCache(url: string, options: RequestInit) {
 
 	return body;
 }
-
