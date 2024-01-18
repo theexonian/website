@@ -7,7 +7,7 @@ export default async function PreviewNoDesc() {
 
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			<a href={`/articles/${article.attributes.title.toLowerCase().split(' ').join('-')}`}>
+			<a href={`/articles/${article.attributes.slug}`}>
 				<div className="flex justify-between">
 					<div className="">
 						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
