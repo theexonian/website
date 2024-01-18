@@ -24,6 +24,9 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "articles"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
