@@ -1,19 +1,9 @@
 import { fetchCached } from '@/lib/fetchRequests';
-import { stringify } from 'qs';
-import { ArticlesResponse } from '../../types/APIResponse';
+import { ArticleSlugResponse } from '../../types/APIResponse';
 
-export async function getArticleById(id: string) {
-	const query = stringify({
-		filters: {
-			title: {
-				$eqi: id.split('-').join(' '),
-			},
-		},
-		populate: ['authors'],
-	});
-
-	const body: ArticlesResponse = await fetchCached(
-		`http://127.0.0.1:1337/api/articles?${query}`,
+export async function getArticleById(slug: string) {
+	const body: ArticleSlugResponse = await fetchCached(
+		`http://127.0.0.1:1337/api/slugify/slugs/article/${slug}?populate=*`,
 		{
 			headers: {
 				Authorization:
@@ -22,5 +12,5 @@ export async function getArticleById(id: string) {
 		}
 	);
 
-	return body.data[0];
+	return body.data;
 }

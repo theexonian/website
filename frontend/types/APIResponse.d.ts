@@ -15,10 +15,15 @@ export interface ArticlesResponse extends BaseAPIResponse {
 	data: Array<Article>;
 }
 
+export interface ArticleSlugResponse extends BaseAPIResponse {
+	data: Article;
+}
+
 interface Article {
 	id: number;
 	attributes: {
 		title: string;
+		slug: string;
 		content: string;
 		createdAt: string;
 		updatedAt: string;
