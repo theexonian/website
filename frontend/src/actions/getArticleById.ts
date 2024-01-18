@@ -3,14 +3,19 @@ import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 
 export async function getArticleById(slug: string) {
-	const query = stringify({
-		filters: {
-			slug: {
-				eqi: slug,
+	const query = stringify(
+		{
+			filters: {
+				slug: {
+					$eqi: slug,
+				},
 			},
+			populate: '*',
 		},
-		populate: '*',
-	});
+		{
+			encodeValuesOnly: true,
+		}
+	);
 
 	const body: ArticlesResponse = await fetchCached(
 		`http://127.0.0.1:1337/api/articles?${query}`,
