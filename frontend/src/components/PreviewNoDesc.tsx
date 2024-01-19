@@ -9,7 +9,7 @@ export default async function PreviewNoDesc() {
 				<div className="flex justify-between">
 					<div className="">
 						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
-							Life
+							{article.tag}
 						</h3>
 						<h1 className="font-serif font-medium text-xl py-2">{article.title}</h1>
 					</div>
