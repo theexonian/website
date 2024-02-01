@@ -76,6 +76,9 @@
     },
     "fullname": {
       "type": "string"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
