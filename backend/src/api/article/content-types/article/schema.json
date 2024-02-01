@@ -29,7 +29,7 @@
       "type": "string"
     },
     "tag": {
-      "type": "string"
+      "type": "enum"
     }
   }
 }
