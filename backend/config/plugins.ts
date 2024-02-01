@@ -7,6 +7,10 @@ export default {
           field: "slug",
           references: "title",
         },
+		user: {
+			field: "slug",
+			references: "fullname"
+		}
       },
     },
   },
