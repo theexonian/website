@@ -15,7 +15,6 @@ export interface ArticlesResponse extends BaseAPIResponse {
 	data: Array<Article>;
 }
 
-
 interface Article {
 	id: number;
 
@@ -35,4 +34,7 @@ interface Author {
 	email: string;
 	description: string;
 	fullname: string;
+
+	slug: string;
+	articles: Array<Article>;
 }
