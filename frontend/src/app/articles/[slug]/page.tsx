@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 								return (
 									<a
 										className="hover:text-red-500 duration-200 font-bold no-underline"
-										href="/writers"
+										href={`/writers/${author.slug}`}
 										key={i}
 									>
 										{author.fullname}
@@ -37,19 +37,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						<span className="p-0 m-0">
 							{new Date(article.publishedAt).toUTCString()}
 						</span>
-						<figure>
-							<Image
-								src={'/Article.png'}
-								width="0"
-								height="0"
-								sizes="25vw"
-								className="w-full h-auto"
-								alt={'Logo of The Exonian'}
-							/>
-							<figcaption>
-								Emma Zimmerman poses for a photo, Courtesy of Grounded Podcast
-							</figcaption>
-						</figure>
+						
 						<p>{article.content}</p>
 					</article>
 				</div>
