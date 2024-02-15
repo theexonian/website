@@ -382,6 +382,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     slug: Attribute.String;
+    tag: Attribute.Enumeration<
+      ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
