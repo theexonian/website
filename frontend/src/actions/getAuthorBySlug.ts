@@ -3,19 +3,14 @@ import { stringify } from 'qs';
 import { Author } from '../../types/APIResponse';
 
 export async function getAuthorBySlug(slug: string) {
-	const query = stringify(
-		{
-			filters: {
-				slug: {
-					$eqi: slug,
-				},
+	const query = stringify({
+		filters: {
+			slug: {
+				$eqi: slug,
 			},
-			populate: 'articles',
 		},
-		{
-			encodeValuesOnly: true,
-		}
-	);
+		populate: 'articles',
+	});
 
 	const body: Array<Author> = await fetchCached(`http://127.0.0.1:1337/api/users?${query}`, {
 		headers: {
