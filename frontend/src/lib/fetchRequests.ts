@@ -1,13 +1,10 @@
 export async function fetchCached(url: string, options: RequestInit) {
-	const response = await fetch(url, { cache: 'force-cache', ...options });
+	let cache: RequestCache = 'force-cache';
 
-	const body = await response.json();
-
-	return body;
-}
-
-export async function fetchNoCache(url: string, options: RequestInit) {
-	const response = await fetch(url, { cache: 'no-store', ...options });
+	if (process.env.NODE_ENV === 'development') {
+		cache = 'no-store';
+	}
+	const response = await fetch(url, { cache: cache, ...options });
 
 	const body = await response.json();
 
