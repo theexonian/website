@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 import PreviewCenter from "@/components/PreviewCenter";
-import Preview from "@/components/Preview";
-import RowPreview from "@/components/RowPreview";
-
+import PreviewNoDesc from "@/components/PreviewNoDesc";
+import PreviewSeniorOfTheWeek from "@/components/PreviewSeniorOfTheWeek";
+import PreviewWithImage from "@/components/PreviewWithImage";
+import RowPreviewWithImage from "@/components/RowPreviewWithImage";
 
 export default function Page() {
 	return (

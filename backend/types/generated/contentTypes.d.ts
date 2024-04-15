@@ -385,6 +385,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     tag: Attribute.Enumeration<
       ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
     >;
+    z: Attribute.Integer;
+    thumbnail: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
