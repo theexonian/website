@@ -25,9 +25,6 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "articles"
     },
-    "slug": {
-      "type": "string"
-    },
     "tag": {
       "type": "enumeration",
       "enum": [
@@ -43,14 +40,19 @@
       "type": "integer"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
