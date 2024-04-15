@@ -801,6 +801,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     description: Attribute.Text;
     fullname: Attribute.String;
     slug: Attribute.String;
+    position: Attribute.String;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
