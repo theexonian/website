@@ -1,8 +1,6 @@
-import Image from "next/image";
-import PreviewSeniorOfTheWeek from "@/components/PreviewSeniorOfTheWeek";
-import PreviewNoDesc from "@/components/PreviewNoDesc";
-import PreviewWithDesc from "@/components/PreviewWithDesc";
 import PreviewCenter from "@/components/PreviewCenter";
+import PreviewNoDesc from "@/components/PreviewNoDesc";
+import PreviewSeniorOfTheWeek from "@/components/PreviewSeniorOfTheWeek";
 import PreviewWithImage from "@/components/PreviewWithImage";
 import RowPreviewWithImage from "@/components/RowPreviewWithImage";
 

@@ -1,5 +1,4 @@
 import { getArticleById } from '@/actions/getArticleById';
-import Image from 'next/image';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -16,7 +15,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<hr className="w-full border-neutral-300" />
 					<article className="prose 2xl:prose-lg pt-8 font-serif ml-32 2xl:ml-64 prose-figcaption:font-sans prose-p:indent-8">
 						<h3 className="font-bold text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">
-							Life
+							{article.tag}
 						</h3>
 						<h1>{article.title}</h1>
 						<span className="p-0 m-0">
@@ -35,9 +34,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						</span>
 						<br />
 						<span className="p-0 m-0">
-							{new Date(article.publishedAt).toUTCString()}
+							{new Date(article.publishedAt)
+								.toUTCString()
+								.split(' ')
+								.slice(0, 4)
+								.join(' ')}
 						</span>
-						
+
 						<p>{article.content}</p>
 					</article>
 				</div>
