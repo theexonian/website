@@ -22,7 +22,9 @@ export default function RowPreviewWithImage({ article }: { article: Article }) {
 					<h1 className="font-serif font-medium text-xl">{article.title}</h1>
 				</div>
 				<div className="py-2">
-					<p className="text-xs text-[#4E4E4E]">{article.content}</p>
+					<p className="text-xs text-[#4E4E4E] text-ellipsis line-clamp-3">
+						{article.content}
+					</p>
 				</div>
 				<div className="font-sans">
 					<p className="text-xs text-[#6C6C6C]">By: Byran Huang</p>

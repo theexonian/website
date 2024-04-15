@@ -26,6 +26,10 @@ interface Article {
 	publishedAt: string;
 	authors: Array<Author>;
 	tag: string;
+
+	thumbnail: {
+		url: string;
+	}
 }
 
 interface Author {

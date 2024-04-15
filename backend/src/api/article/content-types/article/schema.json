@@ -38,6 +38,19 @@
         "oped",
         "humor"
       ]
+    },
+    "z": {
+      "type": "integer"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
