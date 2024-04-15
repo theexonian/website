@@ -20,7 +20,6 @@
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "5.3.4",
-		"strapi-plugin-slugify": "^2.3.8",
 		"strapi-plugin-transformer": "^3.1.2",
 		"styled-components": "5.3.3"
 	},
