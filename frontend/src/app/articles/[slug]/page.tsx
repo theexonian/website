@@ -1,4 +1,5 @@
 import { getArticleById } from '@/actions/getArticleById';
+import Markdown from 'react-markdown';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -15,7 +16,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<hr className="w-full border-neutral-300" />
 					<article className="prose 2xl:prose-lg pt-8 font-serif ml-32 2xl:ml-64 prose-figcaption:font-sans prose-p:indent-8">
 						<h3 className="font-bold text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">
-							{article.tag}
+							{article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}
 						</h3>
 						<h1>{article.title}</h1>
 						<span className="p-0 m-0">
@@ -41,7 +42,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 								.join(' ')}
 						</span>
 
-						<p>{article.content}</p>
+						<Markdown>{article.content}</Markdown>
 					</article>
 				</div>
 			</main>
