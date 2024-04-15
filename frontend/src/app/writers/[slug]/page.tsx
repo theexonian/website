@@ -14,25 +14,24 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<hr className="w-full border-neutral-300" />
 					<hr className="w-full border-neutral-300" />
 					<div className="w-full flex justify-center py-8">
-						<div className="bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24 bg-[url('/Filler.png')]"></div>
+						<div className={`bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24 bg-[url('/Filler.png')]`}></div>
 					</div>
 					<div className="w-full flex justify-center font-serif text-4xl font-semibold">
 						<h1>{author.fullname}</h1>
 					</div>
 					<div className="w-full flex justify-center font-sans text-md items-center text-neutral-600 font-light">
-						<p>Director of Writing</p>
+						<p>{author.position}</p>
 						<div className="p-2 font-xl">
-							<MdOutlineEmail />
+							<a href={'mailto:' + author.email}>
+								<MdOutlineEmail />
+							</a>
 						</div>
 					</div>
 					<div className="w-full flex justify-center font-serif text-neutral-500 font-thin">
 						<div className="w-1/2 text-center">
 							<p>
-								Esse culpa labore tempor minim culpa dolor. Exercitation tempor esse
-								aliquip adipisicing dolor anim aliqua labore sint. Labore Lorem elit
-								culpa ad ipsum velit consequat proident velit tempor velit ullamco
-								commodo. Elit nulla enim in non proident. Incididunt aliqua ex aute
-								laborum aute deserunt duis nostrud nostrud adipisicing sunt enim.
+								{author.description ||
+									'This author has not provided a description yet.'}
 							</p>
 						</div>
 					</div>

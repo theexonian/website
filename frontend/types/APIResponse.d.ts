@@ -29,7 +29,7 @@ interface Article {
 
 	thumbnail: {
 		url: string;
-	}
+	};
 }
 
 interface Author {
@@ -38,6 +38,10 @@ interface Author {
 	email: string;
 	description: string;
 	fullname: string;
+	position: string;
+	picture: {
+		url: string;
+	};
 
 	slug: string;
 	articles: Array<Article>;
