@@ -1,7 +1,6 @@
-import { MdOutlineEmail } from 'react-icons/md';
-import Preview from '@/components/Preview';
 import { getAuthorBySlug } from '@/actions/getAuthorBySlug';
 import PreviewNoImage from '@/components/PreviewNoImage';
+import { MdOutlineEmail } from 'react-icons/md';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const author = await getAuthorBySlug(params.slug);
@@ -36,6 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						title={article.title}
 						description={article.description}
 						tag={article.tag}
+						slug={article.slug}
 					/>
 				))}
 			</div>
