@@ -1,7 +1,6 @@
-import Image from "next/image";
-import PathAnimation from "@/components/PathAnimation";
-import { FaFacebook, FaFacebookF, FaInstagram, FaSearch } from "react-icons/fa";
 import "animate.css";
+import Image from "next/image";
+import { FaFacebookF, FaInstagram, FaSearch } from "react-icons/fa";
 
 
 export default function Navbar() {
@@ -64,7 +63,7 @@ export default function Navbar() {
 					</div>
 				</div>
 				<ul className={"flex flex-row md:hidden text-sm gap-8 py-2 text-neutral-700"}>
-					<a href="">
+					<a href="/">
 						<li className="hover:text-neutral-500 duration-200">
 							Home
 						</li>
