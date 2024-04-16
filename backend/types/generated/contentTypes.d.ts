@@ -375,7 +375,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    content: Attribute.RichText;
+    content: Attribute.RichText & Attribute.Required;
     authors: Attribute.Relation<
       'api::article.article',
       'manyToMany',
@@ -383,10 +383,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     >;
     tag: Attribute.Enumeration<
       ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
-    >;
+    > &
+      Attribute.Required;
     z: Attribute.Integer;
     thumbnail: Attribute.Media;
     slug: Attribute.UID<'api::article.article', 'title'>;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
