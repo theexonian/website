@@ -17,7 +17,8 @@
       "required": true
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "authors": {
       "type": "relation",
@@ -34,7 +35,8 @@
         "life",
         "oped",
         "humor"
-      ]
+      ],
+      "required": true
     },
     "z": {
       "type": "integer"
@@ -53,6 +55,9 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
