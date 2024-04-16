@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 interface PreviewProps {
 	title: string;
@@ -24,9 +24,9 @@ export default function Preview(props: PreviewProps) {
 								</h3>
 							)}
 							{
-							<h1 className="font-serif font-medium text-xl lg:text-lg py-2 hover:text-neutral-600 duration-200">
-								{title}
-							</h1>
+								<h1 className="font-serif font-medium text-xl lg:text-lg py-2 hover:text-neutral-600 duration-200">
+									{title}
+								</h1>
 							}
 						</div>
 					</div>
@@ -38,7 +38,7 @@ export default function Preview(props: PreviewProps) {
 								height="0"
 								sizes="25vw"
 								className="w-full h-auto"
-								alt={""}
+								alt={''}
 							/>
 						</div>
 					)}
@@ -66,7 +66,7 @@ export default function Preview(props: PreviewProps) {
 									height="0"
 									sizes="25vw"
 									className="w-full h-auto"
-									alt={""}
+									alt={''}
 								/>
 							</div>
 						)}
@@ -89,14 +89,10 @@ export default function Preview(props: PreviewProps) {
 					<p className="text-xs text-[#6C6C6C] duration-200">
 						By:&nbsp;
 						{/* @TODO: implement map loop for every author match with profile */}
-						{author.join(", ")}
+						{author.join(', ')}
 					</p>
 				)}
-				{date && (
-					<p className="text-xs text-[#6C6C6C]">
-						{date.toLocaleDateString()}
-					</p>
-				)}
+				{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}
 			</div>
 		</div>
 	);
