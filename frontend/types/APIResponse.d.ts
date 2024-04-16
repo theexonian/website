@@ -20,6 +20,7 @@ interface Article {
 
 	title: string;
 	slug: string;
+	description: string;
 	content: string;
 	createdAt: string;
 	updatedAt: string;

@@ -9,7 +9,11 @@ export async function getAuthorBySlug(slug: string) {
 				$eqi: slug,
 			},
 		},
-		populate: ['articles', 'picture'],
+		populate: {
+			articles: {
+				fields: ['title', 'tag', 'slug', 'description'],
+			},
+		},
 	});
 
 	const body: Array<Author> = await fetchCached(`http://127.0.0.1:1337/api/users?${query}`, {

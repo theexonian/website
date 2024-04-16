@@ -1,6 +1,7 @@
 import { MdOutlineEmail } from 'react-icons/md';
 import Preview from '@/components/Preview';
 import { getAuthorBySlug } from '@/actions/getAuthorBySlug';
+import PreviewNoImage from '@/components/PreviewNoImage';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const author = await getAuthorBySlug(params.slug);
@@ -26,22 +27,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<p>{author.description}</p>
 				</div>
 			</div>
-			<div className="w-3/4 flex flex-col justify-center font-serif py-10">
-				<hr className="border-black w-1/2" />
+			<div className="w-full flex flex-col items-center justify-center font-serif py-10">
+				<hr className="border-black w-full" />
 				<h1 className="text-2xl pt-3 font-semibold">Latest Articles</h1>
-				{
-					author.articles.map((article) => (
-						<Preview
-							key={article.slug}
-							title={article.title}
-							description={"Description"}
-							genre={article.tag}
-							image={article.thumbnail && "http://127.0.0.1:1337" + article.thumbnail.url}
-							imageCenter={true}
-						/>
-					))
-				}
-		
+				{author.articles.map((article) => (
+					<PreviewNoImage
+						key={article.slug}
+						title={article.title}
+						description={article.description}
+						tag={article.tag}
+					/>
+				))}
 			</div>
 		</>
 	);

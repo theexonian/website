@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 interface PreviewProps {
 	title: string;
-	genre?: string;
+	tag?: string;
 	description?: string;
 	date?: Date;
 	author?: string[];
@@ -11,16 +11,16 @@ interface PreviewProps {
 }
 
 export default function Preview(props: PreviewProps) {
-	const { title, genre, description, date, author, image, imageCenter } = props;
+	const { title, tag, description, date, author, image, imageCenter } = props;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			{imageCenter ? (
 				<>
 					<div className="flex justify-between">
 						<div className="w-full pr-3">
-							{genre && (
+							{tag && (
 								<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
-									{genre}
+									{tag.charAt(0).toUpperCase() + tag.slice(1)}
 								</h3>
 							)}
 							{
@@ -47,9 +47,9 @@ export default function Preview(props: PreviewProps) {
 				<>
 					<div className="flex justify-between items-center pb-5">
 						<div className="w-2/3 pr-3">
-							{genre && (
+							{tag && (
 								<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
-									{genre}
+									{tag}
 								</h3>
 							)}
 							{
