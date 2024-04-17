@@ -11,6 +11,13 @@ export default async function ArticlePreview({ z }: { z: number }) {
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<a href={`/articles/${article.slug}`}>
+				<div className="w-full pr-3">
+					{article.tag && (
+						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
+							{article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}
+						</h3>
+					)}
+				</div>
 				{article.thumbnail && (
 					<Image
 						src={'http://127.0.0.1:1337' + article.thumbnail.url}
@@ -35,21 +42,30 @@ export default async function ArticlePreview({ z }: { z: number }) {
 							{article.content}
 						</p>
 					</div>
-					<div className="">
-						<p className="text-xs text-[#6C6C6C]">
-							By:{' '}
-							<span>
-								{article.authors.map((author, i) => {
-									return author.fullname;
-								})}
-							</span>
-						</p>
-						<p className="text-xs text-[#6C6C6C]">
-							{new Date(article.publishedAt).toLocaleDateString()}
-						</p>
-					</div>
+					{/* A list of authors separated by a comma and a space */}
+					{/* <div className="text-xs text-[#6C6C6C]"> */}
 				</div>
 			</a>
+
+			<div className="text-xs">
+				By:{' '}
+				{article.authors.map((author, i) => {
+					return (
+						<a
+							className="text-xs hover:text-red-500 duration-200 no-underline"
+							key={i}
+							href={`/writers/${author.slug}`}
+						>
+							{author.fullname}
+							{article.authors.length - 1 !== i && ', '}
+						</a>
+					);
+				})}
+				{/* </div> */}
+				<p className="text-xs text-[#6C6C6C]">
+					{new Date(article.publishedAt).toLocaleDateString()}
+				</p>
+			</div>
 		</div>
 	);
 }
