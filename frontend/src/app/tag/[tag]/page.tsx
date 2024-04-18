@@ -2,7 +2,10 @@ import PreviewCenter from '@/components/PreviewCenter';
 import Preview from '@/components/Preview';
 import RowPreview from '@/components/RowPreview';
 
-export default function Page() {
+export default function Page({ params }: { params: { tag: string } }) {
+	const { tag } = params;
+	
+
 	return (
 		<>
 			<div className="py-8">
@@ -27,7 +30,7 @@ export default function Page() {
 					<Preview
 						imageCenter={true}
 						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						genre={'Life'}
+						tag={'Life'}
 						description={
 							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
 						}
@@ -40,7 +43,7 @@ export default function Page() {
 					<Preview
 						imageCenter={true}
 						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						genre={'Life'}
+						tag={'Life'}
 						description={
 							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
 						}
@@ -56,7 +59,7 @@ export default function Page() {
 					<Preview
 						imageCenter={true}
 						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						genre={'Life'}
+						tag={'Life'}
 						description={
 							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
 						}
@@ -69,7 +72,7 @@ export default function Page() {
 					<Preview
 						imageCenter={true}
 						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						genre={'Life'}
+						tag={'Life'}
 						description={
 							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
 						}
