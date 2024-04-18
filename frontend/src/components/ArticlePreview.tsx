@@ -39,11 +39,9 @@ export default async function ArticlePreview({ z }: { z: number }) {
 					</div>
 					<div className="py-3">
 						<p className="text-xs text-[#4E4E4E] text-ellipsis line-clamp-3">
-							{article.content}
+							{article.description}
 						</p>
 					</div>
-					{/* A list of authors separated by a comma and a space */}
-					{/* <div className="text-xs text-[#6C6C6C]"> */}
 				</div>
 			</a>
 
