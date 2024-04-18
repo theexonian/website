@@ -1,5 +1,6 @@
 import { getAuthorBySlug } from '@/actions/getAuthorBySlug';
 import PreviewNoImage from '@/components/PreviewNoImage';
+import Image from 'next/image';
 import { MdOutlineEmail } from 'react-icons/md';
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -8,7 +9,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<div className="w-full flex justify-center py-8">
-				<div className="bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24 bg-[url('/Filler.png')]"></div>
+				<div className="bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24">
+					{author.picture ? (
+						<Image
+							src={'http://127.0.0.1:1337' + author.picture.url}
+							alt={author.fullname}
+							height={96}
+							width={96}
+						/>
+					) : (
+						<Image src={'/Small.png'} alt="Missing Image" height={96} width={96} />
+					)}
+				</div>
 			</div>
 			<div className="w-full flex justify-center font-serif text-4xl font-semibold">
 				<h1>{author.fullname}</h1>
