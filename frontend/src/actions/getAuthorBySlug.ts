@@ -13,6 +13,9 @@ export async function getAuthorBySlug(slug: string) {
 			articles: {
 				fields: ['title', 'tag', 'slug', 'description'],
 			},
+			picture: {
+				fields: ['url'],
+			},
 		},
 	});
 
