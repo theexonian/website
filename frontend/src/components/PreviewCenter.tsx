@@ -1,22 +1,25 @@
 import Image from 'next/image';
+import { Author } from '../../types/APIResponse';
 
 interface PreviewCenterProps {
-	title: string;
-	image?: string;
-	description?: string;
-	date?: Date;
-	author?: string[];
+	article: {
+		title: string;
+		thumbnail?: { url: string };
+		description?: string;
+		date?: Date;
+		authors?: Author[];
+	};
 }
 
 export default function PreviewCenter(props: PreviewCenterProps) {
-	const { title, image, description, date, author } = props;
+	const { title, thumbnail, description, date, authors } = props.article;
 
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			{image && (
+			{thumbnail && (
 				<div className="hover:brightness-110 duration-500">
 					<Image
-						src={image}
+						src={'http://127.0.0.1:1337' + thumbnail?.url}
 						width="0"
 						height="0"
 						sizes="100vw"
@@ -43,11 +46,22 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 					)}
 				</a>
 				<div className="pt-2">
-					{author && (
+					{authors && (
 						<p className="text-xs text-[#6C6C6C] duration-200">
 							By:&nbsp;
 							{/* @TODO: implement map loop for every author match with profile */}
-							{author.join(', ')}
+							{authors.map((author, i) => {
+								return (
+									<a
+										className="text-xs hover:text-red-500 duration-200 no-underline"
+										key={i}
+										href={`/writers/${author.slug}`}
+									>
+										{author.fullname}
+										{authors.length - 1 !== i && ', '}
+									</a>
+								);
+							})}
 						</p>
 					)}
 					{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}

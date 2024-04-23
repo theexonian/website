@@ -15,7 +15,7 @@ export async function getArticlesByTag(tag: string) {
 				fields: ['url'],
 			},
 			authors: {
-				fields: ['name', 'slug'],
+				fields: ['fullname', 'slug'],
 			},
 		},
 	});
