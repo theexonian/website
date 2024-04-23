@@ -7,72 +7,40 @@ interface PreviewProps {
 	date?: Date;
 	author?: string[];
 	image?: string;
-	imageCenter: boolean;
 }
 
 export default function Preview(props: PreviewProps) {
-	const { title, tag, description, date, author, image, imageCenter } = props;
+	const { title, tag, description, date, author, image } = props;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			{imageCenter ? (
-				<>
-					<div className="flex justify-between">
-						<div className="w-full pr-3">
-							{tag && (
-								<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
-									{tag.charAt(0).toUpperCase() + tag.slice(1)}
-								</h3>
-							)}
-							{
-								<h1 className="font-serif font-medium text-xl lg:text-lg py-2 hover:text-neutral-600 duration-200">
-									{title}
-								</h1>
-							}
-						</div>
-					</div>
-					{image && (
-						<div className="hover:brightness-110 duration-500 py-2">
-							<Image
-								src={image}
-								width="0"
-								height="0"
-								sizes="25vw"
-								className="w-full h-auto"
-								alt={''}
-							/>
-						</div>
-					)}
-				</>
-			) : (
-				<>
-					<div className="flex justify-between items-center pb-5">
-						<div className="w-2/3 pr-3">
-							{tag && (
-								<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
-									{tag}
-								</h3>
-							)}
-							{
-								<h1 className="font-serif font-small text-xl py-2 hover:text-neutral-600 duration-200">
-									{title}
-								</h1>
-							}
-						</div>
-						{image && (
-							<div className="w-1/3 hover:brightness-110 duration-500">
-								<Image
-									src={image}
-									width="0"
-									height="0"
-									sizes="25vw"
-									className="w-full h-auto"
-									alt={''}
-								/>
-							</div>
+			<>
+				<div className="flex justify-between">
+					<div className="w-full pr-3">
+						{tag && (
+							<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
+								{tag.charAt(0).toUpperCase() + tag.slice(1)}
+							</h3>
 						)}
+						{
+							<h1 className="font-serif font-medium text-xl lg:text-lg py-2 hover:text-neutral-600 duration-200">
+								{title}
+							</h1>
+						}
 					</div>
-				</>
-			)}
+				</div>
+				{image && (
+					<div className="hover:brightness-110 duration-500 py-2">
+						<Image
+							src={image}
+							width="0"
+							height="0"
+							sizes="25vw"
+							className="w-full h-auto"
+							alt={''}
+						/>
+					</div>
+				)}
+			</>
 
 			{description && (
 				<div>
