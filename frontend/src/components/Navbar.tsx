@@ -68,27 +68,27 @@ export default function Navbar() {
 							Home
 						</li>
 					</a>
-					<a href="/news">
+					<a href="/tag/news">
 						<li className="hover:text-neutral-500 duration-200">
 							News
 						</li>
 					</a>
-					<a href="">
+					<a href="/tag/life">
 						<li className="hover:text-neutral-500 duration-200">
 							Life
 						</li>
 					</a>
-					<a href="">
+					<a href="/tag/oped">
 						<li className="hover:text-neutral-500 duration-200">
 							Opinions
 						</li>
 					</a>
-					<a href="">
+					<a href="/tag/sports">
 						<li className="hover:text-neutral-500 duration-200">
 							Sports
 						</li>
 					</a>
-					<a href="">
+					<a href="/tag/humor">
 						<li className="hover:text-neutral-500 duration-200">
 							Humor
 						</li>
