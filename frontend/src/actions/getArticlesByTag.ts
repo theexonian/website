@@ -2,14 +2,22 @@ import { fetchCached } from '@/lib/fetchRequests';
 import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 
-export async function getArticlesByTag(slug: string) {
+export async function getArticlesByTag(tag: string) {
 	const query = stringify({
 		filters: {
-			slug: {
-				$eqi: slug,
+			tag: {
+				$eqi: tag,
 			},
 		},
-		populate: '*',
+		fields: ['title', 'tag', 'slug', 'description'],
+		populate: {
+			thumbnail: {
+				fields: ['url'],
+			},
+			authors: {
+				fields: ['name', 'slug'],
+			},
+		},
 	});
 
 	const body: ArticlesResponse = await fetchCached(
@@ -22,5 +30,5 @@ export async function getArticlesByTag(slug: string) {
 		}
 	);
 
-	return body.data[0];
+	return body.data;
 }
