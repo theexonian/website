@@ -48,6 +48,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						description={article.description}
 						tag={article.tag}
 						slug={article.slug}
+						publishedAt={article.publishedAt}
 					/>
 				))}
 			</div>

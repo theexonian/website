@@ -41,11 +41,9 @@ export default async function Page({ params }: { params: { tag: string } }) {
 			</div>
 			<div className="py-7 md:py-2"></div>
 			<div className="w-3/4 flex flex-col justify-center font-serif py-10 px-3">
-				<RowPreview />
-				<RowPreview />
-				<RowPreview />
-				<RowPreview />
-				<RowPreview />
+				{articles.slice(6).map((article, i) => {
+					return <RowPreview key={i} article={article} />;
+				})}
 			</div>
 		</>
 	);

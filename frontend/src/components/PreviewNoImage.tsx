@@ -2,13 +2,13 @@ interface PreviewProps {
 	title: string;
 	tag?: string;
 	description?: string;
-	date?: Date;
+	publishedAt?: string;
 	author?: string[];
 	slug: string;
 }
 
 export default function PreviewNoImage(props: PreviewProps) {
-	const { title, tag, description, date, author, slug } = props;
+	const { title, tag, description, publishedAt, author, slug } = props;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<a href={`/articles/${slug}`}>
@@ -45,7 +45,11 @@ export default function PreviewNoImage(props: PreviewProps) {
 							{author.join(', ')}
 						</p>
 					)}
-					{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}
+					{publishedAt && (
+						<p className="text-xs text-[#6C6C6C]">
+							{new Date(publishedAt).toLocaleDateString()}
+						</p>
+					)}
 				</div>
 			</a>
 		</div>

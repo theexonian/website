@@ -6,7 +6,7 @@ interface PreviewProps {
 		title: string;
 		tag?: string;
 		description?: string;
-		date?: Date;
+		publishedAt?: string;
 		authors?: Author[];
 		slug: string;
 		thumbnail: {
@@ -16,7 +16,7 @@ interface PreviewProps {
 }
 
 export default function Preview(props: PreviewProps) {
-	const { title, tag, description, date, authors, thumbnail, slug } = props.article;
+	const { title, tag, description, publishedAt, authors, thumbnail, slug } = props.article;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<a href={`/articles/${slug}`}>
@@ -76,7 +76,11 @@ export default function Preview(props: PreviewProps) {
 						})}
 					</p>
 				)}
-				{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}
+				{publishedAt && (
+					<p className="text-xs text-[#6C6C6C]">
+						{new Date(publishedAt).toLocaleDateString()}
+					</p>
+				)}
 			</div>
 		</div>
 	);
