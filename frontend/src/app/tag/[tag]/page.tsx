@@ -8,6 +8,9 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
 	const articles = await getArticlesByTag(tag);
 
+	if (articles.length == 0)
+		return <p>There aren't any articles in this category yet, check back later</p>;
+
 	return (
 		<>
 			<div className="py-8">
@@ -21,19 +24,19 @@ export default async function Page({ params }: { params: { tag: string } }) {
 					{articles[0] && <PreviewCenter article={articles[0]} />}
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview article={articles[1]} />
+					{articles[1] && <Preview article={articles[1]} />}
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview article={articles[2]} />
+					{articles[2] && <Preview article={articles[2]} />}
 				</div>
 			</div>
 			<div className="py-7 md:py-2"></div>
 			<div className="grid grid-cols-4 md:grid-cols-1">
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview article={articles[3]} />
+					{articles[3] && <Preview article={articles[3]} />}
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview article={articles[4]} />
+					{articles[4] && <Preview article={articles[4]} />}
 				</div>
 				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
 					{articles[5] && <PreviewCenter article={articles[5]} />}
