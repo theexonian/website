@@ -8,8 +8,6 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
 	const articles = await getArticlesByTag(tag);
 
-	// console.log(articles[0].authors);
-
 	return (
 		<>
 			<div className="py-8">
@@ -23,58 +21,22 @@ export default async function Page({ params }: { params: { tag: string } }) {
 					{articles[0] && <PreviewCenter article={articles[0]} />}
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview
-						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						tag={'Life'}
-						description={
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
-						}
-						date={new Date()}
-						author={['Byran Huang']}
-						image={'/Small.png'}
-					/>
+					<Preview article={articles[1]} />
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview
-						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						tag={'Life'}
-						description={
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
-						}
-						date={new Date()}
-						author={['Byran Huang']}
-						image={'/Small.png'}
-					/>
+					<Preview article={articles[2]} />
 				</div>
 			</div>
 			<div className="py-7 md:py-2"></div>
 			<div className="grid grid-cols-4 md:grid-cols-1">
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview
-						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						tag={'Life'}
-						description={
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
-						}
-						date={new Date()}
-						author={['Byran Huang']}
-						image={'/Small.png'}
-					/>
+					<Preview article={articles[3]} />
 				</div>
 				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					<Preview
-						title={'Why Monkeys are Clearly More Monkey Than They Appear'}
-						tag={'Life'}
-						description={
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat pellentesque adipiscing commodo elit at. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu.'
-						}
-						date={new Date()}
-						author={['Byran Huang']}
-						image={'/Small.png'}
-					/>
+					<Preview article={articles[4]} />
 				</div>
 				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-x">
-					{articles[6] && <PreviewCenter article={articles[6]} />}
+					{articles[5] && <PreviewCenter article={articles[5]} />}
 				</div>
 			</div>
 			<div className="py-7 md:py-2"></div>
