@@ -8,28 +8,30 @@ interface PreviewCenterProps {
 		description?: string;
 		date?: Date;
 		authors?: Author[];
+		slug: string;
 	};
 }
 
 export default function PreviewCenter(props: PreviewCenterProps) {
-	const { title, thumbnail, description, date, authors } = props.article;
+	const { title, thumbnail, description, date, authors, slug } = props.article;
 
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			{thumbnail && (
-				<div className="hover:brightness-110 duration-500">
-					<Image
-						src={'http://127.0.0.1:1337' + thumbnail?.url}
-						width="0"
-						height="0"
-						sizes="100vw"
-						className="w-full h-auto"
-						alt={'Logo of The Exonian'}
-					/>
-				</div>
-			)}
 			<div className="max-w-[600px]">
-				<a href="">
+				<a href={`/articles/${slug}`}>
+					{thumbnail && (
+						<div className="hover:brightness-110 duration-500">
+							<Image
+								src={'http://127.0.0.1:1337' + thumbnail?.url}
+								width="0"
+								height="0"
+								sizes="100vw"
+								className="w-full h-auto"
+								alt={'Logo of The Exonian'}
+							/>
+						</div>
+					)}
+
 					<div className="flex justify-between">
 						<div className="">
 							<h1 className="font-serif font-medium text-3xl md:text-xl py-2 hover:text-neutral-600 duration-200">
@@ -49,7 +51,6 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 					{authors && (
 						<p className="text-xs text-[#6C6C6C] duration-200">
 							By:&nbsp;
-							{/* @TODO: implement map loop for every author match with profile */}
 							{authors.map((author, i) => {
 								return (
 									<a

@@ -1,19 +1,25 @@
 import Image from 'next/image';
+import { Author } from '../../types/APIResponse';
 
 interface PreviewProps {
-	title: string;
-	tag?: string;
-	description?: string;
-	date?: Date;
-	author?: string[];
-	image?: string;
+	article: {
+		title: string;
+		tag?: string;
+		description?: string;
+		date?: Date;
+		authors?: Author[];
+		slug: string;
+		thumbnail: {
+			url: string;
+		};
+	};
 }
 
 export default function Preview(props: PreviewProps) {
-	const { title, tag, description, date, author, image } = props;
+	const { title, tag, description, date, authors, thumbnail, slug } = props.article;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			<>
+			<a href={`/articles/${slug}`}>
 				<div className="flex justify-between">
 					<div className="w-full pr-3">
 						{tag && (
@@ -28,10 +34,10 @@ export default function Preview(props: PreviewProps) {
 						}
 					</div>
 				</div>
-				{image && (
+				{thumbnail && (
 					<div className="hover:brightness-110 duration-500 py-2">
 						<Image
-							src={image}
+							src={'http://127.0.0.1:1337' + thumbnail.url}
 							width="0"
 							height="0"
 							sizes="25vw"
@@ -40,24 +46,34 @@ export default function Preview(props: PreviewProps) {
 						/>
 					</div>
 				)}
-			</>
 
-			{description && (
-				<div>
-					<p className="text-xs text-[#4E4E4E] hidden sm:flex hover:text-neutral-500 duration-200">
-						{description}
-					</p>
-					<p className="text-xs text-[#4E4E4E] xl:hidden hover:text-neutral-500 duration-200">
-						{description}
-					</p>
-				</div>
-			)}
+				{description && (
+					<div>
+						<p className="text-xs text-[#4E4E4E] hidden sm:flex hover:text-neutral-500 duration-200">
+							{description}
+						</p>
+						<p className="text-xs text-[#4E4E4E] xl:hidden hover:text-neutral-500 duration-200">
+							{description}
+						</p>
+					</div>
+				)}
+			</a>
 			<div className="pt-2">
-				{author && (
+				{authors && (
 					<p className="text-xs text-[#6C6C6C] duration-200">
 						By:&nbsp;
-						{/* @TODO: implement map loop for every author match with profile */}
-						{author.join(', ')}
+						{authors.map((author, i) => {
+							return (
+								<a
+									className="text-xs hover:text-red-500 duration-200 no-underline"
+									key={i}
+									href={`/writers/${author.slug}`}
+								>
+									{author.fullname}
+									{authors.length - 1 !== i && ', '}
+								</a>
+							);
+						})}
 					</p>
 				)}
 				{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}
