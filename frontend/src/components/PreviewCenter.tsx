@@ -6,14 +6,14 @@ interface PreviewCenterProps {
 		title: string;
 		thumbnail?: { url: string };
 		description?: string;
-		date?: Date;
+		publishedAt?: string;
 		authors?: Author[];
 		slug: string;
 	};
 }
 
 export default function PreviewCenter(props: PreviewCenterProps) {
-	const { title, thumbnail, description, date, authors, slug } = props.article;
+	const { title, thumbnail, description, publishedAt, authors, slug } = props.article;
 
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
@@ -65,7 +65,11 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 							})}
 						</p>
 					)}
-					{date && <p className="text-xs text-[#6C6C6C]">{date.toLocaleDateString()}</p>}
+					{publishedAt && (
+						<p className="text-xs text-[#6C6C6C]">
+							{new Date(publishedAt).toLocaleDateString()}
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

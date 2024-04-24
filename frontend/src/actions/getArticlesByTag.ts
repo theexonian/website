@@ -9,7 +9,7 @@ export async function getArticlesByTag(tag: string) {
 				$eqi: tag,
 			},
 		},
-		fields: ['title', 'tag', 'slug', 'description'],
+		fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
 		populate: {
 			thumbnail: {
 				fields: ['url'],

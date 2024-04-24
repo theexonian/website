@@ -11,7 +11,7 @@ export async function getAuthorBySlug(slug: string) {
 		},
 		populate: {
 			articles: {
-				fields: ['title', 'tag', 'slug', 'description'],
+				fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
 			},
 			picture: {
 				fields: ['url'],
