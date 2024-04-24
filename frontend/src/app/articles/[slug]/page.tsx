@@ -51,14 +51,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					</div>
 				</div>
 				<hr className="border-neutral-400" />
-				<Image
-					src={'http://127.0.0.1:1337' + article.thumbnail.url}
-					width="0"
-					height="0"
-					sizes="25vw"
-					className="w-full h-auto"
-					alt={'Logo of The Exonian'}
-				/>
+				{article.thumbnail && (
+					<Image
+						src={'http://127.0.0.1:1337' + article.thumbnail.url}
+						width="0"
+						height="0"
+						sizes="25vw"
+						className="w-full h-auto"
+						alt={'Logo of The Exonian'}
+					/>
+				)}
+
 				<Markdown>{article.content}</Markdown>
 			</article>
 		</div>
