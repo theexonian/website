@@ -27,7 +27,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 								href={`/writers/${author.slug}`}
 								key={i}
 							>
-								{author.fullname + ', '}
+								{i === article.authors.length - 1
+									? author.fullname
+									: author.fullname + ', '}
 							</a>
 						);
 					})}
