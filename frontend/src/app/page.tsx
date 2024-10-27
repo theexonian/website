@@ -10,7 +10,7 @@ export default function Home() {
 					<ArticlePreview z={2} />
 					<ArticlePreview z={3} />
 				</div>
-				<div className="col-span-2 px-8 lg:px-4 border-neutral-300 border-x">
+				<div className="col-span-2 px-8 lg:px-4 border-neutral-300 border-x md:border-none">
 					<ArticlePreview z={4} />
 					<ArticlePreview z={5} />
 				</div>
