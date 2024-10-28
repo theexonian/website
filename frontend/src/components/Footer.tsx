@@ -9,7 +9,7 @@ export default function Navbar() {
 				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-2 border-t-neutral-400 border-t">
 					<div className="flex flex-col justify-start">
 						<a href="https://vercel.com/?utm_source=exeter-computing-club&utm_campaign=oss">
-							<div className="flex flex-row items-center justify-start text-neutral-300 py-3 max-w-[200px]">
+							<div className="flex flex-row items-center justify-start text-neutral-300 py-3 max-w-[250px]">
 								<Image
 									src={"/Exonian-logo.png"}
 									width="0"
@@ -18,7 +18,6 @@ export default function Navbar() {
 									className="w-full h-auto"
 									alt={"Logo of The Exonian"}
 								/>
-								{/* TODO: Make the sizing of logo responsive */}
 							</div>
 						</a>
 						<p className="font-serif text-neutral-700 text-xs">
@@ -28,10 +27,10 @@ export default function Navbar() {
 							</i>
 						</p>
 						<p className="font-serif text-neutral-700 text-xs">
-							<i>Estabspanshed 1878.</i>
+							<i>Established 1878.</i>
 						</p>
 						<p className="font-serif text-neutral-500 text-xs py-3">
-							<i>Website created by the 146th Web Board led by Byran Huang &apos;25 and Eric span &apos;25</i>.
+							<i>Website created by the 146th Web Board led by Byran Huang &apos;25 and Eric Li &apos;25</i>.
 						</p>
                         {/* @TODO: add socials here */}
 					</div>
