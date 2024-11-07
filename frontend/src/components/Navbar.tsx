@@ -69,7 +69,7 @@ export default function Navbar() {
 				</p>
 				<p>
 					<a
-						href="https://fs30.formsite.com/exeter/TESub_Prod/index.html"
+						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
 						className="hover:text-red-400"
 					>
 						Subscribe

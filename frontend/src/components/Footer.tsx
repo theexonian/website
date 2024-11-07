@@ -65,7 +65,7 @@ export default function Navbar() {
 							<a href="">
 								<span className="hover:text-neutral-500 duration-200">Latest Issue</span>
 							</a>
-							<a href="">
+							<a href="https://archive.theexonian.com">
 								<span className="hover:text-neutral-500 duration-200">Historical Archive</span>
 							</a>
 						</div>
