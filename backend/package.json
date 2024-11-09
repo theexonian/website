@@ -11,10 +11,10 @@
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
-		"@strapi/plugin-cloud": "4.16.2",
-		"@strapi/plugin-i18n": "4.16.2",
-		"@strapi/plugin-users-permissions": "4.16.2",
-		"@strapi/strapi": "4.16.2",
+		"@strapi/plugin-cloud": "4.25.15",
+		"@strapi/plugin-i18n": "4.25.15",
+		"@strapi/plugin-users-permissions": "4.25.15",
+		"@strapi/strapi": "4.25.15",
 		"patch-package": "^8.0.0",
 		"pg": "^8.13.0",
 		"react": "^18.0.0",
