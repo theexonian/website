@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				<hr className="border-neutral-400 mb-8 mt-2" />
 				{article.thumbnail && (
 					<Image
-						src={"http://127.0.0.1:1337" + article.thumbnail.url}
+						src={"http://34.227.161.14:1337" + article.thumbnail.url}
 						width="0"
 						height="0"
 						sizes="25vw"

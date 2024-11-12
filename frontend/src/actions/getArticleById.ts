@@ -13,7 +13,7 @@ export async function getArticleById(slug: string) {
 	});
 
 	const body: ArticlesResponse = await fetchCached(
-		`http://127.0.0.1:1337/api/articles?${query}`,
+		`http://34.227.161.14:1337/api/articles?${query}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.STRAPI_API}`,

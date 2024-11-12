@@ -19,7 +19,7 @@ export async function getAuthorBySlug(slug: string) {
 		},
 	});
 
-	const body: Array<Author> = await fetchCached(`http://127.0.0.1:1337/api/users?${query}`, {
+	const body: Array<Author> = await fetchCached(`http://34.227.161.14:1337/api/users?${query}`, {
 		headers: {
 			Authorization: `Bearer ${process.env.STRAPI_API}`,
 		},
