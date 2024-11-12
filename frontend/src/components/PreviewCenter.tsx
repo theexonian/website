@@ -22,7 +22,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 					{thumbnail && (
 						<div className="hover:brightness-110 duration-500">
 							<Image
-								src={'http://127.0.0.1:1337' + thumbnail?.url}
+								src={'http://34.227.161.14:1337' + thumbnail?.url}
 								width="0"
 								height="0"
 								sizes="100vw"

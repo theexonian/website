@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				<div className="bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24">
 					{author.picture ? (
 						<Image
-							src={'http://127.0.0.1:1337' + author.picture.url}
+							src={'http://34.227.161.14:1337' + author.picture.url}
 							alt={author.fullname}
 							height={96}
 							width={96}
