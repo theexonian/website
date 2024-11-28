@@ -10,14 +10,6 @@ const nextConfig = {
 			},
 		],
 	},
-	async rewrites() {
-		return [
-			{
-				source: "/admin",
-				destination: "http://34.227.161.14:1337/",
-			},
-		];
-	},
 };
 
 module.exports = nextConfig;
