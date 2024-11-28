@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					/>
 				)}
 
-				{processedParagraphs.map((paragraph, i) => (
+				{paragraphs.map((paragraph, i) => (
 					<p
 						key={i}
 						className={`indent-8 ${
