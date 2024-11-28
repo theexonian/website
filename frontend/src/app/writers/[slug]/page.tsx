@@ -2,6 +2,7 @@ import { getAuthorBySlug } from '@/actions/getAuthorBySlug';
 import PreviewNoImage from '@/components/PreviewNoImage';
 import Image from 'next/image';
 import { MdOutlineEmail } from 'react-icons/md';
+import * as Constants from "@/components/Constants"
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const author = await getAuthorBySlug(params.slug);
@@ -12,7 +13,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				<div className="bg-clip-border bg-center bg-no-repeat rounded-full w-24 h-24">
 					{author.picture ? (
 						<Image
-							src={'http://34.227.161.14:1337' + author.picture.url}
+							src={`http://${Constants.STRAPI_IP}:1337` + author.picture.url}
 							alt={author.fullname}
 							height={96}
 							width={96}

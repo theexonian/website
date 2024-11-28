@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Author } from '../../types/APIResponse';
+import * as Constants from "@/components/Constants"
 
 interface PreviewProps {
 	article: {
@@ -37,7 +38,7 @@ export default function Preview(props: PreviewProps) {
 				{thumbnail && (
 					<div className="hover:brightness-110 duration-500 py-2">
 						<Image
-							src={'http://34.227.161.14:1337' + thumbnail.url}
+							src={`http://${Constants.STRAPI_IP}:1337` + thumbnail.url}
 							width="0"
 							height="0"
 							sizes="25vw"
