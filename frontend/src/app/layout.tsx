@@ -2,6 +2,7 @@ import Footer from '@/components/Footer';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import 'animate.css';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
 	title: 'The Exonian | Phillips Exeter Academy',
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className="overflow-x-hidden animate__animated animate__fadeIn">
+				<Analytics/>
 				<Navbar />
 				{/* @TODO: needs a lot of optimization */}
 				<div className="flex w-screen h-auto items-center justify-center">
