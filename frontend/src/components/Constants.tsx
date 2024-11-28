@@ -10,3 +10,7 @@ export const EIC_EMAIL = "rhpark@exeter.edu"
 // Format: Board Number (and suffix)
 // Example: 146th
 export const BOARD_NUMBER = "146th"
+// Format: Public-facing AWS IPv4 address
+// Example: 34.227.161.14
+// export const STRAPI_IP = "34.227.161.14"
+export const STRAPI_IP = "127.0.0.1"

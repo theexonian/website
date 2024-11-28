@@ -1,5 +1,6 @@
 import { getArticleByZIndex } from '@/actions/getArticleByZIndex';
 import Image from 'next/image';
+import * as Constants from "@/components/Constants"
 
 export default async function ArticlePreview({ z }: { z: number }) {
 	const article = await getArticleByZIndex(z);
@@ -20,7 +21,7 @@ export default async function ArticlePreview({ z }: { z: number }) {
 				</div>
 				{article.thumbnail && (
 					<Image
-						src={'http://34.227.161.14:1337' + article.thumbnail.url}
+						src={`http://${Constants.STRAPI_IP}:1337` + article.thumbnail.url}
 						width="0"
 						height="0"
 						sizes="25vw"
