@@ -3,7 +3,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { BiFontFamily, BiPrinter } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { getArticleById } from "@/actions/getArticleById";
-import Markdown from "react-markdown";
+import { Speechify } from '@/components/ui/speechify';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -62,6 +62,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<div className="flex items-center gap-2 text-red-700">
 						<BiPrinter className="text-xl" /> Print
 					</div>
+					<Speechify inputText={article.content} />
 				</div>
 				<hr className="border-neutral-400 mb-8 mt-2" />
 				{article.thumbnail && (

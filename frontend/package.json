@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.25.9",
     "@meilisearch/instant-meilisearch": "^0.22.0",
     "@radix-ui/react-menubar": "^1.1.2",
     "@types/node": "20.3.1",

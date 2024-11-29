@@ -4,8 +4,8 @@ import { InstantSearch, SearchBox, Hits, Highlight } from "react-instantsearch";
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 
 const { searchClient } = instantMeiliSearch(
-	"http://localhost:7700",
-	"masterKey"
+	`${process.env.MEILISEARCH_URL}`,
+	`${process.env.MEILISEARCH_PK}`
 );
 
 export default function Search() {
