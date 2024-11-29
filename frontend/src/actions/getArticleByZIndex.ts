@@ -1,6 +1,7 @@
 import { fetchCached } from '@/lib/fetchRequests';
 import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
+import * as Constants from "@/components/Constants"
 
 export async function getArticleByZIndex(z: number) {
 	const query = stringify({
@@ -14,7 +15,7 @@ export async function getArticleByZIndex(z: number) {
 	});
 
 	const body: ArticlesResponse = await fetchCached(
-		`http://34.227.161.14:1337/api/articles?${query}`,
+		`http://${Constants.STRAPI_IP}:1337/api/articles?${query}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.STRAPI_API}`,

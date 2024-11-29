@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import { MdOutlineSpatialAudioOff } from "react-icons/md";
 
 // The MIME type of the audio stream
 const AUDIO_MIME_TYPE = "audio/mpeg";
@@ -12,9 +13,7 @@ function getAudioStream(
 ): Promise<Response> {
 	// You can ignore this line, unless you know that you want
 	// to use a different Speechify API host
-	const speechifyHost =
-		process.env.NEXT_PUBLIC_SPEECHIFY_API ||
-		"https://api.sws.speechify.com";
+	const speechifyHost = "https://api.sws.speechify.com";
 
 	// Use the access token that you obtained from the /api/token route
 	if (!speechifyAuthToken) {
@@ -166,7 +165,7 @@ export function Speechify({ inputText }: SpeechifyProps) {
 		// Toggle the display of the audio player
 		setShowAudio(true);
 
-        const authToken = process.env.SPEECHIFY_API_KEY || '';
+		const authToken = process.env.SPEECHIFY_API_KEY || "";
 
 		runTextToSpeech(
 			mediaSourceRef.current,
@@ -178,18 +177,14 @@ export function Speechify({ inputText }: SpeechifyProps) {
 	};
 
 	return (
-		<div>
-			<button
-				onClick={handleConvert}
-				className="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-			>
-				Convert text to speech
-			</button>
-
+		<div className={`flex items-center gap-2 hover:cursor-pointer text-red-700 ${showAudio ? "text-red-900" : " "}`} onClick={handleConvert}>
+			<MdOutlineSpatialAudioOff className="text-xl"/>
+			Listen, powered by Speechify
 			<audio
 				ref={audioRef}
 				controls
-				className={`mt-6 w-full${showAudio ? "" : " hidden"}`}
+				// className={`mt-6 w-full${showAudio ? "" : " hidden"}`}
+				className="hidden"
 			/>
 		</div>
 	);
