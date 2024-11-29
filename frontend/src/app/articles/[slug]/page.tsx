@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						.slice(0, 4)
 						.join(" ")}
 				</span>
-				<div className="flex flex-row gap-5 my-2">
+				<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer">
 					<div className="flex items-center gap-2 text-red-700">
 						<IoShareSocialOutline className="text-xl" /> Share
 					</div>
@@ -62,12 +62,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					<div className="flex items-center gap-2 text-red-700">
 						<BiPrinter className="text-xl" /> Print
 					</div>
-					<Speechify inputText={article.content} />
+				</div>
+				<div className="py-1">
+					<Speechify inputText={"Test!"} />
 				</div>
 				<hr className="border-neutral-400 mb-8 mt-2" />
 				{article.thumbnail && (
 					<Image
-						src={"http://34.227.161.14:1337" + article.thumbnail.url}
+						src={"http://${Constants.STRAPI_IP}:1337" + article.thumbnail.url}
 						width="0"
 						height="0"
 						sizes="25vw"
