@@ -3,7 +3,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { BiFontFamily, BiPrinter } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { getArticleById } from "@/actions/getArticleById";
-import { Speechify } from '@/components/ui/speechify';
+import { Speechify } from "@/components/ui/speechify";
 import Link from "next/link";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -30,7 +30,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					By:{" "}
 					{article.authors.map((author, i) => {
 						return (
-							<Link								className="hover:text-red-500 duration-200 font-bold no-underline"
+							<Link
+								className="hover:text-red-500 duration-200 font-bold no-underline capitalize"
 								href={`/writers/${author.slug}`}
 								key={i}
 							>
@@ -69,7 +70,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				<hr className="border-neutral-400 mb-8 mt-2" />
 				{article.thumbnail && (
 					<Image
-						src={"http://${Constants.STRAPI_IP}:1337" + article.thumbnail.url}
+						src={
+							"http://${Constants.STRAPI_IP}:1337" +
+							article.thumbnail.url
+						}
 						width="0"
 						height="0"
 						sizes="25vw"
