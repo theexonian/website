@@ -1,5 +1,6 @@
 import FancyBigTitle from "@/components/FancyBigTitle";
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 export default function Page() {
 	return (
@@ -13,7 +14,7 @@ export default function Page() {
 					The Exonian
 					<em>
 						, please submit your inquiry to {Constants.EIC_NAME} {Constants.EIC_GRAD_YEAR} at&nbsp;
-						<a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>
+						<Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>
 					</em>
 				</p>
 				<p>
@@ -65,7 +66,7 @@ export default function Page() {
 					<em>
 						&nbsp;in print or online, including content from the
 						digital archives, you may submit your inquiry by
-						emailing {Constants.EIC_NAME} {Constants.EIC_GRAD_YEAR} at <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>
+						emailing {Constants.EIC_NAME} {Constants.EIC_GRAD_YEAR} at <Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>
 					</em>
 					<br />
 				</p>
@@ -84,9 +85,9 @@ export default function Page() {
 				</p>
 				<p>
 					Read&nbsp;
-					<a href="/the-exonian-charter/">
+					<Link href="/the-exonian-charter/">
 						<em>The Exonian</em>’s Charter
-					</a>
+					</Link>
 					&nbsp;for more information on our newspaper’s standards and
 					practices.
 				</p>

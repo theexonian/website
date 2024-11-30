@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Author } from '../../types/APIResponse';
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 interface PreviewProps {
 	article: {
@@ -20,7 +21,7 @@ export default function Preview(props: PreviewProps) {
 	const { title, tag, description, publishedAt, authors, thumbnail, slug } = props.article;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			<a href={`/articles/${slug}`}>
+			<Link href={`/articles/${slug}`}>
 				<div className="flex justify-between">
 					<div className="w-full pr-3">
 						{tag && (
@@ -58,21 +59,20 @@ export default function Preview(props: PreviewProps) {
 						</p>
 					</div>
 				)}
-			</a>
+			</Link>
 			<div className="pt-2">
 				{authors && (
 					<p className="text-xs text-[#6C6C6C] duration-200">
 						By:&nbsp;
 						{authors.map((author, i) => {
 							return (
-								<a
-									className="text-xs hover:text-red-500 duration-200 no-underline"
+								<Link									className="text-xs hover:text-red-500 duration-200 no-underline"
 									key={i}
 									href={`/writers/${author.slug}`}
 								>
 									{author.fullname}
 									{authors.length - 1 !== i && ', '}
-								</a>
+								</Link>
 							);
 						})}
 					</p>

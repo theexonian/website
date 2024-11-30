@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "animate.css";
-
+import Link from "next/link";
 
 export default function Navbar() {
 	return (
@@ -8,7 +8,7 @@ export default function Navbar() {
 			<div className="h-[250px] w-full pt-24">
 				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-2 border-t-neutral-400 border-t">
 					<div className="flex flex-col justify-start">
-						<a href="https://vercel.com/?utm_source=exeter-computing-club&utm_campaign=oss">
+						<Link href="https://vercel.com/?utm_source=exeter-computing-club&utm_campaign=oss">
 							<div className="flex flex-row items-center justify-start text-neutral-300 py-3 max-w-[250px]">
 								<Image
 									src={"/Exonian-logo.png"}
@@ -19,7 +19,7 @@ export default function Navbar() {
 									alt={"Logo of The Exonian"}
 								/>
 							</div>
-						</a>
+						</Link>
 						<p className="font-serif text-neutral-700 text-xs">
 							<i>
 								The oldest continuously-running preparatory
@@ -36,38 +36,38 @@ export default function Navbar() {
 					</div>
 					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-neutral-600">
 						<div className="flex flex-col">
-							<a href="">
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Home</span>
-							</a>
-							<a href="/news">
+							</Link>
+							<Link href="/news">
 								<span className="hover:text-neutral-500 duration-200">News</span>
-							</a>
-							<a href="">
+							</Link>
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Life</span>
-							</a>
-							<a href="">
+							</Link>
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Opinions</span>
-							</a>
-							<a href="">
+							</Link>
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Sports</span>
-							</a>
+							</Link>
 						</div>
 						<div className="flex flex-col">
-							<a href="">
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Humor</span>
-							</a>
-							<a href="https://crossword.theexonian.net">
+							</Link>
+							<Link href="https://crossword.theexonian.net">
 								<span className="hover:text-neutral-500 duration-200">Crossword</span>
-							</a>
-							<a href="">
+							</Link>
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Archive</span>
-							</a>
-							<a href="">
+							</Link>
+							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Latest Issue</span>
-							</a>
-							<a href="https://archive.theexonian.com">
+							</Link>
+							<Link href="https://archive.theexonian.com">
 								<span className="hover:text-neutral-500 duration-200">Historical Archive</span>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

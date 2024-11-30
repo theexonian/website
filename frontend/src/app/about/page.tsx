@@ -1,5 +1,6 @@
 import FancyBigTitle from "@/components/FancyBigTitle"
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 export default function Page() {
 	return (
@@ -37,8 +38,8 @@ export default function Page() {
 				</h3>
 				<p>
 					To subscribe to or advertise on <i>The Exonian</i>, contact{" "}
-					<a href="mailto:exonian@gmail.com">exonian@gmail.com</a> or call{" "}
-					<a href="tel:6037774100">603-777-4100</a>.
+					<Link href="mailto:exonian@gmail.com">exonian@gmail.com</Link> or call{" "}
+					<Link href="tel:6037774100">603-777-4100</Link>.
 				</p>
 				<p>
 					A subscription to the paper costs $90 off campus and $150
@@ -47,7 +48,7 @@ export default function Page() {
 				{/* @TODO: refactor to have all references of EIC email, board number, EIC name, etc. updated centrally */}
 				<p>
 					The Exonian welcomes <i>Letters to the Editor</i> sent to
-					the care of <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>.
+					the care of <Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>.
 				</p>
 				<p>
 					The Exonian reserves the right to print{" "}

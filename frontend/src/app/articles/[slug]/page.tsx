@@ -4,6 +4,7 @@ import { BiFontFamily, BiPrinter } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { getArticleById } from "@/actions/getArticleById";
 import { Speechify } from '@/components/ui/speechify';
+import Link from "next/link";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -29,15 +30,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					By:{" "}
 					{article.authors.map((author, i) => {
 						return (
-							<a
-								className="hover:text-red-500 duration-200 font-bold no-underline"
+							<Link								className="hover:text-red-500 duration-200 font-bold no-underline"
 								href={`/writers/${author.slug}`}
 								key={i}
 							>
 								{i === article.authors.length - 1
 									? author.fullname
 									: author.fullname + ", "}
-							</a>
+							</Link>
 						);
 					})}
 				</span>
