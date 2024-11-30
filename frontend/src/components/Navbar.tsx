@@ -1,9 +1,12 @@
+"use client";
+
 import "animate.css";
 import Image from "next/image";
 import { FaArchive, FaInstagram, FaSearch } from "react-icons/fa";
 import { RiArchive2Line } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
 import {
 	Menubar,
 	MenubarContent,
@@ -57,18 +60,22 @@ export default function Navbar() {
 		", " +
 		currentDate.getFullYear();
 
+	const router = useRouter()
+
 	return (
 		<>
 			<div className="w-screen h-auto items-center min-h-[35px] bg-gradient-to-r from-[#000000] to-[#000000] text-white flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
 				<p>
-					<Link						href="https://www.exeter.edu"
+					<Link
+						href="https://www.exeter.edu"
 						className="hover:text-red-400"
 					>
 						Phillips Exeter Academy
 					</Link>
 				</p>
 				<p>
-					<Link						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
+					<Link
+						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
 						className="hover:text-red-400"
 					>
 						Subscribe
@@ -101,9 +108,11 @@ export default function Navbar() {
 					<div className="hidden md:flex">
 						<Menubar>
 							<MenubarMenu>
-								<MenubarTrigger><div className="text-[16px]">
-									<FiMenu />
-								</div></MenubarTrigger>
+								<MenubarTrigger>
+									<div className="text-[16px]">
+										<FiMenu />
+									</div>
+								</MenubarTrigger>
 								<MenubarContent>
 									<MenubarItem>Home</MenubarItem>
 									<MenubarItem>News</MenubarItem>
@@ -120,19 +129,33 @@ export default function Navbar() {
 					</div>
 					{dateString + " "}
 					<div className="flex items-center pl-2 gap-3 text-neutral-700">
-						<Link							href="https://www.instagram.com/theexonian/"
+						<Link
+							href="https://www.instagram.com/theexonian/"
 							target="_blank"
 						>
 							<FaInstagram className="text-lg" />
 						</Link>
-						<Link							href="https://archive.theexonian.com"
+						<Link
+							href="https://archive.theexonian.com"
 							target="_blank"
 						>
 							<RiArchive2Line className="text-lg" />
 						</Link>
-						<div className="flex flex-row items-center gap-3 py-[0.9px] px-2 border rounded-md border-neutral-300">
-							<FaSearch className="text-xs" />{" "}
-							<span className="text-neutral-500">Search</span>
+						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-neutral-300 focus-within:border-red-600/50 duration-300 group">
+							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
+							<input
+								type="text"
+								placeholder="Search"
+								className="text-neutral-500 outline-none w-12 group-focus-within:w-full duration-300"
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										const input = e.target as HTMLInputElement;
+										const query = input.value;
+										router.push(`/search?=${query}`);
+										input.value = "";
+									}
+								}}
+							/>
 						</div>
 					</div>
 				</div>
