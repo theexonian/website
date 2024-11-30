@@ -30,7 +30,7 @@ export default function Navbar() {
 							<i>Established 1878.</i>
 						</p>
 						<p className="font-serif text-neutral-500 text-xs py-3">
-							<i>Website created by the 146th Web Board led by Byran Huang &apos;25 and Eric Li &apos;25</i>.
+							<i>Website created by the 146th Board & 15th Web Board led by Byran Huang &apos;25 and Eric Li &apos;25</i>.
 						</p>
                         {/* @TODO: add socials here */}
 					</div>
