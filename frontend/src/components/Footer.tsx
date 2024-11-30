@@ -32,7 +32,6 @@ export default function Navbar() {
 						<p className="font-serif text-neutral-500 text-xs py-3">
 							<i>Website created by the 146th Board & 15th Web Board led by Byran Huang &apos;25 and Eric Li &apos;25</i>.
 						</p>
-                        {/* @TODO: add socials here */}
 					</div>
 					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-neutral-600">
 						<div className="flex flex-col">

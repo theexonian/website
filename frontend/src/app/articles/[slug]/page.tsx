@@ -65,6 +65,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					</div>
 				</div>
 				<div className="py-1">
+					{/* @TODO: switch out to actual text once approved for API */}
 					<Speechify inputText={"Test!"} />
 				</div>
 				<hr className="border-neutral-400 mb-8 mt-2" />
