@@ -3,6 +3,7 @@ import PreviewNoImage from '@/components/PreviewNoImage';
 import Image from 'next/image';
 import { MdOutlineEmail } from 'react-icons/md';
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const author = await getAuthorBySlug(params.slug);
