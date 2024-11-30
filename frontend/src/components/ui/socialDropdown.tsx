@@ -1,59 +1,77 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 import {
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-} from 'react-share'
-import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp, FaReddit } from 'react-icons/fa'
-import { ChevronDown } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+	FacebookShareButton,
+	TwitterShareButton,
+	LinkedinShareButton,
+	WhatsappShareButton,
+	RedditShareButton,
+	EmailShareButton,
+} from "react-share";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+	FaFacebook,
+	FaTwitter,
+	FaLinkedin,
+	FaWhatsapp,
+	FaReddit,
+} from "react-icons/fa";
+import { Button } from "@/components/ui/button";
+import { IoShareSocialOutline, IoMail } from "react-icons/io5";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 interface SocialShareDropdownProps {
-  url: string
-  title: string
+	title: string;
 }
 
-export default function SocialShareDropdown({ url, title }: SocialShareDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export default function SocialShareDropdown({
+	title,
+}: SocialShareDropdownProps) {
+	const [isOpen, setIsOpen] = useState(false);
 
-  const socialPlatforms = [
-    { name: 'Facebook', Button: FacebookShareButton, Icon: FaFacebook },
-    { name: 'Twitter', Button: TwitterShareButton, Icon: FaTwitter },
-    { name: 'LinkedIn', Button: LinkedinShareButton, Icon: FaLinkedin },
-    { name: 'WhatsApp', Button: WhatsappShareButton, Icon: FaWhatsapp },
-    { name: 'Reddit', Button: RedditShareButton, Icon: FaReddit },
-  ]
+	const socialPlatforms = [
+		{ name: "Facebook", Button: FacebookShareButton, Icon: FaFacebook },
+		{ name: "Twitter", Button: TwitterShareButton, Icon: FaTwitter },
+		{ name: "LinkedIn", Button: LinkedinShareButton, Icon: FaLinkedin },
+		{ name: "WhatsApp", Button: WhatsappShareButton, Icon: FaWhatsapp },
+		{ name: "Reddit", Button: RedditShareButton, Icon: FaReddit },
+		{ name: "Email", Button: EmailShareButton, Icon: IoMail },
+	];
 
-  return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-[200px] justify-between">
-          Share
-          <ChevronDown className="ml-2 h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[200px]">
-        {socialPlatforms.map(({ name, Button: ShareButton, Icon }) => (
-          <DropdownMenuItem key={name} onSelect={() => setIsOpen(false)}>
-            <ShareButton url={url} title={title} className="w-full">
-              <div className="flex items-center">
-                <Icon className="h-5 w-5" />
-                <span className="ml-2">{name}</span>
-              </div>
-            </ShareButton>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+  const pathname = usePathname();
+
+	return (
+		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+			<DropdownMenuTrigger asChild>
+				<Button
+					variant="link"
+					className="justify-between text-red-700 p-0"
+				>
+					<IoShareSocialOutline className="text-xl" />
+					Share
+				</Button>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent className="p-2 text-red-700">
+				{socialPlatforms.map(({ name, Button: ShareButton, Icon }) => (
+					<DropdownMenuItem
+						key={name}
+						onSelect={() => setIsOpen(false)}
+					>
+						<ShareButton url={window.location.origin + pathname} title={title} className="w-full">
+							<div className="flex items-center">
+								<Icon className="h-5 w-5" />
+								<span className="ml-2">{name}</span>
+							</div>
+						</ShareButton>
+					</DropdownMenuItem>
+				))}
+			</DropdownMenuContent>
+		</DropdownMenu>
+	);
 }

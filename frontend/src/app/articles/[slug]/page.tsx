@@ -4,7 +4,9 @@ import { BiFontFamily, BiPrinter } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { getArticleById } from "@/actions/getArticleById";
 import { Speechify } from "@/components/ui/speechify";
+import SocialShareDropdown from "@/components/ui/socialDropdown";
 import Link from "next/link";
+import FontChanger from "@/components/ui/fontChanger";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -52,9 +54,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				</span>
 				<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer">
 					<div className="flex items-center gap-2 text-red-700">
-						<IoShareSocialOutline className="text-xl" /> Share
+						{/* dynamically & automatically grabs link since it's a CSR component */}
+						<SocialShareDropdown title={article.title} />
 					</div>
 					<div className="flex items-center gap-2 text-red-700">
+						<FontChanger/>
 						<BiFontFamily className="text-xl" /> Font
 					</div>
 					<div className="flex items-center gap-2 text-red-700">
