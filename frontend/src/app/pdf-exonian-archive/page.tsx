@@ -1391,8 +1391,8 @@ export default function Page() {
 				{/* @TODO: this website just points back to the SquareSpace */}
 				<p>
 					You can access this website at&nbsp;
-					<Link href="http://old.theexonian.com/">
-						old.theexonian.com{" "}
+					<Link href="http://old.theexonian.net/">
+						old.theexonian.net{" "}
 					</Link>
 					to view any content before the dates listed above.
 				</p>

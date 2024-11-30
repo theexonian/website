@@ -43,7 +43,6 @@ export default function PreviewNoImage(props: PreviewProps) {
 					{author && (
 						<p className="text-xs text-[#6C6C6C] duration-200">
 							By:&nbsp;
-							{/* @TODO: implement map loop for every author match with profile */}
 							{author.join(', ')}
 						</p>
 					)}

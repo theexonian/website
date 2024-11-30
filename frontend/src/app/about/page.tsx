@@ -45,7 +45,6 @@ export default function Page() {
 					A subscription to the paper costs $90 off campus and $150
 					overseas.
 				</p>
-				{/* @TODO: refactor to have all references of EIC email, board number, EIC name, etc. updated centrally */}
 				<p>
 					The Exonian welcomes <i>Letters to the Editor</i> sent to
 					the care of <Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>.

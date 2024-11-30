@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className="overflow-x-hidden animate__animated animate__fadeIn">
 				<Analytics/>
 				<Navbar />
-				{/* @TODO: needs a lot of optimization */}
+				{/* @TODO: up for optimization */}
 				<div className="flex w-screen h-auto items-center justify-center">
 					<main className="flex w-3/4 xl:w-5/6 lg:w-11/12 max-w-[1600px] h-auto min-h-screen">
 						<div className="w-full flex flex-col flex-wrap gap-1">

@@ -21,7 +21,6 @@ export default function RowPreview(props: ArticleRowPreviewProps) {
 		props.article;
 
 	return (
-		// @TODO: refactor for props
 		<div className="w-full flex items-center py-3 border-neutral-300 border-b gap-4">
 			<div className="flex flex-col flex-wrap">
 				<Link href={`/articles/${slug}`}>
