@@ -13,6 +13,7 @@ import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const { searchClient } = instantMeiliSearch(
 	`${process.env.MEILISEARCH_URL}`,
@@ -29,7 +30,7 @@ interface Article {
 	publishedAt: string;
 }
 
-export default function Search() {
+function Search() {
 	const searchParams = useSearchParams();
 	const search = searchParams.get("");
 	return (
@@ -61,6 +62,14 @@ export default function Search() {
 				</AnimatePresence>
 			</div>
 		</InstantSearch>
+	);
+}
+
+export default function Searchbar() {
+	return (
+		<Suspense>
+			<Search />
+		</Suspense>
 	);
 }
 
