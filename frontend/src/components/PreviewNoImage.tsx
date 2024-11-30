@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface PreviewProps {
 	title: string;
 	tag?: string;
@@ -11,7 +13,7 @@ export default function PreviewNoImage(props: PreviewProps) {
 	const { title, tag, description, publishedAt, author, slug } = props;
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
-			<a href={`/articles/${slug}`}>
+			<Link href={`/articles/${slug}`}>
 				<div className="flex justify-between">
 					<div className="w-full pr-3">
 						{tag && (
@@ -51,7 +53,7 @@ export default function PreviewNoImage(props: PreviewProps) {
 						</p>
 					)}
 				</div>
-			</a>
+			</Link>
 		</div>
 	);
 }

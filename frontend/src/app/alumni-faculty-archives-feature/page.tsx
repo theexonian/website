@@ -1,4 +1,5 @@
 import FancyBigTitle from "@/components/FancyBigTitle";
+import Link from "next/link";
 
 export default function Page() {
 	return (
@@ -16,9 +17,9 @@ export default function Page() {
 						To read more archives of the paper, visit the library
 						page linked{" "}
 					</em>
-					<a href="https://archive.theexonian.com">
+					<Link href="https://archive.theexonian.com">
 						<em>here</em>
-					</a>
+					</Link>
 					<em>.</em>
 				</p>
 				<p></p>
@@ -27,33 +28,33 @@ export default function Page() {
 					<strong>
 						<em>From Volume CCLXXIX, Number 5, 23 January 1971:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com?a=d&amp;d=txn19710123-01.2.16&amp;e=-------en-20--1--txt-txIN-william%20rawson------&amp;srpos=1">
+					<Link href="https://archive.theexonian.com?a=d&amp;d=txn19710123-01.2.16&amp;e=-------en-20--1--txt-txIN-william%20rawson------&amp;srpos=1">
 						<strong>RAWSON NAMED TO N.E. SOCCER TEAM</strong>
-					</a>
+					</Link>
 				</p>
 				<p>
 					<strong>
 						<em>From Volume CCLXXX, Number 19, 5 June 1971:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com?a=d&amp;d=txn19710605-01.2.15&amp;e=-------en-20--1--txt-txIN-william%20rawson%20prize------&amp;srpos=1">
+					<Link href="https://archive.theexonian.com?a=d&amp;d=txn19710605-01.2.15&amp;e=-------en-20--1--txt-txIN-william%20rawson%20prize------&amp;srpos=1">
 						<strong>1971 PRIZE DAYS AWARDS</strong>
-					</a>
+					</Link>
 				</p>
 				<p>Rawson wins the Yale Cup.</p>
 				<p>
 					<strong>
 						<em>From Volume CXLI, Number 4, 31 January 2019:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com?a=d&amp;d=txn20190131-01.1.1&amp;e=-------en-20--1--txt-txIN-william%20rawson------&amp;srpos=6">
+					<Link href="https://archive.theexonian.com?a=d&amp;d=txn20190131-01.1.1&amp;e=-------en-20--1--txt-txIN-william%20rawson------&amp;srpos=6">
 						<strong>RAWSON APPOINTED AS 16TH PRINCIPAL</strong>
-					</a>
+					</Link>
 				</p>
 				<p>
 					To read more about Principal Rawson’s student life at the
 					Academy, click{" "}
-					<a href="https://archive.theexonian.com?a=q&amp;e=-------en-20--1--txt-txIN-william%20rawson&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=william%20rawson">
+					<Link href="https://archive.theexonian.com?a=q&amp;e=-------en-20--1--txt-txIN-william%20rawson&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=william%20rawson">
 						here
-					</a>
+					</Link>
 					.
 				</p>
 				<p></p>
@@ -62,9 +63,9 @@ export default function Page() {
 					<strong>
 						<em>From Volume CXXV, Number 24, 1 June 2003:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn20030601-01.2.325&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=1">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn20030601-01.2.325&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=1">
 						<strong>DARING DIANA</strong>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Davis completes the Boston Marathon with French Instructor
@@ -74,28 +75,28 @@ export default function Page() {
 					<strong>
 						<em>From Volume CXXV, Number 24, 1 June 2003:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn20030601-01.2.135&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=3">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn20030601-01.2.135&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=3">
 						<strong>
 							DIANA DAVIS’ ODE TO THE HOME THAT IS EXETER
 						</strong>
-					</a>
+					</Link>
 				</p>
 				<p>
 					<strong>
 						<em>From Volume CXXX, Number 17, 1 June 2008:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com?a=d&amp;d=txn20080601-01.2.22&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=2">
+					<Link href="https://archive.theexonian.com?a=d&amp;d=txn20080601-01.2.22&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;srpos=2">
 						<strong>
 							MATH INTERN DIANA DAVIS GOES BEYOND THE CALL OF DUTY
 						</strong>
-					</a>
+					</Link>
 				</p>
 				<p>
 					To read more about Dr. Davis’ student life at the Academy,
 					click{" "}
-					<a href="https://archive.theexonian.com/?a=q&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=diana%20davis">
+					<Link href="https://archive.theexonian.com/?a=q&amp;e=-------en-20--1--txt-txIN-diana%20davis------&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=diana%20davis">
 						here
-					</a>
+					</Link>
 					.
 				</p>
 				<p></p>
@@ -104,11 +105,11 @@ export default function Page() {
 					<strong>
 						<em>From Number 20, 23 October 1988:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn19881023-01.2.39">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn19881023-01.2.39">
 						<span>
 							<strong>"SNOW ANGELS" ENTERTAINING</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Unger participated in theater, frequently directing and
@@ -120,14 +121,14 @@ export default function Page() {
 					<strong>
 						<em>From Number 26, 18 November 1989:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn19891118-01.2.20">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn19891118-01.2.20">
 						<span>
 							<strong>
 								BOYS’ VARSITY CROSS-COUNTRY TEAM LOOKS GOOD FOR
 								NEXT YEAR
 							</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Co-captain of the boys team, Unger enjoyed competing in
@@ -141,11 +142,11 @@ export default function Page() {
 					<strong>
 						<em>From Number 11, 28 April 1990:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn19900428-01.2.12">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn19900428-01.2.12">
 						<span>
 							<strong>CLASSICAL LANGUAGES PRIZES AWARDED</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Throughout his time at Exeter, Unger was consistently one of
@@ -159,11 +160,11 @@ export default function Page() {
 							From Volume CXXXV, Number 20, 12 September 2013:
 						</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn20130912-01.2.37">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn20130912-01.2.37">
 						<span>
 							<strong>THE UNGER GAMES</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					In Unger’s Latin classes from 110 to 210, his students
@@ -178,9 +179,9 @@ export default function Page() {
 				<p>
 					To read more about Magister Unger’s student life at the
 					Academy, click{" "}
-					<a href="https://archive.theexonian.com/?a=q&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=nicholas+unger&amp;e=-------en-20--1--txt-txIN-unger------">
+					<Link href="https://archive.theexonian.com/?a=q&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=nicholas+unger&amp;e=-------en-20--1--txt-txIN-unger------">
 						<span>here</span>
-					</a>
+					</Link>
 					.
 				</p>
 				<p></p>
@@ -189,13 +190,13 @@ export default function Page() {
 					<strong>
 						<em>From Volume CVI, Number 17, 23 February 1985:</em>{" "}
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn19850223-01.2.25&amp;srpos=1&amp;e=------198-en-20--1--txt-txIN-brooks+moriarty------">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn19850223-01.2.25&amp;srpos=1&amp;e=------198-en-20--1--txt-txIN-brooks+moriarty------">
 						<span>
 							<strong>
 								NASHUA YMCA SINKS J. V . BOYS SWIMMING
 							</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Mr. Moriarty as a lower placed third, fourth, and fifth in
@@ -205,11 +206,11 @@ export default function Page() {
 					<strong>
 						<em>From Volume CIX, Number 16, 6 June 1987: </em>
 					</strong>
-					<a href="https://archive.theexonian.com/?a=d&amp;d=txn19870606-01.2.14.1&amp;srpos=5&amp;e=------198-en-20--1--txt-txIN-brooks+moriarty------">
+					<Link href="https://archive.theexonian.com/?a=d&amp;d=txn19870606-01.2.14.1&amp;srpos=5&amp;e=------198-en-20--1--txt-txIN-brooks+moriarty------">
 						<span>
 							<strong>PRIZE DAY</strong>
 						</span>
-					</a>
+					</Link>
 				</p>
 				<p>
 					Mr. Moriarty won the Fourth Award for Short Short Story.
@@ -231,9 +232,9 @@ export default function Page() {
 				<p>
 					To read more about Mr. Moriarty’s student life at the
 					Academy, click{" "}
-					<a href="https://archive.theexonian.com?a=q&amp;e=-------en-20--1--txt-txIN-brooks%20moriarty------&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=brooks%20moriarty">
+					<Link href="https://archive.theexonian.com?a=q&amp;e=-------en-20--1--txt-txIN-brooks%20moriarty------&amp;hs=1&amp;r=1&amp;results=1&amp;txf=txIN&amp;txq=brooks%20moriarty">
 						<span>here</span>
-					</a>
+					</Link>
 					.
 				</p>
 				<p></p>

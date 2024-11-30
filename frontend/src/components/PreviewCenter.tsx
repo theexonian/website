@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Author } from '../../types/APIResponse';
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 interface PreviewCenterProps {
 	article: {
@@ -19,7 +20,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 	return (
 		<div className="w-full p-3 border-neutral-300 border-b">
 			<div className="max-w-[600px]">
-				<a href={`/articles/${slug}`}>
+				<Link href={`/articles/${slug}`}>
 					{thumbnail && (
 						<div className="hover:brightness-110 duration-500">
 							<Image
@@ -47,21 +48,20 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 							</p>
 						</div>
 					)}
-				</a>
+				</Link>
 				<div className="pt-2">
 					{authors && (
 						<p className="text-xs text-[#6C6C6C] duration-200">
 							By:&nbsp;
 							{authors.map((author, i) => {
 								return (
-									<a
-										className="text-xs hover:text-red-500 duration-200 no-underline"
+									<Link										className="text-xs hover:text-red-500 duration-200 no-underline"
 										key={i}
 										href={`/writers/${author.slug}`}
 									>
 										{author.fullname}
 										{authors.length - 1 !== i && ', '}
-									</a>
+									</Link>
 								);
 							})}
 						</p>

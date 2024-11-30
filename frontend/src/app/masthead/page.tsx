@@ -1,6 +1,7 @@
 import Image from "next/image";
 import * as Constants from "@/components/Constants"
 import FancyBigTitle from "@/components/FancyBigTitle";
+import Link from "next/link";
 
 export default function Page() {
 	return (
@@ -60,7 +61,7 @@ export default function Page() {
 
 				<p>
 					<em>The Exonian</em> welcomes <em>Letters to the Editor</em> sent to the care
-					of <a href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</a>. The Exonian reserves the right to
+					of <Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>. The Exonian reserves the right to
 					print <em>Letters to the Editor</em> in a timely fashion and to edit
 					them for content and clarity.
 				</p>

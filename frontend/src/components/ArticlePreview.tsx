@@ -1,6 +1,7 @@
 import { getArticleByZIndex } from '@/actions/getArticleByZIndex';
 import Image from 'next/image';
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 export default async function ArticlePreview({ z }: { z: number }) {
 	const article = await getArticleByZIndex(z);
@@ -11,7 +12,7 @@ export default async function ArticlePreview({ z }: { z: number }) {
 
 	return (
 		<div className="w-full p-2 border-neutral-300 border-b">
-			<a href={`/articles/${article.slug}`}>
+			<Link href={`/articles/${article.slug}`}>
 				<div className="w-full pr-3">
 					{article.tag && (
 						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text text-sm">
@@ -44,20 +45,19 @@ export default async function ArticlePreview({ z }: { z: number }) {
 						</p>
 					</div>
 				</div>
-			</a>
+			</Link>
 
 			<div className="text-xs">
 				{' '}
 				{article.authors.map((author, i) => {
 					return (
-						<a
-							className="text-xs hover:text-red-500 duration-200 no-underline uppercase text-neutral-700"
+						<Link							className="text-xs hover:text-red-500 duration-200 no-underline uppercase text-neutral-700"
 							key={i}
 							href={`/writers/${author.slug}`}
 						>
 							{author.fullname}
 							{article.authors.length - 1 !== i && ', '}
-						</a>
+						</Link>
 					);
 				})}
 				{/* </div> */}

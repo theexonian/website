@@ -29,9 +29,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 			<div className="w-full flex justify-center font-sans text-md items-center text-neutral-600 font-light">
 				<p>{author.position}</p>
 				<div className="p-2 font-xl">
-					<a href={'mailto:' + author.email}>
+					<Link href={'mailto:' + author.email}>
 						<MdOutlineEmail />
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="w-full flex justify-center font-serif text-neutral-500 font-thin">

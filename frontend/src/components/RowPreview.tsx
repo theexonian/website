@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Author } from '../../types/APIResponse';
+import Link from "next/link";
 
 interface ArticleRowPreviewProps {
 	article: {
@@ -22,7 +23,7 @@ export default function RowPreview(props: ArticleRowPreviewProps) {
 		// @TODO: refactor for props
 		<div className="w-full flex items-center py-3 border-neutral-300 border-b gap-4">
 			<div className="flex flex-col flex-wrap">
-				<a href={`/articles/${slug}`}>
+				<Link href={`/articles/${slug}`}>
 					<div className="w-full pr-3">
 						<h3 className="font-bold font-sans bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
 							{tag ? tag.charAt(0).toUpperCase() + tag.slice(1) : ''}
@@ -36,20 +37,19 @@ export default function RowPreview(props: ArticleRowPreviewProps) {
 							{description}
 						</p>
 					</div>
-				</a>
+				</Link>
 				<div className="font-sans">
 					<p className="text-xs text-[#6C6C6C] duration-200">
 						By:&nbsp;
 						{authors && authors.map((author, i) => {
 							return (
-								<a
-									className="text-xs hover:text-red-500 duration-200 no-underline"
+								<Link									className="text-xs hover:text-red-500 duration-200 no-underline"
 									key={i}
 									href={`/writers/${author.slug}`}
 								>
 									{author.fullname}
 									{authors.length - 1 !== i && ', '}
-								</a>
+								</Link>
 							);
 						})}
 					</p>

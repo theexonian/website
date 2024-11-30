@@ -1,4 +1,5 @@
 import * as Constants from "@/components/Constants"
+import Link from "next/link";
 
 export default function Page() {
 	return (
@@ -261,9 +262,9 @@ export default function Page() {
 				</p>
 				<p>
 					Our Privacy &amp; Content Use Policy is available&nbsp;
-					<a href="/privacy-and-content-use">
+					<Link href="/privacy-and-content-use">
 						here
-					</a>
+					</Link>
 					.
 				</p>
 			</div>
