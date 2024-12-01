@@ -1,6 +1,9 @@
 
 # Server Structure
 
+> [!TIP]
+> Plug this mermaid markdown diagram into [https://mermaid.live/](https://mermaid.live/) or similar for an organized view
+
 ```mermaid
 ---
 config:
