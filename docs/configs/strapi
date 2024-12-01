@@ -1,0 +1,29 @@
+# Located at: /etc/nginx/sites-enabled/strapi
+
+server {
+    server_name server.theexonian.net;
+    location / {
+        proxy_pass  http://localhost:1337;
+    }
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/server.theexonian.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/server.theexonian.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = server.theexonian.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name server.theexonian.net;
+    return 404; # managed by Certbot
+
+
+}
