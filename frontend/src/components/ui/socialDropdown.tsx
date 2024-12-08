@@ -48,7 +48,7 @@ export default function SocialShareDropdown({
 
 	return (
 		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-			<DropdownMenuTrigger asChild>
+			<DropdownMenuTrigger className="focus:!ring-red-300/75 focus:!ring-1" asChild>
 				<Button
 					variant="link"
 					className="justify-between text-red-700 p-0"
@@ -65,8 +65,8 @@ export default function SocialShareDropdown({
 					>
 						<ShareButton url={window.location.origin + pathname} title={title} className="w-full">
 							<div className="flex items-center">
-								<Icon className="h-5 w-5" />
-								<span className="ml-2">{name}</span>
+								<Icon className="h-4 w-4" />
+								<span className="ml-2 text-xs">{name}</span>
 							</div>
 						</ShareButton>
 					</DropdownMenuItem>

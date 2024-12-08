@@ -7,6 +7,7 @@ import { Speechify } from "@/components/ui/speechify";
 import SocialShareDropdown from "@/components/ui/socialDropdown";
 import Link from "next/link";
 import FontChanger from "@/components/ui/fontChanger";
+import PrintArticle from "@/components/ui/printArticle";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -59,13 +60,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					</div>
 					<div className="flex items-center gap-2 text-red-700">
 						<FontChanger/>
-						<BiFontFamily className="text-xl" /> Font
 					</div>
-					<div className="flex items-center gap-2 text-red-700">
+					<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 text-red-700 hover:underline no-underline underline-offset-4 hover:text-red-700 font-medium">
 						<HiOutlineNewspaper className="text-xl" /> Publication
-					</div>
-					<div className="flex items-center gap-2 text-red-700">
-						<BiPrinter className="text-xl" /> Print
+					</Link>
+					<div className="flex items-center gap-2 text-red-700 font-medium">
+						<PrintArticle/>
 					</div>
 				</div>
 				<div className="py-1">
