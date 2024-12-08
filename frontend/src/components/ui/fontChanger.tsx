@@ -45,7 +45,7 @@ const FONT_OPTIONS = [
 	},
 	{
 		name: "Legible Coding",
-		value: "roboto-mono",
+		value: "b612",
 		cssClass: b612_mono.className,
 	},
 ];
