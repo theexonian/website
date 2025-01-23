@@ -20,7 +20,7 @@ export default ({ env }) => {
           cipher: env('DATABASE_SSL_CIPHER', undefined),
           rejectUnauthorized: env.bool(
             'DATABASE_SSL_REJECT_UNAUTHORIZED',
-            true
+            false // PLEASE CHECK THIS. ORIGINAL VALUE: true
           ),
         },
         schema: env('DATABASE_SCHEMA', 'public'),
