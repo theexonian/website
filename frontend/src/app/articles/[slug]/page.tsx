@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 	return (
 		<div className="w-full flex justify-center">
-			<article className="prose prose-sm pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+			<article className="prose pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 				<h3 className="font-black font-sans text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">
 					{article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}
 				</h3>
@@ -90,7 +90,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				{paragraphs.map((paragraph, i) => (
 					<p
 						key={i}
-						className={`indent-8 ${
+						className={`indent-8 text-[13pt] ${
 							i === 0 ? "first-letter:text-2xl" : ""
 						}`}
 					>
