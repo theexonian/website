@@ -17,6 +17,7 @@ export default function Home() {
 				<div className="col-span-2 px-8 lg:px-4 border-neutral-300 border-x md:border-none block md:hidden">
 					<ArticlePreview z={4} />
 					<ArticlePreview z={5} />
+					<ArticlePreview z={11} />
 				</div>
 				<div className="col-span-1 px-6 md:px-2">
 					<ArticlePreview z={6} />
