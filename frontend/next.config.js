@@ -8,6 +8,12 @@ const nextConfig = {
 				port: "1337",
 				pathname: "/uploads/**",
 			},
+			{
+				protocol: "http",
+				hostname: "server.theexonian.net",
+				port: "1337",
+				pathname: "/uploads/**",
+			},
 		],
 	},
 	env: {
