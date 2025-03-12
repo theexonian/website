@@ -3,7 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import 'animate.css';
 import { Analytics } from "@vercel/analytics/react"
-
+import NewsletterPopup from "@/components/NewsletterPopup"
 export const metadata = {
 	title: 'The Exonian | Phillips Exeter Academy',
 	description:
@@ -25,7 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 							{children}
 						</div>
 					</main>
+					
 				</div>
+				{/* def fix this...*/}
+				<NewsletterPopup/>
 				<Footer />
 			</body>
 		</html>
