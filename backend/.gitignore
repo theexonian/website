@@ -106,6 +106,7 @@ coverage
 ############################
 
 .env
+.toml
 license.txt
 exports
 *.cache
