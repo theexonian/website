@@ -15,6 +15,10 @@ export interface ArticlesResponse extends BaseAPIResponse {
 	data: Array<Article>;
 }
 
+export interface IssuesResponse extends BaseAPIResponse {
+    data: Array<Issue>;
+}
+
 interface Article {
 	id: number;
 
@@ -46,4 +50,17 @@ interface Author {
 
 	slug: string;
 	articles: Array<Article>;
+}
+
+interface Issue {
+	id: number;
+	slug: number;
+	board: number;
+	publishDate: string;
+	thumbnail: {
+		url: string;
+	}
+	pdf: {
+		url: string;
+	}
 }
