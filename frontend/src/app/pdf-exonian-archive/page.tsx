@@ -80,7 +80,7 @@ export default function Page() {
 			</div>
 
 			<div className="">
-				{Object.keys(groupedIssues).map((board) => (
+				{Object.keys(groupedIssues).map((board:string) => (
 					<div key={board} className="font-serif pt-3">
 						<h4 className="text-2xl">
 							<strong>
@@ -88,7 +88,7 @@ export default function Page() {
 							</strong>
 						</h4>
 						<div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5">
-						{groupedIssues[board].map((issue, index) => (
+						{groupedIssues[Number(board)].map((issue, index) => (
 							<p key={index}>
 								<Link href={issue.pdf.url} target="_blank">
 									<div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 min-w-full">
@@ -112,11 +112,10 @@ export default function Page() {
 												</p>
 											</span>
 											<span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-semibold font-[Inter]">
-												{issue.slug.slice(3, 5)}
+												{String(issue.slug).slice(3, 5)}
 											</span>
 										</div>
-									</div>
-									
+									</div>	
 								</Link>
 							</p>
 						))} </div>
