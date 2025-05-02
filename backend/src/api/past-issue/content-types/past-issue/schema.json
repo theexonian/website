@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "past_issues",
+  "info": {
+    "singularName": "past-issue",
+    "pluralName": "past-issues",
+    "displayName": "Issues",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "board": {
+      "type": "integer"
+    },
+    "publishDate": {
+      "type": "date"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

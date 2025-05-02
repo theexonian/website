@@ -199,7 +199,7 @@ export default function Navbar() {
 							Crossword
 						</li>
 					</Link>
-					<Link href="">
+					<Link href="/pdf-exonian-archive">
 						<li className="hover:text-neutral-500 duration-200">
 							Archive
 						</li>
