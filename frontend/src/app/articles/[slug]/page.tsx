@@ -76,8 +76,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				{article.thumbnail && (
 					<Image
 						src={
-							"http://${Constants.STRAPI_IP}:1337" +
-							article.thumbnail.url
+							article.thumbnail.url.startsWith("http")
+								? article.thumbnail.url 
+								: `https://${Constants.STRAPI_IP}${article.thumbnail.url}`
 						}
 						width="0"
 						height="0"
