@@ -41,8 +41,9 @@ export default function Preview(props: PreviewProps) {
 					<div className="hover:brightness-110 duration-500 py-2">
 						<Image
 							src={
-								`http://${Constants.STRAPI_IP}:1337` +
-								thumbnail.url
+								thumbnail.url.startsWith("http")
+									? thumbnail.url 
+									: `https://${Constants.STRAPI_IP}${thumbnail.url}`
 							}
 							width="0"
 							height="0"

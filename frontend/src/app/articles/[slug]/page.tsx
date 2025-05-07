@@ -8,6 +8,7 @@ import SocialShareDropdown from "@/components/ui/socialDropdown";
 import Link from "next/link";
 import FontChanger from "@/components/ui/fontChanger";
 import PrintArticle from "@/components/ui/printArticle";
+import * as Constants from "@/components/Constants";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
@@ -76,8 +77,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 				{article.thumbnail && (
 					<Image
 						src={
-							"http://${Constants.STRAPI_IP}:1337" +
-							article.thumbnail.url
+							article.thumbnail.url.startsWith("http")
+								? article.thumbnail.url 
+								: `https://${Constants.STRAPI_IP}${article.thumbnail.url}`
 						}
 						width="0"
 						height="0"
