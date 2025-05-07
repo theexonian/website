@@ -9,8 +9,9 @@ const nextConfig = {
                 pathname: "/uploads/**",
             },
             {
-                protocol: "https",
+                protocol: "http",
                 hostname: "server.theexonian.net",
+                port: "1337",
                 pathname: "/uploads/**",
             },
             {

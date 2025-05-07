@@ -16,24 +16,22 @@ export default async function ArticlePreview({ z }: { z: number }) {
 				<div className="w-full pr-3">
 					{article.tag && (
 						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text text-sm">
-							{article.tag === 'sotw'
-								? "Life"
-								: article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}
+							{article.tag.charAt(0).toUpperCase() +
+								article.tag.slice(1)}
 						</h3>
 					)}
 				</div>
 				{article.thumbnail && (
 					<Image
 						src={
-							article.thumbnail.url.startsWith("http")
-								? article.thumbnail.url 
-								: `https://${Constants.STRAPI_IP}${article.thumbnail.url}`
+							`http://${Constants.STRAPI_IP}:1337` +
+							article.thumbnail.url
 						}
 						width="0"
 						height="0"
 						sizes="25vw"
 						className="w-full h-auto py-2"
-						alt={"This Article's Thumbnail"}
+						alt={"Logo of The Exonian"}
 					/>
 				)}
 
