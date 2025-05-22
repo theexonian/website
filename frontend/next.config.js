@@ -19,6 +19,11 @@ const nextConfig = {
                 hostname: "d2stzhv1hip58f.cloudfront.net",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "images.clerk.dev",
+                pathname: "/**",
+            },
         ],
     },
     env: {

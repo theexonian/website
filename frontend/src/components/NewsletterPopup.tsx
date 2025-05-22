@@ -67,7 +67,7 @@ export default function NewsletterPopup() {
     return (
         <div className="popup">
             <Sheet open={visible} modal={false}>
-                <SheetContent className="top-[58%] [&>button]:hidden min-w-full">
+                <SheetContent side = "bottom" className="!w-screen rounded-none p-6 shadow-xl bg-gradient-to-t from-white via-white/90 to-transparent [&>button]:hidden max-h-50 sm:max-h-70 lg:max-h-82">
                     <SheetHeader>
                         <Newspaper />
                         <SheetTitle>Subscribe!</SheetTitle>

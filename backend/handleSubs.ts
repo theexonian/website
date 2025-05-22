@@ -11,7 +11,7 @@ const PORT = 3001;
 
 // Middleware
 app.use(cors({
-  origin: ['http://34.233.229.132:9000', 'http://localhost:3001'],
+  origin: ['http://34.233.229.132:9000', 'http://localhost:3000'],
   methods: ['POST'],
 }));
 app.use(bodyParser.json());

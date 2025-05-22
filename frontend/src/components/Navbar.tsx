@@ -16,7 +16,9 @@ import {
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
-
+import SignOutButton from "@/components/SignOut";
+import { useUser } from '@clerk/nextjs';
+import SignInButton from "@/components/SignIn";
 export default function Navbar() {
 	const currentDate = new Date();
 	const monthNames = [
@@ -60,7 +62,8 @@ export default function Navbar() {
 		", " +
 		currentDate.getFullYear();
 
-	const router = useRouter()
+	const router = useRouter();
+	const {isSignedIn} = useUser();
 
 	return (
 		<>
@@ -87,7 +90,9 @@ export default function Navbar() {
 					|{" "}
 					<Link href="/about" className="hover:text-red-400">
 						About
-					</Link>
+					</Link>{" "}
+					|{" "}
+					<SignInButton />
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">

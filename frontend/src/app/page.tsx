@@ -1,5 +1,5 @@
 import ArticlePreview from '@/components/ArticlePreview';
-
+import ProtectedLayout from '@/components/protected-layout';
 export default function Home() {
 	return (
 		<div>

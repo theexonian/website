@@ -9,8 +9,14 @@ import Link from "next/link";
 import FontChanger from "@/components/ui/fontChanger";
 import PrintArticle from "@/components/ui/printArticle";
 import * as Constants from "@/components/Constants";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { slug: string } }) {
+	const { userId } = await auth();
+	if (!userId) {
+		redirect("/sign-in");
+	}
 	const slug = params.slug;
 	const article = await getArticleById(slug);
 
