@@ -38,7 +38,7 @@ export default function NewsletterPopup() {
         };
     }, []);
     const addEmail = async () => {
-        const apiUrl = "/api/handleSubs";
+        const apiUrl = "http://localhost:1337/api/newsletter/subscribe";
         const subscriberData = { email, name, lists: [3] };
         try {
             const response = await fetch(apiUrl, {
