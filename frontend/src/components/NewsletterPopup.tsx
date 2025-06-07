@@ -38,7 +38,7 @@ export default function NewsletterPopup() {
         };
     }, []);
     const addEmail = async () => {
-        const apiUrl = "http://localhost:3001/subscribe";
+        const apiUrl = "/api/handleSubs";
         const subscriberData = { email, name, lists: [3] };
         try {
             const response = await fetch(apiUrl, {
@@ -57,7 +57,6 @@ export default function NewsletterPopup() {
             setVisibility(false);
             setSubscription(true);
             setError("");
-            // ✅ Save subscription state to localStorage
             localStorage.setItem("subscribed", "true");
         } catch (err) {
             console.error("Error adding subscriber:", err);
