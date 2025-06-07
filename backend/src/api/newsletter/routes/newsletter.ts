@@ -5,6 +5,7 @@ export default {
       path: '/newsletter/test',
       handler: 'newsletter.test',
       config: {
+        auth: false,
         policies: [],
         middlewares: [],
       },
@@ -14,6 +15,7 @@ export default {
       path: '/newsletter/subscribe',
       handler: 'newsletter.subscribe',
       config: {
+        auth: false,
         policies: [],
         middlewares: [],
       },
