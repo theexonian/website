@@ -54,8 +54,8 @@ export default async function ArticlePreview({ z }: { z: number }) {
 
 			<div className="text-xs">
 				By{" "}
-				{article.authors.map((author, i) => {
-					return (
+				{Array.isArray(article.authors) &&
+					article.authors.map((author, i) => (
 						<Link
 							className="text-xs hover:text-red-500 duration-200 no-underline text-neutral-700 capitalize"
 							key={i}
@@ -64,9 +64,8 @@ export default async function ArticlePreview({ z }: { z: number }) {
 							{author.fullname}
 							{article.authors.length - 1 !== i && ", "}
 						</Link>
-					);
-				})}
-				{/* </div> */}
+					))
+				}
 				<p className="text-xs text-neutral-600">
 					{new Date(article.publishedAt).toLocaleDateString()}
 				</p>
