@@ -16,9 +16,8 @@ import {
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
-import SignOutButton from "@/components/SignOut";
 import { useUser } from '@clerk/nextjs';
-import SignInButton from "@/components/SignIn";
+import SignInButton from '@/components/SignIn';
 export default function Navbar() {
 	const currentDate = new Date();
 	const monthNames = [

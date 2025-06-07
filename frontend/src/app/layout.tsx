@@ -11,7 +11,7 @@ export const metadata = {
 		'The Exonian is the oldest continuously-running prepatory school newspaper in the country',
 };
 import ProtectedLayout from '@/components/protected-layout';
-import SignOutButton from '@/components/SignOut';
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (

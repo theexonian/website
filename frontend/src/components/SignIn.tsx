@@ -12,10 +12,7 @@ export default function SignInButton() {
     setMounted(true);
   }, []);
 
-  if (!mounted || !isLoaded) {
-    // Render nothing or a placeholder until hydrated and user info loaded
-    return null;
-  }
+  if (!mounted || !isLoaded) return null;
 
   if (user) {
     return (
@@ -26,7 +23,7 @@ export default function SignInButton() {
   }
 
   return (
-    <button onClick={() => clerk.openSignIn()} className="hover:text-red-400">
+    <button onClick={() => clerk.redirectToSignIn()} className="hover:text-red-400">
       Sign in
     </button>
   );
