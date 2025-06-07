@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "description": "Strapi Headless CMS Configuration for The Exonian Website",
   "scripts": {
-    "dev": "concurrently \"strapi develop\" \"ts-node handleSubs.ts\"",
-    "start": "concurrently \"strapi start\" \"ts-node handleSubs.ts\"",
+    "dev": "strapi develop",
+    "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
     "postinstall": "patch-package"

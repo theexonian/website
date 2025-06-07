@@ -38,7 +38,7 @@ export default function NewsletterPopup() {
         };
     }, []);
     const addEmail = async () => {
-        const apiUrl = "http://localhost:3001/subscribe";
+        const apiUrl = "/api/subscribe";
         const subscriberData = { email, name, lists: [3] };
         try {
             const response = await fetch(apiUrl, {
@@ -57,7 +57,6 @@ export default function NewsletterPopup() {
             setVisibility(false);
             setSubscription(true);
             setError("");
-            // ✅ Save subscription state to localStorage
             localStorage.setItem("subscribed", "true");
         } catch (err) {
             console.error("Error adding subscriber:", err);
@@ -67,7 +66,7 @@ export default function NewsletterPopup() {
     return (
         <div className="popup">
             <Sheet open={visible} modal={false}>
-                <SheetContent side = "bottom" className="!w-screen rounded-none p-6 shadow-xl bg-gradient-to-t from-white via-white/90 to-transparent [&>button]:hidden max-h-50 sm:max-h-70 lg:max-h-82">
+                <SheetContent side = "bottom" className="!w-screen rounded-none p-6 shadow-xl bg-gradient-to-t from-white via-white/90 to-transparent max-h-50 sm:max-h-70 lg:max-h-82">
                     <SheetHeader>
                         <Newspaper />
                         <SheetTitle>Subscribe!</SheetTitle>
