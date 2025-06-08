@@ -15,10 +15,12 @@ export default function Home() {
 					<ArticlePreview z={1} section="news"/>
 					<ArticlePreview z={2} section="news"/>
 					<ArticlePreview z={3} section="news"/>
+					<ArticlePreview z={2} section="humor"/>
 					<ArticlePreview z={1} section="humor"/>
-					<ArticlePreview z={2} section="news"/>
 				</div>
 				<div className="col-span-1 px-6 md:px-2">
+					<ArticlePreview z={1} section="oped"/>
+					<ArticlePreview z={2} section="oped"/>
 					<ArticlePreview z={1} section="sports"/>
 					<ArticlePreview z={2} section="sports"/>
 					<ArticlePreview z={3} section="sports"/>
