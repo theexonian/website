@@ -3,9 +3,10 @@ import Image from "next/image";
 import * as Constants from "@/components/Constants";
 import Link from "next/link";
 
-export default async function ArticlePreview({ z }: { z: number }) {
-	const article = await getArticleByZIndex(z);
+export default async function ArticlePreview({ z, section }: { z: number; section: string }) {
+	const article = await getArticleByZIndex(z, section);
 
+	
 	if (!article) {
 		return null;
 	}
