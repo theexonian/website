@@ -163,56 +163,34 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul
-					className={
-						"flex flex-row md:hidden text-xs gap-8 py-2 text-neutral-800"
-					}
-				>
-					<Link href="/">
-						<li className="hover:text-neutral-500 duration-200">
-							Home
-						</li>
-					</Link>
-					<Link href="/tag/news">
-						<li className="hover:text-neutral-500 duration-200">
-							News
-						</li>
-					</Link>
-					<Link href="/tag/life">
-						<li className="hover:text-neutral-500 duration-200">
-							Life
-						</li>
-					</Link>
-					<Link href="/tag/oped">
-						<li className="hover:text-neutral-500 duration-200">
-							Opinions
-						</li>
-					</Link>
-					<Link href="/tag/sports">
-						<li className="hover:text-neutral-500 duration-200">
-							Sports
-						</li>
-					</Link>
-					<Link href="/tag/humor">
-						<li className="hover:text-neutral-500 duration-200">
-							Humor
-						</li>
-					</Link>
-					<Link href="https://crossword.theexonian.net">
-						<li className="hover:text-neutral-500 duration-200">
-							Crossword
-						</li>
-					</Link>
-					<Link href="/pdf-exonian-archive">
-						<li className="hover:text-neutral-500 duration-200">
-							Archive
-						</li>
-					</Link>
-					<Link href="">
-						<li className="hover:text-neutral-500 duration-200">
-							Latest Issue
-						</li>
-					</Link>
+				<ul className="flex flex-row md:hidden text-xs gap-8 py-2 text-neutral-800">
+    				<li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/">Home</Link>
+ 				   </li>
+ 				   <li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/tag/news">News</Link>
+  				  </li>
+				    <li className="hover:text-neutral-500 duration-200">
+  					      <Link href="/tag/life">Life</Link>
+ 				   </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/tag/oped">Opinions</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+      				  <Link href="/tag/sports">Sports</Link>
+  				  </li>
+   				 <li className="hover:text-neutral-500 duration-200">
+   				     <Link href="/tag/humor">Humor</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+  				      <Link href="https://crossword.theexonian.net">Crossword</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+  				      <Link href="/pdf-exonian-archive">Archive</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+   				     <Link href="">Latest Issue</Link>
+   				 </li>
 				</ul>
 			</div>
 		</>
