@@ -19,6 +19,13 @@ export default async function Page({ params }: { params: { tag: string } }) {
 				</h1>
 				<hr className="border-red-600 w-1/2 border-[1px]" />
 			</div>
+			
+			<div className="w-3/4 flex flex-col justify-center font-serif py-10 px-3">
+				{articles.map((article, i) => {
+					return <RowPreview key={i} article={article} />;
+				})}
+			</div>
+			{ /*
 			<div className="grid grid-cols-4 md:grid-cols-1">
 				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-r">
 					{articles[0] && <PreviewCenter article={articles[0]} />}
@@ -43,11 +50,7 @@ export default async function Page({ params }: { params: { tag: string } }) {
 				</div>
 			</div>
 			<div className="py-7 md:py-2"></div>
-			<div className="w-3/4 flex flex-col justify-center font-serif py-10 px-3">
-				{articles.slice(6).map((article, i) => {
-					return <RowPreview key={i} article={article} />;
-				})}
-			</div>
+			*/ }
 		</>
 	);
 }
