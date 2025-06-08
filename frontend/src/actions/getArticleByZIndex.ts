@@ -3,12 +3,15 @@ import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 import * as Constants from "@/components/Constants"
 
-export async function getArticleByZIndex(z: number) {
+export async function getArticleByZIndex(z: number, section: string) {
 	const query = stringify({
 		filters: {
 			z: {
 				$eq: z,
 			},
+			tag: {
+                $eq: section,
+            },
 		},
 		sort: ['createdAt:desc'],
 		populate: '*',
@@ -23,5 +26,8 @@ export async function getArticleByZIndex(z: number) {
 		}
 	);
 
-	return body.data[0];
+	if (!body || !body.data || body.data.length === 0) {
+		return null;
+	}
+	return body?.data[0];
 }
