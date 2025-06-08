@@ -36,8 +36,17 @@ export default [
         'https://new.theexonian.net',
         'https://theexonian.net',
         'http://localhost:3000',
+        'https://server.theexonian.net'
       ],
-      headers: ['Content-Type', 'Authorization'],
+      headers: [
+        'Content-Type', 
+        'Authorization',
+        'X-Requested-With',
+        'Accept',
+        'Origin'
+      ],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      credentials: true,
     },
   },
   'strapi::poweredBy',

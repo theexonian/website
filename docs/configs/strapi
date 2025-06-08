@@ -24,6 +24,4 @@ server {
     listen [::]:80 default_server;
     server_name server.theexonian.net;
     return 404; # managed by Certbot
-
-
 }

@@ -112,6 +112,6 @@ exports
 dist
 build
 .strapi-updater.json
-
+.pem
 # Build folder
 .strapi
