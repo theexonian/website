@@ -17,23 +17,10 @@ function numberEnding(num:number){
 	}
 }
 
-export default function Page() {
-	const [issues, setIssues] = useState<Issue[]>([]);
+export default async function Page() {
+	const issues = await getIssues()
 
-	useEffect(() => {
-		async function fetchIssues() {
-		  try {
-			const issuesData = await getIssues();
-			setIssues(issuesData);
-		  } catch (error) {
-			console.error("Error fetching issues:", error); // Log any errors
-		  }
-		}
-	
-		fetchIssues();
-	  }, []);
-
-	  const [windowSize, setWindowSize] = useState({
+	const [windowSize, setWindowSize] = useState({
 		width: 0,
 		height: 0,
 	  });
