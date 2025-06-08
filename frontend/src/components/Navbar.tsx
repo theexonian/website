@@ -118,18 +118,36 @@ export default function Navbar() {
 									</div>
 								</MenubarTrigger>
 								<MenubarContent>
-									<MenubarItem>Home</MenubarItem>
-									<MenubarItem>News</MenubarItem>
-									<MenubarItem>Life</MenubarItem>
-									<MenubarItem>Opinions</MenubarItem>
-									<MenubarItem>Sports</MenubarItem>
-									<MenubarItem>Humor</MenubarItem>
-									<MenubarItem>Crossword</MenubarItem>
-									<MenubarItem>Archive</MenubarItem>
-									<MenubarItem>Latest Issue</MenubarItem>
+									<MenubarItem>
+										<Link href="/">Home</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/news">News</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/life">Life</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/oped">Opinions</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/sports">Sports</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/humor">Humor</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="https://crossword.theexonian.net">Crossword</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/pdf-exonian-archive">Archive</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="">Latest Issue</Link>
+									</MenubarItem>
 								</MenubarContent>
 							</MenubarMenu>
-						</Menubar>
+        				</Menubar>
 					</div>
 					{dateString + " "}
 					<div className="flex items-center pl-2 gap-3 text-neutral-700">
