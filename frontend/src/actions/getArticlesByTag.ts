@@ -11,7 +11,7 @@ export async function getArticlesByTag(tag: string) {
 			},
 		},
 		fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
-		sort: ['createdAt:desc', 'z:desc'],
+		sort: ['createdAt:desc', 'z:asc'],
 		populate: {
 			thumbnail: {
 				fields: ['url'],
