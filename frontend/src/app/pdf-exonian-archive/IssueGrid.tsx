@@ -47,7 +47,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
         acc[board].push(issue);
         return acc;
       }, {} as Record<number, Issue[]>);
-  
+
     return (
         <>
             <div className="">
