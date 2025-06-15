@@ -26,5 +26,12 @@ export async function getAuthorBySlug(slug: string) {
 		},
 	});
 
-	return body[0];
+	const author = body[0];
+	if (author && author.articles) {
+		author.articles = Array.from(
+			new Map(author.articles.map(article => [article.slug, article])).values()
+		);
+	}
+
+	return author;
 }
