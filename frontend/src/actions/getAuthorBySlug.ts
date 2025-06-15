@@ -13,6 +13,14 @@ export async function getAuthorBySlug(slug: string) {
 		populate: {
 			articles: {
 				fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
+				sort: ['createdAt:desc', 'z:asc'],
+				populate: {
+			thumbnail: {
+				fields: ['url'],
+			},
+			authors: {
+				fields: ['fullname', 'slug'],
+			}}
 			},
 			picture: {
 				fields: ['url'],
