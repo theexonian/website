@@ -70,7 +70,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                                             style={{ objectFit: "cover", objectPosition: "top" }}
                                             className=""
                                         />
-                                        <div className={"bg-[#f0e0e0cb] bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" + (windowSize.width < 768 ? "" : " pl-5")}>
+                                        <div className={"bg-[#ffffffa0] bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" + (windowSize.width < 768 ? "" : " pl-5")}>
                                             <span className="inline-block col-span-7 m-0">
                                                 ISSUE #
                                                 <br />
@@ -82,7 +82,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                                                 })}
                                                 </p>
                                             </span>
-                                            <span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-semibold font-[Inter]">
+                                            <span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-serif">
                                                 {String(issue.slug).slice(3, 5)}
                                             </span>
                                         </div>

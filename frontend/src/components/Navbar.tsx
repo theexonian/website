@@ -43,21 +43,21 @@ export default function Navbar() {
 		"Friday",
 		"Saturday",
 	];
-	function appendSuffix(number: number): string {
-		const suffixes = ["th", "st", "nd", "rd"];
-		const remainder = number % 100;
-		const suffix =
-			suffixes[(remainder - 20) % 10] ||
-			suffixes[remainder] ||
-			suffixes[0];
-		return number + suffix;
-	}
+	// function appendSuffix(number: number): string {
+	// 	const suffixes = ["th", "st", "nd", "rd"];
+	// 	const remainder = number % 100;
+	// 	const suffix =
+	// 		suffixes[(remainder - 20) % 10] ||
+	// 		suffixes[remainder] ||
+	// 		suffixes[0];
+	// 	return number + suffix;
+	// }
 	var dateString =
 		weekNames[currentDate.getDay()] +
 		", " +
 		monthNames[currentDate.getMonth()] +
 		" " +
-		appendSuffix(currentDate.getDate()) +
+		currentDate.getDate() +
 		", " +
 		currentDate.getFullYear();
 

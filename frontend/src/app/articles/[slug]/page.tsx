@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const paragraphs = article.content.split("\n").filter((p) => p.trim());
 
 	// Remove first paragraph if it starts with "By"
-	const processedParagraphs = paragraphs[0]?.trim().startsWith("By")
+	const processedParagraphs = paragraphs[0]?.trim().startsWith("By ")
 		? paragraphs.slice(1)
 		: paragraphs;
 
@@ -32,12 +32,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<div className="w-full flex justify-center">
 			<article className="prose pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
-				<h3 className="font-black font-sans text-3xl bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text m-0">
-					{article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}
+				<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
+					{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
+					{article.tag.toUpperCase()}
 				</h3>
-				<h1 className="font-normal text-5xl my-2">{article.title}</h1>
+				<h1 className="font-normal text-5xl my-2"><i>{article.title}</i></h1>
 				<span className="p-0 m-0 text-lg text-neutral-800">
-					By:{" "}
+					By {" "}
 					{article.authors.map((author, i) => {
 						return (
 							<Link
@@ -60,26 +61,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						.slice(0, 4)
 						.join(" ")}
 				</span>
-				<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer">
-					<div className="flex items-center gap-2 text-red-700">
-						{/* dynamically & automatically grabs link since it's a CSR component */}
-						<SocialShareDropdown title={article.title} />
-					</div>
-					<div className="flex items-center gap-2 text-red-700">
-						<FontChanger/>
-					</div>
-					<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 text-red-700 hover:underline no-underline underline-offset-4 hover:text-red-700 font-medium">
-						<HiOutlineNewspaper className="text-xl" /> Publication
-					</Link>
-					<div className="flex items-center gap-2 text-red-700 font-medium">
-						<PrintArticle/>
-					</div>
-				</div>
-				<div className="py-1">
-					{/* @TODO: switch out to actual text once approved for API */}
-					<Speechify inputText={"Test!"} />
-				</div>
-				<hr className="border-neutral-400 mb-8 mt-2" />
+
 				{article.thumbnail && (
 					<Image
 						src={
@@ -94,6 +76,30 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						alt={"Logo of The Exonian"}
 					/>
 				)}
+				
+				<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer">
+					<div className="flex items-center gap-2 text-red-700">
+						{/* dynamically & automatically grabs link since it's a CSR component */}
+						<SocialShareDropdown title={article.title} />
+					</div>
+					<div className="flex items-center gap-2 text-red-700">
+						<FontChanger/>
+					</div>
+					<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-red-700 text-red-700 no-underline">
+						<HiOutlineNewspaper className="text-xl" />
+						Publication
+					</Link>
+					<div className="flex items-center gap-2 text-red-700 font-medium text-sm hover:underline underline-offset-4">
+						<PrintArticle/>
+					</div>
+				</div>
+				<div className="py-1">
+					{/* @TODO: switch out to actual text once approved for API */}
+					<Speechify inputText={"Test!"} />
+				</div>
+				
+				<hr className="border-neutral-400 mb-8 mt-2" />
+				
 
 				{paragraphs.map((paragraph, i) => (
 					<p

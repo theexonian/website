@@ -25,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<main className="flex w-3/4 xl:w-5/6 lg:w-11/12 max-w-[1600px] h-auto min-h-screen">
 							<div className="w-full flex flex-col flex-wrap gap-1">
 								<hr className="w-full border-neutral-300" />
-								<hr className="w-full border-neutral-300" />
 								{children}
 							</div>
 						</main>

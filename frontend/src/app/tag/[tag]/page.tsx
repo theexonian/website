@@ -8,12 +8,12 @@ export default async function Page({ params }: { params: { tag: string } }) {
 
 	const articles = await getArticlesByTag(tag);
 
-	if (articles.length == 0)
+	if (!articles || articles.length == 0)
 		return <p>There aren't any articles in this category yet, check back later</p>;
 
 	return (
 		<>
-			<div className="py-8">
+			<div className="py-3">
 				<h1 className="text-7xl xl:text-5xl md:text-3xl font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text">
 					{tag.charAt(0).toUpperCase() + tag.slice(1)}
 				</h1>
