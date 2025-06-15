@@ -13,5 +13,5 @@ export const BOARD_NUMBER = "147th"
 // Format: Public-facing AWS IPv4 address
 // Example: 34.227.161.14
 export const STRAPI_IP = "server.theexonian.net"
-export const NEW_STRAPI_IP = "127.0.0.1"
+// export const STRAPI_IP = "localhost"
 export const AWS_IP = "d2stzhv1hip58f.cloudfront.net"

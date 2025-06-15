@@ -16,9 +16,8 @@ export default async function ArticlePreview({ z, section }: { z: number; sectio
 			<Link href={`/articles/${article.slug}`}>
 				<div className="w-full pr-3">
 					{article.tag && (
-						<h3 className="font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] inline-block text-transparent bg-clip-text text-sm">
-							{article.tag.charAt(0).toUpperCase() +
-								article.tag.slice(1)}
+						<h3 className="font-bold text-red-700 inline-block bg-clip-text text-xs">
+							{article.tag.toUpperCase()}
 						</h3>
 					)}
 				</div>

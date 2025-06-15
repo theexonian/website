@@ -84,6 +84,7 @@ module.exports = {
 			addVariant("child", "& > *");
 			addVariant("child-hover", "& > *:hover");
 		},
-        require("tailwindcss-animate")
+        require("tailwindcss-animate"),
+		require('@tailwindcss/line-clamp'),
     ],
 };

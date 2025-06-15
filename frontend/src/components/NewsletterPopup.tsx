@@ -71,7 +71,7 @@ export default function NewsletterPopup() {
                         <Newspaper />
                         <SheetTitle>Subscribe!</SheetTitle>
                         <SheetDescription>
-                            Subscribe to receive regular updates about the Exonian straight to your email!
+                            Subscribe to receive regular updates from The Exonian straight to your email!
                         </SheetDescription>
                     </SheetHeader>
                     <div className="grid gap-4 py-4">
