@@ -17,7 +17,6 @@
     "@radix-ui/react-menubar": "^1.1.2",
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
-    "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",

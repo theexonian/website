@@ -3,7 +3,7 @@
 import "animate.css";
 import Image from "next/image";
 import { FaArchive, FaInstagram, FaSearch } from "react-icons/fa";
-import { RiArchive2Line } from "react-icons/ri";
+import { RiArchive2Line, RiYoutubeLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
@@ -156,6 +156,13 @@ export default function Navbar() {
 							target="_blank"
 						>
 							<FaInstagram className="text-lg" />
+						</Link>
+						<Link
+							href="https://www.youtube.com/@TheExonian"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<RiYoutubeLine className="text-lg" />
 						</Link>
 						<Link
 							href="https://archive.theexonian.com"
