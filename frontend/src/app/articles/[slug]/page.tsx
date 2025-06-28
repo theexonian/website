@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 					{article.tag.toUpperCase()}
 				</h3>
-				<h1 className="font-normal text-5xl my-2"><i>{article.title}</i></h1>
+				<h1 className="font-normal text-5xl my-2 font-serif"><i>{article.title}</i></h1>
 				<span className="p-0 m-0 text-lg text-neutral-800">
 					By {" "}
 					{article.authors.map((author, i) => {
@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						src={
 							article.thumbnail.url.startsWith("http")
 								? article.thumbnail.url 
-								: `https://${Constants.STRAPI_IP}${article.thumbnail.url}`
+								: `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
 						}
 						width="0"
 						height="0"

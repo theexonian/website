@@ -28,7 +28,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 								src={
 									thumbnail.url.startsWith("http")
 										? thumbnail.url 
-										: `https://${Constants.STRAPI_IP}${thumbnail.url}`
+										: `http://${Constants.STRAPI_IP}:1337${thumbnail.url}`
 								}
 								width="0"
 								height="0"

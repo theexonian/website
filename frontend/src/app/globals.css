@@ -77,3 +77,12 @@ a {
 		@apply bg-background text-foreground;
 	}
 }
+
+@font-face {
+  font-family: "Bodoni 72";
+  src: url("/fonts/Bodoni72.woff2") format("woff2"),
+       url("/fonts/Bodoni72.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
