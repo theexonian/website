@@ -43,9 +43,9 @@ export default async function ArticlePreview({
   return (
     <div className="w-full p-2 border-neutral-300 border-b box-border">
       <Link href={`/articles/${article.slug}`}>
-        {article.thumbnail && thumbnailRatio && (
+        {article.thumbnail && (
 		<div className="w-full">
-          <div className={`relative w-full ${ratioClass}`}>
+          <div className={`relative w-full ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
             <Image
               src={
                 article.thumbnail.url.startsWith("http")
@@ -60,24 +60,22 @@ export default async function ArticlePreview({
               alt={article.description ? article.description: "Article image"}
             />			
           </div>
-		<p className="text-[7px] font-sans text-neutral-500 w-full text-right -mt-2">
-          {credit}</p>
+		{credit && <p className="text-[7px] font-sans text-neutral-500 w-full text-right -mt-2">
+          {credit}</p>}
 		</div>
 		)}
 
         <div className="flex items-baseline gap-2">
-          <Link href={`/tag/${article.tag}`}>
-            {showSection && article.tag && !sectionOverride && (
-              <h3 className="font-bold text-red-700 inline-block bg-clip-text text-xs">
-                {article.tag.toUpperCase()}
-              </h3>
-            )}
-            {showSection && sectionOverride && (
-              <h3 className="font-bold text-red-700 inline-block bg-clip-text text-xs">
-                {(sectionOverride ?? "").toUpperCase()}
-              </h3>
-            )}
-          </Link>
+          {showSection && article.tag && !sectionOverride && (
+            <h3 className="font-bold text-red-700 inline-block bg-clip-text text-xs">
+              {article.tag.toUpperCase()}
+            </h3>
+          )}
+          {showSection && sectionOverride && (
+            <h3 className="font-bold text-red-700 inline-block bg-clip-text text-xs">
+              {(sectionOverride ?? "").toUpperCase()}
+            </h3>
+          )}
         </div>
 
         <div className="max-w-[600px]">
@@ -113,7 +111,11 @@ export default async function ArticlePreview({
           );
         })}
         <p className="text-xs text-neutral-500">
-          {new Date(article.publishedAt).toLocaleDateString()}
+          {new Date(article.publishedAt).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+          })}
         </p>
         {/* </div> */}
       </div>
