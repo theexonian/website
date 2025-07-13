@@ -3,8 +3,30 @@ import FancyBigTitle from "@/components/FancyBigTitle";
 export default function Page() {
 	return (
 		<>
-			<FancyBigTitle title="Exonian Web Boards" lowerText="15 boards and counting."/>
-			<div className="prose md:prose-sm font-serif">
+			<div className="font-serif py-8 text-center">
+				<h1 className="text-6xl lg:text-5xl md:text-3xl font-semibold">
+					<i>The Exonian</i> Web Board
+				</h1>
+			</div>
+			<div className="prose md:prose-sm font-serif mx-auto">
+					<hr className="border-neutral-600" />
+				<div>
+					<h2>The 16th Exonian Web Board</h2>
+					<h3>Chief Digital Editors</h3>
+					<p>Max Liu '26</p>
+					<p>Sophie Yu '26</p>
+					<h3>Technical Directors</h3>
+					<p>Aaditya Bilakanti '28</p>
+					<p>Gavin Zhao '28</p>
+					<h3>Head Section Editor and Designers</h3>
+					<p>June Kim '26</p>
+					<p>Marvin Shim '27</p>
+					<h3>Section Editors</h3>
+					<p>Evan Chen '28</p>
+					<p>Carol Lee '28</p>
+					<p>Andy Liu '28</p>
+				</div>
+					<hr className="border-neutral-600" />
 				<div>
 					<h2>The 15th Exonian Web Board</h2>
 					<h3>Chief Digital Editors</h3>

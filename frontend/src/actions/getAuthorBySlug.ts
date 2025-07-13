@@ -13,6 +13,14 @@ export async function getAuthorBySlug(slug: string) {
 		populate: {
 			articles: {
 				fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
+				sort: ['createdAt:desc', 'z:asc'],
+				populate: {
+			thumbnail: {
+				fields: ['url'],
+			},
+			authors: {
+				fields: ['fullname', 'slug'],
+			}}
 			},
 			picture: {
 				fields: ['url'],
@@ -20,11 +28,18 @@ export async function getAuthorBySlug(slug: string) {
 		},
 	});
 
-	const body: Array<Author> = await fetchCached(`http://${Constants.STRAPI_IP}:1337/api/users?${query}`, {
+	const body: Array<Author> = await fetchCached(`https://${Constants.STRAPI_IP}/api/users?${query}`, {
 		headers: {
 			Authorization: `Bearer ${process.env.STRAPI_API}`,
 		},
 	});
 
-	return body[0];
+	const author = body[0];
+	if (author && author.articles) {
+		author.articles = Array.from(
+			new Map(author.articles.map(article => [article.slug, article])).values()
+		);
+	}
+
+	return author;
 }

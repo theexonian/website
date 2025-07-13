@@ -179,7 +179,7 @@ export function Speechify({ inputText }: SpeechifyProps) {
 	return (
 		<div className={`flex items-center gap-2 hover:cursor-pointer text-red-700 ${showAudio ? "text-red-900" : " "}`} onClick={handleConvert}>
 			<MdOutlineSpatialAudioOff className="text-xl"/>
-			Listen, powered by Speechify
+			Listen to this article
 			<audio
 				ref={audioRef}
 				controls

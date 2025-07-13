@@ -11,6 +11,7 @@ export async function getArticlesByTag(tag: string) {
 			},
 		},
 		fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
+		sort: ['createdAt:desc', 'z:asc'],
 		populate: {
 			thumbnail: {
 				fields: ['url'],
@@ -22,7 +23,7 @@ export async function getArticlesByTag(tag: string) {
 	});
 
 	const body: ArticlesResponse = await fetchCached(
-		`http://${Constants.STRAPI_IP}:1337/api/articles?${query}`,
+		`https://${Constants.STRAPI_IP}/api/articles?${query}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.STRAPI_API}`,

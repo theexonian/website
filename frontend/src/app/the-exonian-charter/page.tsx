@@ -4,12 +4,12 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<>
-			<div className="font-serif py-5">
-				<h1 className="text-6xl lg:text-5xl md:text-3xl font-semibold -my-2">
+			<div className="font-serif py-5 text-center">
+				<h1 className="text-6xl lg:text-5xl md:text-3xl font-semibold">
 					<i>The Exonian</i> Charter
 				</h1>
 			</div>
-			<div className="prose md:prose-sm font-serif">
+			<div className="prose md:prose-sm font-serif mx-auto">
 				<h2>
 					<i>The Exonian</i> Bylaws
 				</h2>
@@ -149,7 +149,7 @@ export default function Page() {
 					</li>
 				</ul>
 			</div>
-			<div className="prose font-serif">
+			<div className="prose font-serif mx-auto">
 				<h2><i>The Exonian</i> Values Statement</h2>
 				<p>
 					<em>

@@ -3,10 +3,12 @@
 import "animate.css";
 import Image from "next/image";
 import { FaArchive, FaInstagram, FaSearch } from "react-icons/fa";
-import { RiArchive2Line } from "react-icons/ri";
+import { RiArchive2Line, RiYoutubeLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { getIssues } from '@/actions/getIssues';
 import {
 	Menubar,
 	MenubarContent,
@@ -16,8 +18,27 @@ import {
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
-
+import { useUser } from '@clerk/nextjs';
+import SignInButton from '@/components/SignIn';
 export default function Navbar() {
+	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+
+	useEffect(() => {
+		async function fetchLatestIssue() {
+			try {
+				const issues = await getIssues();
+				if (issues && issues.length > 0) {
+					// Issues are already sorted by slug:desc, so first one is the latest
+					setLatestIssuePdfUrl(issues[0].pdf.url);
+				}
+			} catch (error) {
+				console.error('Failed to fetch latest issue:', error);
+			}
+		}
+		
+		fetchLatestIssue();
+	}, []);
+
 	const currentDate = new Date();
 	const monthNames = [
 		"Jan",
@@ -42,25 +63,26 @@ export default function Navbar() {
 		"Friday",
 		"Saturday",
 	];
-	function appendSuffix(number: number): string {
-		const suffixes = ["th", "st", "nd", "rd"];
-		const remainder = number % 100;
-		const suffix =
-			suffixes[(remainder - 20) % 10] ||
-			suffixes[remainder] ||
-			suffixes[0];
-		return number + suffix;
-	}
+	// function appendSuffix(number: number): string {
+	// 	const suffixes = ["th", "st", "nd", "rd"];
+	// 	const remainder = number % 100;
+	// 	const suffix =
+	// 		suffixes[(remainder - 20) % 10] ||
+	// 		suffixes[remainder] ||
+	// 		suffixes[0];
+	// 	return number + suffix;
+	// }
 	var dateString =
 		weekNames[currentDate.getDay()] +
 		", " +
 		monthNames[currentDate.getMonth()] +
 		" " +
-		appendSuffix(currentDate.getDate()) +
+		currentDate.getDate() +
 		", " +
 		currentDate.getFullYear();
 
-	const router = useRouter()
+	const router = useRouter();
+	const {isSignedIn} = useUser();
 
 	return (
 		<>
@@ -74,6 +96,26 @@ export default function Navbar() {
 					</Link>
 				</p>
 				<p>
+					<Link href="/masthead" className="hover:text-red-400">
+						Masthead
+					</Link>{" "}
+					|{" "}
+					<Link href="/about" className="hover:text-red-400">
+						About
+					</Link>{" "}
+					|{" "}
+					<Link href="/webboard" className="hover:text-red-400">
+						Web Board
+					</Link>{" "}
+					|{" "}
+					<Link href="/the-exonian-charter" className="hover:text-red-400">
+						Exonian Charter
+					</Link>{" "}
+					|{" "}
+					<Link href="/privacy-and-content-use" className="hover:text-red-400">
+						Media Policy
+					</Link>{" "}
+					|{" "}
 					<Link
 						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
 						className="hover:text-red-400"
@@ -81,13 +123,7 @@ export default function Navbar() {
 						Subscribe
 					</Link>{" "}
 					|{" "}
-					<Link href="/masthead" className="hover:text-red-400">
-						Masthead
-					</Link>{" "}
-					|{" "}
-					<Link href="/about" className="hover:text-red-400">
-						About
-					</Link>
+					<SignInButton />
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
@@ -114,18 +150,36 @@ export default function Navbar() {
 									</div>
 								</MenubarTrigger>
 								<MenubarContent>
-									<MenubarItem>Home</MenubarItem>
-									<MenubarItem>News</MenubarItem>
-									<MenubarItem>Life</MenubarItem>
-									<MenubarItem>Opinions</MenubarItem>
-									<MenubarItem>Sports</MenubarItem>
-									<MenubarItem>Humor</MenubarItem>
-									<MenubarItem>Crossword</MenubarItem>
-									<MenubarItem>Archive</MenubarItem>
-									<MenubarItem>Latest Issue</MenubarItem>
+									<MenubarItem>
+										<Link href="/">Home</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/news">News</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/life">Life</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/oped">Opinions</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/sports">Sports</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/tag/humor">Humor</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="https://crossword.theexonian.net">Crossword</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href="/pdf-exonian-archive">Archive</Link>
+									</MenubarItem>
+									<MenubarItem>
+										<Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
+									</MenubarItem>
 								</MenubarContent>
 							</MenubarMenu>
-						</Menubar>
+        				</Menubar>
 					</div>
 					{dateString + " "}
 					<div className="flex items-center pl-2 gap-3 text-neutral-700">
@@ -134,6 +188,13 @@ export default function Navbar() {
 							target="_blank"
 						>
 							<FaInstagram className="text-lg" />
+						</Link>
+						<Link
+							href="https://www.youtube.com/@TheExonian"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<RiYoutubeLine className="text-lg" />
 						</Link>
 						<Link
 							href="https://archive.theexonian.com"
@@ -159,56 +220,34 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul
-					className={
-						"flex flex-row md:hidden text-xs gap-8 py-2 text-neutral-800"
-					}
-				>
-					<Link href="/">
-						<li className="hover:text-neutral-500 duration-200">
-							Home
-						</li>
-					</Link>
-					<Link href="/tag/news">
-						<li className="hover:text-neutral-500 duration-200">
-							News
-						</li>
-					</Link>
-					<Link href="/tag/life">
-						<li className="hover:text-neutral-500 duration-200">
-							Life
-						</li>
-					</Link>
-					<Link href="/tag/oped">
-						<li className="hover:text-neutral-500 duration-200">
-							Opinions
-						</li>
-					</Link>
-					<Link href="/tag/sports">
-						<li className="hover:text-neutral-500 duration-200">
-							Sports
-						</li>
-					</Link>
-					<Link href="/tag/humor">
-						<li className="hover:text-neutral-500 duration-200">
-							Humor
-						</li>
-					</Link>
-					<Link href="https://crossword.theexonian.net">
-						<li className="hover:text-neutral-500 duration-200">
-							Crossword
-						</li>
-					</Link>
-					<Link href="/pdf-exonian-archive">
-						<li className="hover:text-neutral-500 duration-200">
-							Archive
-						</li>
-					</Link>
-					<Link href="">
-						<li className="hover:text-neutral-500 duration-200">
-							Latest Issue
-						</li>
-					</Link>
+				<ul className="flex flex-row md:hidden text-xs gap-8 py-2 text-neutral-800">
+    				<li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/">Home</Link>
+ 				   </li>
+ 				   <li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/tag/news">News</Link>
+  				  </li>
+				    <li className="hover:text-neutral-500 duration-200">
+  					      <Link href="/tag/life">Life</Link>
+ 				   </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+   					     <Link href="/tag/oped">Opinions</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+      				  <Link href="/tag/sports">Sports</Link>
+  				  </li>
+   				 <li className="hover:text-neutral-500 duration-200">
+   				     <Link href="/tag/humor">Humor</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+  				      <Link href="https://crossword.theexonian.net">Crossword</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+  				      <Link href="/pdf-exonian-archive">Archive</Link>
+  				  </li>
+  				  <li className="hover:text-neutral-500 duration-200">
+   				     <Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
+   				 </li>
 				</ul>
 			</div>
 		</>
