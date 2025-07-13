@@ -60,34 +60,56 @@ export default function Navbar() {
 							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Home</span>
 							</Link>
-							<Link href="/news">
+							<Link href="/about">
+								<span className="hover:text-neutral-500 duration-200">About</span>
+							</Link>
+							<Link href="/webboard">
+								<span className="hover:text-neutral-500 duration-200">Web Board</span>
+							</Link>
+							<Link href="/masthead">
+								<span className="hover:text-neutral-500 duration-200">Masthead</span>
+							</Link>
+						</div>				
+						<div className="flex flex-col">
+							<Link href="/tag/news">
 								<span className="hover:text-neutral-500 duration-200">News</span>
 							</Link>
-							<Link href="">
+							<Link href="/tag/life">
 								<span className="hover:text-neutral-500 duration-200">Life</span>
 							</Link>
-							<Link href="">
+							<Link href="/tag/oped">
 								<span className="hover:text-neutral-500 duration-200">Opinions</span>
 							</Link>
-							<Link href="">
+							<Link href="/tag/sports">
 								<span className="hover:text-neutral-500 duration-200">Sports</span>
 							</Link>
-						</div>
-						<div className="flex flex-col">
 							<Link href="/tag/humor">
 								<span className="hover:text-neutral-500 duration-200">Humor</span>
 							</Link>
-							<Link href="https://crossword.theexonian.net">
-								<span className="hover:text-neutral-500 duration-200">Crossword</span>
-							</Link>
+						</div>
+						<div className="flex flex-col">
 							<Link href="/pdf-exonian-archive">
-								<span className="hover:text-neutral-500 duration-200">Archive</span>
+								<span className="hover:text-neutral-500 duration-200">Web Archive</span>
 							</Link>
 							<Link href={latestIssuePdfUrl} target="_blank">
 								<span className="hover:text-neutral-500 duration-200">Latest Issue</span>
 							</Link>
 							<Link href="https://archive.theexonian.com">
-								<span className="hover:text-neutral-500 duration-200">Historical Archive</span>
+								<span className="hover:text-neutral-500 duration-200">Historical Archives</span>
+							</Link>
+							<Link href="https://crossword.theexonian.net">
+								<span className="hover:text-neutral-500 duration-200">Crossword</span>
+							</Link>
+						</div>
+						<div className="flex flex-col">
+							<Link href="/the-exonian-charter">
+								<span className="hover:text-neutral-500 duration-200">Exonian Charter</span>
+							</Link>
+							<Link href="/privacy-and-content-use">
+								<span className="hover:text-neutral-500 duration-200">Media Policy</span>
+							</Link>
+							<Link href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2">
+								<span className="hover:text-neutral-500 duration-200">Subscribe</span>
 							</Link>
 						</div>
 					</div>
