@@ -55,7 +55,9 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
   return (
     <>
       <div className="">
-        {Object.keys(groupedIssues).map((board: string) => (
+        {Object.keys(groupedIssues)
+          .sort((a, b) => Number(b) - Number(a)) // Sort boards in descending order (newest first)
+          .map((board: string) => (
           <div key={board} className="font-serif pt-3">
             <h4 className="text-2xl">
               <strong>
@@ -76,7 +78,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                       />
                       <div
                         className={
-                          "bg-[#ffffffa0] bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" +
+                          "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" +
                           (windowSize.width < 768 ? "" : " pl-5")
                         }
                       >
@@ -101,7 +103,6 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                       </div>
                     </div>
                   </Link>
-                  <IssuePreview issue={issue}/>
                 </p>
               ))}{" "}
             </div>

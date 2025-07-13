@@ -18,7 +18,7 @@ export async function getArticleByZIndex(z: number, section: string) {
 	});
 
 	const body: ArticlesResponse = await fetchCached(
-		`http://${Constants.STRAPI_IP}:1337/api/articles?${query}`,
+		`https://${Constants.STRAPI_IP}/api/articles?${query}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.STRAPI_API}`,

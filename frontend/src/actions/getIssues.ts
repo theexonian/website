@@ -11,7 +11,7 @@ export async function getIssues() {
 
   try {
     const res: IssuesResponse = await fetchCached(
-      `http://${Constants.STRAPI_IP}/api/past-issues?${query}`,
+      `https://${Constants.STRAPI_IP}/api/past-issues?${query}`,
       { headers: { Authorization: `Bearer ${process.env.STRAPI_API}` } }
     );
 

@@ -7,6 +7,8 @@ import { RiArchive2Line, RiYoutubeLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { getIssues } from '@/actions/getIssues';
 import {
 	Menubar,
 	MenubarContent,
@@ -19,6 +21,24 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 export default function Navbar() {
+	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+
+	useEffect(() => {
+		async function fetchLatestIssue() {
+			try {
+				const issues = await getIssues();
+				if (issues && issues.length > 0) {
+					// Issues are already sorted by slug:desc, so first one is the latest
+					setLatestIssuePdfUrl(issues[0].pdf.url);
+				}
+			} catch (error) {
+				console.error('Failed to fetch latest issue:', error);
+			}
+		}
+		
+		fetchLatestIssue();
+	}, []);
+
 	const currentDate = new Date();
 	const monthNames = [
 		"Jan",
@@ -155,7 +175,7 @@ export default function Navbar() {
 										<Link href="/pdf-exonian-archive">Archive</Link>
 									</MenubarItem>
 									<MenubarItem>
-										<Link href="">Latest Issue</Link>
+										<Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
 									</MenubarItem>
 								</MenubarContent>
 							</MenubarMenu>
@@ -226,7 +246,7 @@ export default function Navbar() {
   				      <Link href="/pdf-exonian-archive">Archive</Link>
   				  </li>
   				  <li className="hover:text-neutral-500 duration-200">
-   				     <Link href="">Latest Issue</Link>
+   				     <Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
    				 </li>
 				</ul>
 			</div>
