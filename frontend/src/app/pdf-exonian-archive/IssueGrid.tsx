@@ -65,7 +65,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
             <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5">
               {groupedIssues[Number(board)].map((issue, index) => (
                 <p key={index}>
-                  {/* <Link href={issue.pdf.url} target="_blank">
+                  <Link href={issue.pdf.url} target="_blank">
                     <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 min-w-full">
                       <Image
                         src={issue.thumbnail.url}
@@ -100,7 +100,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                         </span>
                       </div>
                     </div>
-                  </Link> */}
+                  </Link>
                   <IssuePreview issue={issue}/>
                 </p>
               ))}{" "}

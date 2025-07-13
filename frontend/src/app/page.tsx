@@ -1,6 +1,5 @@
 import ArticlePreview from '@/components/ArticlePreview';
 // import IssuePreview from '@/components/ArticlePreview';
-import ProtectedLayout from '@/components/protected-layout';
 import Image from "next/image";
 // import { getIssues } from '@/actions/getIssues';
 

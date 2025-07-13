@@ -5,12 +5,12 @@ import 'animate.css';
 import { Analytics } from "@vercel/analytics/react"
 import NewsletterPopup from '@/components/NewsletterPopup';
 import { ClerkProvider } from "@clerk/nextjs";
+
 export const metadata = {
 	title: 'The Exonian | Phillips Exeter Academy',
 	description:
 		'The Exonian is the oldest continuously-running prepatory school newspaper in the country',
 };
-import ProtectedLayout from '@/components/protected-layout';
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

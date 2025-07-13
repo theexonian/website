@@ -5,6 +5,11 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
+  // In development mode, bypass authentication for all routes
+  if (process.env.NODE_ENV === 'development') {
+    return;
+  }
+
   const { userId, redirectToSignIn } = await auth();
 
   if (!userId && isProtectedRoute(req)) {
