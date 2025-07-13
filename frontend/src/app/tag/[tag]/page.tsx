@@ -20,37 +20,34 @@ export default async function Page({ params }: { params: { tag: string } }) {
 				<hr className="border-red-600 w-1/2 border-[1px]" />
 			</div>
 			
-			<div className="w-3/4 flex flex-col justify-center font-serif py-10 px-3">
-				{articles.map((article, i) => {
-					return <RowPreview key={i} article={article} />;
-				})}
-			</div>
-			{ /*
+			{/* Grid layout similar to home page */}
 			<div className="grid grid-cols-4 md:grid-cols-1">
-				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-r">
+				{/* Left column - featured article */}
+				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-r md:border-none md:order-1">
 					{articles[0] && <PreviewCenter article={articles[0]} />}
+					{articles[3] && <RowPreview article={articles[3]} />}
+					{articles[4] && <RowPreview article={articles[4]} />}
 				</div>
-				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
+				
+				{/* Right column - additional articles */}
+				<div className="col-span-2 px-4 2xl:px-8 md:order-2">
 					{articles[1] && <Preview article={articles[1]} />}
-				</div>
-				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
 					{articles[2] && <Preview article={articles[2]} />}
+					{articles[5] && <Preview article={articles[5]} />}
+					{articles[6] && <Preview article={articles[6]} />}
 				</div>
 			</div>
-			<div className="py-7 md:py-2"></div>
-			<div className="grid grid-cols-4 md:grid-cols-1">
-				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					{articles[3] && <Preview article={articles[3]} />}
+
+			{/* Additional articles in row format if there are more */}
+			{articles.length > 7 && (
+				<div className="py-7 md:py-2">
+					<div className="w-full flex flex-col justify-center font-serif px-3">
+						{articles.slice(7).map((article, i) => {
+							return <RowPreview key={i + 7} article={article} />;
+						})}
+					</div>
 				</div>
-				<div className="col-span-1 md:col-span-2 px-4 2xl:px-8">
-					{articles[4] && <Preview article={articles[4]} />}
-				</div>
-				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-l">
-					{articles[5] && <PreviewCenter article={articles[5]} />}
-				</div>
-			</div>
-			<div className="py-7 md:py-2"></div>
-			*/ }
+			)}
 		</>
 	);
 }

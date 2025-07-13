@@ -30,40 +30,40 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
               <Link href={`/tag/${tag}`}>{tag ? tag.toUpperCase() : ""}</Link>
             </h3>
           )}
+        </div>
+
+        <Link href={`/articles/${slug}`} className="hover:no-underline">
+          <h1 className="font-serif text-xl group-hover:underline underline-offset-4 duration-200 font-medium ">
+            {title}
+          </h1>
+          <div className="py-2">
+            <p className="text-xs text-[#4E4E4E] duration-200 line-clamp-4 overflow-hidden">
+              {description}
+            </p>
+          </div>
+        </Link>
+
+        <div className="pt-2">
+          <p className="text-xs text-[#6C6C6C] duration-200 font-sans">
+            By&nbsp;
+            {authors &&
+              authors.map((author, i) => (
+                <Link
+                  className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
+                  key={i}
+                  href={`/writers/${author.slug}`}
+                >
+                  {author.fullname}
+                  {authors.length - 1 !== i && ", "}
+                </Link>
+              ))}
+          </p>
           {publishedAt && (
             <p className="text-xs text-[#6C6C6C] inline-block bg-clip-text">
               {new Date(publishedAt).toLocaleDateString()}
             </p>
           )}
         </div>
-
-        {/* <div className="group"> */}
-          <Link href={`/articles/${slug}`} className="hover:no-underline">
-            <h1 className="font-serif text-xl group-hover:underline underline-offset-4 duration-200 font-medium ">
-              {title}
-            </h1>
-            <div className="py-2">
-              <p className="text-xs text-[#4E4E4E] duration-200 line-clamp-4 overflow-hidden">
-                {description}
-              </p>
-            </div>
-          </Link>
-        {/* </div> */}
-
-        <p className="text-xs text-[#6C6C6C] duration-200 font-sans">
-          By&nbsp;
-          {authors &&
-            authors.map((author, i) => (
-              <Link
-                className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
-                key={i}
-                href={`/writers/${author.slug}`}
-              >
-                {author.fullname}
-                {authors.length - 1 !== i && ", "}
-              </Link>
-            ))}
-        </p>
       </div>
 
       {thumbnail?.url && (
