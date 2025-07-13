@@ -9,7 +9,7 @@ export default async function PdfArchivePage() {
     <>
       <FancyBigTitle title="PDF Exonian Archives" />
       <p>
-        Click on a recent issue below to access the full PDF. We are working on uploading issues dating back to September 2013. Older issues are available at&nbsp;
+        Click on a recent issue below to access the full PDF. Older issues are available at&nbsp;
         <Link href="https://archive.theexonian.com">archive.theexonian.com</Link>.
       </p>
 
