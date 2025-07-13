@@ -30,7 +30,7 @@ export default function Navbar() {
 							<i>Established 1878.</i>
 						</p>
 						<p className="font-serif text-neutral-500 text-xs py-3">
-							<i>Website created by the 147th, 146th, & 145th Web Boards. Ideation by Byran Huang &apos;25 and Eric Li &apos;25</i>.
+							<i>Created by the 16th, 15th, & 14th Web Boards. Launched by the 16th Web Board.</i>
 						</p>
 					</div>
 					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-neutral-600">

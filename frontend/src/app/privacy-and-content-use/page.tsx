@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<>
-			<div className="prose md:prose-sm font-serif">
+			<div className="prose md:prose-sm font-serif mx-auto">
 				<FancyBigTitle title="Media and Content Use Policy" />
 				<p>
 					<em>

@@ -76,19 +76,31 @@ export default function Navbar() {
 					</Link>
 				</p>
 				<p>
-					<Link
-						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
-						className="hover:text-red-400"
-					>
-						Subscribe
-					</Link>{" "}
-					|{" "}
 					<Link href="/masthead" className="hover:text-red-400">
 						Masthead
 					</Link>{" "}
 					|{" "}
 					<Link href="/about" className="hover:text-red-400">
 						About
+					</Link>{" "}
+					|{" "}
+					<Link href="/webboard" className="hover:text-red-400">
+						Web Board
+					</Link>{" "}
+					|{" "}
+					<Link href="/the-exonian-charter" className="hover:text-red-400">
+						Exonian Charter
+					</Link>{" "}
+					|{" "}
+					<Link href="/privacy-and-content-use" className="hover:text-red-400">
+						Media Policy
+					</Link>{" "}
+					|{" "}
+					<Link
+						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
+						className="hover:text-red-400"
+					>
+						Subscribe
 					</Link>{" "}
 					|{" "}
 					<SignInButton />

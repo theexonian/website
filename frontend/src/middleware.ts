@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
-  '/articles(.*)', '/masthead', '/about', '/tag(.*)', '/pdf-exonian-archive'
+  '/articles(.*)', '/tag(.*)', '/pdf-exonian-archive'
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
@@ -15,8 +15,6 @@ export default clerkMiddleware(async (auth, req) => {
 export const config = {
   matcher: [
     '/articles(.*)',
-    '/masthead',
-    '/about',
     '/tag(.*)',
     '/pdf-exonian-archive',
     '/(api|trpc)(.*)',
