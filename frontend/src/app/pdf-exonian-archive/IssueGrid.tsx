@@ -42,7 +42,6 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
   }, []);
 
   // Groups issues by board e.g.: {1: [issue1, issue2], 2: [issue3, issue4]}
-
   const groupedIssues = issues.reduce((acc, issue) => {
     const { board } = issue;
     if (!acc[board]) {
@@ -51,6 +50,14 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
     acc[board].push(issue);
     return acc;
   }, {} as Record<number, Issue[]>);
+
+  Object.keys(groupedIssues).forEach(board => {
+    groupedIssues[Number(board)].sort((a, b) => {
+      const issueNumberA = parseInt(String(a.slug).slice(3));
+      const issueNumberB = parseInt(String(b.slug).slice(3));
+      return issueNumberB - issueNumberA; // Sort in descending order (newest issues first)
+    });
+  });
 
   return (
     <>
