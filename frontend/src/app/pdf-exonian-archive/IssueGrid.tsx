@@ -27,6 +27,11 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
     height: 0,
   });
 
+  // Debug logging
+  console.log('Total issues received:', issues.length);
+  console.log('Issues for board 146:', issues.filter(issue => issue.board === 146));
+  console.log('All board numbers:', Array.from(new Set(issues.map(issue => issue.board))).sort((a, b) => b - a));
+
   useEffect(() => {
     function handleResize() {
       setWindowSize({
