@@ -4,9 +4,18 @@ const isProtectedRoute = createRouteMatcher([
   '/articles(.*)', '/tag(.*)', '/pdf-exonian-archive'
 ]);
 
+const isPublicRoute = createRouteMatcher([
+  '/sign-in(.*)', '/sign-up(.*)', '/', '/masthead', '/about', '/webboard', '/the-exonian-charter', '/privacy-and-content-use'
+]);
+
 export default clerkMiddleware(async (auth, req) => {
   // In development mode, bypass authentication for all routes
   if (process.env.NODE_ENV === 'development') {
+    return;
+  }
+
+  // Always allow public routes
+  if (isPublicRoute(req)) {
     return;
   }
 

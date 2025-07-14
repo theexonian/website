@@ -1,10 +1,12 @@
 'use client';
 
 import { useUser, useClerk } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 export default function SignInButton() {
   const { user, isLoaded } = useUser();
   const clerk = useClerk();
+  const router = useRouter();
 
   if (isLoaded && user) {
     return (
@@ -15,7 +17,10 @@ export default function SignInButton() {
   }
 
   return (
-    <button onClick={() => clerk.redirectToSignIn()} className="hover:text-red-400">
+    <button 
+      onClick={() => router.push('/sign-in')} 
+      className="hover:text-red-400"
+    >
       Sign in
     </button>
   );
