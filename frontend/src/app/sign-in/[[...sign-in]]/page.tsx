@@ -8,7 +8,7 @@ export default function Page() {
   const isDevelopment = process.env.NODE_ENV === 'development';
   
   // Temporarily use Clerk's default component to test
-  const useDefaultClerkUI = true;
+  const useDefaultClerkUI = false;
   
   return (
     <div className="flex min-h-screen items-start justify-center bg-white pt-20">
@@ -32,18 +32,28 @@ export default function Page() {
         </div>
         
         {useDefaultClerkUI ? (
-          <SignIn 
-            appearance={{
-              elements: {
-                formButtonPrimary: "bg-black hover:bg-gray-800",
-                card: "shadow-lg border-0",
+          <div>
+            <SignIn 
+              appearance={{
+                elements: {
+                  formButtonPrimary: "bg-black hover:bg-gray-800",
+                  card: "shadow-lg border-0",
+                }
+              }}
+              routing="path"
+              path="/sign-in"
+              redirectUrl="/"
+              signUpUrl="/sign-up"
+              fallback={
+                <div className="text-center p-8 bg-red-50 border border-red-200 rounded">
+                  <p className="text-red-600 font-semibold">Authentication Error</p>
+                  <p className="text-sm text-red-500 mt-2">
+                    There's an issue with the authentication configuration. Please check the console for details.
+                  </p>
+                </div>
               }
-            }}
-            routing="path"
-            path="/sign-in"
-            redirectUrl="/"
-            signUpUrl="/sign-up"
-          />
+            />
+          </div>
         ) : (
           <CustomEmailSignIn />
         )}

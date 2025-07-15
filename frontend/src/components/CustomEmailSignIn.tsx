@@ -47,11 +47,31 @@ export default function CustomEmailSignIn() {
     return (
       <div className="w-full max-w-md mx-auto">
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-black mx-auto mb-4"></div>
           <p className="text-gray-600 mb-4">Loading authentication...</p>
           <p className="text-xs text-gray-500">
-            If this takes too long, there might be a configuration issue with the authentication service.
+            If this takes too long, please refresh the page.
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  // If Clerk is not available, show fallback
+  if (!signIn) {
+    return (
+      <div className="w-full max-w-md mx-auto">
+        <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 text-center">
+          <p className="text-red-600 font-semibold mb-2">Authentication Service Unavailable</p>
+          <p className="text-sm text-gray-600 mb-4">
+            There's an issue connecting to the authentication service.
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+          >
+            Retry
+          </button>
         </div>
       </div>
     );
