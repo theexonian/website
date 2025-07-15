@@ -2,13 +2,13 @@ import { SignUp } from '@clerk/nextjs';
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white">
+    <div className="flex min-h-screen items-start justify-center bg-white pt-20">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900" style={{ fontFamily: '"Bodoni 72", serif' }}>
+          <h1 className="text-3xl font-bold text-gray-900 font-serif">
             Join The Exonian
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-4 text-gray-600">
             Create your account to get started
           </p>
         </div>
@@ -36,6 +36,20 @@ export default function Page() {
             redirectUrl="/"
             signInUrl="/sign-in"
           />
+        </div>
+        
+        {/* The Exonian Logo */}
+        <div className="flex justify-center mt-8">
+          <div className="text-center">
+            <img 
+              src="/logo.png" 
+              alt="The Exonian Logo" 
+              className="h-24 w-auto mx-auto mb-3 drop-shadow-lg"
+            />
+            <p className="text-xs text-gray-500 font-serif">
+              The Exonian is the oldest continuously-running preparatory school newspaper in America.
+            </p>
+          </div>
         </div>
       </div>
     </div>

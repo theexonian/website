@@ -18,7 +18,7 @@ export default function Page() {
             Welcome to The Exonian
           </h1>
           <p className="mt-4 text-gray-600">
-            Sign in with your Exeter associated email to access The Exonian's content!
+            Please sign in with your Exeter associated email to access The Exonian's content!
           </p>
           {isDevelopment && (
             <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded text-sm text-yellow-800">
@@ -58,6 +58,20 @@ export default function Page() {
         ) : (
           <CustomEmailSignIn />
         )}
+        
+        {/* The Exonian Logo */}
+        <div className="flex justify-center mt-8">
+          <div className="text-center">
+            <img 
+              src="/logo.png" 
+              alt="The Exonian Logo" 
+              className="h-24 w-auto mx-auto mb-3 drop-shadow-lg"
+            />
+            <p className="text-xs text-gray-500 font-serif">
+              The Exonian is the oldest continuously-running preparatory school newspaper in America.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
