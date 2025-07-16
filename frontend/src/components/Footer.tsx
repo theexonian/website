@@ -5,9 +5,13 @@ import "animate.css";
 import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { getIssues } from '@/actions/getIssues';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
 	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+	const { isSignedIn } = useUser();
+	const router = useRouter();
 
 	useEffect(() => {
 		async function fetchLatestIssue() {
@@ -24,6 +28,16 @@ export default function Navbar() {
 		
 		fetchLatestIssue();
 	}, []);
+
+	const handleLatestIssueClick = (e: React.MouseEvent) => {
+		// Allow access in development mode or if signed in
+		const isDev = process.env.NODE_ENV === 'development';
+		if (!isSignedIn && !isDev) {
+			e.preventDefault();
+			router.push('/sign-in');
+		}
+		// If signed in or in dev mode, the link will work normally
+	};
 
 	return (
 		<>
@@ -91,7 +105,7 @@ export default function Navbar() {
 							<Link href="/pdf-exonian-archive">
 								<span className="hover:text-neutral-500 duration-200">Web Archive</span>
 							</Link>
-							<Link href={latestIssuePdfUrl} target="_blank">
+							<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>
 								<span className="hover:text-neutral-500 duration-200">Latest Issue</span>
 							</Link>
 							<Link href="https://archive.theexonian.com">

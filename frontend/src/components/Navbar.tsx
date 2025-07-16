@@ -39,6 +39,16 @@ export default function Navbar() {
 		fetchLatestIssue();
 	}, []);
 
+	const handleLatestIssueClick = (e: React.MouseEvent) => {
+		// Allow access in development mode or if signed in
+		const isDev = process.env.NODE_ENV === 'development';
+		if (!isSignedIn && !isDev) {
+			e.preventDefault();
+			router.push('/sign-in');
+		}
+		// If signed in or in dev mode, the link will work normally
+	};
+
 	const currentDate = new Date();
 	const monthNames = [
 		"Jan",
@@ -175,7 +185,7 @@ export default function Navbar() {
 										<Link href="/pdf-exonian-archive">Archive</Link>
 									</MenubarItem>
 									<MenubarItem>
-										<Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
+										<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 									</MenubarItem>
 								</MenubarContent>
 							</MenubarMenu>
@@ -246,7 +256,7 @@ export default function Navbar() {
   				      <Link href="/pdf-exonian-archive">Archive</Link>
   				  </li>
   				  <li className="hover:text-neutral-500 duration-200">
-   				     <Link href={latestIssuePdfUrl} target="_blank">Latest Issue</Link>
+   				     <Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
    				 </li>
 				</ul>
 			</div>
