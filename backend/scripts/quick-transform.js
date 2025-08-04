@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Your current file path
-const INPUT_FILE = './data/dated_OPED.json';
-const OUTPUT_FILE = './data/oped-articles.json';
+const INPUT_FILE = './data/dated_NEWS.json';
+const OUTPUT_FILE = './data/news-articles.json';
 
 function quickTransform() {
   try {
@@ -22,11 +22,24 @@ function quickTransform() {
     const transformedArticles = originalData
       .filter(article => article.title && article.body) // Only valid articles
       .map(article => {
-        // Extract author email
-        let authorEmail = null;
-        if (article.author && article.author.displayName) {
-          const name = article.author.displayName.toLowerCase().replace(/\s+/g, '.');
-          authorEmail = `${name}@theexonian.net`;
+        // Extract author emails - use authors array if present, otherwise displayName
+        let authorEmails = [];
+        if (article.authors && Array.isArray(article.authors) && article.authors.length > 0) {
+          // Use the authors array
+          authorEmails = article.authors.map(authorName => {
+            // Generate email from author name (no periods between names)
+            return authorName
+              .toLowerCase()
+              .replace(/\s+/g, '')
+              .replace(/[^a-z0-9]/g, '') + '@exonian.com';
+          });
+        } else if (article.author && article.author.displayName) {
+          // Fall back to displayName
+          const authorEmail = article.author.displayName
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .replace(/[^a-z0-9]/g, '') + '@exonian.com';
+          authorEmails = [authorEmail];
         }
 
         // Extract slug from fullUrl
@@ -36,22 +49,27 @@ function quickTransform() {
           slug = urlParts[urlParts.length - 1];
         }
 
-        // Clean content
+        // Clean content - remove HTML tags and let Strapi handle paragraphing
         let content = article.body.trim();
         
-        // Convert to basic HTML if it's plain text
-        if (!content.includes('<p>') && content.includes('\n')) {
-          content = content.split('\n')
-            .filter(line => line.trim())
-            .map(line => `<p>${line.trim()}</p>`)
-            .join('\n');
-        }
+        // Remove any existing HTML tags (especially <p> tags)
+        content = content.replace(/<[^>]*>/g, '');
+        
+        // Add publication note at the beginning
+        const publishedDate = article.publicationDate ? 
+          new Date(article.publicationDate).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          }) : 'Unknown Date';
+        
+        content = `NOTE: This article was originally published on ${publishedDate}.\n\n${content}`;
 
         // Create transformed article
         const transformed = {
           title: article.title,
           content: content,
-          tag: 'oped', // All from OPED file
+          tag: 'life', // All SOTW articles tagged as life
           publishedAt: article.publicationDate ? `${article.publicationDate}T00:00:00.000Z` : null,
           z: 100 // Set z-index to 100 as requested
         };
@@ -61,13 +79,15 @@ function quickTransform() {
           transformed.slug = slug;
         }
 
-        if (authorEmail) {
-          transformed.authors = [authorEmail];
+        if (authorEmails.length > 0) {
+          transformed.authors = authorEmails;
         }
 
-        // Create description from content
+        // Create description from content (without the publication note)
         if (content) {
-          const textContent = content.replace(/<[^>]*>/g, '').substring(0, 150).trim();
+          // Get the original content without the NOTE prefix for description
+          const originalContent = article.body.trim().replace(/<[^>]*>/g, '');
+          const textContent = originalContent.substring(0, 150).trim();
           if (textContent) {
             transformed.description = textContent + '...';
           }
