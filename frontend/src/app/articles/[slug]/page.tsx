@@ -9,9 +9,15 @@ import Link from "next/link";
 import FontChanger from "@/components/ui/fontChanger";
 import PrintArticle from "@/components/ui/printArticle";
 import * as Constants from "@/components/Constants";
+
+// Revalidate this page every 5 minutes
+export const revalidate = 300;
+
 export default async function Page({ params }: { params: { slug: string } }) {
 	const slug = params.slug;
 	const article = await getArticleById(slug);
+
+	if (!article || !article.content) return null;
 
 	const paragraphs = article.content.split("\n").filter((p) => p.trim());
 
@@ -19,8 +25,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const processedParagraphs = paragraphs[0]?.trim().startsWith("By ")
 		? paragraphs.slice(1)
 		: paragraphs;
-
-	if (!article) return null;
 
 	return (
 		<div className="w-full flex justify-center">

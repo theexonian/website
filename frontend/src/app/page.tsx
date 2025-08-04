@@ -3,6 +3,9 @@ import ArticlePreview from '@/components/ArticlePreview';
 import Image from "next/image";
 // import { getIssues } from '@/actions/getIssues';
 
+// Revalidate this page every 5 minutes
+export const revalidate = 300;
+
 export default function Home() {
 	// const issues = await getIssues();
 	// console.log(issues)

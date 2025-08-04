@@ -1,10 +1,9 @@
 export async function fetchCached(url: string, options: RequestInit) {
-	let cache: RequestCache = 'force-cache';
-
-	if (process.env.NODE_ENV === 'development') {
-		cache = 'no-store';
-	}
-	const response = await fetch(url, { cache: cache, ...options });
+	// Use revalidate instead of cache for better performance in production
+	const response = await fetch(url, { 
+		next: { revalidate: 300 }, // Revalidate every 5 minutes
+		...options 
+	});
 
 	const body = await response.json();
 
