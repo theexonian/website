@@ -1,0 +1,28 @@
+{
+  "articles": [
+    {
+      "title": "Sample Article Title",
+      "content": "<p>This is the article content. It can contain HTML formatting.</p><p>Multiple paragraphs are supported.</p>",
+      "description": "A brief description of the article that appears in previews",
+      "tag": "news",
+      "publishedAt": "2024-01-15T10:30:00.000Z",
+      "authors": [
+        "john.doe@example.com",
+        "jane.smith@example.com"
+      ],
+      "thumbnailUrl": "https://example.com/path/to/thumbnail.jpg",
+      "z": 1
+    },
+    {
+      "title": "Another Article Example",
+      "content": "<h2>Sports Update</h2><p>This is a sports article with different formatting.</p>",
+      "description": "Sports news update from the weekend",
+      "tag": "sports",
+      "publishedAt": "2024-01-14T15:45:00.000Z",
+      "authors": [
+        "sports.writer@example.com"
+      ],
+      "z": 2
+    }
+  ]
+}

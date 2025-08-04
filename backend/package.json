@@ -8,7 +8,17 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "import:articles": "node scripts/import-articles.js",
+    "import:articles:enhanced": "node scripts/import-articles-enhanced.js",
+    "import:dry-run": "DRY_RUN=true node scripts/import-articles-enhanced.js",
+    "import:api": "node scripts/import-via-api.js",
+    "import:api:live": "DRY_RUN=false node scripts/import-via-api.js",
+    "transform:squarespace": "node scripts/transform-squarespace.js",
+    "transform:quick": "node scripts/quick-transform.js",
+    "transform:preview": "node scripts/transform-squarespace.js --preview",
+    "fix:news": "STRAPI_API_UPLOAD=\"$STRAPI_API_UPLOAD\" node scripts/fix-news-tags.js",
+    "fix:news:live": "STRAPI_API_UPLOAD=\"$STRAPI_API_UPLOAD\" DRY_RUN=false node scripts/fix-news-tags.js"
   },
   "dependencies": {
     "@abilaker/listmonk": "^1.0.0",
