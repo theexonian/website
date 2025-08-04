@@ -5,7 +5,7 @@ import * as Constants from '@/components/Constants';
 
 export async function getIssues() {
   const query = stringify({
-    sort: 'slug:desc',
+    sort: 'publishDate:desc', // Sort by publish date instead of slug for consistent ordering
     populate: '*',
     'pagination[pageSize]': 100, // Request up to 100 issues to avoid pagination limits
   });

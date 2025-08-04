@@ -27,23 +27,24 @@ export default async function Page({ params }: { params: { tag: string } }) {
 					{articles[0] && <PreviewCenter article={articles[0]} />}
 					{articles[3] && <RowPreview article={articles[3]} />}
 					{articles[4] && <RowPreview article={articles[4]} />}
+					{articles[7] && <RowPreview article={articles[7]} />}
 				</div>
 				
 				{/* Right column - additional articles */}
 				<div className="col-span-2 px-4 2xl:px-8 md:order-2">
-					{articles[1] && <Preview article={articles[1]} />}
-					{articles[2] && <Preview article={articles[2]} />}
-					{articles[5] && <Preview article={articles[5]} />}
-					{articles[6] && <Preview article={articles[6]} />}
+					{articles[1] && <RowPreview article={articles[1]} />}
+					{articles[2] && <RowPreview article={articles[2]} />}
+					{articles[5] && <RowPreview article={articles[5]} />}
+					{articles[6] && <RowPreview article={articles[6]} />}
 				</div>
 			</div>
 
 			{/* Additional articles in row format if there are more */}
-			{articles.length > 7 && (
+			{articles.length > 8 && (
 				<div className="py-7 md:py-2">
 					<div className="w-full flex flex-col justify-center font-serif px-3">
-						{articles.slice(7).map((article, i) => {
-							return <RowPreview key={i + 7} article={article} />;
+						{articles.slice(8).map((article, i) => {
+							return <RowPreview key={i + 8} article={article} />;
 						})}
 					</div>
 				</div>

@@ -18,7 +18,7 @@ export default function Navbar() {
 			try {
 				const issues = await getIssues();
 				if (issues && issues.length > 0) {
-					// Issues are already sorted by slug:desc, so first one is the latest
+					// Issues are sorted by publishDate:desc, so first one is the latest
 					setLatestIssuePdfUrl(issues[0].pdf.url);
 				}
 			} catch (error) {
