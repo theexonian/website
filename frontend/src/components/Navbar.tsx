@@ -209,8 +209,8 @@ export default function Navbar() {
 				</div>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-white z-50 border-b border-neutral-200 pt-4 relative">
-				{/* Sticky Logo in top left corner - Hidden on mobile */}
-				<div className={`absolute left-6 md:left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 hidden md:block ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
+				{/* Sticky Logo in top left corner - Hidden on mobile, visible on desktop */}
+				<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 max-md:hidden ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
 					<Link href="/">
 						<Image
 							src={"/Exonian-logo.png"}
@@ -225,34 +225,6 @@ export default function Navbar() {
 				</div>
 				
 				<div className="flex items-center text-xs py-1 text-neutral-600 gap-2">
-					<div className="md:hidden">
-						{/* Simple mobile menu button */}
-						<button 
-							onClick={() => {
-								const menu = document.getElementById('mobile-menu');
-								if (menu) {
-									menu.classList.toggle('hidden');
-								}
-							}}
-							className="text-[16px] p-2 hover:bg-gray-100 rounded"
-						>
-							<FiMenu />
-						</button>
-						{/* Mobile dropdown menu */}
-						<div id="mobile-menu" className="hidden absolute top-full left-0 w-full bg-white border-t border-neutral-200 shadow-lg z-50">
-							<div className="flex flex-col py-2">
-								<Link href="/" className="px-4 py-3 hover:bg-gray-50 text-sm">Home</Link>
-								<Link href="/tag/news" className="px-4 py-3 hover:bg-gray-50 text-sm">News</Link>
-								<Link href="/tag/life" className="px-4 py-3 hover:bg-gray-50 text-sm">Life</Link>
-								<Link href="/tag/oped" className="px-4 py-3 hover:bg-gray-50 text-sm">Opinions</Link>
-								<Link href="/tag/sports" className="px-4 py-3 hover:bg-gray-50 text-sm">Sports</Link>
-								<Link href="/tag/humor" className="px-4 py-3 hover:bg-gray-50 text-sm">Humor</Link>
-								<Link href="https://crossword.theexonian.net" className="px-4 py-3 hover:bg-gray-50 text-sm">Crossword</Link>
-								<Link href="/pdf-exonian-archive" className="px-4 py-3 hover:bg-gray-50 text-sm">Archive</Link>
-								<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick} className="px-4 py-3 hover:bg-gray-50 text-sm">Latest Issue</Link>
-							</div>
-						</div>
-					</div>
 					<div className="hidden md:flex">
 						<Menubar>
 							<MenubarMenu>
