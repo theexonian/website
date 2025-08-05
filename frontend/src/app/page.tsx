@@ -52,11 +52,6 @@ export default function Home() {
 					limit={5}
 				/>
 				<HorizontalArticleSection 
-					sectionTitle="Sports" 
-					sectionSlug="sports" 
-					limit={5}
-				/>
-				<HorizontalArticleSection 
 					sectionTitle="Life" 
 					sectionSlug="life" 
 					limit={5}
@@ -64,6 +59,11 @@ export default function Home() {
 				<HorizontalArticleSection 
 					sectionTitle="Opinions" 
 					sectionSlug="oped" 
+					limit={5}
+				/>
+				<HorizontalArticleSection 
+					sectionTitle="Sports" 
+					sectionSlug="sports" 
 					limit={5}
 				/>
 				<HorizontalArticleSection 

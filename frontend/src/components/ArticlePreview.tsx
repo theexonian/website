@@ -56,7 +56,7 @@ export default async function ArticlePreview({
               // height="100"
               // sizes="25vw"
               fill
-              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[103%]"
+              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.02]"
               alt={article.description ? article.description: "Article image"}
             />			
           </div>

@@ -66,7 +66,7 @@ export default function Navbar() {
 							<i>Established 1878.</i>
 						</p>
 						<p className="font-serif text-neutral-500 text-xs py-3">
-							<i>Created by the 16th, 15th, & 14th Web Boards. Launched by the <Link href="/webboard" className="hover:text-neutral-400 duration-200 underline">16th Web Board</Link>.</i>
+							<i>Website created by the 16th, 15th, & 14th Web Boards, and launched in 2025 by the <Link href="/webboard" className="hover:text-neutral-400 duration-200 underline">16th Web Board</Link>.</i>
 						</p>
 					</div>
 					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-neutral-600">
