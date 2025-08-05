@@ -86,7 +86,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                         alt={`Thumbnail for ${issue.publishDate}`}
                         fill
                         style={{ objectFit: "cover", objectPosition: "top" }}
-                        className=""
+                        className="transition-transform duration-300 ease-in-out hover:scale-[103%]"
                       />
                       <div
                         className={

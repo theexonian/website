@@ -1,6 +1,5 @@
 # The Exonian Website
 
-NextJS + Tailwind Front End
-Strapi V5 + Postgres Back End
+NextJS + Tailwind Front End, Strapi V5 + Postgres Back End
 
-yhuang4@exeter.edu and xli5@exeter.edu
+Created by the 16th, 15th, & 14th Web Boards. Launched by the 16th Web Board.

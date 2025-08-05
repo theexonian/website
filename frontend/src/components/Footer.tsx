@@ -41,8 +41,8 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="h-[250px] w-full pt-24">
-				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-2 border-t-neutral-400 border-t">
+			<div className="h-[300px] w-full pt-24">
+				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-4 border-t-neutral-400 border-t">
 					<div className="flex flex-col justify-start">
 						<Link href="https://theexonian.net">
 							<div className="flex flex-row items-center justify-start text-neutral-300 py-3 max-w-[250px]">
@@ -70,7 +70,7 @@ export default function Navbar() {
 						</p>
 					</div>
 					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-neutral-600">
-						<div className="flex flex-col">
+						<div className="flex flex-col space-y-2">
 							<Link href="">
 								<span className="hover:text-neutral-500 duration-200">Home</span>
 							</Link>
@@ -84,7 +84,7 @@ export default function Navbar() {
 								<span className="hover:text-neutral-500 duration-200">Masthead</span>
 							</Link>
 						</div>				
-						<div className="flex flex-col">
+						<div className="flex flex-col space-y-2">
 							<Link href="/tag/news">
 								<span className="hover:text-neutral-500 duration-200">News</span>
 							</Link>
@@ -101,12 +101,12 @@ export default function Navbar() {
 								<span className="hover:text-neutral-500 duration-200">Humor</span>
 							</Link>
 						</div>
-						<div className="flex flex-col">
-							<Link href="/pdf-exonian-archive">
-								<span className="hover:text-neutral-500 duration-200">Web Archive</span>
-							</Link>
+						<div className="flex flex-col space-y-2">
 							<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>
 								<span className="hover:text-neutral-500 duration-200">Latest Issue</span>
+							</Link>
+							<Link href="/pdf-exonian-archive">
+								<span className="hover:text-neutral-500 duration-200">Web Archive</span>
 							</Link>
 							<Link href="https://archive.theexonian.com">
 								<span className="hover:text-neutral-500 duration-200">Historical Archives</span>
@@ -115,7 +115,7 @@ export default function Navbar() {
 								<span className="hover:text-neutral-500 duration-200">Crossword</span>
 							</Link>
 						</div>
-						<div className="flex flex-col">
+						<div className="flex flex-col space-y-2">
 							<Link href="/the-exonian-charter">
 								<span className="hover:text-neutral-500 duration-200">Exonian Charter</span>
 							</Link>

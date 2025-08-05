@@ -33,7 +33,7 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
         </div>
 
         <Link href={`/articles/${slug}`} className="hover:no-underline">
-          <h1 className="font-serif text-xl group-hover:underline underline-offset-4 duration-200 font-medium ">
+          <h1 className="font-serif text-xl group-hover:text-red-700 transition-colors duration-200 font-medium">
             {title}
           </h1>
           <div className="py-2">
@@ -44,22 +44,24 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
         </Link>
 
         <div className="pt-2">
-          <p className="text-xs text-[#6C6C6C] duration-200 font-sans">
-            By&nbsp;
-            {authors &&
-              authors.map((author, i) => (
-                <Link
-                  className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
-                  key={i}
-                  href={`/writers/${author.slug}`}
-                >
-                  {author.fullname}
-                  {authors.length - 1 !== i && ", "}
-                </Link>
-              ))}
-          </p>
+          <div className="text-xs text-[#6C6C6C] duration-200 font-sans">
+            <div className="flex flex-wrap items-center gap-1">
+              <span>By</span>
+              {authors &&
+                authors.map((author, i) => (
+                  <Link
+                    className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
+                    key={i}
+                    href={`/writers/${author.slug}`}
+                  >
+                    {author.fullname}
+                    {authors.length - 1 !== i && ","}
+                  </Link>
+                ))}
+            </div>
+          </div>
           {publishedAt && (
-            <p className="text-xs text-[#6C6C6C] inline-block bg-clip-text">
+            <p className="text-xs text-[#6C6C6C] inline-block bg-clip-text mt-1">
               {new Date(publishedAt).toLocaleDateString()}
             </p>
           )}

@@ -41,11 +41,11 @@ export default async function ArticlePreview({
 
 
   return (
-    <div className="w-full p-2 border-neutral-300 border-b box-border">
+    <div className="w-full p-2 border-neutral-300 border-b box-border group">
       <Link href={`/articles/${article.slug}`}>
         {article.thumbnail && (
 		<div className="w-full">
-          <div className={`relative w-full ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+          <div className={`relative w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
             <Image
               src={
                 article.thumbnail.url.startsWith("http")
@@ -56,7 +56,7 @@ export default async function ArticlePreview({
               // height="100"
               // sizes="25vw"
               fill
-              className="py-2 overflow-hidden object-cover"
+              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[103%]"
               alt={article.description ? article.description: "Article image"}
             />			
           </div>
@@ -82,7 +82,7 @@ export default async function ArticlePreview({
           <div className="flex justify-between">
             <div className="">
               <h1
-                className={`font-serif font-medium text-${titleSize}xl`}
+                className={`font-serif font-medium text-${titleSize}xl group-hover:text-red-700 transition-colors duration-200`}
               >
                 {article.title}
               </h1>
@@ -96,28 +96,29 @@ export default async function ArticlePreview({
         </div>
       </Link>
 
-      <div className="text-xs items-center gap-1 flex text-neutral-700">
-        By
-        {article.authors.map((author, i) => {
-          return (
-            <Link
-              className="text-xs hover:text-red-500 duration-200 no-underline text-neutral-700 capitalize"
-              key={i}
-              href={`/writers/${author.slug}`}
-            >
-              {author.fullname}
-              {article.authors.length - 1 !== i && ", "}
-            </Link>
-          );
-        })}
-        <p className="text-xs text-neutral-500">
+      <div className="text-xs text-neutral-700">
+        <div className="flex flex-wrap items-center gap-1">
+          <span>By</span>
+          {article.authors.map((author, i) => {
+            return (
+              <Link
+                className="text-xs hover:text-red-500 duration-200 no-underline text-neutral-700 capitalize"
+                key={i}
+                href={`/writers/${author.slug}`}
+              >
+                {author.fullname}
+                {article.authors.length - 1 !== i && ","}
+              </Link>
+            );
+          })}
+        </div>
+        <p className="text-xs text-neutral-500 mt-1">
           {new Date(article.publishedAt).toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'short', 
             day: 'numeric' 
           })}
         </p>
-        {/* </div> */}
       </div>
     </div>
   );
