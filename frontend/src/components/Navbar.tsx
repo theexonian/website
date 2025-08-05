@@ -25,6 +25,7 @@ export default function Navbar() {
 	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [currentArticleTag, setCurrentArticleTag] = useState<string>('');
+	const [isDesktop, setIsDesktop] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
@@ -89,14 +90,27 @@ export default function Navbar() {
 		fetchLatestIssue();
 		fetchCurrentArticleTag();
 		
+		// Check if we're on desktop
+		const checkIsDesktop = () => {
+			setIsDesktop(window.innerWidth >= 768);
+		};
+		
 		// Scroll detection for sticky logo
 		const handleScroll = () => {
 			// Show sticky logo when scrolled past the main logo area (approximately 200px)
 			setShowStickyLogo(window.scrollY > 200);
 		};
 
+		// Initial check
+		checkIsDesktop();
+		
 		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
+		window.addEventListener('resize', checkIsDesktop);
+		
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', checkIsDesktop);
+		};
 	}, [pathname]);
 
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
@@ -209,20 +223,22 @@ export default function Navbar() {
 				</div>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-white z-50 border-b border-neutral-200 pt-4 relative">
-				{/* Sticky Logo in top left corner - Hidden on mobile, visible on desktop */}
-				<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 max-md:hidden ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
-					<Link href="/">
-						<Image
-							src={"/Exonian-logo.png"}
-							width={200}
-							height={67}
-							className="h-8 w-auto"
-							alt={"The Exonian Logo"}
-							priority={true}
-							quality={100}
-						/>
-					</Link>
-				</div>
+				{/* Sticky Logo in top left corner - Only show on desktop */}
+				{isDesktop && (
+					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
+						<Link href="/">
+							<Image
+								src={"/Exonian-logo.png"}
+								width={240}
+								height={80}
+								className="h-8 w-auto"
+								alt={"The Exonian Logo"}
+								priority={true}
+								quality={95}
+							/>
+						</Link>
+					</div>
+				)}
 				
 				<div className="flex items-center text-xs py-1 text-neutral-600 gap-2">
 					<div className="hidden md:flex">
