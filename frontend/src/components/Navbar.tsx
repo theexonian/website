@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/menubar";
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
+import SimpleThemeToggle from '@/components/SimpleThemeToggle';
 export default function Navbar() {
 	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
@@ -167,7 +168,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="w-screen h-auto items-center min-h-[35px] bg-gradient-to-r from-[#000000] to-[#000000] text-white flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
+			<div className="w-screen h-auto items-center min-h-[35px] bg-foreground text-background flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
 				<p>
 					<Link
 						href="https://www.exeter.edu"
@@ -208,7 +209,7 @@ export default function Navbar() {
 				</p>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
-				<div className="w-1/4 min-w-[250px] pt-3 pb-3 md:pb-1 hover:contrast-50 duration-300 flex items-center justify-center">
+				<div className="w-1/4 min-w-[250px] pt-6 pb-3 md:pb-1 hover:contrast-50 duration-300 flex items-center justify-center">
 					{/* TODO: Optimize responsive scaling of the the logo */}
 					<Link href="/">
 						<Image
@@ -216,13 +217,13 @@ export default function Navbar() {
 							width="0"
 							height="0"
 							sizes="25vw"
-							className="w-full min-w-[250px] h-auto"
+							className="w-full min-w-[250px] h-auto dark:brightness-0 dark:invert"
 							alt={"Logo of The Exonian"}
 						/>
 					</Link>
 				</div>
 			</div>
-			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-white z-50 border-b border-neutral-200 pt-4 relative">
+			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 				{isDesktop && (
 					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
@@ -231,7 +232,7 @@ export default function Navbar() {
 								src={"/Exonian-logo.png"}
 								width={240}
 								height={80}
-								className="h-8 w-auto"
+								className="h-8 w-auto dark:brightness-0 dark:invert"
 								alt={"The Exonian Logo"}
 								priority={true}
 								quality={95}
@@ -240,7 +241,7 @@ export default function Navbar() {
 					</div>
 				)}
 				
-				<div className="flex items-center text-xs py-1 text-neutral-600 gap-2">
+				<div className="flex items-center text-xs py-1 text-muted-foreground gap-2">
 					<div className="hidden md:flex">
 						<Menubar>
 							<MenubarMenu>
@@ -277,12 +278,22 @@ export default function Navbar() {
 									<MenubarItem>
 										<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 									</MenubarItem>
+									<MenubarSeparator />
+									<MenubarItem asChild>
+										<div className="flex items-center gap-2 px-2 py-1">
+											<span className="text-sm">Theme</span>
+											<SimpleThemeToggle />
+										</div>
+									</MenubarItem>
 								</MenubarContent>
 							</MenubarMenu>
         				</Menubar>
 					</div>
+					<div className="md:hidden">
+						<SimpleThemeToggle />
+					</div>
 					{dateString + " "}
-					<div className="flex items-center pl-2 gap-3 text-neutral-700">
+					<div className="flex items-center pl-2 gap-3 text-foreground">
 						<Link
 							href="https://www.instagram.com/theexonian/"
 							target="_blank"
@@ -309,12 +320,12 @@ export default function Navbar() {
 						>
 							<FaGithub className="text-lg" />
 						</Link>
-						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-neutral-300 focus-within:border-red-600/50 duration-300 group">
+						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
 							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
 							<input
 								type="text"
 								placeholder="Search"
-								className="text-neutral-500 outline-none w-12 group-focus-within:w-full duration-300"
+								className="text-muted-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent"
 								onKeyDown={(e) => {
 									if (e.key === "Enter") {
 										const input = e.target as HTMLInputElement;
@@ -327,53 +338,53 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:hidden text-xs gap-8 py-2 pb-4 text-neutral-800">
-    				<li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
+				<ul className="flex flex-row md:hidden text-xs gap-8 py-2 pb-4 text-foreground">
+    				<li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
 							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 						 )}
  				   </li>
- 				   <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
+ 				   <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/news">News</Link>
 						 {isActiveRoute('/tag/news') && (
 							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 						 )}
   				  </li>
-				    <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
+				    <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
   					      <Link href="/tag/life">Life</Link>
 						  {isActiveRoute('/tag/life') && (
 							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 						  )}
  				   </li>
-  				  <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/oped">Opinions</Link>
 						 {isActiveRoute('/tag/oped') && (
 							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 						 )}
   				  </li>
-  				  <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
       				  <Link href="/tag/sports">Sports</Link>
 					  {isActiveRoute('/tag/sports') && (
 						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 					  )}
   				  </li>
-   				 <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
+   				 <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
    				     <Link href="/tag/humor">Humor</Link>
 					 {isActiveRoute('/tag/humor') && (
 						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 					 )}
   				  </li>
-  				  <li className={`hover:text-neutral-500 duration-200 relative ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
   				      <Link href="https://crossword.theexonian.net">Crossword</Link>
   				  </li>
-  				  <li className={`hover:text-neutral-500 duration-200 relative ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
   				      <Link href="/pdf-exonian-archive">Archive</Link>
 					  {isActiveRoute('/pdf-exonian-archive') && (
 						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
 					  )}
   				  </li>
-  				  <li className="hover:text-neutral-500 duration-200">
+  				  <li className="hover:text-muted-foreground duration-200">
    				     <Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
    				 </li>
 

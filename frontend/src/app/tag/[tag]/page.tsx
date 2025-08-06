@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { tag: string } }) {
 			{/* Grid layout similar to home page */}
 			<div className="grid grid-cols-4 md:grid-cols-1">
 				{/* Left column - featured article */}
-				<div className="col-span-2 px-4 2xl:px-8 border-neutral-300 border-r md:border-none md:order-1">
+				<div className="col-span-2 px-4 2xl:px-8 border-border border-r md:border-none md:order-1">
 					{articles[0] && <PreviewCenter article={articles[0]} />}
 					{articles[3] && <RowPreview article={articles[3]} />}
 					{articles[4] && <RowPreview article={articles[4]} />}

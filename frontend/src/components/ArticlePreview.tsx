@@ -41,7 +41,7 @@ export default async function ArticlePreview({
 
 
   return (
-    <div className="w-full p-2 border-neutral-300 border-b box-border group">
+    <div className="w-full p-2 border-border border-b box-border group">
       <Link href={`/articles/${article.slug}`}>
         {article.thumbnail && (
 		<div className="w-full">
@@ -56,11 +56,11 @@ export default async function ArticlePreview({
               // height="100"
               // sizes="25vw"
               fill
-              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.02]"
+              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
               alt={article.description ? article.description: "Article image"}
             />			
           </div>
-		{credit && <p className="text-[7px] font-sans text-neutral-500 w-full text-right -mt-2">
+		{credit && <p className="text-[7px] font-sans text-muted-foreground w-full text-right -mt-2">
           {credit}</p>}
 		</div>
 		)}
@@ -89,20 +89,20 @@ export default async function ArticlePreview({
             </div>
           </div>
           <div className="py-3">
-            <p className="text-xs text-neutral-500 text-ellipsis line-clamp-3 font-serif font-thin">
+            <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin">
               {article.description}
             </p>
           </div>
         </div>
       </Link>
 
-      <div className="text-xs text-neutral-700">
+      <div className="text-xs text-foreground">
         <div className="flex flex-wrap items-center gap-1">
           <span>By</span>
           {article.authors.map((author, i) => {
             return (
               <Link
-                className="text-xs hover:text-red-500 duration-200 no-underline text-neutral-700 capitalize"
+                className="text-xs hover:text-red-500 duration-200 no-underline text-foreground capitalize"
                 key={i}
                 href={`/writers/${author.slug}`}
               >
@@ -112,7 +112,7 @@ export default async function ArticlePreview({
             );
           })}
         </div>
-        <p className="text-xs text-neutral-500 mt-1">
+        <p className="text-xs text-muted-foreground mt-1">
           {new Date(article.publishedAt).toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'short', 

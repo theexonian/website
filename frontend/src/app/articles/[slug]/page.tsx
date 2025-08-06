@@ -30,13 +30,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<div className="w-full flex justify-center">
-				<article className="prose pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
 					</h3>
 					<h1 className="font-normal text-5xl my-2 font-serif"><i>{article.title}</i></h1>
-					<span className="p-0 m-0 text-lg text-neutral-800">
+					<span className="p-0 m-0 text-lg text-muted-foreground">
 						By {" "}
 						{article.authors.map((author, i) => {
 							return (

@@ -60,10 +60,10 @@ export default function HorizontalArticleSection({
 		return (
 			<div className="py-6">
 				<div className="max-w-full mx-auto">
-					<div className="border-t border-neutral-300 pt-4 mb-6">
+					<div className="border-t border-border pt-4 mb-6">
 						<div className="flex justify-between items-center mb-6 px-6">
 							<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
-							<div className="text-xs text-neutral-700">VIEW ALL&gt;</div>
+							<div className="text-xs text-muted-foreground">VIEW ALL&gt;</div>
 						</div>
 						<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
 							{Array.from({ length: limit }).map((_, index) => (
@@ -89,12 +89,12 @@ export default function HorizontalArticleSection({
 	return (
 		<div className="py-6">
 			<div className="max-w-full mx-auto">
-				<div className="border-t border-neutral-300 pt-4 mb-6">
+				<div className="border-t border-border pt-4 mb-6">
 					<div className="flex justify-between items-center mb-6 px-6">
 						<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
 						<Link 
 							href={`/tag/${sectionSlug}`}
-							className="text-xs text-neutral-700 hover:text-red-700 transition-colors duration-200"
+							className="text-xs text-foreground hover:text-red-700 transition-colors duration-200"
 						>
 							VIEW ALL &gt;
 						</Link>
@@ -111,18 +111,18 @@ export default function HorizontalArticleSection({
 										{article.title}
 									</h3>
 									{article.description && (
-										<p className="font-serif font-thin text-xs text-neutral-500 leading-relaxed line-clamp-2 mb-2">
+										<p className="font-serif font-thin text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-2">
 											{article.description}
 										</p>
 									)}
 									<div className="mt-2">
-										<div className="text-xs text-neutral-700 mb-1">
+										<div className="text-xs text-foreground mb-1">
 											<div className="flex flex-wrap items-center gap-1">
 												<span>By</span>
 												{article.authors.map((author, i) => {
 													return (
 														<Link
-															className="text-xs hover:text-red-500 duration-200 no-underline text-neutral-700 capitalize"
+															className="text-xs hover:text-red-500 duration-200 no-underline text-foreground capitalize"
 															key={i}
 															href={`/writers/${author.slug}`}
 														>
@@ -133,7 +133,7 @@ export default function HorizontalArticleSection({
 												})}
 											</div>
 										</div>
-										<span className="text-xs text-neutral-500">
+										<span className="text-xs text-muted-foreground">
 											{new Date(article.publishedAt).toLocaleDateString('en-US', { 
 												year: 'numeric',
 												month: 'short', 

@@ -22,7 +22,7 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
   const { title, tag, thumbnail, description, publishedAt, authors, slug } = article;
 
   return (
-    <div className="w-full flex items-start py-3 border-neutral-300 border-b gap-4 group">
+    <div className="w-full flex items-start py-3 border-border border-b gap-4 group">
       <div className="flex flex-col w-full">
         <div className="flex items-center gap-2">
           {showSection && (
@@ -37,14 +37,14 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
             {title}
           </h1>
           <div className="py-2">
-            <p className="text-xs text-[#4E4E4E] duration-200 line-clamp-4 overflow-hidden">
+            <p className="text-xs text-muted-foreground duration-200 line-clamp-4 overflow-hidden">
               {description}
             </p>
           </div>
         </Link>
 
         <div className="pt-2">
-          <div className="text-xs text-[#6C6C6C] duration-200 font-sans">
+          <div className="text-xs text-muted-foreground duration-200 font-sans">
             <div className="flex flex-wrap items-center gap-1">
               <span>By</span>
               {authors &&
@@ -61,7 +61,7 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
             </div>
           </div>
           {publishedAt && (
-            <p className="text-xs text-[#6C6C6C] inline-block bg-clip-text mt-1">
+            <p className="text-xs text-muted-foreground inline-block bg-clip-text mt-1">
               {new Date(publishedAt).toLocaleDateString()}
             </p>
           )}
@@ -70,7 +70,7 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
 
       {thumbnail?.url && (
         <Link href={`/articles/${slug}`}>
-          <div className="relative sm:w-20 sm:h-20 md:w-40 md:h-40 w-44 h-44 shrink-0">
+          <div className="relative sm:w-20 sm:h-20 md:w-40 md:h-40 w-44 h-44 shrink-0 transition-transform duration-300 ease-in-out hover:scale-[1.03]">
             <Image
               src={
                 thumbnail.url.startsWith("http")

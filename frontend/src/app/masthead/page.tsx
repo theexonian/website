@@ -15,9 +15,9 @@ export default function Page() {
 				className="w-full h-auto"
 				alt={"Logo of The Exonian"}
 			/>
-			<div className="prose font-serif pt-20 mx-auto">
+			<div className="prose prose-neutral dark:prose-invert font-serif pt-20 mx-auto">
 				<h2>How We Operate</h2>
-				<hr className="w-3/4 border-neutral-500" />
+				<hr className="w-3/4 border-border" />
 				<p>
 					<em>The Exonian</em> is comprised of three boards, an Executive
 					Board, an Upper Board and a Lower Board. These three boards

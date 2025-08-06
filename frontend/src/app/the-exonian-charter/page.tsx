@@ -9,7 +9,7 @@ export default function Page() {
 					<i>The Exonian</i> Charter
 				</h1>
 			</div>
-			<div className="prose md:prose-sm font-serif mx-auto">
+			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto">
 				<h2>
 					<i>The Exonian</i> Bylaws
 				</h2>
@@ -149,7 +149,7 @@ export default function Page() {
 					</li>
 				</ul>
 			</div>
-			<div className="prose font-serif mx-auto">
+			<div className="prose prose-neutral dark:prose-invert font-serif mx-auto">
 				<h2><i>The Exonian</i> Values Statement</h2>
 				<p>
 					<em>

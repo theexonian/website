@@ -96,7 +96,7 @@ export default function NewsletterPopup() {
             <div 
                 className={`
                     fixed bottom-0 left-0 right-0 z-50
-                    bg-white shadow-2xl
+                    bg-background shadow-2xl border-t border-border
                     transform transition-transform duration-300 ease-out
                     ${visible ? 'translate-y-0' : 'translate-y-full'}
                 `}
@@ -113,7 +113,7 @@ export default function NewsletterPopup() {
                         setShowSuccess(false);
                         setError("");
                     }}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl z-10"
+                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-xl z-10"
                 >
                     ×
                 </button>
@@ -129,10 +129,10 @@ export default function NewsletterPopup() {
                                     </svg>
                                 </div>
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-3 font-serif">
+                            <h2 className="text-2xl font-bold text-foreground mb-3 font-serif">
                                 Successfully Subscribed!
                             </h2>
-                            <p className="text-gray-600 text-sm leading-relaxed font-serif">
+                            <p className="text-muted-foreground text-sm leading-relaxed font-serif">
                                 Thank you for subscribing to The Exonian newsletter. You'll receive updates straight to your email!
                             </p>
                         </div>
@@ -140,10 +140,10 @@ export default function NewsletterPopup() {
                         <>
                             {/* Header */}
                             <div className="text-center mb-6">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-3 font-serif">
+                                <h2 className="text-2xl font-bold text-foreground mb-3 font-serif">
                                     Subscribe to The Exonian
                                 </h2>
-                                <p className="text-gray-600 text-sm leading-relaxed font-serif">
+                                <p className="text-muted-foreground text-sm leading-relaxed font-serif">
                                     Subscribe to our online newsletter and receive regular updates from The Exonian straight to your email!
                                 </p>
                             </div>
@@ -156,7 +156,7 @@ export default function NewsletterPopup() {
                                 placeholder="Enter your name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-serif"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-serif bg-background text-foreground"
                             />
                         </div>
                         
@@ -166,7 +166,7 @@ export default function NewsletterPopup() {
                                 placeholder="Enter your email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-serif"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-serif bg-background text-foreground"
                             />
                         </div>
 
@@ -179,12 +179,12 @@ export default function NewsletterPopup() {
                         <Button
                             onClick={addEmail}
                             disabled={!name.trim() || !email.trim()}
-                            className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-md transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed font-serif"
+                            className="w-full bg-foreground hover:bg-foreground/90 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:bg-muted disabled:cursor-not-allowed font-serif"
                         >
                             Subscribe
                         </Button>
 
-                        <div className="text-sm text-gray-600 mb-2 font-serif text-center">
+                        <div className="text-sm text-muted-foreground mb-2 font-serif text-center">
                             Click <a href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2" className="text-red-500 hover:underline transition-all">here</a> for a paper subscription!
                         </div>
                     </div>

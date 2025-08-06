@@ -31,23 +31,23 @@ export default function PreviewNoImage(props: PreviewProps) {
 
 				{description && (
 					<div>
-						<p className="text-xs text-[#4E4E4E] hidden sm:flex hover:text-neutral-500 duration-200">
+						<p className="text-xs text-muted-foreground hidden sm:flex hover:text-foreground duration-200">
 							{description}
 						</p>
-						<p className="text-xs text-[#4E4E4E] xl:hidden hover:text-neutral-500 duration-200">
+						<p className="text-xs text-muted-foreground xl:hidden hover:text-foreground duration-200">
 							{description}
 						</p>
 					</div>
 				)}
 				<div className="pt-2">
 					{author && (
-						<p className="text-xs text-[#6C6C6C] duration-200">
+						<p className="text-xs text-muted-foreground duration-200">
 							By:&nbsp;
 							{author.join(', ')}
 						</p>
 					)}
 					{publishedAt && (
-						<p className="text-xs text-[#6C6C6C]">
+						<p className="text-xs text-muted-foreground">
 							{new Date(publishedAt).toLocaleDateString()}
 						</p>
 					)}

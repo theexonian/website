@@ -44,7 +44,7 @@ function Search() {
 			searchClient={searchClient}
 		>
 			<div className="max-w-3xl w-11/12 mx-auto px-4 py-8 duration-300">
-				<h2 className="text-3xl font-serif mb-6 text-gray-900">
+				<h2 className="text-3xl font-serif mb-6 text-foreground">
 					Search Articles
 				</h2>
 				<div className="mb-8">
@@ -56,7 +56,7 @@ function Search() {
 						hitComponent={AnimatedHit}
 						classNames={{
 							loadMore:
-								"border my-5 p-2 rounded-xl text-sm text-neutral-600 hover:bg-neutral-100 duration-300 flex items-center justify-center gap-2",
+								"border my-5 p-2 rounded-xl text-sm text-muted-foreground hover:bg-muted duration-300 flex items-center justify-center gap-2",
 						}}
 					/>
 				</AnimatePresence>
@@ -80,13 +80,13 @@ function CustomSearchBox() {
 				classNames={{
 					root: "relative",
 					form: "relative",
-					input: "w-full py-3 pl-4 pr-12 text-lg border-b border-gray-300 focus:outline-none focus:border-red-600/50 transition-colors duration-200",
+					input: "w-full py-3 pl-4 pr-12 text-lg border-b border-border focus:outline-none focus:border-red-600/50 transition-colors duration-200 bg-background text-foreground",
 					submit: "absolute right-0 top-0 mt-3 mr-4",
 					submitIcon: "hidden",
 					reset: "hidden",
 				}}
 				submitIconComponent={() => (
-					<FaSearch className="h-6 w-6 text-gray-500 transition-colors duration-200" />
+					<FaSearch className="h-6 w-6 text-muted-foreground transition-colors duration-200" />
 				)}
 				placeholder="Search title, text, date, author..."
 			/>
@@ -128,7 +128,7 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 					</h1>
 				</div>
 				<div className="py-2">
-					<p className="text-xs text-[#4E4E4E] hover:text-neutral-500 duration-200">
+					<p className="text-xs text-muted-foreground hover:text-foreground duration-200">
 						<Snippet
 							classNames={{ highlighted: "bg-red-300/25" }}
 							hit={hit}
@@ -138,7 +138,7 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 				</div>
 			</Link>
 			<div className="font-sans">
-				<p className="text-xs text-[#6C6C6C] duration-200">
+				<p className="text-xs text-muted-foreground duration-200">
 					By:&nbsp;
 					{hit.authors &&
 						hit.authors.map((author, i) => {
@@ -155,7 +155,7 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 						})}
 				</p>
 				{hit.publishedAt && (
-					<p className="text-xs text-[#6C6C6C]">
+					<p className="text-xs text-muted-foreground">
 						{new Date(hit.publishedAt).toLocaleDateString()}
 					</p>
 				)}

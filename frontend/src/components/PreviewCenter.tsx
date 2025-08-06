@@ -19,11 +19,11 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 		props.article;
 
 	return (
-		<div className="w-full p-3 border-neutral-300 border-b">
+		<div className="w-full p-3 border-border border-b">
 			<div className="max-w-[600px]">
 				<Link href={`/articles/${slug}`}>
 					{thumbnail && (
-						<div className="hover:brightness-110 duration-500">
+						<div className="hover:brightness-110 duration-500 transition-transform duration-300 ease-in-out hover:scale-[1.03]">
 							<Image
 								src={
 									thumbnail.url.startsWith("http")
@@ -48,7 +48,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 					</div>
 					{description && (
 						<div>
-							<p className="text-xs md:text-2xs text-[#4E4E4E] hover:text-neutral-500 duration-200">
+							<p className="text-xs md:text-2xs text-muted-foreground hover:text-foreground duration-200">
 								{description}
 							</p>
 						</div>
@@ -56,7 +56,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 				</Link>
 				<div className="pt-2">
 					{authors && (
-						<p className="text-xs text-[#6C6C6C] duration-200">
+						<p className="text-xs text-muted-foreground duration-200">
 							By:&nbsp;
 							{authors.map((author, i) => {
 								return (
@@ -73,7 +73,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 						</p>
 					)}
 					{publishedAt && (
-						<p className="text-xs text-[#6C6C6C]">
+						<p className="text-xs text-muted-foreground">
 							{new Date(publishedAt).toLocaleDateString()}
 						</p>
 					)}

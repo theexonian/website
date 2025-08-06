@@ -5,7 +5,7 @@ export default function Page() {
 	return (
 		<>
 			<FancyBigTitle title="The Exonian Alumni-Faculty Archives Feature"/>
-			<div className="prose md:prose-sm font-serif">
+			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif">
 				<p>
 					<em>
 						Each week, The Exonian features a current faculty member
