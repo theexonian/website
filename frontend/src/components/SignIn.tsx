@@ -8,6 +8,18 @@ export default function SignInButton() {
   const clerk = useClerk();
   const router = useRouter();
 
+  const handleSignIn = () => {
+    // Redirect .com domains to .net for authentication
+    if (typeof window !== 'undefined') {
+      const host = window.location.hostname;
+      if (host === 'new.theexonian.com' || host === 'theexonian.com') {
+        window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
+        return;
+      }
+    }
+    router.push('/sign-in');
+  };
+
   if (isLoaded && user) {
     return (
       <button onClick={() => clerk.signOut()} className="hover:text-red-400">
@@ -18,7 +30,7 @@ export default function SignInButton() {
 
   return (
     <button 
-      onClick={() => router.push('/sign-in')} 
+      onClick={handleSignIn}
       className="hover:text-red-400"
     >
       Sign in
