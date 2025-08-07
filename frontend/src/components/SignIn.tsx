@@ -12,7 +12,7 @@ export default function SignInButton() {
     // Redirect .com domains to .net for authentication
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
-      if (host === 'new.theexonian.com' || host === 'theexonian.com') {
+      if (host === 'new.theexonian.com' || host === 'theexonian.com' || host === 'www.theexonian.com') {
         window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
         return;
       }

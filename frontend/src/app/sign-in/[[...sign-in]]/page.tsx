@@ -2,8 +2,20 @@
 
 import { SignIn } from '@clerk/nextjs';
 import CustomEmailSignIn from '@/components/CustomEmailSignIn';
+import { useEffect } from 'react';
 
 export default function Page() {
+  // Redirect .com domains to .net for authentication
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const host = window.location.hostname;
+      if (host === 'new.theexonian.com' || host === 'theexonian.com' || host === 'www.theexonian.com') {
+        window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
+        return;
+      }
+    }
+  }, []);
+
   // In development, show a message about Clerk configuration
   const isDevelopment = process.env.NODE_ENV === 'development';
   
