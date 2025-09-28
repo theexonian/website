@@ -179,7 +179,7 @@ export default function NewsletterPopup() {
                         <Button
                             onClick={addEmail}
                             disabled={!name.trim() || !email.trim()}
-                            className="w-full bg-foreground hover:bg-foreground/90 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:bg-muted disabled:cursor-not-allowed font-serif"
+                            className="w-full bg-[#ff0000] hover:bg-foreground/90 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:bg-[#ff0404] disabled:cursor-not-allowed font-serif"
                         >
                             Subscribe
                         </Button>

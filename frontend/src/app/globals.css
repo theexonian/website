@@ -14,8 +14,8 @@ a {
 
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
+		--background: 0 0% 98%;
+		--foreground: 0 0% 1.19%;
 		--card: 0 0% 100%;
 		--card-foreground: 0 0% 3.9%;
 		--popover: 0 0% 100%;
@@ -84,4 +84,9 @@ a {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+.header {
+	background-color: rgba(250, 250, 250, 0.8);
+	backdrop-filter: blur(13px);
 }

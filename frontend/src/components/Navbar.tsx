@@ -4,8 +4,9 @@ import "animate.css";
 import Image from "next/image";
 import { FaArchive, FaInstagram, FaSearch } from "react-icons/fa";
 import { RiArchive2Line, RiYoutubeLine } from "react-icons/ri";
-import { FiMenu } from "react-icons/fi";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
@@ -168,46 +169,6 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="w-screen h-auto items-center min-h-[35px] bg-foreground text-background flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
-				<p>
-					<Link
-						href="https://www.exeter.edu"
-						className="hover:text-red-400"
-					>
-						Phillips Exeter Academy
-					</Link>
-				</p>
-				<p>
-					<Link href="/masthead" className="hover:text-red-400">
-						Masthead
-					</Link>{" "}
-					|{" "}
-					<Link href="/about" className="hover:text-red-400">
-						About
-					</Link>{" "}
-					|{" "}
-					<Link href="/webboard" className="hover:text-red-400">
-						Web Board
-					</Link>{" "}
-					|{" "}
-					<Link href="/the-exonian-charter" className="hover:text-red-400">
-						Exonian Charter
-					</Link>{" "}
-					|{" "}
-					<Link href="/privacy-and-content-use" className="hover:text-red-400">
-						Media Policy
-					</Link>{" "}
-					|{" "}
-					<Link
-						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
-						className="hover:text-red-400"
-					>
-						Subscribe
-					</Link>{" "}
-					|{" "}
-					<SignInButton />
-				</p>
-			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
 				<div className="w-1/4 min-w-[250px] pt-6 pb-3 md:pb-1 hover:contrast-50 duration-300 flex items-center justify-center">
 					{/* TODO: Optimize responsive scaling of the the logo */}
@@ -223,7 +184,7 @@ export default function Navbar() {
 					</Link>
 				</div>
 			</div>
-			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
+			<div className="header flex justify-center items-center flex-col w-full h-auto sticky top-0 z-50 border-b border-border pt-4 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 				{isDesktop && (
 					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
@@ -247,7 +208,7 @@ export default function Navbar() {
 							<MenubarMenu>
 								<MenubarTrigger>
 									<div className="text-[16px]">
-										<FiMenu />
+										<HiOutlineMenuAlt4 />
 									</div>
 								</MenubarTrigger>
 								<MenubarContent>
@@ -294,34 +255,8 @@ export default function Navbar() {
 					</div>
 					{dateString + " "}
 					<div className="flex items-center pl-2 gap-3 text-foreground">
-						<Link
-							href="https://www.instagram.com/theexonian/"
-							target="_blank"
-						>
-							<FaInstagram className="text-lg" />
-						</Link>
-						<Link
-							href="https://www.youtube.com/@TheExonian"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<RiYoutubeLine className="text-lg" />
-						</Link>
-						<Link
-							href="https://archive.theexonian.com"
-							target="_blank"
-						>
-							<RiArchive2Line className="text-lg" />
-						</Link>
-						<Link
-							href="https://github.com/theexonian/website"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<FaGithub className="text-lg" />
-						</Link>
 						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
-							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
+							<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
 							<input
 								type="text"
 								placeholder="Search"
