@@ -178,7 +178,7 @@ export default function Navbar() {
 							width="0"
 							height="0"
 							sizes="25vw"
-							className="w-full min-w-[250px] h-auto dark:brightness-0 dark:invert"
+							className="h-[1.618rem] w-auto dark:brightness-0 dark:invert"
 							alt={"Logo of The Exonian"}
 						/>
 					</Link>
@@ -254,9 +254,9 @@ export default function Navbar() {
 						<SimpleThemeToggle />
 					</div>
 					{dateString + " "}
-					<div className="flex items-center pl-2 gap-3 text-foreground">
-						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
-							<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
+					<div className="flex items-center pl-3 gap-3 text-foreground">
+						<div className="flex flex-row items-center gap-3 py-[1.382px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
+							<FiSearch size={13} className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
 							<input
 								type="text"
 								placeholder="Search"
