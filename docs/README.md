@@ -9,3 +9,4 @@ You're in a production enviornment!
 - Issues/Notse in `issues.md`
 - Tech Stack Diagram in `stack.md` (use another mermaid diagram viewer)
 - Server Configuration in `server.md` (use another mermaid diagram viewer)
+- Listmonk configuarion (soon to be added)
