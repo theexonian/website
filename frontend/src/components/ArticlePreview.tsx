@@ -45,20 +45,17 @@ export default async function ArticlePreview({
       <Link href={`/articles/${article.slug}`}>
         {article.thumbnail && (
 		<div className="w-full">
-          <div className={`relative w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+          <div className={`mb-[10px] relative w-full overflow-hidden rounded ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
             <Image
               src={
                 article.thumbnail.url.startsWith("http")
                   ? article.thumbnail.url
                   : `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
               }
-              // width="100"
-              // height="100"
-              // sizes="25vw"
               fill
-              className="py-2 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
-              alt={article.description ? article.description: "Article image"}
-            />			
+              className="absolute inset-0 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
+              alt={article.description ? article.description : "Article image"}
+            />
           </div>
 		{credit && <p className="text-[7px] font-sans text-muted-foreground w-full text-right -mt-2">
           {credit}</p>}
