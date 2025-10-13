@@ -2,10 +2,9 @@
 
 import "animate.css";
 import Image from "next/image";
-import { FaArchive, FaInstagram, FaSearch } from "react-icons/fa";
-import { RiArchive2Line, RiYoutubeLine } from "react-icons/ri";
+import { FaArchive, FaInstagram, FaSearch, FaGithub, FaSpotify } from "react-icons/fa";
+import { RiArchive2Line, RiYoutubeLine, RiSpotifyLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
-import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
@@ -305,7 +304,14 @@ export default function Navbar() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<RiYoutubeLine className="text-lg" />
+							<RiYoutubeLine className="text-[1.6em]" />
+						</Link>
+						<Link
+							href="https://open.spotify.com/show/12aZWrrsg7ElO1UP8JoAcs?si=f9a8e6061f094240"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<RiSpotifyLine className="text-[1.6em]" />
 						</Link>
 						<Link
 							href="https://archive.theexonian.com"
@@ -320,7 +326,7 @@ export default function Navbar() {
 						>
 							<FaGithub className="text-lg" />
 						</Link>
-						<div className="flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
+						<div className="ml-[3px] flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
 							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
 							<input
 								type="text"
