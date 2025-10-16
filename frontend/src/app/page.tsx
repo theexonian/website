@@ -13,9 +13,9 @@ export default function Home() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-4 md:grid-cols-1">
-				<div className="col-span-1 px-6 md:px-2 md:order-2">
-					<ArticlePreview z={1} section="life" titleSize='2'/>
+			<div className="grid grid-cols-7 md:grid-cols-1">
+				<div className="col-span-4 px-6 md:px-2 md:order-2">
+					<ArticlePreview z={1} section="news" titleSize='3'/>
 					<ArticlePreview z={2} section="life" titleSize='2'/>
 					<ArticlePreview z={3} section="life"/>
 					<ArticlePreview z={4} section="life"/>
@@ -23,16 +23,10 @@ export default function Home() {
 					<ArticlePreview z={3} section="oped"/>
 					<ArticlePreview z={4} section="oped"/>
 				</div>
-				<div className="col-span-2 px-8 lg:px-4 border-border border-x md:px-2 md:border-none md:order-1 md:col-span-1">
-					<ArticlePreview z={1} section="news" titleSize='3'/>
-					{/* <ArticlePreview z={1} section="news" titleSize='4' thumbnailRatio="1/1" credit="Forrest Zeng / The Exonian" sectionOverride='GRAD'/> */}
-
-					<ArticlePreview z={2} section="news" titleSize='2'/>
-					<ArticlePreview z={3} section="news" titleSize='2'/>
-					<ArticlePreview z={2} section="humor"/>
-					<ArticlePreview z={1} section="humor"/>
-				</div>
-				<div className="col-span-1 px-6 md:px-2 md:order-3">
+				<div className="col-span-3 px-6 md:px-2 md:order-3">
+          <div className="text-2xl m-2 font-serif mb-2 border-b-2 border-black pb-1">
+            Editor's Picks
+          </div>
 					<ArticlePreview z={1} section="oped" titleSize='2'/>
 					<ArticlePreview z={2} section="oped" titleSize='2'/>
 					<ArticlePreview z={1} section="sports"/>
