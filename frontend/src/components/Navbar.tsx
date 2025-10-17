@@ -224,15 +224,15 @@ export default function Navbar() {
 				</div>
 			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
-				{/* Sticky Logo in top left corner - Only show on desktop */}
+				{/* Sticky Logo in top left corner - Only show on desktop and inside the article pages */}
 				{isDesktop && (
 					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
 						<Link href="/">
 							<Image
 								src={"/Exonian-logo.png"}
-								width={240}
-								height={80}
-								className="h-8 w-auto dark:brightness-0 dark:invert"
+								width={180}
+								height={60}
+								className="h-6 w-auto dark:brightness-0 dark:invert"
 								alt={"The Exonian Logo"}
 								priority={true}
 								quality={95}
