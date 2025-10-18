@@ -16,14 +16,18 @@ interface ArticleRowPreviewProps {
     };
   };
   showSection?: boolean;
+  titleSize?: number;
+  border?: boolean;
 }
 
-export default function RowPreview({ article, showSection = false }: ArticleRowPreviewProps) {
+export default function RowPreview({ article, showSection = false, titleSize = 2, border = false }: ArticleRowPreviewProps) {
   const { title, tag, thumbnail, description, publishedAt, authors, slug } = article;
 
   return (
-    <div className="w-full flex items-start py-3 border-border border-b gap-4 group">
+    <div className={`w-full flex items-start p-3 ${border ? "border-border border-b" : ""} gap-4 group`}>
+
       <div className="flex flex-col w-full">
+       
         <div className="flex items-center gap-2">
           {showSection && (
             <h3 className="font-bold font-sans text-red-700 inline-block bg-clip-text">
@@ -33,7 +37,7 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
         </div>
 
         <Link href={`/articles/${slug}`} className="hover:no-underline">
-          <h1 className="font-serif text-xl group-hover:text-red-700 transition-colors duration-200 font-medium">
+          <h1 className={`font-serif text-${titleSize}xl group-hover:text-red-700 transition-colors duration-200 font-medium`}>
             {title}
           </h1>
           <div className="py-2">
@@ -67,10 +71,9 @@ export default function RowPreview({ article, showSection = false }: ArticleRowP
           )}
         </div>
       </div>
-
       {thumbnail?.url && (
         <Link href={`/articles/${slug}`}>
-          <div className="relative sm:w-20 sm:h-20 md:w-40 md:h-40 w-44 h-44 shrink-0 transition-transform duration-300 ease-in-out hover:scale-[1.03]">
+          <div className="relative lg:w-[6rem] lg:h-[8rem] xl:w-[8rem] xl:h-[10rem] w-40 h-40 shrink-0 transition-transform duration-300 ease-in-out hover:scale-[1.03]">
             <Image
               src={
                 thumbnail.url.startsWith("http")
