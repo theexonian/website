@@ -83,7 +83,7 @@ export default function NewsletterPopup() {
             {/* Backdrop overlay with gradient */}
             {visible && (
                 <div 
-                    className="fixed inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/15 z-40 animate-in fade-in duration-300"
+                    className="fixed inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/15 z-[200] animate-in fade-in duration-300 "
                     onClick={() => {
                         setVisibility(false);
                         setShowSuccess(false);
@@ -99,12 +99,8 @@ export default function NewsletterPopup() {
                     bg-background shadow-2xl border-t border-border
                     transform transition-transform duration-300 ease-out
                     ${visible ? 'translate-y-0' : 'translate-y-full'}
-                `}
-            >
-                {/* Gradient shadow at top edge - only when visible */}
-                {visible && (
-                    <div className="absolute -top-8 left-0 right-0 h-8 bg-gradient-to-t from-black/20 via-black/10 to-transparent pointer-events-none" />
-                )}
+                    shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+                `}>
                 
                 {/* Close button */}
                 <button

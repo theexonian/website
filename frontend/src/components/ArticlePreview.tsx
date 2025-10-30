@@ -45,7 +45,7 @@ export default async function ArticlePreview({
       <Link href={`/articles/${article.slug}`}>
         {article.thumbnail && (
 		<div className="w-full">
-          <div className={`mb-[10px] relative w-full overflow-hidden rounded ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+          <div className={`mb-[10px] relative w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
             <Image
               src={
                 article.thumbnail.url.startsWith("http")

@@ -167,61 +167,32 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="w-screen h-auto items-center min-h-[35px] bg-foreground text-background flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
-				<p>
-					<Link
-						href="https://www.exeter.edu"
-						className="hover:text-red-400"
-					>
-						Phillips Exeter Academy
-					</Link>
-				</p>
-				<p>
-					<Link href="/masthead" className="hover:text-red-400">
-						Masthead
-					</Link>{" "}
-					|{" "}
-					<Link href="/about" className="hover:text-red-400">
-						About
-					</Link>{" "}
-					|{" "}
-					<Link href="/webboard" className="hover:text-red-400">
-						Web Board
-					</Link>{" "}
-					|{" "}
-					<Link href="/the-exonian-charter" className="hover:text-red-400">
-						Exonian Charter
-					</Link>{" "}
-					|{" "}
-					<Link href="/privacy-and-content-use" className="hover:text-red-400">
-						Media Policy
-					</Link>{" "}
-					|{" "}
-					<Link
-						href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2"
-						className="hover:text-red-400"
-					>
-						Subscribe
-					</Link>{" "}
-					|{" "}
-					<SignInButton />
-				</p>
-			</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto">
-				<div className="w-1/4 min-w-[250px] pt-6 pb-3 md:pb-1 hover:contrast-50 duration-300 flex items-center justify-center">
-					{/* TODO: Optimize responsive scaling of the the logo */}
+				<div className="flex flex-row w-full">
+					{/* Left side: Date */}
+					<div className="flex-1 p-6 text-muted-foreground text-sm">
+						{dateString + " "}
+					</div>
+
+					{/* Center: Logo */}
+					<div className="w-[242px] pt-3 pb-3 md:pb-1 hover:contrast-50 duration-300 flex justify-center items-center">
 					<Link href="/">
 						<Image
-							src={"/Exonian-logo.png"}
-							width="0"
-							height="0"
-							sizes="25vw"
-							className="w-full min-w-[250px] h-auto dark:brightness-0 dark:invert"
-							alt={"Logo of The Exonian"}
+						src={"/Exonian-logo.png"}
+						width="0"
+						height="0"
+						sizes="25vw"
+						className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
+						alt={"Logo of The Exonian"}
 						/>
 					</Link>
+					</div>
+
+					{/* Right side: Spacer */}
+					<div className="flex-1 p-6"></div>
+
 				</div>
-			</div>
+				</div>
 			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 				{isDesktop && (
@@ -293,40 +264,7 @@ export default function Navbar() {
 					</div>
 					{dateString + " "}
 					<div className="flex items-center pl-2 gap-3 text-foreground">
-						<Link
-							href="https://www.instagram.com/theexonian/"
-							target="_blank"
-						>
-							<FaInstagram className="text-lg" />
-						</Link>
-						<Link
-							href="https://www.youtube.com/@TheExonian"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<RiYoutubeLine className="text-[1.6em]" />
-						</Link>
-						<Link
-							href="https://open.spotify.com/show/12aZWrrsg7ElO1UP8JoAcs?si=f9a8e6061f094240"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<RiSpotifyLine className="text-[1.6em]" />
-						</Link>
-						<Link
-							href="https://archive.theexonian.com"
-							target="_blank"
-						>
-							<RiArchive2Line className="text-lg" />
-						</Link>
-						<Link
-							href="https://github.com/theexonian/website"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<FaGithub className="text-lg" />
-						</Link>
-						<div className="ml-[3px] flex flex-row items-center gap-3 py-[0.9px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
+						<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-3 py-[3px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
 							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
 							<input
 								type="text"
