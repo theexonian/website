@@ -58,7 +58,7 @@ export default function HorizontalArticleSection({
 
 	if (loading) {
 		return (
-			<div className="py-6">
+			<div className="py-6 print:hidden">
 				<div className="max-w-full mx-auto">
 					<div className="border-t border-border pt-4 mb-6">
 						<div className="flex justify-between items-center mb-6 px-6">
@@ -87,7 +87,7 @@ export default function HorizontalArticleSection({
 	}
 
 	return (
-		<div className="py-6">
+		<div className="py-6 print:hidden">
 			<div className="max-w-full mx-auto">
 				<div className="border-t border-border pt-4 mb-6">
 					<div className="flex justify-between items-center mb-6 px-6">

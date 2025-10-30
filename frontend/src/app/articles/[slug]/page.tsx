@@ -76,7 +76,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						/>
 					)}
 					
-					<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer">
+					<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer print:hidden">
 						<div className="flex items-center gap-2 text-red-700">
 							{/* dynamically & automatically grabs link since it's a CSR component */}
 							<SocialShareDropdown title={article.title} />

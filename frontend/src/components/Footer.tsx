@@ -41,7 +41,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="h-[300px] w-full pt-24">
+			<div className="h-[300px] w-full pt-24 print:hidden">
 				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-4 border-t-border border-t">
 					<div className="flex flex-col justify-start">
 						<Link href="https://theexonian.net">

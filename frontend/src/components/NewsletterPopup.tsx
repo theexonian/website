@@ -83,7 +83,7 @@ export default function NewsletterPopup() {
             {/* Backdrop overlay with gradient */}
             {visible && (
                 <div 
-                    className="fixed inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/15 z-40 animate-in fade-in duration-300"
+                    className="fixed inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/15 z-40 animate-in fade-in duration-300 print:hidden"
                     onClick={() => {
                         setVisibility(false);
                         setShowSuccess(false);
@@ -98,12 +98,13 @@ export default function NewsletterPopup() {
                     fixed bottom-0 left-0 right-0 z-50
                     bg-background shadow-2xl border-t border-border
                     transform transition-transform duration-300 ease-out
+                    print:hidden
                     ${visible ? 'translate-y-0' : 'translate-y-full'}
                 `}
             >
                 {/* Gradient shadow at top edge - only when visible */}
                 {visible && (
-                    <div className="absolute -top-8 left-0 right-0 h-8 bg-gradient-to-t from-black/20 via-black/10 to-transparent pointer-events-none" />
+                    <div className="absolute -top-8 left-0 right-0 h-8 bg-gradient-to-t from-black/20 via-black/10 to-transparent pointer-events-none print:hidden" />
                 )}
                 
                 {/* Close button */}
@@ -195,7 +196,7 @@ export default function NewsletterPopup() {
 
             {/* Development reset button */}
             {process.env.NODE_ENV === "development" && (
-                <div className="fixed bottom-4 right-4 z-50">
+                <div className="fixed bottom-4 right-4 z-50 print:hidden">
                     <Button
                         variant="outline"
                         onClick={() => {

@@ -82,9 +82,9 @@ export function Speechify({ inputText }: SpeechifyProps) {
 	};
 
 	return (
-		<div className="space-y-2">
+		<div className="space-y-2 print:hidden">
 			<div 
-				className={`flex items-center gap-2 hover:cursor-pointer transition-colors duration-200 ${
+				className={`flex items-center gap-2 hover:cursor-pointer transition-colors duration-200  ${
 					isLoading ? "text-muted-foreground" : "text-red-700 hover:text-red-900"
 				} ${showAudio ? "text-red-900" : ""}`} 
 				onClick={!isLoading ? handleConvert : undefined}

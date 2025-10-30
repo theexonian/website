@@ -167,7 +167,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="w-screen h-auto items-center min-h-[35px] bg-foreground text-background flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold">
+			<div className="w-screen h-auto items-center min-h-[35px] bg-foreground text-background flex justify-between px-14 md:px-6 py-1 text-xs md:text-[11px] font-bold print:hidden">
 				<p>
 					<Link
 						href="https://www.exeter.edu"
@@ -222,7 +222,7 @@ export default function Navbar() {
 					</Link>
 				</div>
 			</div>
-			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
+			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative print:hidden">
 				{/* Sticky Logo in top left corner - Only show on desktop and inside the article pages */}
 				{isDesktop && (
 					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
@@ -240,7 +240,7 @@ export default function Navbar() {
 					</div>
 				)}
 				
-				<div className="flex items-center text-xs py-1 text-muted-foreground gap-2">
+				<div className="flex items-center text-xs py-1 text-muted-foreground gap-2 print:hidden">
 					<div className="hidden md:flex">
 						<Menubar>
 							<MenubarMenu>
