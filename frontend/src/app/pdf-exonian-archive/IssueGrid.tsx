@@ -66,7 +66,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
 
   return (
     <>
-      <div className="">
+      <div className="w-full">
         {Object.keys(groupedIssues)
           .sort((a, b) => Number(b) - Number(a)) // Sort boards in descending order (newest first)
           .map((board: string) => (
@@ -76,11 +76,11 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                 {`The ${board}${numberEnding(Number(board))} Exonian Board`}
               </strong>
             </h4>
-            <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5">
+            <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5 gap-3">
               {groupedIssues[Number(board)].map((issue, index) => (
                 <p key={index}>
                   <Link href={issue.pdf.url} target="_blank">
-                    <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 min-w-full">
+                    <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 w-full">
                       <Image
                         src={issue.thumbnail.url}
                         alt={`Thumbnail for ${issue.publishDate}`}
@@ -90,7 +90,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                       />
                       <div
                         className={
-                          "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-4 pt-1 text-xl grid grid-cols-12 w-[55%] lg:w-[65%] "
+                          "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-4 pt-1 text-xl grid grid-cols-12 w-[55%] 2xl:w-[65%] sm:w-3/4"
                         }
                       >
                         <span className="inline-block col-span-8 m-0">
