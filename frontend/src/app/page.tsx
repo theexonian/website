@@ -13,8 +13,8 @@ export default function Home() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-7 md:grid-cols-1">
-				<div className="col-span-4 px-6 md:px-2 md:order-2">
+			<div className="grid grid-cols-8 md:grid-cols-1">
+				<div className="col-span-5 px-5 md:px-2 md:order-2 xl:border-r xl:border-[EFEFEF] sm:border-none ">
 					<ArticlePreview z={1} section="news" titleSize='3'/>
 					<ArticlePreview z={2} section="life" titleSize='2'/>
 					<ArticlePreview z={3} section="life"/>
@@ -23,7 +23,7 @@ export default function Home() {
 					<ArticlePreview z={3} section="oped"/>
 					<ArticlePreview z={4} section="oped"/>
 				</div>
-				<div className="col-span-3 px-6 md:px-2 md:order-3">
+				<div className="col-span-3 px-5 md:px-2 md:order-3">
           <div className="text-2xl m-2 font-serif mb-2 border-b-2 border-black pb-1">
             Editor's Picks
           </div>

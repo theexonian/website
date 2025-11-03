@@ -2,9 +2,9 @@
 
 import "animate.css";
 import Image from "next/image";
-import { FaArchive, FaInstagram, FaSearch, FaGithub, FaSpotify } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
 import { RiArchive2Line, RiYoutubeLine, RiSpotifyLine } from "react-icons/ri";
-import { FiMenu } from "react-icons/fi";
+import { TbMenu } from "react-icons/tb";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
@@ -167,126 +167,112 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="flex justify-center items-center flex-col w-full h-auto">
-				<div className="flex flex-row w-full">
-					{/* Left side: Date */}
-					<div className="flex-1 p-6 text-muted-foreground text-sm">
-						{dateString + " "}
-					</div>
-
-					{/* Center: Logo */}
-					<div className="w-[242px] pt-3 pb-3 md:pb-1 hover:contrast-50 duration-300 flex justify-center items-center">
-					<Link href="/">
-						<Image
-						src={"/Exonian-logo.png"}
-						width="0"
-						height="0"
-						sizes="25vw"
-						className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
-						alt={"Logo of The Exonian"}
-						/>
-					</Link>
-					</div>
-
-					{/* Right side: Spacer */}
-					<div className="flex-1 p-6"></div>
-
-				</div>
-				</div>
-			<div className="flex justify-center items-center flex-col w-full h-auto sticky top-0 bg-background z-50 border-b border-border pt-4 relative">
+			<div className="flex justify-start sticky items-center flex-col w-full h-auto top-0 bg-[#FFFFFFEA] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
-				{isDesktop && (
-					<div className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-250 ${showStickyLogo ? 'opacity-100' : 'opacity-0'}`}>
+
+				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">
+				
+					<div className="flex flex-row w-full">
+						{/* Left side: Date */}
+						<div className="flex-1 p-6 text-muted-foreground text-sm">
+							{isDesktop! && (dateString + " ")}
+							{!isDesktop && (currentDate.getMonth()+1) + "/" + (currentDate.getDate())}
+						</div>
+
+						{/* Center: Logo */}
+						<div className="w-[175px] pt-3 pb-3 hover:contrast-50 duration-300 flex justify-center items-center">
 						<Link href="/">
 							<Image
-								src={"/Exonian-logo.png"}
-								width={240}
-								height={80}
-								className="h-8 w-auto dark:brightness-0 dark:invert"
-								alt={"The Exonian Logo"}
-								priority={true}
-								quality={95}
+							src={"/Exonian-logo.png"}
+							width="0"
+							height="0"
+							sizes="25vw"
+							className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
+							alt={"Logo of The Exonian"}
 							/>
 						</Link>
-					</div>
-				)}
-				
-				<div className="flex items-center text-xs py-1 text-muted-foreground gap-2">
-					<div className="hidden md:flex">
-						<Menubar>
-							<MenubarMenu>
-								<MenubarTrigger>
-									<div className="text-[16px]">
-										<FiMenu />
-									</div>
-								</MenubarTrigger>
-								<MenubarContent>
-									<MenubarItem>
-										<Link href="/">Home</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/news">News</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/life">Life</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/oped">Opinions</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/sports">Sports</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/humor">Humor</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="https://crossword.theexonian.net">Crossword</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/pdf-exonian-archive">Archive</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
-									</MenubarItem>
-									<MenubarSeparator />
-									<MenubarItem asChild>
-										<div className="flex items-center gap-2 px-2 py-1">
-											<span className="text-sm">Theme</span>
-											<SimpleThemeToggle />
-										</div>
-									</MenubarItem>
-								</MenubarContent>
-							</MenubarMenu>
-        				</Menubar>
-					</div>
-					<div className="md:hidden">
-						<SimpleThemeToggle />
-					</div>
-					{dateString + " "}
-					<div className="flex items-center pl-2 gap-3 text-foreground">
-						<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-3 py-[3px] w-24 focus-within:gap-0 px-2 border rounded-md border-border focus-within:border-red-600/50 duration-300 group">
-							<FaSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300" />{" "}
-							<input
-								type="text"
-								placeholder="Search"
-								className="text-muted-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent"
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										const input = e.target as HTMLInputElement;
-										const query = input.value;
-										router.push(`/search?=${query}`);
-										input.value = "";
-									}
-								}}
-							/>
+						</div>
+
+						{/* Right side: Spacer */}
+						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-muted-foreground gap-2">
+							<div className="flex items-center pl-2 gap-1 text-foreground md:hidden">
+								<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-1 py-[5px] w-24 focus-within:gap-0 px-[5px] border rounded-lg border-border duration-300 group">
+									<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300 w-[1.2em] h-[1.2em]" />{" "}
+									<input
+										type="text"
+										placeholder="Search"
+										className="text-muted-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent"
+										onKeyDown={(e) => {
+											if (e.key === "Enter") {
+												const input = e.target as HTMLInputElement;
+												const query = input.value;
+												router.push(`/search?=${query}`);
+												input.value = "";
+											}
+										}}
+									/>
+								</div>
+							</div>
+							<div className="md:hidden">
+								<SimpleThemeToggle />
+							</div>
+							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
+								<div className="hidden md:flex">
+									<Menubar>
+										<MenubarMenu>
+											<MenubarTrigger>
+												<div className="text-[16px] leading-none">
+													<TbMenu />
+												</div>
+											</MenubarTrigger>
+											<MenubarContent>
+												<MenubarItem>
+													<Link href="/">Home</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/tag/news">News</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/tag/life">Life</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/tag/oped">Opinions</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/tag/sports">Sports</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/tag/humor">Humor</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="https://crossword.theexonian.net">Crossword</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href="/pdf-exonian-archive">Archive</Link>
+												</MenubarItem>
+												<MenubarItem>
+													<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+												</MenubarItem>
+												<MenubarSeparator />
+												<MenubarItem asChild>
+													<div className="flex items-center gap-2 px-2 py-1">
+														<span className="text-sm">Theme</span>
+														<SimpleThemeToggle />
+													</div>
+												</MenubarItem>
+											</MenubarContent>
+										</MenubarMenu>
+									</Menubar>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:hidden text-xs gap-8 py-2 pb-4 text-foreground">
+				<ul className="flex flex-row md:hidden text-xs gap-8 py-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
-							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 						 )}
  				   </li>
  				   <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
