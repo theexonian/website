@@ -43,9 +43,9 @@ export default function Navbar() {
 		<>
 			<div className="h-[300px] w-full pt-24">
 				<div className="flex flex-row md:flex-col w-full items-start justify-between md:px-10 px-32 py-4 border-t-border border-t">
-					<div className="flex flex-col justify-start">
+					<div className="flex flex-col justify-start pr-5 md:w-[100%]">
 						<Link href="https://theexonian.net">
-							<div className="flex flex-row items-center justify-start text-muted-foreground py-3 max-w-[250px]">
+							<div className="flex flex-row items-center justify-start text-muted-foreground py-3 max-w-[175px]">
 								<Image
 									src={"/Exonian-logo.png"}
 									width="0"
@@ -69,7 +69,7 @@ export default function Navbar() {
 							<i>Website created by the 16th, 15th, & 14th Web Boards, and launched in 2025 by the <Link href="/webboard" className="hover:text-foreground duration-200 underline">16th Web Board</Link>.</i>
 						</p>
 					</div>
-					<div className="flex flex-row md:self-end justify-start gap-8 text-right font-serif text-xs py-8 text-muted-foreground">
+					<div className="flex flex-row md:self-end justify-start gap-8 font-serif text-xs py-8 text-muted-foreground md:w-[100%] md:pt-3">
 						<div className="flex flex-col space-y-2">
 							<Link href="">
 								<span className="hover:text-foreground duration-200">Home</span>
