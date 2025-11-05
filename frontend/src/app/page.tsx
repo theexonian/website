@@ -14,7 +14,7 @@ export default function Home() {
 	return (
 		<div>
 			<div className="grid grid-cols-8 md:grid-cols-1">
-				<div className="col-span-5 px-5 md:px-2 md:order-2 xl:border-r xl:border-[EFEFEF] sm:border-none ">
+				<div className="col-span-5 px-5 md:px-2 md:order-2 xl:border-r xl:border-[EFEFEF] md:border-none ">
 					<ArticlePreview z={1} section="news" titleSize='3'/>
 					<ArticlePreview z={2} section="life" titleSize='2'/>
 					<ArticlePreview z={3} section="life"/>

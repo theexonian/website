@@ -21,12 +21,12 @@ export default function NewsletterPopup() {
             setVisibility(true);
         }, 5000);
         // Re-show every 5 minutes if user hasn’t subscribed
-        const intervalId = setInterval(() => {
+        /*const intervalId = setInterval(() => {
             setVisibility(true);
-        }, 300000);
+        }, 300000);*/
         return () => {
             clearTimeout(initialDelay);
-            clearInterval(intervalId);
+            //clearInterval(intervalId);
         };
     }, []);
     const addEmail = async () => {

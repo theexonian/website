@@ -180,7 +180,7 @@ export default function Navbar() {
 						</div>
 
 						{/* Center: Logo */}
-						<div className="w-[175px] pt-3 pb-3 hover:contrast-50 duration-300 flex justify-center items-center">
+						<div className="w-[180px] pt-3 pb-3 hover:contrast-50 duration-300 flex justify-center items-center">
 						<Link href="/">
 							<Image
 							src={"/Exonian-logo.png"}
@@ -278,31 +278,31 @@ export default function Navbar() {
  				   <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/news">News</Link>
 						 {isActiveRoute('/tag/news') && (
-							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 						 )}
   				  </li>
 				    <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
   					      <Link href="/tag/life">Life</Link>
 						  {isActiveRoute('/tag/life') && (
-							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 						  )}
  				   </li>
   				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/oped">Opinions</Link>
 						 {isActiveRoute('/tag/oped') && (
-							<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 						 )}
   				  </li>
   				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
       				  <Link href="/tag/sports">Sports</Link>
 					  {isActiveRoute('/tag/sports') && (
-						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 					  )}
   				  </li>
    				 <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
    				     <Link href="/tag/humor">Humor</Link>
 					 {isActiveRoute('/tag/humor') && (
-						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 					 )}
   				  </li>
   				  <li className={`hover:text-muted-foreground duration-200 relative ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
@@ -311,7 +311,7 @@ export default function Navbar() {
   				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
   				      <Link href="/pdf-exonian-archive">Archive</Link>
 					  {isActiveRoute('/pdf-exonian-archive') && (
-						<div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full h-0.5 bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
 					  )}
   				  </li>
   				  <li className="hover:text-muted-foreground duration-200">
