@@ -59,9 +59,9 @@ export default function HorizontalArticleSection({
 
 	if (loading) {
 		return (
-			<div className="py-6">
+			<div className="pt-6">
 				<div className="max-w-full mx-auto">
-					<div className="border-t border-border pt-4 mb-6">
+					<div className="border-t border-border pt-4">
 						<div className="flex justify-between items-center mb-6 px-6">
 							<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
 							<div className="text-xs text-muted-foreground">
@@ -91,7 +91,7 @@ export default function HorizontalArticleSection({
 	}
 
 	return (
-		<div className="py-6">
+		<div className="pt-6">
 			<div className="max-w-full mx-auto">
 				<div className="border-t border-border pt-4 mb-6">
 					<div className="flex justify-between items-center mb-6 px-6">
@@ -125,14 +125,12 @@ export default function HorizontalArticleSection({
 												<span>By</span>
 												{article.authors.map((author, i) => {
 													return (
-														<Link
-															className="text-xs hover:text-red-500 duration-200 no-underline text-foreground capitalize"
+														<p
+															className="text-xs duration-200 no-underline text-foreground capitalize"
 															key={i}
-															href={`/writers/${author.slug}`}
 														>
-															{author.fullname}
-															{article.authors.length - 1 !== i && ","}
-														</Link>
+															{author.fullname + (article.authors.length - 1 !== i && ",")}
+														</p>
 													);
 												})}
 											</div>
