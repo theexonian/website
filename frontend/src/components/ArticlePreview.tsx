@@ -114,13 +114,13 @@ export default async function ArticlePreview({
           </div>
 
           {/* Time stamp */}
-          <time className="order-first hidden text-sm text-muted-foreground md:block" dateTime={article.publishedAt}>
-            {new Date(article.publishedAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-            })}
-          </time>
+            <p className="text-xs text-muted-foreground mt-2">
+              {new Date(article.publishedAt).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+              })}
+            </p>
         </Link>
       </div>
     </article>
