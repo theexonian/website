@@ -3,6 +3,7 @@
 import { SignIn } from '@clerk/nextjs';
 import CustomEmailSignIn from '@/components/CustomEmailSignIn';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Page() {
   // Redirect .com domains to .net for authentication
@@ -74,11 +75,16 @@ export default function Page() {
         {/* The Exonian Logo */}
         <div className="flex justify-center mt-8">
           <div className="text-center">
-            <img 
-              src="/logo.png" 
-              alt="The Exonian Logo" 
-              className="h-24 w-auto mx-auto mb-3 drop-shadow-lg"
+          <div className="mx-auto mb-3 h-24 w-auto drop-shadow-lg">
+            <Image
+              src="/logo.png"
+              alt="The Exonian Logo"
+              width={0} // Set width and height to 0 to allow the className to control sizing
+              height={0}
+              sizes="100vw" // Required when width/height are 0 and you use a fluid size
+              className="h-full w-auto" // Control the size using Tailwind CSS classes
             />
+          </div>
             <p className="text-xs text-gray-500 font-serif">
               The Exonian is the oldest continuously-running preparatory school newspaper in America.
             </p>
