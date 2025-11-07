@@ -26,7 +26,7 @@ export default function Home() {
 					</div>
 				</div>
 				<div className="col-span-3 px-5 md:px-2 md:order-3">
-					<div className="text-2xl m-2 font-serif mb-2 border-b-2 border-[#353535] pb-1">
+					<div className="text-2xl m-2 font-serif mb-2 border-b-2 border-[#f2f2f2] pb-1">
 						Editor's Picks
 					</div>
 					<div className="flex flex-col divide-y divide-border">

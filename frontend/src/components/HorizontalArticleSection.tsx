@@ -129,7 +129,7 @@ export default function HorizontalArticleSection({
 															className="text-xs duration-200 no-underline text-foreground capitalize"
 															key={i}
 														>
-															{author.fullname + (article.authors.length - 1 !== i && ",")}
+															{author.fullname + (article.authors.length - 1 !== i ? "," : "")}
 														</p>
 													);
 												})}

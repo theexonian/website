@@ -105,7 +105,7 @@ export default async function ArticlePreview({
               {article.authors.map((author, i) => {
                 return (
                   <p className="text-xs duration-200 no-underline text-foreground capitalize" key={i}>
-                    {author.fullname + (article.authors.length - 1 !== i && ",")}
+                    {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
                   </p>
                   
                 );
