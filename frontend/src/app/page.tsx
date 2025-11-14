@@ -1,4 +1,5 @@
 import ArticlePreview from '@/components/ArticlePreview';
+import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
 // import IssuePreview from '@/components/ArticlePreview';
 import Image from "next/image";
@@ -16,9 +17,9 @@ export default function Home() {
 			<div className="grid grid-cols-8 md:grid-cols-1">
 				<div className="col-span-5 px-5 md:px-0 md:order-2 border-r border-[EFEFEF] md:border-none ">
 					<div className="flex flex-col divide-y divide-border">
-						<ArticlePreview z={1} section="news" titleSize='3'/>
-						<ArticlePreview z={2} section="life" titleSize='2'/>
-						<ArticlePreview z={3} section="life"/>
+						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='2'/>
+						<ArticlePreview z={2} section="life"/>
+						<ArticlePreview z={3} section="life" />
 						<ArticlePreview z={4} section="life"/>
 						<ArticlePreview z={5} section="life"/>
 						<ArticlePreview z={3} section="oped"/>

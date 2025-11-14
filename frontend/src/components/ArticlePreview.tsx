@@ -17,7 +17,7 @@ export default async function ArticlePreview({
   z,
   section,
   showSection = true,
-  titleSize = "1",
+  titleSize = "2",
   thumbnailRatio,
   credit,
   sectionOverride,
@@ -37,17 +37,17 @@ export default async function ArticlePreview({
   }[thumbnailRatio ?? ''] || ''; // we cannot pass thumbnailRatio straight in as a parameter because of tailwind's static rendering.
 
   return (
-    // The main container now uses a grid layout, similar to the requested design
     <article className="w-full group">
       
       {/* The main content area that becomes a link target */}
-      <div className="relative isolate flex flex-col items-start rounded-md md:col-span-3">
+      <div className="relative isolate flex flex-col items-start rounded-md">
         {/* The Link wraps the visible content except for the authors/date block */}
         <Link href={`/articles/${article.slug}`} className="block w-full p-4 active:bg-[#f8f8f8] relative">
 
+      
         {article.thumbnail && (
             <div className="w-full">
-              <div className={`mb-[10px] relative w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+              <div className={`mb-[10px] relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
                 <Image
                   src={
                     article.thumbnail.url.startsWith('http')
@@ -72,13 +72,8 @@ export default async function ArticlePreview({
             Read article: {article.title}
           </span>
           
-          {/* Article Title */}
-          <h1 className={`font-serif font-medium text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
-            {article.title}
-          </h1> 
-
           {/* Section/Tag Info */}
-          <div className="flex items-baseline gap-2 mt-2">
+          <div className="flex items-baseline gap-2 mb-1">
             {showSection && article.tag && !sectionOverride && (
               <h3 className="font-bold text-red-700 inline-block text-xs">
                 {article.tag.toUpperCase()}
@@ -90,6 +85,13 @@ export default async function ArticlePreview({
               </h3>
             )}
           </div>
+
+          {/* Article Title */}
+          <h1 className={`font-serif font-medium text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
+            {article.title}
+          </h1> 
+
+          
 
           {/* Article Description */}
           <div className="max-w-[600px] py-3">
