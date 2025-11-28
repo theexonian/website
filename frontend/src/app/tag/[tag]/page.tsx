@@ -22,11 +22,15 @@ export default async function Page({ params }: { params: { tag: string } }) {
 				</h1>
 				<span className="md:hidden font-serif text-sm xl:text-md inline px-[3rem] text-muted-foreground">
 					{tag.toLowerCase() == 'news'
-						? `Stay updated with the latest news articles on campus or outside.`
+						? `Stay updated with the latest news articles on campus and the world.`
 						: tag.toLowerCase() == 'oped'
-						? `Explore diverse opinions and insights on ${tag} topics.`
+						? `Explore diverse opinions and insights with our opinion articles.`
 						: tag.toLowerCase() == 'life'
 						? `Explore articles about campus life, student experiences, and lifestyle tips.`
+						: tag.toLowerCase() == 'sports'
+						? `Get the latest updates and highlights from our sports teams.`
+						: tag.toLowerCase() == 'humor'
+						? `Read humorous takes on campus life and current events.`
 						: `Discover articles and stories related to ${tag}.`}
 				</span>
 				<hr className="border-red-700 w-3/4 md:w-full border-[1px]" />
