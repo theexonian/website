@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { tag: string } }) {
 									</div>
 								);
 							})()}
-							<RowPreview article={articles[0]} border={false} />
+							<RowPreview article={articles[0]} border={false} thumbnailRatio='16/9'/>
 						</>
 					)}
 				</div>
