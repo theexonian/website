@@ -42,17 +42,17 @@ export default async function ArticlePreviewImgRight({
       {/* The main content area that becomes a link target. */}
       <div className="relative isolate flex lg:flex-col gap-[10rem] flex-row flex-row-reverse items-start rounded-md">
         {/* The Link wraps the visible content */}
-        <Link href={`/articles/${article.slug}`} className="block w-full p-4 active:bg-[#f8f8f8] relative flex lg:flex-col flex-row items-start">
+        <Link href={`/articles/${article.slug}`} className="block w-full pt-2 pb-4 active:bg-[#f8f8f8] relative flex lg:flex-col flex-row items-start">
 
           {/* Content column */}
-          <div className="lg:w-full w-[50%] pr-4">
+          <div className={`lg:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'} pr-4`}>
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}
             </span>
 
           {/* Section/Tag Info */}
-            <div className="flex items-baseline mb-1">
+            <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs">
                   {article.tag.toUpperCase()}
@@ -72,8 +72,8 @@ export default async function ArticlePreviewImgRight({
 
             
             {/* Article Description */}
-            <div className="max-w-[600px] py-3">
-              <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin">
+            <div className="max-w-[600px] pb-2 pt-1">
+              <p className={`text-xs text-muted-foreground text-ellipsis ${thumbnailRatio == "4/3" ? 'line-clamp-5' : 'line-clamp-3'} font-serif font-thin`}>
                 {article.description}
               </p>
             </div>

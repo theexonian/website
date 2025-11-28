@@ -42,7 +42,7 @@ export default async function ArticlePreview({
       {/* The main content area that becomes a link target */}
       <div className="relative isolate flex flex-col items-start rounded-md">
         {/* The Link wraps the visible content except for the authors/date block */}
-        <Link href={`/articles/${article.slug}`} className="block w-full p-4 active:bg-[#f8f8f8] relative">
+        <Link href={`/articles/${article.slug}`} className="block w-full pt-2 pb-4 active:bg-[#f8f8f8] relative">
 
       
         {article.thumbnail && (
@@ -73,7 +73,7 @@ export default async function ArticlePreview({
           </span>
           
           {/* Section/Tag Info */}
-          <div className="flex items-baseline gap-2 mb-1">
+          <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
             {showSection && article.tag && !sectionOverride && (
               <h3 className="font-bold text-red-700 inline-block text-xs">
                 {article.tag.toUpperCase()}
