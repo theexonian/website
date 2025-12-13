@@ -156,9 +156,10 @@ export default function Navbar() {
 	// 		suffixes[0];
 	// 	return number + suffix;
 	// }
+	var weekday =
+		weekNames[currentDate.getDay()];
+	
 	var dateString =
-		weekNames[currentDate.getDay()] +
-		", " +
 		monthNames[currentDate.getMonth()] +
 		" " +
 		currentDate.getDate() +
@@ -174,23 +175,24 @@ export default function Navbar() {
 				
 					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
-						<div className="flex-1 p-6 text-muted-foreground text-sm">
-							{isDesktop! && (dateString + " ")}
+						<div className="flex-1 mt-8 pl-9 text-muted-foreground text-sm">
+							<b>{weekday}</b> <br />
+							{isDesktop && (dateString + " ")}
 							{!isDesktop && (currentDate.getMonth()+1) + "/" + (currentDate.getDate())}
 						</div>
 
 						{/* Center: Logo */}
 						<div className="w-[17rem] pt-7 pb-4 hover:contrast-50 duration-300 flex justify-center items-center">
-						<Link href="/">
-							<Image
-							src={"/Exonian-logo.png"}
-							width="0"
-							height="0"
-							sizes="25vw"
-							className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
-							alt={"Logo of The Exonian"}
-							/>
-						</Link>
+							<Link href="/">
+								<Image
+								src={"/Exonian-logo.png"}
+								width="0"
+								height="0"
+								sizes="25vw"
+								className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
+								alt={"Logo of The Exonian"}
+								/>
+							</Link>
 						</div>
 
 						{/* Right side: Spacer */}

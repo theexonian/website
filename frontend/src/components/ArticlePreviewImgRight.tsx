@@ -102,9 +102,10 @@ export default async function ArticlePreviewImgRight({
                 })}
               </p>
           </div>
-
+          
+          {/* Thumbnail Image, (off to the right) */}
           {article.thumbnail && (
-            <div className="lg:w-full w-[45%]">
+            <div className="pl-4 lg:w-full w-[45%]">
               <div className={`mb-[10px] relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
                 <Image
                   src={
