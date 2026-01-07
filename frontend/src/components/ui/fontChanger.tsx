@@ -16,6 +16,7 @@ import { Roboto_Mono } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import { Lora } from "next/font/google";
+import { Noto_Serif } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 const b612_mono = B612_Mono({ weight: "400", subsets: ["latin"] });
@@ -26,10 +27,12 @@ const atkinson_hyperlegible = Atkinson_Hyperlegible({
 	subsets: ["latin"],
 });
 const lora = Lora({ weight: "400", subsets: ["latin"] });
+const noto_serif = Noto_Serif({ weight: "400", subsets: ["latin"] });
 
 // Define font options
 const FONT_OPTIONS = [
-	{ name: "Default", value: "default", cssClass: "font-sans" },
+	{ name: "Serif", value: "serif", cssClass: noto_serif.className },
+	{ name: "Sans", value: "sans", cssClass: "font-sans" },
 	{ name: "Classic", value: "lora", cssClass: lora.className },
 	{ name: "Rounded", value: "inter", cssClass: inter.className },
 	{ name: "Coding", value: "roboto-mono", cssClass: roboto_mono.className },
@@ -51,7 +54,7 @@ const FONT_OPTIONS = [
 ];
 
 const ArticleParagraphFontChanger = () => {
-	const [selectedFont, setSelectedFont] = useState("default");
+	const [selectedFont, setSelectedFont] = useState("serif");
 
 	// Effect to apply font class to paragraph tags within articles
 	useEffect(() => {

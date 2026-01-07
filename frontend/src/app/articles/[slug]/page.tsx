@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<div className="w-full flex justify-center">
-				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+				<article className="max-w-none w-[45rem] lg:w-[35rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
@@ -92,9 +92,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							<PrintArticle/>
 						</div>
 					</div>
-					<div className="py-1">
+					{/* <div className="py-1">
 						<Speechify inputText={article.content} />
-					</div>
+					</div> */}
 					
 					<hr className="border-neutral-400 mb-8 mt-2" />
 					
