@@ -62,7 +62,7 @@ export default function HorizontalArticleSection({
 				<div className="max-w-full mx-auto">
 					<div className="border-t border-border pt-4 mb-6">
 						<div className="flex justify-between items-center mb-6 px-6">
-							<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
+							<h2 className="font-bold text-red-700 text-xl">{sectionTitle.toUpperCase()}</h2>
 							<div className="text-xs text-muted-foreground">VIEW ALL&gt;</div>
 						</div>
 						<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
@@ -87,11 +87,11 @@ export default function HorizontalArticleSection({
 	}
 
 	return (
-		<div className="py-6 print:hidden">
+		<div className="py-3 print:hidden">
 			<div className="max-w-full mx-auto">
 				<div className="border-t border-border pt-4 mb-6">
-					<div className="flex justify-between items-center mb-6 px-6">
-						<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
+					<div className="flex justify-between items-center mb-3 px-6">
+						<h2 className="font-bold text-red-700 text-lg">{sectionTitle.toUpperCase()}</h2>
 						<Link 
 							href={`/tag/${sectionSlug}`}
 							className="text-xs text-foreground hover:text-red-700 transition-colors duration-200"
