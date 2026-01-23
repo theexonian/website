@@ -8,9 +8,14 @@ import Image from "next/image";
 // Revalidate this page every 5 minutes
 export const revalidate = 300;
 
-export default function Home() {
-	// const issues = await getIssues();
-	// console.log(issues)
+export default async function Home() {
+	const mainPageLayout = await getMainPageLayout();
+	const recentMainPageLayout = mainPageLayout[0]?.layout; // Get the full layout JSON for this issue
+	const layout = recentMainPageLayout?.layout; // get the actual layout component
+
+	if (!layout) {
+		return null;
+	}
 
 	return (
 		<div>
