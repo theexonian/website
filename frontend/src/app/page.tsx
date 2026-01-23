@@ -1,3 +1,4 @@
+import { getMainPageLayout } from '@/actions/getMainPageLayout';
 import ArticlePreview from '@/components/ArticlePreview';
 import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
@@ -9,28 +10,22 @@ import Image from "next/image";
 export const revalidate = 300;
 
 export default async function Home() {
-	const mainPageLayout = await getMainPageLayout();
-	const recentMainPageLayout = mainPageLayout[0]?.layout; // Get the full layout JSON for this issue
-	const layout = recentMainPageLayout?.layout; // get the actual layout component
-
-	if (!layout) {
-		return null;
-	}
+	// const mainPageLayout = await getMainPageLayout();
+	// const recentMainPageLayout = mainPageLayout[0].layout; // Get the full layout JSON for this issue
+	// const layout = recentMainPageLayout ? recentMainPageLayout.layout : null; // get the actual layout component
 
 	return (
 		<div>
-			<div className="grid grid-cols-8 md:grid-cols-1 divide-x-2 divide-gray-200 md:divide-x-0">
-				<div className="col-span-5 pr-1 pl-2 md:px-0 md:order-2 lg:pr-8">
-					<div className="flex flex-col">
-						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='3'/>
-						<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
-						<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2'/>
-						<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="life" titleSize='2'/>
-						<ArticlePreviewImgRight z={5} thumbnailRatio="4/3" section="life" titleSize='2'/>
-						<ArticlePreview z={2} section="oped" titleSize='2'/>
-						<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="oped"/>
-						<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="oped"/>
-					</div>
+			<div className="grid grid-cols-11 md:grid-cols-1">
+				<div className="col-span-3 px-6 md:px-2 md:order-2">
+					 <ArticlePreview z={1} section="life" titleSize='2'/>
+					<ArticlePreview z={2} section="life" titleSize='2'/>
+					<ArticlePreview z={3} section="life" titleSize='2'/>
+					<ArticlePreview z={4} section="news"/>
+					<ArticlePreview z={5} section="news"/>
+					<ArticlePreview z={4} section="oped"/>
+					<ArticlePreview z={5} section="oped"/>
+					
 				</div>
 				<div className="col-span-3 pl-10 pr-5 lg:pl-8 md:px-2 md:order-3 ">
 					<div className="text-2xl flex font-serif mb-2 border-b-[1.5px] w-[12rem] border-[#8A6F66]">
