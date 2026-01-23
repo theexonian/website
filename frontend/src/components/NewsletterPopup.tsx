@@ -13,14 +13,21 @@ export default function NewsletterPopup() {
     useEffect(() => {
         const alreadySubscribed = localStorage.getItem("subscribed") === "true";
         if (alreadySubscribed) {
-            setSubscription(true); // update local state just in case you want to use it
-            return; // don’t set timers if already subscribed
+            setSubscription(true);
+            return;
         }
+
+        // // 1/10 chance (10%) to show the newsletter popup
+        // const shouldShow = Math.random() < 0.1;
+        // if (!shouldShow) {
+        //     return; // Don't show popup for this session
+        // }
+
         // Show after initial 5s
         const initialDelay = setTimeout(() => {
             setVisibility(true);
         }, 5000);
-        // Re-show every 5 minutes if user hasn’t subscribed
+        // Re-show every 5 minutes if user hasn't subscribed
         const intervalId = setInterval(() => {
             setVisibility(true);
         }, 300000);
@@ -29,6 +36,7 @@ export default function NewsletterPopup() {
             clearInterval(intervalId);
         };
     }, []);
+
     const addEmail = async () => {
         const apiUrl = "https://server.theexonian.net/api/newsletter/subscribe";
         const subscriberData = { email, name, lists: [3] };

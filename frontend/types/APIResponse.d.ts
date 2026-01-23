@@ -19,6 +19,10 @@ export interface IssuesResponse extends BaseAPIResponse {
     data: Array<Issue>;
 }
 
+export interface MainPageLayoutResponse extends BaseAPIResponse {
+	data: Array<MainPageLayout>;
+}
+
 interface Article {
 	id: number;
 
@@ -63,4 +67,9 @@ interface Issue {
 	pdf: {
 		url: string;
 	}
+}
+
+interface MainPageLayout {
+	layout: string,
+	issueDate: Date
 }
