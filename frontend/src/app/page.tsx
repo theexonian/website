@@ -10,8 +10,12 @@ export const revalidate = 300;
 
 export default async function Home() {
 	const mainPageLayout = await getMainPageLayout();
-	const recentMainPageLayout = mainPageLayout[0].layout; // Get the full layout JSON for this issue
-	const layout = recentMainPageLayout ? recentMainPageLayout.layout : null; // get the actual layout component
+	const recentMainPageLayout = mainPageLayout[0]?.layout; // Get the full layout JSON for this issue
+	const layout = recentMainPageLayout?.layout; // get the actual layout component
+
+	if (!layout) {
+		return null;
+	}
 
 	return (
 		<div>

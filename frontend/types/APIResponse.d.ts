@@ -70,6 +70,22 @@ interface Issue {
 }
 
 interface MainPageLayout {
-	layout: string,
-	issueDate: Date
+	layout: {
+		layout: MainPageLayoutLayout;
+	};
+	issueDate: string;
+}
+
+interface MainPageLayoutLayout {
+	cols: {
+		left: Array<MainPageLayoutItem>;
+		middle: Array<MainPageLayoutItem>;
+		right: Array<MainPageLayoutItem>;
+	};
+}
+
+interface MainPageLayoutItem {
+	z: number;
+	tag: string;
+	titleSize?: string;
 }
