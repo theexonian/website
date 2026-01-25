@@ -167,7 +167,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="flex justify-start sticky items-center flex-col w-full h-auto top-0 bg-[#FFFFFFEA] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
+			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[#FFFFFFEA] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">
@@ -175,8 +175,8 @@ export default function Navbar() {
 					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
 						<div className="flex-1 p-6 text-muted-foreground text-sm">
-							{isDesktop! && (dateString + " ")}
-							{!isDesktop && (currentDate.getMonth()+1) + "/" + (currentDate.getDate())}
+								{isDesktop! && (dateString + " ")}
+								{!isDesktop && (currentDate.getMonth()+1) + "/" + (currentDate.getDate())}
 						</div>
 
 						{/* Center: Logo */}
@@ -194,7 +194,7 @@ export default function Navbar() {
 						</div>
 
 						{/* Right side: Spacer */}
-						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-muted-foreground gap-2">
+						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-muted-foreground">
 							<div className="flex items-center pl-2 gap-1 text-foreground md:hidden">
 								<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-1 py-[5px] w-24 focus-within:gap-0 px-[5px] border rounded-lg border-border duration-300 group">
 									<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300 w-[1.2em] h-[1.2em]" />{" "}
@@ -213,7 +213,7 @@ export default function Navbar() {
 									/>
 								</div>
 							</div>
-							<div className="md:hidden">
+							<div className="md:hidden pl-2">
 								<SimpleThemeToggle />
 							</div>
 							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
@@ -268,53 +268,53 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:hidden text-xs gap-8 py-3 text-foreground">
-    				<li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
+				<ul className="flex flex-row md:flex-col /*md:hidden*/ text-xs gap-8 py-3 text-foreground">
+    				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
  				   </li>
- 				   <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
+ 				   <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/news">News</Link>
 						 {isActiveRoute('/tag/news') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
   				  </li>
-				    <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
+				    <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
   					      <Link href="/tag/life">Life</Link>
 						  {isActiveRoute('/tag/life') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						  )}
  				   </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
    					     <Link href="/tag/oped">Opinions</Link>
 						 {isActiveRoute('/tag/oped') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
   				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
       				  <Link href="/tag/sports">Sports</Link>
 					  {isActiveRoute('/tag/sports') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 					  )}
   				  </li>
-   				 <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
+   				 <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
    				     <Link href="/tag/humor">Humor</Link>
 					 {isActiveRoute('/tag/humor') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 					 )}
   				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
   				      <Link href="https://crossword.theexonian.net">Crossword</Link>
   				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
   				      <Link href="/pdf-exonian-archive">Archive</Link>
 					  {isActiveRoute('/pdf-exonian-archive') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700"></div>
+						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 					  )}
   				  </li>
-  				  <li className="hover:text-muted-foreground duration-200">
+  				  <li className="hover:text-muted-foreground duration-200 md:px-6">
    				     <Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
    				 </li>
 
