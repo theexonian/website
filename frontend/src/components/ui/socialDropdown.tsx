@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
 	FacebookShareButton,
 	TwitterShareButton,
@@ -45,6 +45,10 @@ export default function SocialShareDropdown({
 	];
 
   const pathname = usePathname();
+	const shareUrl = useMemo(() => {
+		if (typeof window === "undefined") return "";
+		return window.location.origin + pathname;
+	}, [pathname]);
 
 	return (
 		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -63,7 +67,7 @@ export default function SocialShareDropdown({
 						key={name}
 						onSelect={() => setIsOpen(false)}
 					>
-						<ShareButton url={window.location.origin + pathname} title={title} className="w-full">
+						<ShareButton url={shareUrl} title={title} className="w-full" disabled={!shareUrl}>
 							<div className="flex items-center">
 								<Icon className="h-4 w-4" />
 								<span className="ml-2 text-xs">{name}</span>

@@ -1,10 +1,9 @@
 import PreviewCenter from '@/components/PreviewCenter';
-import Preview from '@/components/Preview';
 import RowPreview from '@/components/RowPreview';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
 
-export default async function Page({ params }: { params: { tag: string } }) {
-	const { tag } = params;
+export default async function Page({ params }: { params: Promise<{ tag: string }> }) {
+	const { tag } = await params;
 
 	const articles = await getArticlesByTag(tag);
 

@@ -26,6 +26,8 @@ export default function Navbar() {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [currentArticleTag, setCurrentArticleTag] = useState<string>('');
 	const [isDesktop, setIsDesktop] = useState<boolean>(false);
+	const [mounted, setMounted] = useState<boolean>(false);
+	const [dateString, setDateString] = useState<string>('');
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
@@ -90,6 +92,42 @@ export default function Navbar() {
 		fetchLatestIssue();
 		fetchCurrentArticleTag();
 		
+		setMounted(true);
+
+		const currentDate = new Date();
+		const monthNames = [
+			"Jan",
+			"Feb",
+			"Mar",
+			"Apr",
+			"May",
+			"Jun",
+			"Jul",
+			"Aug",
+			"Sep",
+			"Oct",
+			"Nov",
+			"Dec",
+		];
+		const weekNames = [
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+		];
+		setDateString(
+			weekNames[currentDate.getDay()] +
+				", " +
+				monthNames[currentDate.getMonth()] +
+				" " +
+				currentDate.getDate() +
+				", " +
+				currentDate.getFullYear()
+		);
+
 		// Check if we're on desktop
 		const checkIsDesktop = () => {
 			setIsDesktop(window.innerWidth >= 768);
@@ -122,48 +160,6 @@ export default function Navbar() {
 		}
 		// If signed in or in dev mode, the link will work normally
 	};
-
-	const currentDate = new Date();
-	const monthNames = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
-	const weekNames = [
-		"Sunday",
-		"Monday",
-		"Tuesday",
-		"Wednesday",
-		"Thursday",
-		"Friday",
-		"Saturday",
-	];
-	// function appendSuffix(number: number): string {
-	// 	const suffixes = ["th", "st", "nd", "rd"];
-	// 	const remainder = number % 100;
-	// 	const suffix =
-	// 		suffixes[(remainder - 20) % 10] ||
-	// 		suffixes[remainder] ||
-	// 		suffixes[0];
-	// 	return number + suffix;
-	// }
-	var dateString =
-		weekNames[currentDate.getDay()] +
-		", " +
-		monthNames[currentDate.getMonth()] +
-		" " +
-		currentDate.getDate() +
-		", " +
-		currentDate.getFullYear();
 
 	return (
 		<>
@@ -242,56 +238,58 @@ export default function Navbar() {
 				
 				<div className="flex items-center text-xs py-1 text-muted-foreground gap-2 print:hidden">
 					<div className="hidden md:flex">
-						<Menubar>
-							<MenubarMenu>
-								<MenubarTrigger>
-									<div className="text-[16px]">
-										<FiMenu />
-									</div>
-								</MenubarTrigger>
-								<MenubarContent>
-									<MenubarItem>
-										<Link href="/">Home</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/news">News</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/life">Life</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/oped">Opinions</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/sports">Sports</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/tag/humor">Humor</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="https://crossword.theexonian.net">Crossword</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href="/pdf-exonian-archive">Archive</Link>
-									</MenubarItem>
-									<MenubarItem>
-										<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
-									</MenubarItem>
-									<MenubarSeparator />
-									<MenubarItem asChild>
-										<div className="flex items-center gap-2 px-2 py-1">
-											<span className="text-sm">Theme</span>
-											<SimpleThemeToggle />
+						{mounted && (
+							<Menubar>
+								<MenubarMenu>
+									<MenubarTrigger>
+										<div className="text-[16px]">
+											<FiMenu />
 										</div>
-									</MenubarItem>
-								</MenubarContent>
-							</MenubarMenu>
-        				</Menubar>
+									</MenubarTrigger>
+									<MenubarContent>
+										<MenubarItem>
+											<Link href="/">Home</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/tag/news">News</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/tag/life">Life</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/tag/oped">Opinions</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/tag/sports">Sports</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/tag/humor">Humor</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="https://crossword.theexonian.net">Crossword</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href="/pdf-exonian-archive">Archive</Link>
+										</MenubarItem>
+										<MenubarItem>
+											<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+										</MenubarItem>
+										<MenubarSeparator />
+										<MenubarItem asChild>
+											<div className="flex items-center gap-2 px-2 py-1">
+												<span className="text-sm">Theme</span>
+												<SimpleThemeToggle />
+											</div>
+										</MenubarItem>
+									</MenubarContent>
+								</MenubarMenu>
+							</Menubar>
+						)}
 					</div>
 					<div className="md:hidden">
 						<SimpleThemeToggle />
 					</div>
-					{dateString + " "}
+					{mounted ? dateString + " " : null}
 					<div className="flex items-center pl-2 gap-3 text-foreground">
 						<Link
 							href="https://www.instagram.com/theexonian/"

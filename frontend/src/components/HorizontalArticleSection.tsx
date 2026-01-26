@@ -101,20 +101,18 @@ export default function HorizontalArticleSection({
 					</div>
 					<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
 						{articles.map((article) => (
-							<Link 
-								key={article.id} 
-								href={`/articles/${article.slug}`}
-								className="group block"
-							>
+							<div key={article.id} className="group">
 								<article className="pb-4 transition-colors duration-200">
-									<h3 className="font-serif font-medium text-sm leading-tight mb-2 group-hover:text-red-700 transition-colors duration-200 line-clamp-3">
-										{article.title}
-									</h3>
-									{article.description && (
-										<p className="font-serif font-thin text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-2">
-											{article.description}
-										</p>
-									)}
+									<Link href={`/articles/${article.slug}`} className="block">
+										<h3 className="font-serif font-medium text-sm leading-tight mb-2 group-hover:text-red-700 transition-colors duration-200 line-clamp-3">
+											{article.title}
+										</h3>
+										{article.description && (
+											<p className="font-serif font-thin text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-2">
+												{article.description}
+											</p>
+										)}
+									</Link>
 									<div className="mt-2">
 										<div className="text-xs text-foreground mb-1">
 											<div className="flex flex-wrap items-center gap-1">
@@ -131,18 +129,18 @@ export default function HorizontalArticleSection({
 														</Link>
 													);
 												})}
-											</div>
 										</div>
-										<span className="text-xs text-muted-foreground">
-											{new Date(article.publishedAt).toLocaleDateString('en-US', { 
-												year: 'numeric',
-												month: 'short', 
-												day: 'numeric' 
-											})}
-										</span>
 									</div>
-								</article>
-							</Link>
+									<span className="text-xs text-muted-foreground">
+										{new Date(article.publishedAt).toLocaleDateString('en-US', { 
+											year: 'numeric',
+											month: 'short', 
+											day: 'numeric' 
+										})}
+									</span>
+								</div>
+							</article>
+						</div>
 						))}
 					</div>
 				</div>

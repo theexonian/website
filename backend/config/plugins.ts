@@ -1,6 +1,9 @@
 module.exports = ({ env }) => ({
   meilisearch: {
+    enabled: env.bool('MEILISEARCH_ENABLED', false),
     config: {
+      host: env('MEILISEARCH_HOST', 'http://localhost:7700'),
+      apiKey: env('MEILISEARCH_API_KEY'),
       articles: {
         indexName: 'my_articles',
       },
@@ -16,11 +19,11 @@ module.exports = ({ env }) => ({
             secretAccessKey: env('AWS_ACCESS_SECRET'),
           },
           region: env('AWS_REGION'),
-        },
-        params: {
-          Bucket: env('AWS_BUCKET'),
-          ACL: env('AWS_ACL', 'public-read'),
-          signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+          params: {
+            Bucket: env('AWS_BUCKET'),
+            ACL: env('AWS_ACL', 'public-read'),
+            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+          },
         },
         baseUrl: env('AWS_CLOUDFRONT_URL'),
       },
