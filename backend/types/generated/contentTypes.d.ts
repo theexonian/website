@@ -411,6 +411,30 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMainPageLayoutMainPageLayout
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'main_page_layouts';
+  info: {
+    displayName: 'Main Page Layout';
+    pluralName: 'main-page-layouts';
+    singularName: 'main-page-layout';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    issueDate: Schema.Attribute.Date & Schema.Attribute.Unique;
+    layout: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPastIssuePastIssue extends Struct.CollectionTypeSchema {
   collectionName: 'past_issues';
   info: {
@@ -959,6 +983,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::main-page-layout.main-page-layout': ApiMainPageLayoutMainPageLayout;
       'api::past-issue.past-issue': ApiPastIssuePastIssue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
