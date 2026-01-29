@@ -397,6 +397,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    sectionPick: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     slug: Schema.Attribute.UID<'title'>;
     tag: Schema.Attribute.Enumeration<
       ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
@@ -426,8 +427,14 @@ export interface ApiMainPageLayoutMainPageLayout
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    issueDate: Schema.Attribute.Date & Schema.Attribute.Unique;
-    layout: Schema.Attribute.JSON;
+    issueDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    layout: Schema.Attribute.JSON & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-page-layout.main-page-layout'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
