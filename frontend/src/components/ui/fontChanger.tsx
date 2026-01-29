@@ -29,8 +29,8 @@ const lora = Lora({ weight: "400", subsets: ["latin"] });
 
 // Define font options
 const FONT_OPTIONS = [
-	{ name: "Default", value: "default", cssClass: "font-sans" },
-	{ name: "Classic", value: "lora", cssClass: lora.className },
+	// { name: "Default", value: "default", cssClass: "font-sans" },
+	{ name: "Classic", value: "default", cssClass: lora.className },
 	{ name: "Rounded", value: "inter", cssClass: inter.className },
 	{ name: "Coding", value: "roboto-mono", cssClass: roboto_mono.className },
 	{

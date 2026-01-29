@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<div className="w-full flex justify-center">
-				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8 w-[72%] sm:w-[92%] md:w-[85%] lg:w-[72%] max-w-none">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}

@@ -29,6 +29,7 @@
     "@strapi/strapi": "5.4.2",
     "axios": "^1.7.9",
     "better-sqlite3": "^11.9.1",
+    "cheerio": "^1.1.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "patch-package": "^8.0.0",

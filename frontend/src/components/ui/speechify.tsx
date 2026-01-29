@@ -89,8 +89,8 @@ export function Speechify({ inputText }: SpeechifyProps) {
 				} ${showAudio ? "text-red-900" : ""}`} 
 				onClick={!isLoading ? handleConvert : undefined}
 			>
-				<MdOutlineSpatialAudioOff className="text-xl"/>
-				{isLoading ? "Generating audio..." : "Listen to this article"}
+				{/* <MdOutlineSpatialAudioOff className="text-xl"/> */}
+				{/* {isLoading ? "Generating audio..." : "Listen to this article"} */}
 			</div>
 			
 			{error && (

@@ -3,8 +3,6 @@ import Image from "next/image";
 import * as Constants from "@/components/Constants";
 import Link from "next/link";
 
-
-
 interface ArticlePreviewProps {
   z: number;
   section: string;
