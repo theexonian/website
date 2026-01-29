@@ -1,3 +1,5 @@
+// Using middleware convention for Clerk authentication
+// See: https://clerk.com/docs/references/nextjs/auth-middleware
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
