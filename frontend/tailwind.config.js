@@ -74,6 +74,9 @@ module.exports = {
       lg: {
         max: "1023px",
       },
+      "md-lg": {
+        max: "895px",
+      },
       md: {
         max: "767px",
       },

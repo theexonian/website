@@ -71,9 +71,9 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                 {`The ${board}${numberEnding(Number(board))} Exonian Board`}
               </strong>
             </h4>
-            <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5 gap-3">
+            <div className="grid grid-cols-4 sm:grid-cols-2 md-lg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5 gap-3">
               {groupedIssues[Number(board)].map((issue, index) => (
-                <p key={index}>
+                <span key={index}>
                   <Link href={issue.pdf.url} target="_blank">
                     <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 w-full">
                       <Image
@@ -85,13 +85,13 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                       />
                       <div
                         className={
-                          "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-4 pt-1 text-xl grid grid-cols-12 w-[55%] 2xl:w-[65%] sm:w-3/4"
+                          "bg-black opacity-85 text-white bottom-3 right-5 text-right absolute pr-4 pt-1 text-xl grid grid-cols-12 w-[11.5rem]"
                         }
                       >
-                        <span className="inline-block col-span-8 m-0">
+                        <span className="inline-block col-span-7 m-0 ml-1">
                           ISSUE #
                           <br />
-                          <p className="text-sm mb-2 overflow-visible max-h-5">
+                          <span className="text-sm mb-2 overflow-visible max-h-5 block">
                             {new Date(issue.publishDate).toLocaleDateString(
                               "en-US",
                               {
@@ -100,16 +100,16 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                                 day: "numeric",
                               }
                             )}
-                          </p>
+                          </span>
                         </span>
                         <span className="inline-block col-span-1 m-0 text-5xl"></span>
-                        <span className="inline-block col-span-3 min-h-full text-5xl m-0 align-text-top font-serif text-right">
+                        <span className="inline-block col-span-3 min-h-full text-5xl m-0 align-text-top font-serif mr-2">
                           {String(issue.slug).slice(3, 5)}
                         </span>
                       </div>
                     </div>
                   </Link>
-                </p>
+                </span>
               ))}{" "}
             </div>
           </div>
