@@ -25,7 +25,8 @@ export default function Navbar() {
 	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [currentArticleTag, setCurrentArticleTag] = useState<string>('');
-	const [isDesktop, setIsDesktop] = useState<boolean>(false);
+	const [clientDate, setClientDate] = useState<Date | null>(null);
+	const [mounted, setMounted] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
@@ -53,6 +54,9 @@ export default function Navbar() {
 	};
 
 	useEffect(() => {
+		setMounted(true);
+		setClientDate(new Date());
+
 		async function fetchLatestIssue() {
 			try {
 				const issues = await getIssues();
@@ -90,26 +94,16 @@ export default function Navbar() {
 		fetchLatestIssue();
 		fetchCurrentArticleTag();
 		
-		// Check if we're on desktop
-		const checkIsDesktop = () => {
-			setIsDesktop(window.innerWidth >= 768);
-		};
-		
 		// Scroll detection for sticky logo
 		const handleScroll = () => {
 			// Show sticky logo when scrolled past the main logo area (approximately 200px)
 			setShowStickyLogo(window.scrollY > 200);
 		};
 
-		// Initial check
-		checkIsDesktop();
-		
 		window.addEventListener('scroll', handleScroll);
-		window.addEventListener('resize', checkIsDesktop);
 		
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			window.removeEventListener('resize', checkIsDesktop);
 		};
 	}, [pathname]);
 
@@ -123,7 +117,6 @@ export default function Navbar() {
 		// If signed in or in dev mode, the link will work normally
 	};
 
-	const currentDate = new Date();
 	const monthNames = [
 		"Jan",
 		"Feb",
@@ -156,15 +149,17 @@ export default function Navbar() {
 	// 		suffixes[0];
 	// 	return number + suffix;
 	// }
-	var weekday =
-		weekNames[currentDate.getDay()];
-	
-	var dateString =
-		monthNames[currentDate.getMonth()] +
-		" " +
-		currentDate.getDate() +
-		", " +
-		currentDate.getFullYear();
+	const weekday = clientDate ? weekNames[clientDate.getDay()] : "";
+	const dateString = clientDate
+		? monthNames[clientDate.getMonth()] +
+			" " +
+			clientDate.getDate() +
+			", " +
+			clientDate.getFullYear()
+		: "";
+	const mobileDate = clientDate
+		? clientDate.getMonth() + 1 + "/" + clientDate.getDate()
+		: "";
 
 	return (
 		<>
@@ -175,9 +170,9 @@ export default function Navbar() {
 				
 					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
-						<div className="flex-1 p-6 text-muted-foreground text-sm">
-								{isDesktop! && (dateString + " ")}
-								{!isDesktop && (currentDate.getMonth()+1) + "/" + (currentDate.getDate())}
+						<div className="flex-1 p-6 text-muted-foreground text-sm" suppressHydrationWarning>
+							<span className="hidden md:inline">{dateString ? dateString + " " : ""}</span>
+							<span className="md:hidden">{mobileDate}</span>
 						</div>
 
 						{/* Center: Logo */}
@@ -219,51 +214,53 @@ export default function Navbar() {
 							</div>
 							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
 								<div className="hidden md:flex">
-									<Menubar>
-										<MenubarMenu>
-											<MenubarTrigger>
-												<div className="text-[16px] leading-none">
-													<TbMenu />
-												</div>
-											</MenubarTrigger>
-											<MenubarContent>
-												<MenubarItem>
-													<Link href="/">Home</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/tag/news">News</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/tag/life">Life</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/tag/oped">Opinions</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/tag/sports">Sports</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/tag/humor">Humor</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="https://crossword.theexonian.net">Crossword</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href="/pdf-exonian-archive">Archive</Link>
-												</MenubarItem>
-												<MenubarItem>
-													<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
-												</MenubarItem>
-												<MenubarSeparator />
-												<MenubarItem asChild>
-													<div className="flex items-center gap-2 px-2 py-1">
-														<span className="text-sm">Theme</span>
-														<SimpleThemeToggle />
+									{mounted && (
+										<Menubar>
+											<MenubarMenu>
+												<MenubarTrigger>
+													<div className="text-[16px] leading-none">
+														<TbMenu />
 													</div>
-												</MenubarItem>
-											</MenubarContent>
-										</MenubarMenu>
-									</Menubar>
+												</MenubarTrigger>
+												<MenubarContent>
+													<MenubarItem>
+														<Link href="/">Home</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/tag/news">News</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/tag/life">Life</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/tag/oped">Opinions</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/tag/sports">Sports</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/tag/humor">Humor</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="https://crossword.theexonian.net">Crossword</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href="/pdf-exonian-archive">Archive</Link>
+													</MenubarItem>
+													<MenubarItem>
+														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+													</MenubarItem>
+													<MenubarSeparator />
+													<MenubarItem asChild>
+														<div className="flex items-center gap-2 px-2 py-1">
+															<span className="text-sm">Theme</span>
+															<SimpleThemeToggle />
+														</div>
+													</MenubarItem>
+												</MenubarContent>
+											</MenubarMenu>
+										</Menubar>
+									)}
 								</div>
 							</div>
 						</div>

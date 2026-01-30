@@ -1,9 +1,14 @@
 import PreviewCenter from '@/components/PreviewCenter';
 import RowPreview from '@/components/RowPreview';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
+import { notFound } from 'next/navigation';
 
-export default async function Page({ params }: { params: { tag: string } }) {
-	const { tag } = params;
+export default async function Page({ params }: { params: Promise<{ tag: string }> }) {
+	const { tag } = await params;
+
+	if (!tag) {
+		notFound();
+	}
 
 	const articles = await getArticlesByTag(tag);
 
