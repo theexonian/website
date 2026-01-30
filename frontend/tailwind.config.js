@@ -60,10 +60,11 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
       },
-	  fontFamily: {
-        bodoni: ["'Bodoni 72'", "serif"],
-      }
-    },
+    fontFamily: {
+        serif: ['"Noto Serif"'],
+
+        sans: ['"Inter"'],
+      },
     screens: {
       "2xl": {
         max: "1535px",
@@ -90,4 +91,4 @@ module.exports = {
     },
     require("tailwindcss-animate"),
   ],
-};
+}};
