@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "main_page_layouts",
+  "info": {
+    "singularName": "main-page-layout",
+    "pluralName": "main-page-layouts",
+    "displayName": "Main Page Layout"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "issueDate": {
+      "type": "date",
+      "unique": false,
+      "required": true
+    },
+    "layout": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

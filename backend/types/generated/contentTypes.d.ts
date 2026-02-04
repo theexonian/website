@@ -397,6 +397,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    sectionPick: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     slug: Schema.Attribute.UID<'title'>;
     tag: Schema.Attribute.Enumeration<
       ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
@@ -408,6 +409,36 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     z: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiMainPageLayoutMainPageLayout
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'main_page_layouts';
+  info: {
+    displayName: 'Main Page Layout';
+    pluralName: 'main-page-layouts';
+    singularName: 'main-page-layout';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    issueDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    layout: Schema.Attribute.JSON & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-page-layout.main-page-layout'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -959,6 +990,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::main-page-layout.main-page-layout': ApiMainPageLayoutMainPageLayout;
       'api::past-issue.past-issue': ApiPastIssuePastIssue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

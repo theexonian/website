@@ -58,6 +58,10 @@
     },
     "description": {
       "type": "text"
+    },
+    "sectionPick": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

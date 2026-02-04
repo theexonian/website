@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 export default function NewsletterPopup() {
@@ -9,8 +10,18 @@ export default function NewsletterPopup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
+    const { isLoaded, isSignedIn } = useUser();
 
     useEffect(() => {
+        if (!isLoaded) {
+            return;
+        }
+
+        if (isSignedIn) {
+            setVisibility(false);
+            return;
+        }
+
         const alreadySubscribed = localStorage.getItem("subscribed") === "true";
         if (alreadySubscribed) {
             setSubscription(true); // update local state just in case you want to use it
@@ -28,7 +39,8 @@ export default function NewsletterPopup() {
             clearTimeout(initialDelay);
             //clearInterval(intervalId);
         };
-    }, []);
+    }, [isLoaded, isSignedIn]);
+
     const addEmail = async () => {
         const apiUrl = "https://server.theexonian.net/api/newsletter/subscribe";
         const subscriberData = { email, name, lists: [3] };
