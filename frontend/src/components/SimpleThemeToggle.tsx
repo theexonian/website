@@ -31,19 +31,19 @@ export default function SimpleThemeToggle() {
 
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
-    return <div className="w-[26px] h-[26px]"></div>; // placeholder
+    return <div className="w-[32px] h-[32px]"></div>; // placeholder
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-[6px] rounded-lg bg-background border border-border hover:bg-accent transition-colors duration-200"
+      className="p-2 rounded-lg border border-border hover:bg-accent transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {isDark ? (
-        <FiSun className="w-[1.2em] h-[1.2em] text-foreground" />
+        <FiSun className="h-4 w-4 text-foreground" />
       ) : (
-        <FiMoon className="w-[1.2em] h-[1.2em] text-foreground" />
+        <FiMoon className="h-4 w-4 text-foreground" />
       )}
     </button>
   );

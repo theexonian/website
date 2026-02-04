@@ -81,13 +81,15 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                 <p key={index}>
                   <Link href={issue.pdf.url} target="_blank">
                     <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 min-w-full">
-                      <Image
-                        src={issue.thumbnail.url}
-                        alt={`Thumbnail for ${issue.publishDate}`}
-                        fill
-                        style={{ objectFit: "cover", objectPosition: "top" }}
-                        className="transition-transform duration-300 ease-in-out hover:scale-[103%]"
-                      />
+                      <div className="relative inline-block overflow-hidden h-[400px] relative min-w-full">
+                        <Image
+                          src={issue.thumbnail.url}
+                          alt={`Thumbnail for ${issue.publishDate}`}
+                          fill
+                          style={{ objectFit: "cover", objectPosition: "top" }}
+                          className="transition-transform duration-300 ease-in-out hover:scale-[103%]"
+                        />
+                      </div>
                       <div
                         className={
                           "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" +
