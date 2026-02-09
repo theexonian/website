@@ -176,14 +176,14 @@ export default function Navbar() {
 						</div>
 
 						{/* Center: Logo */}
-						<div className="w-[17rem] pt-7 pb-4 hover:contrast-50 duration-300 flex justify-center items-center">
+						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center">
 							<Link href="/">
 								<Image
 								src={"/Exonian-logo.png"}
 								width="0"
 								height="0"
 								sizes="25vw"
-								className="w-full min-w-[100px] h-auto dark:brightness-0 dark:invert"
+								className="h-full max-h-[2rem] w-auto dark:brightness-0 dark:invert"
 								alt={"Logo of The Exonian"}
 								/>
 							</Link>
@@ -266,7 +266,7 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:flex-col /*md:hidden*/ text-xs gap-8 py-3 text-foreground">
+				<ul className="flex flex-row md:flex-col md:hidden md:h-[100vh] text-xs gap-8 pt-2 pb-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
