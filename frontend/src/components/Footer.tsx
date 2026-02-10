@@ -85,19 +85,19 @@ export default function Navbar() {
 							</Link>
 						</div>				
 						<div className="flex flex-col space-y-2">
-							<Link href="/tag/news">
+							<Link href="/news">
 								<span className="hover:text-foreground duration-200">News</span>
 							</Link>
-							<Link href="/tag/life">
+							<Link href="/life">
 								<span className="hover:text-foreground duration-200">Life</span>
 							</Link>
-							<Link href="/tag/oped">
+							<Link href="/oped">
 								<span className="hover:text-foreground duration-200">Opinions</span>
 							</Link>
-							<Link href="/tag/sports">
+							<Link href="/sports">
 								<span className="hover:text-foreground duration-200">Sports</span>
 							</Link>
-							<Link href="/tag/humor">
+							<Link href="/humor">
 								<span className="hover:text-foreground duration-200">Humor</span>
 							</Link>
 						</div>

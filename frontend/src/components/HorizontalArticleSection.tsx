@@ -97,7 +97,7 @@ export default function HorizontalArticleSection({
 					<div className="flex justify-between items-center mb-6 px-6">
 						<h2 className="font-bold text-red-700 text-xs">{sectionTitle.toUpperCase()}</h2>
 						<Link 
-							href={`/tag/${sectionSlug}`}
+							href={`/${sectionSlug}`}
 							className="text-xs text-foreground hover:text-red-700 transition-colors duration-200"
 						>
 							<div className="flex flex-row gap-1"><span>View all</span><span><TfiArrowCircleRight className="h-4 w-4"/></span></div>

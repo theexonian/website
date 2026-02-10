@@ -39,11 +39,11 @@ export default function Navbar() {
 		if (pathname.startsWith('/articles/') && currentArticleTag) {
 			// Map article tags to navigation routes
 			const tagToRouteMap: { [key: string]: string } = {
-				'news': '/tag/news',
-				'sports': '/tag/sports', 
-				'life': '/tag/life',
-				'oped': '/tag/oped',
-				'humor': '/tag/humor'
+				'news': '/news',
+				'sports': '/sports', 
+				'life': '/life',
+				'oped': '/oped',
+				'humor': '/humor'
 			};
 			
 			const expectedRoute = tagToRouteMap[currentArticleTag.toLowerCase()];
@@ -227,19 +227,19 @@ export default function Navbar() {
 														<Link href="/">Home</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/tag/news">News</Link>
+														<Link href="/news">News</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/tag/life">Life</Link>
+														<Link href="/life">Life</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/tag/oped">Opinions</Link>
+														<Link href="/oped">Opinions</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/tag/sports">Sports</Link>
+														<Link href="/sports">Sports</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/tag/humor">Humor</Link>
+														<Link href="/humor">Humor</Link>
 													</MenubarItem>
 													<MenubarItem>
 														<Link href="https://crossword.theexonian.net">Crossword</Link>
@@ -273,33 +273,33 @@ export default function Navbar() {
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
  				   </li>
- 				   <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/news') ? 'text-red-700' : ''}`}>
-   					     <Link href="/tag/news">News</Link>
-						 {isActiveRoute('/tag/news') && (
+ 				   <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/news') ? 'text-red-700' : ''}`}>
+   					     <Link href="/news">News</Link>
+						 {isActiveRoute('/news') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
   				  </li>
-				    <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/life') ? 'text-red-700' : ''}`}>
-  					      <Link href="/tag/life">Life</Link>
-						  {isActiveRoute('/tag/life') && (
+				    <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/life') ? 'text-red-700' : ''}`}>
+  					      <Link href="/life">Life</Link>
+						  {isActiveRoute('/life') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						  )}
  				   </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/oped') ? 'text-red-700' : ''}`}>
-   					     <Link href="/tag/oped">Opinions</Link>
-						 {isActiveRoute('/tag/oped') && (
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/oped') ? 'text-red-700' : ''}`}>
+   					     <Link href="/oped">Opinions</Link>
+						 {isActiveRoute('/oped') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}
   				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/sports') ? 'text-red-700' : ''}`}>
-      				  <Link href="/tag/sports">Sports</Link>
-					  {isActiveRoute('/tag/sports') && (
+  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/sports') ? 'text-red-700' : ''}`}>
+      				  <Link href="/sports">Sports</Link>
+					  {isActiveRoute('/sports') && (
 						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 					  )}
   				  </li>
-   				 <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/tag/humor') ? 'text-red-700' : ''}`}>
-   				     <Link href="/tag/humor">Humor</Link>
-					 {isActiveRoute('/tag/humor') && (
+   				 <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/humor') ? 'text-red-700' : ''}`}>
+   				     <Link href="/humor">Humor</Link>
+					 {isActiveRoute('/humor') && (
 						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 					 )}
   				  </li>
