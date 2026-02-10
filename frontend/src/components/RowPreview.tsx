@@ -40,7 +40,7 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
         <div className="flex items-center gap-2">
           {showSection && (
             <h3 className="font-bold font-sans text-red-700 inline-block bg-clip-text">
-              <Link href={`/tag/${tag}`}>{tag ? tag.toUpperCase() : ""}</Link>
+              <Link href={`/${tag}`}>{tag ? tag.toUpperCase() : ""}</Link>
             </h3>
           )}
         </div>
