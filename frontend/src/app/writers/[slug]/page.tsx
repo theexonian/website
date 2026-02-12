@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           />
         ) : (
           <Image
-            src={"/Small.png"}
+            src={"/pfp.png"}
             alt="Missing Image"
             height={96}
             width={96}
