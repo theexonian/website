@@ -42,19 +42,20 @@ export default async function ArticlePreviewImgRight({
       {/* The main content area that becomes a link target. */}
       <div className="relative isolate flex lg:flex-col gap-[10rem] flex-row flex-row-reverse items-start rounded-md">
         {/* The Link wraps the visible content */}
-        <Link href={`/articles/${article.slug}`} className="block w-full pt-2 pb-4 active:bg-[#f8f8f8] relative flex lg:flex-col flex-row items-start">
+        <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative lg:flex-col flex-row items-start">
 
+          <div className='px-3 py-3 flex items-start gap-3'>
           {/* Content column */}
-          <div className={`lg:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'} pr-4`}>
+          <div className={`lg:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'}`}>
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}
             </span>
 
-          {/* Section/Tag Info */}
+            {/* Section/Tag Info */}
             <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
               {showSection && article.tag && !sectionOverride && (
-                <h3 className="font-bold text-red-700 inline-block text-xs">
+                <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
                 </h3>
               )}
@@ -101,12 +102,13 @@ export default async function ArticlePreviewImgRight({
                   day: 'numeric' 
                 })}
               </p>
+
           </div>
           
           {/* Thumbnail Image, (off to the right) */}
           {article.thumbnail && (
-            <div className="pl-4 lg:w-full w-[45%]">
-              <div className={`mb-[10px] relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+            <div className="lg:w-full w-[50%]">
+              <div className={`relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
                 <Image
                   src={
                     article.thumbnail.url.startsWith('http')
@@ -125,6 +127,7 @@ export default async function ArticlePreviewImgRight({
               )}
             </div>
           )}
+          </div>
           
         </Link>
       </div>

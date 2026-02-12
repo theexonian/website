@@ -42,7 +42,7 @@ export default async function ArticlePreview({
       {/* The main content area that becomes a link target */}
       <div className="relative isolate flex flex-col items-start rounded-md">
         {/* The Link wraps the visible content except for the authors/date block */}
-        <Link href={`/articles/${article.slug}`} className="block w-full pt-2 pb-4 active:bg-[#f8f8f8] relative">
+        <Link href={`/articles/${article.slug}`} className="block w-full px-3 py-3 active:bg-[#f8f8f8] relative">
 
       
         {article.thumbnail && (

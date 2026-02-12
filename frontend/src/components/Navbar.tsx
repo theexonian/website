@@ -183,7 +183,7 @@ export default function Navbar() {
 								width="0"
 								height="0"
 								sizes="25vw"
-								className="h-full max-h-[2rem] w-auto dark:brightness-0 dark:invert"
+								className="h-full max-h-[2rem] w-auto dark:brightness-0 dark:invert min-w-[172px]"
 								alt={"Logo of The Exonian"}
 								/>
 							</Link>
@@ -315,7 +315,6 @@ export default function Navbar() {
   				  <li className="hover:text-muted-foreground duration-200 md:px-6">
    				     <Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
    				 </li>
-
 				</ul>
 			</div>
 		</>
