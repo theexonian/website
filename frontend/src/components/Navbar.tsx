@@ -266,7 +266,7 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:flex-col md:hidden md:h-[100vh] text-xs gap-8 pt-2 pb-3 text-foreground">
+				<ul className="flex flex-row md:flex-col md:h-[100vh] text-xs gap-8 pt-2 pb-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
