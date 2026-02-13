@@ -31,13 +31,13 @@ export default function SimpleThemeToggle() {
 
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
-    return <div className="w-[32px] h-[32px]"></div>; // placeholder
+    return <div className="h-4 w-4"></div>; // placeholder
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg border border-border hover:bg-accent transition-colors duration-200"
+      className="p-[5px] rounded-lg border border-border hover:bg-accent transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {isDark ? (

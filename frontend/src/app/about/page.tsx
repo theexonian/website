@@ -42,8 +42,7 @@ export default function Page() {
 					<Link href="tel:6037774100">603-777-4100</Link>.
 				</p>
 				<p>
-					A subscription to the paper costs $90 off campus and $150
-					overseas.
+					A subscription to the paper costs $112.
 				</p>
 				<p>
 					The Exonian welcomes <i>Letters to the Editor</i> sent to
