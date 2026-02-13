@@ -171,8 +171,8 @@ export default function Navbar() {
 					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
 						<div className="flex-1 p-6 text-muted-foreground text-sm" suppressHydrationWarning>
-							<span className="hidden md:inline">{mobileDate}</span>
-							<span className="md:hidden">{dateString ? dateString + " " : ""}</span>
+							<span className="hidden md:inline">{dateString ? dateString + " " : ""}</span>
+							<span className="md:hidden">{mobileDate}</span>
 						</div>
 
 						{/* Center: Logo */}
@@ -209,7 +209,7 @@ export default function Navbar() {
 									/>
 								</div>
 							</div>
-							<div className="md:hidden ml-2">
+							<div className="md:hidden pl-2">
 								<SimpleThemeToggle />
 							</div>
 							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
