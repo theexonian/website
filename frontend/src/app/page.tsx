@@ -17,7 +17,7 @@ export default async function Home() {
 	return (
 		<div>
 			<div className="grid grid-cols-8 md:grid-cols-1 divide-x divide-[rgb(230,230,230)] md:divide-x-0">
-				<div className="col-span-5 md:px-0 md:order-2 lg:pr-8">
+				<div className="col-span-5 md:px-0 md:order-2">
 					<div className="flex flex-col">
 						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='3'/>
 						<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
