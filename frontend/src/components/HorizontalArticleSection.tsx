@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
-import { TfiArrowCircleRight } from "react-icons/tfi";
+import { HiChevronRight } from "react-icons/hi";
 
 interface Article {
 	id: number;
@@ -100,7 +100,7 @@ export default function HorizontalArticleSection({
 							href={`/${sectionSlug}`}
 							className="text-xs text-foreground hover:text-red-700 transition-colors duration-200"
 						>
-							<div className="flex flex-row gap-1"><span>View all</span><span><TfiArrowCircleRight className="h-4 w-4"/></span></div>
+							<div className="flex flex-row gap-1"><span>View all</span><span><HiChevronRight className="h-4 w-4 mt-[-1px]"/></span></div>
 						</Link>
 					</div>
 					<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
