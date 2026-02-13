@@ -61,8 +61,7 @@ module.exports = {
         },
       },
     fontFamily: {
-        serif: ['"Noto Serif"'],
-
+        serif: ['"Georgia"'],
         sans: ['"Inter"'],
       },
     screens: {
