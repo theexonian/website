@@ -28,16 +28,32 @@ export default async function ArticlePreviewImgRight({
     return null;
   }
 
-  const ratioClass = {
+  // Container query responsive aspect ratios (square on small, specified ratio on larger containers)
+  /*
+  const responsiveRatioClass = {
+    '1/1': 'aspect-square @[min-width:24rem]:aspect-square',
+    '4/3': 'aspect-square @[min-width:1rem]:aspect-[4/3]',
+    '3/2': 'aspect-square @[min-width:24rem]:aspect-[3/2]',
+    '16/9': 'aspect-square @[min-width:24rem]:aspect-[16/9]',
+    '2/3': 'aspect-square @[min-width:24rem]:aspect-[2/3]',
+  }[thumbnailRatio ?? ''] || 'aspect-square @[min-width:24rem]:aspect-[4/3]';
+  */
+
+  const responsiveRatioClass = {
     '1/1': 'aspect-square',
     '4/3': 'aspect-[4/3]',
     '3/2': 'aspect-[3/2]',
     '16/9': 'aspect-[16/9]',
     '2/3': 'aspect-[2/3]',
-  }[thumbnailRatio ?? ''] || ''; // we cannot pass thumbnailRatio straight in as a parameter because of tailwind's static rendering.
+  }[thumbnailRatio ?? ''] || 'aspect-[4/3]';
+
+  // Description line clamp (3 on small, varies on larger containers)
+  const descriptionClampClass = thumbnailRatio === '4/3' 
+    ? 'line-clamp-3 @[min-width:24rem]:line-clamp-5' 
+    : 'line-clamp-3';
 
   return (
-    <article className="w-full group">
+    <article className="w-full group @container">
 
       {/* The main content area that becomes a link target. */}
       <div className="relative isolate flex lg:flex-col gap-[10rem] flex-row flex-row-reverse items-start rounded-md">
@@ -46,14 +62,14 @@ export default async function ArticlePreviewImgRight({
 
           <div className='px-3 py-3 flex items-start gap-3'>
           {/* Content column */}
-          <div className={`lg:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'}`}>
+          <div className={`sm:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'}`}>
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
+            <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : 'mb-[0.17rem]'}`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
@@ -74,7 +90,7 @@ export default async function ArticlePreviewImgRight({
             
             {/* Article Description */}
             <div className="max-w-[600px] pb-2 pt-1">
-              <p className={`text-xs text-muted-foreground text-ellipsis ${thumbnailRatio == "4/3" ? 'line-clamp-5' : 'line-clamp-3'} font-serif font-thin`}>
+              <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
                 {article.description}
               </p>
             </div>
@@ -107,8 +123,8 @@ export default async function ArticlePreviewImgRight({
           
           {/* Thumbnail Image, (off to the right) */}
           {article.thumbnail && (
-            <div className="lg:w-full w-[50%]">
-              <div className={`relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
+            <div className="sm:w-full w-[50%] my-auto pl-5">
+              <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={
                     article.thumbnail.url.startsWith('http')

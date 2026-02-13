@@ -4,6 +4,8 @@ import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
 // import IssuePreview from '@/components/ArticlePreview';
 import Image from "next/image";
+import InstagramEmbedWrapper from '@/components/InstagramEmbedWrapper';
+import SpotifyEmbed from '@/components/SpotifyEmbed';
 // import { getIssues } from '@/actions/getIssues';
 
 // Revalidate this page every 5 minutes
@@ -16,10 +18,10 @@ export default async function Home() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-8 md:grid-cols-1 divide-x divide-[rgb(230,230,230)] md:divide-x-0">
-				<div className="col-span-5 md:px-0 md:order-2">
+			<div className="grid grid-cols-9 md:grid-cols-1 divide-x-[1.5px] md:divide-x-0 gap-4">
+				<div className="col-span-4 md:px-0 md:order-2">
 					<div className="flex flex-col">
-						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='3'/>
+						<ArticlePreview z={1} thumbnailRatio="16/9" section="life" titleSize='3'/>
 						<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
 						<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2'/>
 						<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="life" titleSize='2'/>
@@ -29,7 +31,7 @@ export default async function Home() {
 						<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="oped"/>
 					</div>
 				</div>
-				<div className="col-span-3 md:order-3 ">
+				<div className="col-span-3 md:order-3 pl-4">
 					<div className='px-3 pt-3'>
 						<div className="text-2xl flex font-serif pb-3 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 							Editor's Picks
@@ -45,6 +47,7 @@ export default async function Home() {
 						<ArticlePreview z={4} section="humor"/>
 					</div>
 				</div>
+				
 			</div>
 			
 			{/* Horizontal Article Sections */}
@@ -76,5 +79,6 @@ export default async function Home() {
 				/>
 			</div>
 		</div>
+		
 	);
 }
