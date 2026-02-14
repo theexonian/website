@@ -2,9 +2,10 @@ interface SpotifyEmbedProps {
   link: string;
   width?: string;
   height?: string;
+  theme?: '0' | '1';
 }
 
-export default function SpotifyEmbed({ link, width = "100%", height }: SpotifyEmbedProps) {
+export default function SpotifyEmbed({ link, width = "100%", height, theme }: SpotifyEmbedProps) {
   // Convert Spotify URL to embed URL
   const getEmbedUrl = (url: string) => {
     // Handle different Spotify URL formats
@@ -31,9 +32,13 @@ export default function SpotifyEmbed({ link, width = "100%", height }: SpotifyEm
     return '352px'; // Default for playlists/albums
   };
 
-  const embedUrl = getEmbedUrl(link);
+  var embedUrl = getEmbedUrl(link);
   const finalHeight = height || getDefaultHeight(link);
 
+  // Add theme
+  if (theme != undefined) {
+    embedUrl += `?theme=${theme}`;
+  }
   return (
     <div style={{ width: '100%' }}>
       <iframe

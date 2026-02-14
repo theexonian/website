@@ -11,9 +11,11 @@ export const metadata = {
 	title: 'The Exonian | Phillips Exeter Academy',
 	description:
 		'The Exonian is the oldest continuously-running prepatory school newspaper in the country',
-	themeColor: '#fdfdfd',
 };
 
+export const viewport = {
+	themeColor: '#fdfdfd',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (

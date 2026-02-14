@@ -24,7 +24,6 @@ import SimpleThemeToggle from '@/components/SimpleThemeToggle';
 export default function Navbar() {
 	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
-	const [currentArticleTag, setCurrentArticleTag] = useState<string>('');
 	const [clientDate, setClientDate] = useState<Date | null>(null);
 	const [mounted, setMounted] = useState<boolean>(false);
 	const router = useRouter();
@@ -34,22 +33,6 @@ export default function Navbar() {
 	// Helper function to check if a route is active
 	const isActiveRoute = (route: string) => {
 		if (route === '/') return pathname === '/';
-		
-		// Handle article pages - check if we're on an article page and match the tag
-		if (pathname.startsWith('/articles/') && currentArticleTag) {
-			// Map article tags to navigation routes
-			const tagToRouteMap: { [key: string]: string } = {
-				'news': '/news',
-				'sports': '/sports', 
-				'life': '/life',
-				'oped': '/oped',
-				'humor': '/humor'
-			};
-			
-			const expectedRoute = tagToRouteMap[currentArticleTag.toLowerCase()];
-			return expectedRoute === route;
-		}
-		
 		return pathname.startsWith(route);
 	};
 
@@ -69,30 +52,7 @@ export default function Navbar() {
 			}
 		}
 		
-		// Fetch current article tag if we're on an article page
-		async function fetchCurrentArticleTag() {
-			if (pathname.startsWith('/articles/')) {
-				try {
-					const slug = pathname.split('/articles/')[1];
-					if (slug) {
-						// Import the getArticleById function dynamically to avoid circular dependencies
-						const { getArticleById } = await import('@/actions/getArticleById');
-						const article = await getArticleById(slug);
-						if (article && article.tag) {
-							setCurrentArticleTag(article.tag);
-						}
-					}
-				} catch (error) {
-					console.error('Failed to fetch current article:', error);
-				}
-			} else {
-				// Clear the article tag when not on an article page
-				setCurrentArticleTag('');
-			}
-		}
-		
 		fetchLatestIssue();
-		fetchCurrentArticleTag();
 		
 		// Scroll detection for sticky logo
 		const handleScroll = () => {
