@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
 	return (
 		<>
-			<div className="w-full flex justify-center">
+			<div className="w-full px-10 mx-auto max-w-[50rem] flex justify-center">
 				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}

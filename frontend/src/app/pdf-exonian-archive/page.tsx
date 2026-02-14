@@ -7,14 +7,16 @@ export default async function PdfArchivePage() {
   const issues = await getIssues();              // runs on the server
   return (
     <>
-      <FancyBigTitle title="PDF Exonian Archives" />
-      <p>
-        Click on a recent issue below to access the full PDF. Older issues are available at&nbsp;
-        <Link href="https://archive.theexonian.com">archive.theexonian.com</Link>.
-      </p>
+      <div className="w-full max-w-[80rem] mx-auto">
+        <FancyBigTitle title="PDF Exonian Archives" />
+        <p>
+          Click on a recent issue below to access the full PDF. Older issues are available at&nbsp;
+          <Link href="https://archive.theexonian.com">archive.theexonian.com</Link>.
+        </p>
 
-      {/* interactive grid */}
-      <IssuesGrid issues={issues} />
+        {/* interactive grid */}
+        <IssuesGrid issues={issues} />
+      </div>
     </>
   );
 }
