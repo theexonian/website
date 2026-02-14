@@ -31,7 +31,7 @@ export default async function Home() {
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4">
-							{ /* Right Column */ }
+							{ /* Middle Column */ }
 							<div className='px-3 pt-3'>
 								<div className="text-2xl flex font-serif pb-2 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 									Editor's Picks
@@ -57,13 +57,19 @@ export default async function Home() {
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4">
-							{ /* Right Column */ }
+							{ /* Middle Column */ }
 							<div className="flex flex-col">
 								<ArticlePreview z={1} section="oped" titleSize='2'/>
 								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9'/>
 								<ArticlePreview z={2} section="sports" thumbnailRatio='16/9'/>
 							</div>
 						</div>	
+					</div>
+				</div>
+				<div className="col-span-2 md:order-2 md:px-0 bg-[#f8f8f8] rounded-md">
+					{ /* Right Column */ }
+					<div className="px-3 pt-3 font-serif">
+						Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough.
 					</div>
 				</div>
 			</div>
