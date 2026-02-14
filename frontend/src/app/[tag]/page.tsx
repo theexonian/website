@@ -3,6 +3,9 @@ import RowPreview from '@/components/RowPreview';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
 import { notFound } from 'next/navigation';
 
+// Revalidate this page every 5 minutes
+export const revalidate = 300;
+
 export default async function Page({ params }: { params: Promise<{ tag: string }> }) {
 	const { tag } = await params;
 

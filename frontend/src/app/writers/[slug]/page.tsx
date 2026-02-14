@@ -6,6 +6,9 @@ import * as Constants from "@/components/Constants"
 import Link from "next/link";
 import RowPreview from '@/components/RowPreview';
 
+// Revalidate this page every 5 minutes
+export const revalidate = 300;
+
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
 	const author = await getAuthorBySlug(slug);

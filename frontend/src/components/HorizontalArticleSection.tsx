@@ -38,7 +38,9 @@ export default async function HorizontalArticleSection({
 			articles = response.slice(0, limit);
 		}
 	} catch (error) {
-		console.error('Error fetching articles:', error);
+		console.error(`Error fetching articles for section ${sectionSlug}:`, error);
+		// Return null on error to fail gracefully without breaking the page
+		return null;
 	}
 
 	if (!articles.length) {
