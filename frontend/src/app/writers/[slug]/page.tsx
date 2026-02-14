@@ -6,8 +6,9 @@ import * as Constants from "@/components/Constants"
 import Link from "next/link";
 import RowPreview from '@/components/RowPreview';
 
-export default async function Page({ params }: { params: { slug: string } }) {
-	const author = await getAuthorBySlug(params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
+	const author = await getAuthorBySlug(slug);
 
 	return (
     <>

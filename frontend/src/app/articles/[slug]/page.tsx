@@ -14,8 +14,8 @@ import * as Constants from "@/components/Constants";
 // Revalidate this page every 5 minutes
 export const revalidate = 300;
 
-export default async function Page({ params }: { params: { slug: string } }) {
-	const slug = params.slug;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
 	const article = await getArticleById(slug);
 
 	if (!article || !article.content) return null;

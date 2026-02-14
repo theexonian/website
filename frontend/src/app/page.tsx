@@ -18,7 +18,7 @@ export default async function Home() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-9 md:grid-cols-1 divide-x-[1.5px] md:divide-x-0 gap-4">
+			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
 				<div className="col-span-7 md:order-1 md:px-0 " >
 					{ /* Left Two Columns */ }
 					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
@@ -33,7 +33,7 @@ export default async function Home() {
 						<div className="col-span-3 md:order-2 pl-4">
 							{ /* Right Column */ }
 							<div className='px-3 pt-3'>
-								<div className="text-2xl flex font-serif pb-3 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
+								<div className="text-2xl flex font-serif pb-2 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 									Editor's Picks
 								</div>
 							</div>

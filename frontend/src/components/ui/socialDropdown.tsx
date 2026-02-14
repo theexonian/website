@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
 	FacebookShareButton,
 	TwitterShareButton,
@@ -34,6 +34,8 @@ export default function SocialShareDropdown({
 	title,
 }: SocialShareDropdownProps) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [shareUrl, setShareUrl] = useState<string>("");
+	const [isHydrated, setIsHydrated] = useState(false);
 
 	const socialPlatforms = [
 		{ name: "Facebook", Button: FacebookShareButton, Icon: FaFacebook },
@@ -45,6 +47,27 @@ export default function SocialShareDropdown({
 	];
 
   const pathname = usePathname();
+
+	useEffect(() => {
+		setIsHydrated(true);
+		if (typeof window !== "undefined") {
+			setShareUrl(window.location.origin + pathname);
+		}
+	}, [pathname]);
+
+	// Don't render interactive content until hydrated to avoid mismatch
+	if (!isHydrated) {
+		return (
+			<Button
+				variant="link"
+				className="justify-between text-red-700 p-0"
+				disabled
+			>
+				<IoShareSocialOutline className="text-xl" />
+				Share
+			</Button>
+		);
+	}
 
 	return (
 		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -63,7 +86,7 @@ export default function SocialShareDropdown({
 						key={name}
 						onSelect={() => setIsOpen(false)}
 					>
-						<ShareButton url={window.location.origin + pathname} title={title} className="w-full">
+						<ShareButton url={shareUrl} title={title} className="w-full">
 							<div className="flex items-center">
 								<Icon className="h-4 w-4" />
 								<span className="ml-2 text-xs">{name}</span>
