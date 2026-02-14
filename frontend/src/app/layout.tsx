@@ -5,7 +5,6 @@ import 'animate.css';
 import { Analytics } from "@vercel/analytics/react"
 import NewsletterPopup from '@/components/NewsletterPopup';
 import { ClerkProvider } from "@clerk/nextjs";
-import { LinkedInEmbed } from 'react-social-media-embed';
 
 export const metadata = {
 	title: 'The Exonian | Phillips Exeter Academy',

@@ -32,13 +32,25 @@ export default function SpotifyEmbed({ link, width = "100%", height, theme }: Sp
     return '352px'; // Default for playlists/albums
   };
 
-  var embedUrl = getEmbedUrl(link);
+  const embedUrl = getEmbedUrl(link);
   const finalHeight = height || getDefaultHeight(link);
 
-  // Add theme
-  if (theme != undefined) {
-    embedUrl += `?theme=${theme}`;
+  // Add theme parameter if specified
+  if (theme !== undefined) {
+    return (
+      <div style={{ width: '100%' }}>
+        <iframe
+          src={`${embedUrl}?theme=${theme}`}
+          width={width}
+          height={finalHeight}
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          style={{ borderRadius: '12px' }}
+        />
+      </div>
+    );
   }
+
   return (
     <div style={{ width: '100%' }}>
       <iframe
