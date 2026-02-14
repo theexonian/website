@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
         Accept: AUDIO_MIME_TYPE,
       },
+      signal: request.signal,
       body: JSON.stringify({
         input: input,
         voice_id: "cliff",

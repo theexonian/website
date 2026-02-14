@@ -3,7 +3,7 @@ import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 import * as Constants from "@/components/Constants"
 
-export async function getArticlesByTag(tag: string) {
+export async function getArticlesByTag(tag: string, limit?: number) {
 	const query = stringify({
 		filters: {
 			tag: {
@@ -12,6 +12,7 @@ export async function getArticlesByTag(tag: string) {
 		},
 		fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
 		sort: ['createdAt:desc', 'z:asc'],
+		...(limit ? { pagination: { pageSize: limit } } : {}),
 		populate: {
 			thumbnail: {
 				fields: ['url'],

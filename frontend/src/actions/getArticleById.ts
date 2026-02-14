@@ -10,7 +10,14 @@ export async function getArticleById(slug: string) {
 				$eqi: slug,
 			},
 		},
-		populate: '*',
+		populate: {
+			thumbnail: {
+				fields: ['url'],
+			},
+			authors: {
+				fields: ['fullname', 'slug'],
+			},
+		},
 	});
 
 	const body: ArticlesResponse = await fetchCached(

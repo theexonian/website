@@ -33,7 +33,7 @@ export default async function HorizontalArticleSection({
 	let articles: Article[] = [];
 	
 	try {
-		const response = await getArticlesByTag(sectionSlug);
+		const response = await getArticlesByTag(sectionSlug, limit);
 		if (response && response.length > 0) {
 			articles = response.slice(0, limit);
 		}

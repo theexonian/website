@@ -52,6 +52,11 @@ const FONT_OPTIONS = [
 
 const ArticleParagraphFontChanger = () => {
 	const [selectedFont, setSelectedFont] = useState("default");
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	// Effect to apply font class to paragraph tags within articles
 	useEffect(() => {
@@ -74,6 +79,10 @@ const ArticleParagraphFontChanger = () => {
 			});
 		}
 	}, [selectedFont]);
+
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<>
