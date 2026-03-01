@@ -27,6 +27,7 @@ interface NavbarProps {
 export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [isDesktop, setIsDesktop] = useState<boolean>(false);
+	const [dateString, setDateString] = useState<string>('');
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
@@ -38,6 +39,17 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	};
 
 	useEffect(() => {
+		const now = new Date();
+		const computedDateString =
+			weekNames[now.getDay()] +
+			", " +
+			monthNames[now.getMonth()] +
+			" " +
+			now.getDate() +
+			", " +
+			now.getFullYear();
+		setDateString(computedDateString);
+
 		// Check if we're on desktop
 		const checkIsDesktop = () => {
 			setIsDesktop(window.innerWidth >= 768);
@@ -75,7 +87,6 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 		// If signed in or in dev mode, the link will work normally
 	};
 
-	const currentDate = new Date();
 	const monthNames = [
 		"Jan",
 		"Feb",
@@ -108,14 +119,6 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	// 		suffixes[0];
 	// 	return number + suffix;
 	// }
-	var dateString =
-		weekNames[currentDate.getDay()] +
-		", " +
-		monthNames[currentDate.getMonth()] +
-		" " +
-		currentDate.getDate() +
-		", " +
-		currentDate.getFullYear();
 
 	return (
 		<>

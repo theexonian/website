@@ -59,12 +59,11 @@ export default async function HorizontalArticleSection({
 					</div>
 					<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
 						{articles.map((article) => (
-							<Link 
-								key={article.id} 
-								href={`/articles/${article.slug}`}
-								className="group block"
-							>
-								<article className="pb-4 transition-colors duration-200">
+							<article key={article.id} className="pb-4 transition-colors duration-200 group">
+								<Link
+									href={`/articles/${article.slug}`}
+									className="block"
+								>
 									<h3 className="font-serif font-medium text-sm leading-tight mb-2 group-hover:text-red-700 transition-colors duration-200 line-clamp-3">
 										{article.title}
 									</h3>
@@ -73,6 +72,7 @@ export default async function HorizontalArticleSection({
 											{article.description}
 										</p>
 									)}
+								</Link>
 									<div className="mt-2">
 										<div className="text-xs text-foreground mb-1">
 											<div className="flex flex-wrap items-center gap-1">
@@ -99,8 +99,7 @@ export default async function HorizontalArticleSection({
 											})}
 										</span>
 									</div>
-								</article>
-							</Link>
+							</article>
 						))}
 					</div>
 				</div>
