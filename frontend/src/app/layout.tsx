@@ -21,12 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
 			<html lang="en">
-				<body className="overflow-x-hidden animate__animated animate__fadeIn">
+				<body className="font-sans overflow-x-hidden animate__animated animate__fadeIn">
 					<Analytics/>
 					<Navbar />
 					{/* @TODO: up for optimization */}
 					<div className="flex w-screen h-auto items-center justify-center">
-						<main className="flex w-3/4 xl:w-5/6 lg:w-11/12 max-w-[1250px] h-auto min-h-screen">
+						<main className="flex w-4/5 xl:w-5/6 lg:w-11/12 max-w-[1250px] h-auto min-h-screen">
 							<div className="w-full flex flex-col flex-wrap gap-1 pt-8">
 								{children}
 							</div>

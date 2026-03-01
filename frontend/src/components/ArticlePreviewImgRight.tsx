@@ -11,6 +11,8 @@ interface ArticlePreviewImgRightProps {
   thumbnailRatio?: string;
   credit?: string;
   sectionOverride?: string; // Optional override for section name
+  showDescription?: boolean; // Option to show/hide description
+  showThumbnail?: boolean; // Option to show/hide thumbnail
 }
 
 export default async function ArticlePreviewImgRight({
@@ -21,6 +23,8 @@ export default async function ArticlePreviewImgRight({
   thumbnailRatio,
   credit,
   sectionOverride,
+  showDescription = true,
+  showThumbnail = true,
 }: ArticlePreviewImgRightProps) {
   const article = await getArticleByZIndex(z, section);
 
@@ -52,6 +56,7 @@ export default async function ArticlePreviewImgRight({
     ? 'line-clamp-3 @[min-width:24rem]:line-clamp-5' 
     : 'line-clamp-3';
 
+  showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
   return (
     <article className="w-full group @container">
 
@@ -62,14 +67,14 @@ export default async function ArticlePreviewImgRight({
 
           <div className='px-3 py-3 flex items-start gap-3'>
           {/* Content column */}
-          <div className={`sm:w-full ${article.thumbnail ? 'w-[50%]' : 'w-full'}`}>
+          <div className={`sm:w-full ${showThumbnail ? (titleSize == "1" ? "w-[70%]" : "w-[50%]") : 'w-full'}`}>
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : 'mb-[0.17rem]'}`}>
+            <div className={`flex font-sans items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : 'mb-[0.17rem]'}`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
@@ -89,14 +94,16 @@ export default async function ArticlePreviewImgRight({
 
             
             {/* Article Description */}
-            <div className="max-w-[600px] pb-2 pt-1">
-              <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
-                {article.description}
-              </p>
-            </div>
+            {showDescription && (
+              <div className="max-w-[600px] pt-1 pb-1">
+                <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
+                  {article.description}
+                </p>
+              </div>
+            )}
             
             {/* Author */}
-            <div className="text-xs text-foreground lg:hidden">
+            <div className="pt-1 text-xs text-foreground lg:hidden">
               <div className="flex flex-wrap items-center gap-1">
                 <span>By</span>
                 {article.authors.map((author, i) => {
@@ -122,7 +129,7 @@ export default async function ArticlePreviewImgRight({
           </div>
           
           {/* Thumbnail Image, (off to the right) */}
-          {article.thumbnail && (
+          {showThumbnail && (
             <div className="sm:w-full w-[50%] my-auto pl-5">
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image

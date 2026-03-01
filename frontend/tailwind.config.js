@@ -62,7 +62,7 @@ module.exports = {
       },
     fontFamily: {
         serif: ['"Georgia"'],
-        sans: ['"Inter"'],
+        sans: ['"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     screens: {
       "2xl": {

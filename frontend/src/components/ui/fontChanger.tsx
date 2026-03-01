@@ -10,14 +10,12 @@ import {
 } from "@/components/ui/select";
 import { BiFontFamily } from "react-icons/bi";
 import { Label } from "@/components/ui/label";
-import { Inter } from "next/font/google";
 import { B612_Mono } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import { Lora } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
 const b612_mono = B612_Mono({ weight: "400", subsets: ["latin"] });
 const roboto_mono = Roboto_Mono({ weight: "400", subsets: ["latin"] });
 const merriweather = Merriweather({ weight: "400", subsets: ["latin"] });
@@ -31,7 +29,7 @@ const lora = Lora({ weight: "400", subsets: ["latin"] });
 const FONT_OPTIONS = [
 	{ name: "Default", value: "default", cssClass: "font-sans" },
 	{ name: "Classic", value: "lora", cssClass: lora.className },
-	{ name: "Rounded", value: "inter", cssClass: inter.className },
+	{ name: "Segoe UI", value: "segoe-ui", cssClass: "font-[Segoe_UI]" },
 	{ name: "Coding", value: "roboto-mono", cssClass: roboto_mono.className },
 	{
 		name: "Legible Classic",

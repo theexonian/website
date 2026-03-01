@@ -11,6 +11,8 @@ interface ArticlePreviewProps {
   thumbnailRatio?: string;
   credit?: string;
   sectionOverride?: string; // Optional override for section name
+  showDescription?: boolean; // Option to show/hide description
+  showThumbnail?: boolean; // Option to show/hide thumbnail
 }
 
 export default async function ArticlePreview({
@@ -21,6 +23,8 @@ export default async function ArticlePreview({
   thumbnailRatio,
   credit,
   sectionOverride,
+  showDescription = true,
+  showThumbnail = true,
 }: ArticlePreviewProps) {
   const article = await getArticleByZIndex(z, section);
 
@@ -36,6 +40,8 @@ export default async function ArticlePreview({
     '2/3': 'aspect-[2/3]',
   }[thumbnailRatio ?? ''] || ''; // we cannot pass thumbnailRatio straight in as a parameter because of tailwind's static rendering.
 
+  showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
+
   return (
     <article className="w-full group">
       
@@ -45,7 +51,7 @@ export default async function ArticlePreview({
         <Link href={`/articles/${article.slug}`} className="block w-full px-3 py-3 active:bg-[#f8f8f8] relative">
 
       
-        {article.thumbnail && (
+        {showThumbnail && (
             <div className="w-full">
               <div className={`mb-[10px] relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
                 <Image
@@ -73,7 +79,7 @@ export default async function ArticlePreview({
           </span>
           
           {/* Section/Tag Info */}
-          <div className={`flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
+          <div className={`font-sans flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
             {showSection && article.tag && !sectionOverride && (
               <h3 className="font-bold text-red-700 inline-block text-xs">
                 {article.tag.toUpperCase()}
@@ -94,11 +100,13 @@ export default async function ArticlePreview({
           
 
           {/* Article Description */}
-          <div className="max-w-[600px] py-3">
-            <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin">
-              {article.description}
-            </p>
-          </div>
+          {showDescription && (
+            <div className="max-w-[600px] py-3">
+              <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin">
+                {article.description}
+              </p>
+            </div>
+          )}
           
           {/* Author */}
           <div className="text-xs text-foreground md:hidden">
