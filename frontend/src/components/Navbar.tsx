@@ -8,7 +8,6 @@ import { FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
-import { getIssues } from '@/actions/getIssues';
 import {
 	Menubar,
 	MenubarContent,
@@ -21,10 +20,12 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
-export default function Navbar() {
-	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+interface NavbarProps {
+	latestIssuePdfUrl?: string;
+}
+
+export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
-	const [currentArticleTag, setCurrentArticleTag] = useState<string>('');
 	const [isDesktop, setIsDesktop] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
@@ -33,63 +34,10 @@ export default function Navbar() {
 	// Helper function to check if a route is active
 	const isActiveRoute = (route: string) => {
 		if (route === '/') return pathname === '/';
-		
-		// Handle article pages - check if we're on an article page and match the tag
-		if (pathname.startsWith('/articles/') && currentArticleTag) {
-			// Map article tags to navigation routes
-			const tagToRouteMap: { [key: string]: string } = {
-				'news': '/tag/news',
-				'sports': '/tag/sports', 
-				'life': '/tag/life',
-				'oped': '/tag/oped',
-				'humor': '/tag/humor'
-			};
-			
-			const expectedRoute = tagToRouteMap[currentArticleTag.toLowerCase()];
-			return expectedRoute === route;
-		}
-		
 		return pathname.startsWith(route);
 	};
 
 	useEffect(() => {
-		async function fetchLatestIssue() {
-			try {
-				const issues = await getIssues();
-				if (issues && issues.length > 0) {
-					// Issues are sorted by publishDate:desc, so first one is the latest
-					setLatestIssuePdfUrl(issues[0].pdf.url);
-				}
-			} catch (error) {
-				console.error('Failed to fetch latest issue:', error);
-			}
-		}
-		
-		// Fetch current article tag if we're on an article page
-		async function fetchCurrentArticleTag() {
-			if (pathname.startsWith('/articles/')) {
-				try {
-					const slug = pathname.split('/articles/')[1];
-					if (slug) {
-						// Import the getArticleById function dynamically to avoid circular dependencies
-						const { getArticleById } = await import('@/actions/getArticleById');
-						const article = await getArticleById(slug);
-						if (article && article.tag) {
-							setCurrentArticleTag(article.tag);
-						}
-					}
-				} catch (error) {
-					console.error('Failed to fetch current article:', error);
-				}
-			} else {
-				// Clear the article tag when not on an article page
-				setCurrentArticleTag('');
-			}
-		}
-		
-		fetchLatestIssue();
-		fetchCurrentArticleTag();
-		
 		// Check if we're on desktop
 		const checkIsDesktop = () => {
 			setIsDesktop(window.innerWidth >= 768);
@@ -111,9 +59,13 @@ export default function Navbar() {
 			window.removeEventListener('scroll', handleScroll);
 			window.removeEventListener('resize', checkIsDesktop);
 		};
-	}, [pathname]);
+	}, []);
 
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
+		if (!latestIssuePdfUrl) {
+			e.preventDefault();
+			return;
+		}
 		// Allow access in development mode or if signed in
 		const isDev = process.env.NODE_ENV === 'development';
 		if (!isSignedIn && !isDev) {

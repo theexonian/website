@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
 
@@ -27,59 +25,19 @@ interface HorizontalArticleSectionProps {
 	limit?: number;
 }
 
-export default function HorizontalArticleSection({ 
+export default async function HorizontalArticleSection({ 
 	sectionTitle, 
 	sectionSlug, 
 	limit = 5 
 }: HorizontalArticleSectionProps) {
-	const [articles, setArticles] = useState<Article[]>([]);
-	const [loading, setLoading] = useState(true);
+	let articles: Article[] = [];
 
-	useEffect(() => {
-		async function fetchSectionArticles() {
-			try {
-				setLoading(true);
-				const response = await getArticlesByTag(sectionSlug);
-				if (response && response.length > 0) {
-					setArticles(response.slice(0, limit));
-				} else {
-					setArticles([]);
-				}
-			} catch (error) {
-				console.error('Error fetching articles:', error);
-				setArticles([]);
-			} finally {
-				setLoading(false);
-			}
-		}
-		
-		fetchSectionArticles();
-	}, [sectionSlug, sectionTitle, limit]);
-
-	if (loading) {
-		return (
-			<div className="py-6 print:hidden">
-				<div className="max-w-full mx-auto">
-					<div className="border-t border-border pt-4 mb-6">
-						<div className="flex justify-between items-center mb-6 px-6">
-							<h2 className="font-bold text-red-700 text-xl">{sectionTitle.toUpperCase()}</h2>
-							<div className="text-xs text-muted-foreground">VIEW ALL&gt;</div>
-						</div>
-						<div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 px-6">
-							{Array.from({ length: limit }).map((_, index) => (
-								<div key={index} className="animate-pulse">
-									<div className="pb-4">
-										<div className="bg-gray-300 h-4 mb-2 rounded"></div>
-										<div className="bg-gray-300 h-3 mb-2 rounded"></div>
-										<div className="bg-gray-300 h-3 w-16 rounded"></div>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
-		);
+	try {
+		const response = await getArticlesByTag(sectionSlug);
+		articles = response && response.length > 0 ? response.slice(0, limit) : [];
+	} catch (error) {
+		console.error('Error fetching articles:', error);
+		articles = [];
 	}
 
 	if (!articles.length) {
