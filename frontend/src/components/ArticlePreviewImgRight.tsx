@@ -65,7 +65,7 @@ export default async function ArticlePreviewImgRight({
         {/* The Link wraps the visible content */}
         <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative lg:flex-col flex-row items-start">
 
-          <div className='px-3 py-3 flex items-start gap-3'>
+          <div className='px-3 py-3 sm:p-0 flex sm:flex-col items-start gap-3'>
           {/* Content column */}
           <div className={`sm:w-full ${showThumbnail ? (titleSize == "1" ? "w-[70%]" : "w-[50%]") : 'w-full'}`}>
             {/* Screen Reader Title */}
@@ -74,7 +74,7 @@ export default async function ArticlePreviewImgRight({
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex font-sans items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : 'mb-[0.17rem]'}`}>
+            <div className={`flex font-sans items-baseline leading-[1.6]`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
@@ -88,15 +88,15 @@ export default async function ArticlePreviewImgRight({
             </div>
 
             {/* Article Title */}
-            <h1 className={`font-serif font-medium text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
+            <h1 className={`font-serif font-semibold text-${titleSize}xl text-foreground group-hover:text-[#404040] transition-colors duration-200 leading-1.6`}>
               {article.title}
             </h1>
 
             
             {/* Article Description */}
             {showDescription && (
-              <div className="max-w-[600px] pt-1 pb-1">
-                <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
+              <div className="max-w-[600px] py-1">
+                <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin leading-[1.6]`}>
                   {article.description}
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default async function ArticlePreviewImgRight({
           
           {/* Thumbnail Image, (off to the right) */}
           {showThumbnail && (
-            <div className="sm:w-full w-[50%] my-auto pl-5">
+            <div className="sm:w-full w-[50%] pl-5 sm:pl-0 sm:order-first">
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={
