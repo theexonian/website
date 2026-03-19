@@ -53,20 +53,6 @@ export default async function Home() {
 						</div>
 					</div>
 				</div>
-				<div className="col-span-2 md:order-2 md:px-0 bg-[#f8f8f8] rounded-md"> { /* bg-[#f8f8f8] */ }
-					{ /* Right Column */ }
-					<div className="pl-3 pt-3 font-serif ">
-						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}
-						{/* <div className="h-40"></div> */}
-						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinion</div>						
-						<ArticlePreviewImgRight z={1} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-						<ArticlePreviewImgRight z={2} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-						<ArticlePreviewImgRight z={3} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-						<ArticlePreviewImgRight z={4} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-						<ArticlePreviewImgRight z={5} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-						<ArticlePreviewImgRight z={6} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
-					</div>
-				</div>
 			</div>
 			
 			{/* Horizontal Article Sections */}

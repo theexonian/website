@@ -73,8 +73,7 @@ export default async function ArticlePreviewImgRight({
           <div className='px-3 py-3 sm:p-0 flex sm:flex-col items-start gap-3'>
           {/* Content column */}
           <div
-            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'}`}
-            style={showThumbnail ? { width: `${contentRatio}%` } : { width: "100%" }}
+            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'} showThumbnail ? w-${contentRatio}% : w-full `}
           >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">

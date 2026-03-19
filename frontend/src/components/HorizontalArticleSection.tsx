@@ -75,7 +75,7 @@ export default async function HorizontalArticleSection({
                   <article className="flex flex-col h-full">
                     
                     {/* Thumbnail Container */}
-                    <div className="aspect-video w-full mb-4 overflow-hidden bg-gray-100 rounded-sm">
+                    <div className="aspect-video w-full mb-4 overflow-hidden bg-gray-100">
                       {article.thumbnail?.url && (
                         <img 
                           src={article.thumbnail.url} 
