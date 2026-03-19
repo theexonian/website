@@ -128,7 +128,7 @@ export default function Navbar() {
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">
 				
-					<div className="flex flex-row w-full">
+					<div className="flex flex-row w-full pt-2">
 						{/* Left side: Date */}
 						<div className="flex-1 p-6 text-muted-foreground text-sm" suppressHydrationWarning>
 							<span className="hidden md:inline">{mobileDate}</span>
@@ -143,7 +143,7 @@ export default function Navbar() {
 								width="0"
 								height="0"
 								sizes="25vw"
-								className="h-full max-h-[2rem] w-auto dark:brightness-0 dark:invert min-w-[172px]"
+								className="h-full max-h-[4rem] w-auto dark:brightness-0 dark:invert min-w-[172px]"
 								alt={"Logo of The Exonian"}
 								/>
 							</Link>
@@ -193,7 +193,7 @@ export default function Navbar() {
 														<Link href="/life">Life</Link>
 													</MenubarItem>
 													<MenubarItem>
-														<Link href="/oped">Opinions</Link>
+														<Link href="/oped">Opinion</Link>
 													</MenubarItem>
 													<MenubarItem>
 														<Link href="/sports">Sports</Link>
@@ -226,7 +226,8 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-				<ul className="flex flex-row md:flex-col md:h-[100vh] text-xs gap-8 pt-2 pb-3 text-foreground">
+
+				<ul className="flex flex-row md:flex-col md:h-[100vh] text-xs gap-8 pt-4 pb-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (
@@ -246,7 +247,7 @@ export default function Navbar() {
 						  )}
  				   </li>
   				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/oped') ? 'text-red-700' : ''}`}>
-   					     <Link href="/oped">Opinions</Link>
+   					     <Link href="/oped">Opinion</Link>
 						 {isActiveRoute('/oped') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						 )}

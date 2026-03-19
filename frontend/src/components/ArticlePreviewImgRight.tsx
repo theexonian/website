@@ -8,6 +8,7 @@ interface ArticlePreviewImgRightProps {
   section: string;
   showSection?: boolean;
   titleSize?: string;
+  imageRatio?: number;
   thumbnailRatio?: string;
   credit?: string;
   sectionOverride?: string; // Optional override for section name
@@ -20,6 +21,7 @@ export default async function ArticlePreviewImgRight({
   section,
   showSection = true,
   titleSize = "2",
+  imageRatio = 50,
   thumbnailRatio,
   credit,
   sectionOverride,
@@ -56,6 +58,9 @@ export default async function ArticlePreviewImgRight({
     ? 'line-clamp-3 @[min-width:24rem]:line-clamp-5' 
     : 'line-clamp-3';
 
+  const clampedImageRatio = Math.min(100, Math.max(0, imageRatio));
+  const contentRatio = 100 - clampedImageRatio;
+
   showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
   return (
     <article className="w-full group @container">
@@ -67,7 +72,10 @@ export default async function ArticlePreviewImgRight({
 
           <div className='px-3 py-3 sm:p-0 flex sm:flex-col items-start gap-3'>
           {/* Content column */}
-          <div className={`sm:w-full ${showThumbnail ? (titleSize == "1" ? "w-[70%]" : "w-[50%]") : 'w-full'}`}>
+          <div
+            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'}`}
+            style={showThumbnail ? { width: `${contentRatio}%` } : { width: "100%" }}
+          >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}

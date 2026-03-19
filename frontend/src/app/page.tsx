@@ -1,5 +1,6 @@
 import { getMainPageLayout } from '@/actions/getMainPageLayout';
 import ArticlePreview from '@/components/ArticlePreview';
+import ArticlePreview2 from '@/components/ArticlePreview2-Test';
 import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
 // import IssuePreview from '@/components/ArticlePreview';
@@ -40,30 +41,10 @@ export default async function Home() {
 								<div className="text-2xl flex font-serif pb-3 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 									Editor's Picks
 								</div>
+								{/* <div className="text-2xl px-3 text-red-700 font-bold font-sans border-b-[1px] w-full border-[rgb(230,230,230)]">
+									Editor's Picks
+								</div> */}
 							</div>
-							<div className="flex flex-col sm:gap-6">
-								<ArticlePreview z={1} section="oped" titleSize='2' />
-								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9' />
-								<ArticlePreview z={2} section="sports" thumbnailRatio='16/9' />
-							</div>
-						</div>
-					</div>
-
-					<div className="w-full py-4 border-y-[1px] sm:my-6">
-						<SpotifyEmbed theme="1" link="https://open.spotify.com/episode/7jEciCwwK31k1zcLcIsGnU?si=bc5dfa1a57464ac6" height="155" />
-					</div>
-
-					{/* Bottom Section Inner Grid */}
-					<div className="grid grid-cols-7 md:grid-cols-1 divide-x-[1px] md:divide-x-0 gap-4 sm:gap-6">
-						<div className="col-span-4 md:col-span-1">
-							<div className="flex flex-col sm:gap-6">
-								<ArticlePreview z={1} thumbnailRatio="16/9" section="life" titleSize='3' />
-								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2' />
-								<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2' />
-							</div>
-						</div>
-
-						<div className="col-span-3 md:col-span-1 pl-4 md:pl-0">
 							<div className="flex flex-col sm:gap-6">
 								<ArticlePreview z={1} section="oped" titleSize='2' />
 								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9' />
@@ -72,15 +53,49 @@ export default async function Home() {
 						</div>
 					</div>
 				</div>
+				<div className="col-span-2 md:order-2 md:px-0 bg-[#f8f8f8] rounded-md"> { /* bg-[#f8f8f8] */ }
+					{ /* Right Column */ }
+					<div className="pl-3 pt-3 font-serif ">
+						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}
+						{/* <div className="h-40"></div> */}
+						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinion</div>						
+						<ArticlePreviewImgRight z={1} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+						<ArticlePreviewImgRight z={2} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+						<ArticlePreviewImgRight z={3} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+						<ArticlePreviewImgRight z={4} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+						<ArticlePreviewImgRight z={5} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+						<ArticlePreviewImgRight z={6} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
+					</div>
+				</div>
 			</div>
-
-			{/* Horizontal Sections */}
-			<div className="">
-				<HorizontalArticleSection sectionTitle="News" sectionSlug="news" limit={5} />
-				<HorizontalArticleSection sectionTitle="Life" sectionSlug="life" limit={5} />
-				<HorizontalArticleSection sectionTitle="Opinions" sectionSlug="oped" limit={5} />
-				<HorizontalArticleSection sectionTitle="Sports" sectionSlug="sports" limit={5} />
-				<HorizontalArticleSection sectionTitle="Humor" sectionSlug="humor" limit={5} />
+			
+			{/* Horizontal Article Sections */}
+			<div className="mt-8">
+				<HorizontalArticleSection 
+					sectionTitle="News" 
+					sectionSlug="news" 
+					limit={5}
+				/>
+				<HorizontalArticleSection 
+					sectionTitle="Life" 
+					sectionSlug="life" 
+					limit={5}
+				/>
+				<HorizontalArticleSection 
+					sectionTitle="Opinion" 
+					sectionSlug="oped" 
+					limit={5}
+				/>
+				<HorizontalArticleSection 
+					sectionTitle="Sports" 
+					sectionSlug="sports" 
+					limit={5}
+				/>
+				<HorizontalArticleSection 
+					sectionTitle="Humor" 
+					sectionSlug="humor" 
+					limit={5}
+				/>
 			</div>
 		</div>
 	);
