@@ -8,6 +8,7 @@ interface ArticlePreviewImgRightProps {
   section: string;
   showSection?: boolean;
   titleSize?: string;
+  imageRatio?: number;
   thumbnailRatio?: string;
   credit?: string;
   sectionOverride?: string; // Optional override for section name
@@ -20,6 +21,7 @@ export default async function ArticlePreviewImgRight({
   section,
   showSection = true,
   titleSize = "2",
+  imageRatio = 50,
   thumbnailRatio,
   credit,
   sectionOverride,
@@ -56,6 +58,9 @@ export default async function ArticlePreviewImgRight({
     ? 'line-clamp-3 @[min-width:24rem]:line-clamp-5' 
     : 'line-clamp-3';
 
+  const clampedImageRatio = Math.min(100, Math.max(0, imageRatio));
+  const contentRatio = 100 - clampedImageRatio;
+
   showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
   return (
     <article className="w-full group @container">
@@ -67,14 +72,17 @@ export default async function ArticlePreviewImgRight({
 
           <div className='px-3 py-3 flex items-start gap-3'>
           {/* Content column */}
-          <div className={`sm:w-full ${showThumbnail ? (titleSize == "1" ? "w-[70%]" : "w-[50%]") : 'w-full'}`}>
+          <div
+            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'}`}
+            style={showThumbnail ? { width: `${contentRatio}%` } : { width: "100%" }}
+          >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
               Read article: {article.title}
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex font-sans items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : 'mb-[0.17rem]'}`}>
+            <div className={`flex font-sans items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : (titleSize == "4" ? 'mb-[0.32rem]' : 'mb-[0.17rem]')}`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
@@ -95,7 +103,7 @@ export default async function ArticlePreviewImgRight({
             
             {/* Article Description */}
             {showDescription && (
-              <div className="max-w-[600px] pt-1 pb-1">
+              <div className={`max-w-[700px] ${titleSize == "4" ? "pt-3" : "pt-1"} pb-1`}>
                 <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
                   {article.description}
                 </p>
@@ -129,8 +137,11 @@ export default async function ArticlePreviewImgRight({
           </div>
           
           {/* Thumbnail Image, (off to the right) */}
-          {showThumbnail && (
-            <div className="sm:w-full w-[50%] my-auto pl-5">
+          {showThumbnail && clampedImageRatio > 0 && (
+            <div
+              className={`sm:w-full my-auto shrink-0 ${clampedImageRatio > 0 ? 'pl-5' : ''}`}
+              style={{ width: `${clampedImageRatio}%` }}
+            >
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={

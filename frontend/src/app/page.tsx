@@ -1,5 +1,6 @@
 import { getMainPageLayout } from '@/actions/getMainPageLayout';
 import ArticlePreview from '@/components/ArticlePreview';
+import ArticlePreview2 from '@/components/ArticlePreview2-Test';
 import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
 // import IssuePreview from '@/components/ArticlePreview';
@@ -19,23 +20,33 @@ export default async function Home() {
 	return (
 		<div>
 			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
-				<div className="col-span-7 md:order-1 md:px-0 " >
+				<div className="col-span-7 md:order-1 md:px-0" >
 					{ /* Left Two Columns */ }
+					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-4 pr-3">
+						<ArticlePreviewImgRight z={4} thumbnailRatio="1/1" section="life" titleSize='4' imageRatio={20}/>
+						
+					</div>
+					
 					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
-							<div className="flex flex-col">
-								<ArticlePreview z={1} thumbnailRatio="16/9" section="life" titleSize='3'/>
+							<div className="flex flex-col pr-5">
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={2} thumbnailRatio="16/9" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="news" titleSize='2'/>
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4">
 							{ /* Middle Column */ }
-							<div className='px-3 pt-3'>
+							<div className='px-3 pt-3 pb-1'>
 								<div className="text-2xl flex font-serif pb-2 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 									Editor's Picks
 								</div>
+								{/* <div className="text-2xl px-3 text-red-700 font-bold font-sans border-b-[1px] w-full border-[rgb(230,230,230)]">
+									Editor's Picks
+								</div> */}
 							</div>
 							<div className="flex flex-col">
 								<ArticlePreview z={1} section="oped" titleSize='2'/>
@@ -68,10 +79,10 @@ export default async function Home() {
 				</div>
 				<div className="col-span-2 md:order-2 md:px-0 bg-[#f8f8f8] rounded-md"> { /* bg-[#f8f8f8] */ }
 					{ /* Right Column */ }
-					<div className="pl-3 pt-3 font-serif">
-						<div className="px-3 py-3">Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas.</div>
-						<div className="h-40"></div>
-						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinions</div>
+					<div className="pl-3 pt-3 font-serif ">
+						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}
+						{/* <div className="h-40"></div> */}
+						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinion</div>						
 						<ArticlePreviewImgRight z={1} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
 						<ArticlePreviewImgRight z={2} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
 						<ArticlePreviewImgRight z={3} section="oped" titleSize='1' showSection={false} showDescription={false} showThumbnail={false}/>
@@ -95,7 +106,7 @@ export default async function Home() {
 					limit={5}
 				/>
 				<HorizontalArticleSection 
-					sectionTitle="Opinions" 
+					sectionTitle="Opinion" 
 					sectionSlug="oped" 
 					limit={5}
 				/>

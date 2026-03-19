@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 			{/* Related Articles Section - Full width at bottom */}
 			<div className="w-full mt-16">
 				<HorizontalArticleSection 
-					sectionTitle={`More ${article.tag === 'oped' ? 'Opinions' : article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}`}
+					sectionTitle={`More ${article.tag === 'oped' ? 'Opinion' : article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}`}
 					sectionSlug={article.tag}
 					limit={5}
 				/>

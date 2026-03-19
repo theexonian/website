@@ -92,7 +92,7 @@ export default function Navbar() {
 								<span className="hover:text-foreground duration-200">Life</span>
 							</Link>
 							<Link href="/oped">
-								<span className="hover:text-foreground duration-200">Opinions</span>
+								<span className="hover:text-foreground duration-200">Opinion</span>
 							</Link>
 							<Link href="/sports">
 								<span className="hover:text-foreground duration-200">Sports</span>
