@@ -100,7 +100,7 @@ export default async function ArticlePreview2({
               </div>
 
               {/* Time stamp */}
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground mt-1">
                 {new Date(article.publishedAt).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'short',

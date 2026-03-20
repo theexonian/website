@@ -70,10 +70,10 @@ export default async function ArticlePreviewImgRight({
         {/* The Link wraps the visible content */}
         <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative lg:flex-col flex-row items-start">
 
-          <div className='px-3 py-3 sm:p-0 flex sm:flex-col items-start gap-3'>
+          <div className='px-3 py-3 sm:p-0 flex sm:flex-col lg:flex-row items-start gap-4'>
           {/* Content column */}
           <div
-            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'} showThumbnail ? w-${contentRatio}% : w-full `}
+            className={`w-[50%] md:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'lg:w-[50%]'} showThumbnail ? w-${contentRatio}% : lg:w-[50%] `}
           >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
@@ -109,23 +109,22 @@ export default async function ArticlePreviewImgRight({
               </div>
             )}
             
-            {/* Author */}
-            <div className="pt-1 text-xs text-foreground lg:hidden">
-              <div className="flex flex-wrap items-center gap-1">
-                <span>By</span>
-                {article.authors.map((author, i) => {
-                  return (
-                    <p className="text-xs duration-200 no-underline text-foreground capitalize" key={i}>
-                      {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
-                    </p>
-                    
-                  );
-                })}
+              {/* Author */}
+              <div className="text-xs text-foreground md:hidden">
+                <div className="flex flex-wrap items-center gap-1">
+                  <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
+                  {article.authors.map((author, i) => {
+                    return (
+                      <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
+                        {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
+                      </p>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
             {/* Time stamp */}
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground mt-1">
                 {new Date(article.publishedAt).toLocaleDateString('en-US', { 
                   year: 'numeric', 
                   month: 'short', 
@@ -137,7 +136,7 @@ export default async function ArticlePreviewImgRight({
           
           {/* Thumbnail Image, (off to the right) */}
           {showThumbnail && (
-            <div className="sm:w-full w-[50%] pl-5 sm:pl-0 sm:order-first">
+            <div className="w-[50%] md:w-full lg:w-[50%] sm:order-first lg:order-last">
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={

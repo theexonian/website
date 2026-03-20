@@ -111,20 +111,19 @@ export default async function ArticlePreview({
           {/* Author */}
           <div className="text-xs text-foreground md:hidden">
             <div className="flex flex-wrap items-center gap-1">
-              <span>By</span>
+              <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
               {article.authors.map((author, i) => {
                 return (
-                  <p className="text-xs duration-200 no-underline text-foreground capitalize" key={i}>
+                  <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
                     {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
                   </p>
-                  
                 );
               })}
             </div>
           </div>
 
           {/* Time stamp */}
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1">
               {new Date(article.publishedAt).toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'short', 
