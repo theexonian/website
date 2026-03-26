@@ -70,11 +70,10 @@ export default async function ArticlePreviewImgRight({
         {/* The Link wraps the visible content */}
         <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative lg:flex-col flex-row items-start">
 
-          <div className='px-3 py-3 flex items-start gap-3'>
+          <div className='px-3 py-3 sm:p-0 flex sm:flex-col lg:flex-row items-start gap-4'>
           {/* Content column */}
           <div
-            className={`sm:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'w-full'}`}
-            style={showThumbnail ? { width: `${contentRatio}%` } : { width: "100%" }}
+            className={`w-[50%] md:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'lg:w-[50%]'} showThumbnail ? w-${contentRatio}% : lg:w-[50%] `}
           >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
@@ -82,7 +81,7 @@ export default async function ArticlePreviewImgRight({
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex font-sans items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : (titleSize == "4" ? 'mb-[0.32rem]' : 'mb-[0.17rem]')}`}>
+            <div className={`flex font-sans items-baseline leading-[1.6]`}>
               {showSection && article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
@@ -96,37 +95,36 @@ export default async function ArticlePreviewImgRight({
             </div>
 
             {/* Article Title */}
-            <h1 className={`font-serif font-medium text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
+            <h1 className={`font-serif font-semibold text-${titleSize}xl text-foreground group-hover:text-[#404040] transition-colors duration-200 leading-1.6`}>
               {article.title}
             </h1>
 
             
             {/* Article Description */}
             {showDescription && (
-              <div className={`max-w-[700px] ${titleSize == "4" ? "pt-3" : "pt-1"} pb-1`}>
-                <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin`}>
+              <div className="max-w-[600px] py-1">
+                <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin leading-[1.6]`}>
                   {article.description}
                 </p>
               </div>
             )}
             
-            {/* Author */}
-            <div className="pt-1 text-xs text-foreground lg:hidden">
-              <div className="flex flex-wrap items-center gap-1">
-                <span>By</span>
-                {article.authors.map((author, i) => {
-                  return (
-                    <p className="text-xs duration-200 no-underline text-foreground capitalize" key={i}>
-                      {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
-                    </p>
-                    
-                  );
-                })}
+              {/* Author */}
+              <div className="text-xs text-foreground md:hidden">
+                <div className="flex flex-wrap items-center gap-1">
+                  <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
+                  {article.authors.map((author, i) => {
+                    return (
+                      <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
+                        {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
+                      </p>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
             {/* Time stamp */}
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground mt-1">
                 {new Date(article.publishedAt).toLocaleDateString('en-US', { 
                   year: 'numeric', 
                   month: 'short', 
@@ -137,11 +135,8 @@ export default async function ArticlePreviewImgRight({
           </div>
           
           {/* Thumbnail Image, (off to the right) */}
-          {showThumbnail && clampedImageRatio > 0 && (
-            <div
-              className={`sm:w-full my-auto shrink-0 ${clampedImageRatio > 0 ? 'pl-5' : ''}`}
-              style={{ width: `${clampedImageRatio}%` }}
-            >
+          {showThumbnail && (
+            <div className="w-[50%] md:w-full lg:w-[50%] sm:order-first lg:order-last">
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={

@@ -123,12 +123,12 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-background backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
+			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">
 				
-					<div className="flex flex-row w-full pt-2">
+					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
 						<div className="flex-1 p-6 text-muted-foreground text-sm" suppressHydrationWarning>
 							<span className="hidden md:inline">{mobileDate}</span>

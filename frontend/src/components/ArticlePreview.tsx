@@ -48,7 +48,7 @@ export default async function ArticlePreview({
       {/* The main content area that becomes a link target */}
       <div className="relative isolate flex flex-col items-start rounded-md">
         {/* The Link wraps the visible content except for the authors/date block */}
-        <Link href={`/articles/${article.slug}`} className="block w-full px-3 py-3 active:bg-[#f8f8f8] relative">
+        <Link href={`/articles/${article.slug}`} className="block w-full px-3 py-3 sm:p-0 active:bg-[#f8f8f8] relative">
 
       
         {showThumbnail && (
@@ -79,7 +79,7 @@ export default async function ArticlePreview({
           </span>
           
           {/* Section/Tag Info */}
-          <div className={`font-sans flex items-baseline ${ titleSize == "3" ? 'mb-[0.2rem]' : ''}`}>
+          <div className={`font-sans flex items-baseline leading-[1.6]`}>
             {showSection && article.tag && !sectionOverride && (
               <h3 className="font-bold text-red-700 inline-block text-xs">
                 {article.tag.toUpperCase()}
@@ -93,7 +93,7 @@ export default async function ArticlePreview({
           </div>
 
           {/* Article Title */}
-          <h1 className={`font-serif font-medium text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
+          <h1 className={`font-serif font-semibold text-foreground text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
             {article.title}
           </h1> 
 
@@ -101,8 +101,8 @@ export default async function ArticlePreview({
 
           {/* Article Description */}
           {showDescription && (
-            <div className="max-w-[600px] py-3">
-              <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin">
+            <div className="max-w-[600px] py-1">
+              <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin leading-[1.6]">
                 {article.description}
               </p>
             </div>
@@ -111,20 +111,19 @@ export default async function ArticlePreview({
           {/* Author */}
           <div className="text-xs text-foreground md:hidden">
             <div className="flex flex-wrap items-center gap-1">
-              <span>By</span>
+              <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
               {article.authors.map((author, i) => {
                 return (
-                  <p className="text-xs duration-200 no-underline text-foreground capitalize" key={i}>
+                  <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
                     {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
                   </p>
-                  
                 );
               })}
             </div>
           </div>
 
           {/* Time stamp */}
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1">
               {new Date(article.publishedAt).toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'short', 
