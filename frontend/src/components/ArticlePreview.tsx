@@ -32,104 +32,114 @@ export default async function ArticlePreview({
     return null;
   }
 
-  const ratioClass = {
+  const responsiveRatioClass = {
     '1/1': 'aspect-square',
     '4/3': 'aspect-[4/3]',
     '3/2': 'aspect-[3/2]',
     '16/9': 'aspect-[16/9]',
     '2/3': 'aspect-[2/3]',
-  }[thumbnailRatio ?? ''] || ''; // we cannot pass thumbnailRatio straight in as a parameter because of tailwind's static rendering.
+  }[thumbnailRatio ?? ''] || 'aspect-[4/3]';
+
+  const descriptionClampClass = thumbnailRatio === '4/3'
+    ? 'line-clamp-3 @[min-width:24rem]:line-clamp-5'
+    : 'line-clamp-3';
+
+  const titleSizeClass = {
+    '0': 'text-base',
+    '1': 'text-lg',
+    '2': 'text-xl',
+    '3': 'text-2xl',
+    '4': 'text-3xl',
+    '5': 'text-4xl',
+    '6': 'text-5xl',
+    '7': 'text-6xl',
+  }[titleSize] || 'text-2xl';
+
+  const titlePaddingClass = 'pb-1';
 
   showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
 
   return (
-    <article className="w-full group">
-      
-      {/* The main content area that becomes a link target */}
+    <article className="w-full group @container">
       <div className="relative isolate flex flex-col items-start rounded-md">
-        {/* The Link wraps the visible content except for the authors/date block */}
-        <Link href={`/articles/${article.slug}`} className="block w-full px-3 py-3 sm:p-0 active:bg-[#f8f8f8] relative">
-
-      
-        {showThumbnail && (
-            <div className="w-full">
-              <div className={`mb-[10px] relative max-h-[25rem] w-full overflow-hidden ${thumbnailRatio ? ratioClass : 'aspect-[4/3]'}`}>
-                <Image
-                  src={
-                    article.thumbnail.url.startsWith('http')
-                      ? article.thumbnail.url
-                      : `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
-                  }
-                  fill
-                  className="absolute inset-0 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
-                  alt={article.description ? article.description : 'Article image'} // Alt text remains for sighted users if image fails
-                />
+        <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative">
+          <div className="px-3 py-3 sm:p-0 flex flex-col items-start gap-4">
+            {showThumbnail && (
+              <div className="w-full">
+                <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
+                  <Image
+                    src={
+                      article.thumbnail.url.startsWith('http')
+                        ? article.thumbnail.url
+                        : `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
+                    }
+                    fill
+                    className="absolute inset-0 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
+                    alt={article.description ? article.description : 'Article image'}
+                  />
+                </div>
+                {credit && (
+                  <p className="text-[7px] font-sans text-muted-foreground w-full text-right -mt-2">
+                    {credit}
+                  </p>
+                )}
               </div>
-              {credit && (
-                <p className="text-[7px] font-sans text-muted-foreground w-full text-right -mt-2">
-                  {credit}
-                </p>
+            )}
+
+            <div className="min-w-0 w-full">
+              <span className="absolute inset-0 z-10 sr-only">
+                Read article: {article.title}
+              </span>
+
+              {showSection && (
+                <div className="flex font-sans items-baseline leading-[1.6] mb-1">
+                  {article.tag && !sectionOverride && (
+                    <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
+                      {article.tag.toUpperCase()}
+                    </h3>
+                  )}
+                  {sectionOverride && (
+                    <h3 className="font-bold text-red-700 inline-block text-xs">
+                      {(sectionOverride ?? '').toUpperCase()}
+                    </h3>
+                  )}
+                </div>
               )}
-            </div>
-          )}
-          
-          {/* Screen Reader Title */}
-          <span className="absolute inset-0 z-10 sr-only">
-            Read article: {article.title}
-          </span>
-          
-          {/* Section/Tag Info */}
-          <div className={`font-sans flex items-baseline leading-[1.6]`}>
-            {showSection && article.tag && !sectionOverride && (
-              <h3 className="font-bold text-red-700 inline-block text-xs">
-                {article.tag.toUpperCase()}
-              </h3>
-            )}
-            {showSection && sectionOverride && (
-              <h3 className="font-bold text-red-700 inline-block text-xs">
-                {(sectionOverride ?? '').toUpperCase()}
-              </h3>
-            )}
-          </div>
 
-          {/* Article Title */}
-          <h1 className={`font-serif font-semibold text-foreground text-${titleSize}xl group-hover:text-[#404040] transition-colors duration-200`}>
-            {article.title}
-          </h1> 
+              <h1 className={`font-test font-bold ${titleSizeClass} text-foreground group-hover:text-[#404040] transition-colors duration-200 leading-[1.3] ${titlePaddingClass}`}>
+                {article.title}
+              </h1>
 
-          
+              {showDescription && (
+                <div className="max-w-[600px] pb-1 pt-1">
+                  <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin leading-[1.6]`}>
+                    {article.description}
+                  </p>
+                </div>
+              )}
 
-          {/* Article Description */}
-          {showDescription && (
-            <div className="max-w-[600px] py-1">
-              <p className="text-xs text-muted-foreground text-ellipsis line-clamp-3 font-serif font-thin leading-[1.6]">
-                {article.description}
+              <div className="text-xs text-foreground md:hidden">
+                <div className="flex flex-wrap items-center mt-1 gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
+                  <span>By</span>
+                  {article.authors.map((author, i) => {
+                    return (
+                      <p key={i}>
+                        {author.fullname + (article.authors.length - 1 !== i ? ',' : '')}
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-1">
+                {new Date(article.publishedAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}
               </p>
             </div>
-          )}
-          
-          {/* Author */}
-          <div className="text-xs text-foreground md:hidden">
-            <div className="flex flex-wrap items-center gap-1">
-              <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
-              {article.authors.map((author, i) => {
-                return (
-                  <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
-                    {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
-                  </p>
-                );
-              })}
-            </div>
           </div>
-
-          {/* Time stamp */}
-            <p className="text-xs text-muted-foreground mt-1">
-              {new Date(article.publishedAt).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric' 
-              })}
-            </p>
         </Link>
       </div>
     </article>

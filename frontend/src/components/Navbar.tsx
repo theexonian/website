@@ -136,7 +136,7 @@ export default function Navbar() {
 						</div>
 
 						{/* Center: Logo */}
-						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center">
+						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center pt-4 pb-1">
 							<Link href="/">
 								<Image
 								src={"/Exonian-logo.png"}
