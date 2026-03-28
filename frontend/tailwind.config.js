@@ -62,6 +62,7 @@ module.exports = {
       },
     fontFamily: {
         serif: ['"Georgia"'],
+        test: ['"GeorgiaPro"', '"Georgia"', 'serif'],
         sans: ['"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     screens: {

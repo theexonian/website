@@ -88,3 +88,83 @@ a:hover {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-LightItalic.ttf") format("truetype");
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Italic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-SemiBold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-SemiBoldItalic.ttf") format("truetype");
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-BoldItalic.ttf") format("truetype");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Black.ttf") format("truetype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-BlackItalic.ttf") format("truetype");
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+}
