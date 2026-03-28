@@ -93,13 +93,13 @@ export default async function HorizontalArticleSection({
                       
                       {/* Description */}
                       {article.description && (
-                        <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-[1.6] text-ellipsis font-serif font-thin">
+                        <p className="text-sm text-gray-600 line-clamp-3 leading-[1.6] text-ellipsis font-serif font-thin">
                           {article.description}
                         </p>
                       )}
 
                       {/* Authors */}
-                      <div className="mt-auto pt-3 border-t border-gray-100">
+                      <div className=" pt-3 border-t border-gray-100">
                         <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">
                           By {article.authors.map((author, index) => (
                             <span key={author.id}>
