@@ -20,15 +20,15 @@ export default async function Home() {
 	return (
 		<div className="p-6 w-full">
 
-			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1px] md:divide-x-0 gap-4">
 				<div className="col-span-7 md:order-1 md:px-0" >
 					{ /* Left Two Columns */ }
-					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-4 pr-3">
+					<div className="border-b-[1px] w-full border-[rgb(230,230,230)] pb-3 mb-4 pr-3">
 						<ArticlePreviewImgRight z={2} thumbnailRatio="16/9" section="life" titleSize='4' imageRatio={30}/>
 						
 					</div>
 					
-					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+					<div className="grid grid-cols-7 divide-x-[1px] md:divide-x-0 gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col pr-3">
@@ -59,7 +59,7 @@ export default async function Home() {
 					<div className="w-full ml-3 mr-9 my-3 py-5">
 						<SpotifyEmbed theme="1" link="https://open.spotify.com/episode/7jEciCwwK31k1zcLcIsGnU?si=bc5dfa1a57464ac6" height="155"/>
 					</div>
-					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+					<div className="grid grid-cols-7 divide-x-2 divide-x-[1px] md:divide-x-0 gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col">
@@ -77,7 +77,7 @@ export default async function Home() {
 						</div>	
 					</div>
 				</div>
-				<div className="col-span-2 md:order-2 md:px-0  rounded-md"> { /* bg-[#f8f8f8] */ }
+				<div className="col-span-2 md:order-2 md:px-0"> { /* bg-[#f8f8f8] */ }
 					{ /* Right Column */ }
 					<div className="pl-3 pt-3 font-serif ">
 						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}

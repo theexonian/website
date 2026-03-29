@@ -121,7 +121,7 @@ export default async function ArticlePreviewImgRight({
             
             {/* Article Description */}
             {showDescription && (
-              <div className="max-w-[600px] pb-1 pt-1">
+              <div className="max-w-[600px] py-1">
                 <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin leading-[1.6]`}>
                   {article.description}
                 </p>

@@ -123,7 +123,7 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
+			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] dark:bg-[rgba(4,4,4,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">

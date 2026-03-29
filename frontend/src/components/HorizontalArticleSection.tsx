@@ -99,7 +99,7 @@ export default async function HorizontalArticleSection({
                       )}
 
                       {/* Authors */}
-                      <div className=" pt-3 border-t border-gray-100">
+                      <div className=" pt-3">
                         <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">
                           By {article.authors.map((author, index) => (
                             <span key={author.id}>
