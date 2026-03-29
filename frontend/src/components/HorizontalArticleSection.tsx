@@ -45,7 +45,7 @@ export default async function HorizontalArticleSection({
           
           {/* Header */}
           <div className="flex justify-between items-center mb-3">
-            <h2 className="font-bold text-red-700 text-xs tracking-widest uppercase">
+            <h2 className="font-bold text-red-700 text-md tracking-widest uppercase">
               {sectionTitle}
             </h2>
             <Link

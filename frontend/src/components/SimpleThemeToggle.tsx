@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
-export default function SimpleThemeToggle() {
+type SimpleThemeToggleProps = {
+  displayText?: boolean;
+};
+
+export default function SimpleThemeToggle({ displayText = false }: SimpleThemeToggleProps) {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -34,17 +38,18 @@ export default function SimpleThemeToggle() {
     return <div className="h-4 w-4"></div>; // placeholder
   }
 
-  return (
+  return (<>
     <button
       onClick={toggleTheme}
-      className="p-[5px] rounded-lg hover:bg-accent transition-colors duration-200"
+      className="inline-flex items-center "
       aria-label="Toggle theme"
     >
+      {displayText ? <span className="text-foreground mr-1">Theme</span> : null}
       {isDark ? (
-        <FiSun className="h-4 w-4 text-foreground" />
+        <FiSun className="h-4 w-4 self-end text-foreground" />
       ) : (
-        <FiMoon className="h-4 w-4 text-foreground" />
+        <FiMoon className="h-4 w-4 self-end text-foreground" />
       )}
     </button>
-  );
+  </>);
 }

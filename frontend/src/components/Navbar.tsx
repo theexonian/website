@@ -170,8 +170,11 @@ export default function Navbar() {
 									</div>
 								)}
 							</div>
-							<div className="md:hidden ml-2">
+							<div className="md:hidden h-[26px] ml-2 gap-1 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
 								<SimpleThemeToggle />
+							</div>
+							<div className="md:hidden ml-2 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
+								<SignInButton />
 							</div>
 							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2 mt-[-2px]">
 								<div className="hidden md:flex">
@@ -213,8 +216,12 @@ export default function Navbar() {
 													</MenubarItem>
 													<MenubarItem asChild>
 														<div className="flex items-center">
-															<span className="text-sm">Theme</span>
-															<SimpleThemeToggle />
+															<SimpleThemeToggle displayText={true} />
+														</div>
+													</MenubarItem>
+													<MenubarItem asChild>
+														<div className="flex items-center">
+															<SignInButton />
 														</div>
 													</MenubarItem>
 													<MenubarItem>

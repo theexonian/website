@@ -13,6 +13,10 @@ export default function NewsletterPopup() {
     const { isLoaded, isSignedIn } = useUser();
 
     useEffect(() => {
+        // TEMPORARY: Disable newsletter popup
+        setVisibility(false);
+        return;
+        
         if (!isLoaded) {
             return;
         }

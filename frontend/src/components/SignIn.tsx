@@ -2,6 +2,7 @@
 
 import { useUser, useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
 
 export default function SignInButton() {
   const { user, isLoaded } = useUser();
@@ -22,8 +23,9 @@ export default function SignInButton() {
 
   if (isLoaded && user) {
     return (
-      <button onClick={() => clerk.signOut()} className="hover:text-red-400">
-        Sign out
+      <button onClick={() => clerk.signOut()} className="hover:text-red-400 inline-flex items-center gap-1 whitespace-nowrap leading-none">
+        <span>Sign Out</span>
+        <FiLogOut className="h-4 w-4 shrink-0" />
       </button>
     );
   }
@@ -31,9 +33,10 @@ export default function SignInButton() {
   return (
     <button 
       onClick={handleSignIn}
-      className="hover:text-red-400"
+      className="hover:text-red-400 inline-flex items-center gap-1 whitespace-nowrap leading-none"
     >
-      Sign in
+      <span>Sign In</span>
+      <FiLogIn className="h-4 w-4 shrink-0" />
     </button>
   );
 }

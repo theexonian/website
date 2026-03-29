@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 		<div className="p-6">
 			<div className="flex flex-row pb-4">
 				<h1
-					className={`inline-block text-3xl font-bold font-sans text-[#B40A0A] uppercase `}
+					className={`inline-block text-4xl font-bold font-sans text-[#B40A0A] uppercase `}
 				>
 					{tag.charAt(0).toUpperCase() + tag.slice(1)}
 				</h1>
@@ -79,10 +79,10 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 				</div>
 				{/* Left column - featured article */}
 				<div className="col-span-4 ">
-					<div className="grid grid-cols-2 lg:grid-cols-1 divide-y">
+					<div className="grid grid-cols-2 lg:grid-cols-1 divide-y gap-3">
 						{articles.slice(1).map((article, i) =>
 							article ? (
-									<RowPreview article={article} border={false} />
+									<RowPreview article={article} border={false} key={i}/>
 							) : null
 						)}
 					</div>
