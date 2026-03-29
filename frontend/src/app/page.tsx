@@ -64,7 +64,7 @@ export default async function Home() {
 
 								<div className=" mt-3 mb-3 rounded-lg bg-[rgb(246,246,246)] pl-5 pr-6 pt-5 pb-2 mr-5">
 									<div className="text-xl font-bold flex font-serif md:border-none w-full border-[rgb(230,230,230)] leading-none mb-2">
-										Suggestions For Our Website?
+										Have Suggestions For Our Website?
 										<a href="mailto:theexonianwb@gmail.com" className="ml-auto font-sans text-sm text-red-700 font-bold hover:underline text-right mr-2">
 											Contact Us
 										</a>
