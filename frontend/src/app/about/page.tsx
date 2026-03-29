@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Page() {
 	return (
-		<div className="font-serif py-5 mx-auto px-6">
+		<div className="font-serif py-5 mx-auto p-6">
 			<FancyBigTitle title="About" lowerText="The Exonian, Established 1878"/>
 			<div className="max-w-[700px] prose prose-neutral dark:prose-invert md:prose-sm py-5">
 				<h3>
