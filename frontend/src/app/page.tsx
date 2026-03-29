@@ -70,7 +70,7 @@ export default async function Home() {
 										</a>
 									</div>
 									<div className="flex flex-col md:gap-6">
-										<p className="text-sm text-foreground mb-3">We’re always looking to improve the design of our website and would love to hear your suggestions! If you have any ideas or feedback, please don’t hesitate to reach out.</p>
+										<p className="text-sm font-serif text-foreground mb-3">We’re always looking to improve the design of our website and would love to hear your suggestions! If you have any ideas or feedback, please don’t hesitate to reach out.</p>
 									</div>
 								</div>
 							</div>
