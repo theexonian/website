@@ -8,7 +8,6 @@ import { TbMenu } from "react-icons/tb";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
-import { getIssues } from '@/actions/getIssues';
 import {
 	Menubar,
 	MenubarContent,
@@ -20,8 +19,11 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
-export default function Navbar() {
-	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+interface NavbarProps {
+	latestIssuePdfUrl?: string;
+}
+
+export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [clientDate, setClientDate] = useState<Date | null>(null);
 	const [mounted, setMounted] = useState<boolean>(false);
@@ -64,9 +66,13 @@ export default function Navbar() {
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, [pathname]);
+	}, []);
 
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
+		if (!latestIssuePdfUrl) {
+			e.preventDefault();
+			return;
+		}
 		// Allow access in development mode or if signed in
 		const isDev = process.env.NODE_ENV === 'development';
 		if (!isSignedIn && !isDev) {
