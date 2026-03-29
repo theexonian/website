@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 	return (
 		<>
 			<div className="w-full flex justify-center">
-				<article className="max-w-none w-[45rem] lg:w-[35rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+				<article className="max-w-none w-[50rem] lg:w-[38rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
@@ -102,7 +102,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 					{paragraphs.map((paragraph, i) => (
 						<p
 							key={i}
-							className={`indent-8 text-[13pt] ${
+							className={`indent-8 text-[13pt] leading-[1.5] mt-2 ${
 								i === 0 ? "first-letter:text-2xl" : ""
 							}`}
 						>
