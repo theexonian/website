@@ -25,7 +25,7 @@ export default function SignInButton() {
     return (
       <button onClick={() => clerk.signOut()} className="hover:text-red-400 inline-flex items-center gap-1 whitespace-nowrap leading-none">
         <span>Sign Out</span>
-        <FiLogOut className="h-4 w-4 shrink-0" />
+        <FiLogOut className="ml-1 h-4 w-4 shrink-0" />
       </button>
     );
   }
