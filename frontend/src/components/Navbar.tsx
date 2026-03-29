@@ -14,7 +14,6 @@ import {
 	MenubarContent,
 	MenubarItem,
 	MenubarMenu,
-	MenubarSeparator,
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
@@ -51,9 +50,9 @@ export default function Navbar() {
 				console.error('Failed to fetch latest issue:', error);
 			}
 		}
-		
+
 		fetchLatestIssue();
-		
+
 		// Scroll detection for sticky logo
 		const handleScroll = () => {
 			// Show sticky logo when scrolled past the main logo area (approximately 200px)
@@ -61,7 +60,7 @@ export default function Navbar() {
 		};
 
 		window.addEventListener('scroll', handleScroll);
-		
+
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
@@ -112,10 +111,10 @@ export default function Navbar() {
 	const weekday = clientDate ? weekNames[clientDate.getDay()] : "";
 	const dateString = clientDate
 		? monthNames[clientDate.getMonth()] +
-			" " +
-			clientDate.getDate() +
-			", " +
-			clientDate.getFullYear()
+		" " +
+		clientDate.getDate() +
+		", " +
+		clientDate.getFullYear()
 		: "";
 	const mobileDate = clientDate
 		? clientDate.getMonth() + 1 + "/" + clientDate.getDate()
@@ -123,11 +122,11 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
+			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] dark:bg-[rgba(4,4,4,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">
-				
+
 					<div className="flex flex-row w-full">
 						{/* Left side: Date */}
 						<div className="flex-1 p-6 text-muted-foreground text-sm" suppressHydrationWarning>
@@ -139,40 +138,45 @@ export default function Navbar() {
 						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center">
 							<Link href="/">
 								<Image
-								src={"/Exonian-logo.png"}
-								width="0"
-								height="0"
-								sizes="25vw"
-								className="h-full max-h-[4rem] w-auto dark:brightness-0 dark:invert min-w-[172px]"
-								alt={"Logo of The Exonian"}
+									src={"/Exonian-logo.png"}
+									width="0"
+									height="0"
+									sizes="25vw"
+									className="h-full max-h-[4rem] w-auto dark:brightness-0 dark:invert min-w-[172px]"
+									alt={"Logo of The Exonian"}
 								/>
 							</Link>
 						</div>
 
 						{/* Right side: Spacer */}
-						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-muted-foreground">
-							<div className="flex items-center pl-2 gap-1 text-foreground md:hidden">
-								<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-1 py-[5px] w-24 focus-within:gap-0 px-[5px] border rounded-lg border-border duration-300 group">
-									<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300 w-[1.2em] h-[1.2em]" />{" "}
-									<input
-										type="text"
-										placeholder="Search"
-										className="text-muted-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent"
-										onKeyDown={(e) => {
-											if (e.key === "Enter") {
-												const input = e.target as HTMLInputElement;
-												const query = input.value;
-												router.push(`/search?=${query}`);
-												input.value = "";
-											}
-										}}
-									/>
-								</div>
+						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-foreground group-focus-within:text-muted-foreground">
+							<div className="flex-1 flex justify-end">
+								{mounted && (
+									<div className="md:hidden hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-transparent focus-within:border-border duration-500 ease-in-out group w-24 focus-within:w-40 focus-within:gap-0">
+										<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full duration-300 w-[1.2em] h-[1.2em]" />{" "}
+										<input
+											type="text"
+											placeholder="Search"
+											className="text-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent focus:ring-0"
+											onKeyDown={(e) => {
+												if (e.key === "Enter") {
+													const input = e.target as HTMLInputElement;
+													const query = input.value;
+													router.push(`/search?=${query}`);
+													input.value = "";
+												}
+											}}
+										/>
+									</div>
+								)}
 							</div>
-							<div className="md:hidden ml-2">
+							<div className="md:hidden h-[26px] ml-2 gap-1 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
 								<SimpleThemeToggle />
 							</div>
-							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
+							<div className="md:hidden ml-2 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
+								<SignInButton />
+							</div>
+							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2 mt-[-2px]">
 								<div className="hidden md:flex">
 									{mounted && (
 										<Menubar>
@@ -183,38 +187,63 @@ export default function Navbar() {
 													</div>
 												</MenubarTrigger>
 												<MenubarContent>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/">Home</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/news">News</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/life">Life</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/oped">Opinion</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/sports">Sports</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/humor">Humor</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="https://crossword.theexonian.net">Crossword</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/pdf-exonian-archive">Archive</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 													</MenubarItem>
-													<MenubarSeparator />
 													<MenubarItem asChild>
-														<div className="flex items-center gap-2 px-2 py-1">
-															<span className="text-sm">Theme</span>
-															<SimpleThemeToggle />
+														<div className="flex items-center">
+															<SimpleThemeToggle displayText={true} />
+														</div>
+													</MenubarItem>
+													<MenubarItem asChild>
+														<div className="flex items-center">
+															<SignInButton />
+														</div>
+													</MenubarItem>
+													<MenubarItem>
+														<div className="flex justify-end">
+															{mounted && (
+																<div className=" hover:bg-[#f2f2f2] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-transparent focus-within:border-border duration-500 ease-in-out focus-within:gap-0">
+																	<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full duration-300 w-[1.2em] h-[1.2em]" />{" "}
+																	<input
+																		type="text"
+																		placeholder="Search"
+																		className="text-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent focus:ring-0"
+																		onKeyDown={(e) => {
+																			if (e.key === "Enter") {
+																				const input = e.target as HTMLInputElement;
+																				const query = input.value;
+																				router.push(`/search?=${query}`);
+																				input.value = "";
+																			}
+																		}}
+																	/>
+																</div>
+															)}
 														</div>
 													</MenubarItem>
 												</MenubarContent>
@@ -227,55 +256,61 @@ export default function Navbar() {
 					</div>
 				</div>
 
-				<ul className="flex flex-row md:flex-col md:h-[100vh] text-xs gap-8 pt-4 pb-3 text-foreground">
-    				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
-   					     <Link href="/">Home</Link>
-						 {isActiveRoute('/') && (
+				<ul className="flex flex-row md:hidden md:h-[100vh] text-xs gap-8 pt-[14px] pb-3 text-foreground">
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
+						<Link href="/">Home</Link>
+						{isActiveRoute('/') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						 )}
- 				   </li>
- 				   <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/news') ? 'text-red-700' : ''}`}>
-   					     <Link href="/news">News</Link>
-						 {isActiveRoute('/news') && (
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/about') ? 'text-red-700' : ''}`}>
+						<Link href="/about">About</Link>
+						{isActiveRoute('/about') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						 )}
-  				  </li>
-				    <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/life') ? 'text-red-700' : ''}`}>
-  					      <Link href="/life">Life</Link>
-						  {isActiveRoute('/life') && (
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/news') ? 'text-red-700' : ''}`}>
+						<Link href="/news">News</Link>
+						{isActiveRoute('/news') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						  )}
- 				   </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/oped') ? 'text-red-700' : ''}`}>
-   					     <Link href="/oped">Opinion</Link>
-						 {isActiveRoute('/oped') && (
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/life') ? 'text-red-700' : ''}`}>
+						<Link href="/life">Life</Link>
+						{isActiveRoute('/life') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						 )}
-  				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/sports') ? 'text-red-700' : ''}`}>
-      				  <Link href="/sports">Sports</Link>
-					  {isActiveRoute('/sports') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-					  )}
-  				  </li>
-   				 <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/humor') ? 'text-red-700' : ''}`}>
-   				     <Link href="/humor">Humor</Link>
-					 {isActiveRoute('/humor') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-					 )}
-  				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
-  				      <Link href="https://crossword.theexonian.net">Crossword</Link>
-  				  </li>
-  				  <li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
-  				      <Link href="/pdf-exonian-archive">Archive</Link>
-					  {isActiveRoute('/pdf-exonian-archive') && (
-						<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-					  )}
-  				  </li>
-  				  <li className="hover:text-muted-foreground duration-200 md:px-6">
-   				     <Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
-   				 </li>
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/oped') ? 'text-red-700' : ''}`}>
+						<Link href="/oped">Opinion</Link>
+						{isActiveRoute('/oped') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/sports') ? 'text-red-700' : ''}`}>
+						<Link href="/sports">Sports</Link>
+						{isActiveRoute('/sports') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/humor') ? 'text-red-700' : ''}`}>
+						<Link href="/humor">Humor</Link>
+						{isActiveRoute('/humor') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
+						<Link href="https://crossword.theexonian.net">Crossword</Link>
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
+						<Link href="/pdf-exonian-archive">Archive</Link>
+						{isActiveRoute('/pdf-exonian-archive') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
+					</li>
+					<li className="hover:text-muted-foreground duration-200 md:px-6">
+						<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+					</li>
 				</ul>
 			</div>
 		</>

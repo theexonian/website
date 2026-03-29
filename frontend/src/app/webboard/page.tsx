@@ -8,7 +8,7 @@ export default function Page() {
 					<i>The Exonian</i> Web Board
 				</h1>
 			</div>
-			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto">
+			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto space-y-6">
 					<hr className="border-neutral-600" />
 				<div>
 					<h2>The 17th Exonian Web Board</h2>

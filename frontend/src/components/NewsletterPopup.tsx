@@ -13,6 +13,10 @@ export default function NewsletterPopup() {
     const { isLoaded, isSignedIn } = useUser();
 
     useEffect(() => {
+        // TEMPORARY: Disable newsletter popup
+        setVisibility(false);
+        return;
+        
         if (!isLoaded) {
             return;
         }
@@ -119,6 +123,7 @@ export default function NewsletterPopup() {
                     transform transition-transform duration-300 ease-out
                     ${visible ? 'translate-y-0' : 'translate-y-full'}
                 `}
+                onClick={(e) => e.stopPropagation()}
             >
                 {/* Gradient shadow at top edge - only when visible */}
                 {visible && (
@@ -132,7 +137,7 @@ export default function NewsletterPopup() {
                         setShowSuccess(false);
                         setError("");
                     }}
-                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-xl z-10"
+                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-xl"
                 >
                     ×
                 </button>
@@ -198,7 +203,7 @@ export default function NewsletterPopup() {
                         <Button
                             onClick={addEmail}
                             disabled={!name.trim() || !email.trim()}
-                            className="w-full bg-foreground hover:bg-foreground/90 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:bg-muted disabled:cursor-not-allowed font-serif"
+                            className="w-full bg-red-500 hover:bg-red-500 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:cursor-not-allowed font-serif"
                         >
                             Subscribe
                         </Button>

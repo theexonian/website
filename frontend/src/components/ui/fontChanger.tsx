@@ -15,6 +15,7 @@ import { Roboto_Mono } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import { Lora } from "next/font/google";
+import { Noto_Serif } from "next/font/google";
 
 const b612_mono = B612_Mono({ weight: "400", subsets: ["latin"] });
 const roboto_mono = Roboto_Mono({ weight: "400", subsets: ["latin"] });
@@ -24,10 +25,12 @@ const atkinson_hyperlegible = Atkinson_Hyperlegible({
 	subsets: ["latin"],
 });
 const lora = Lora({ weight: "400", subsets: ["latin"] });
+const noto_serif = Noto_Serif({ weight: "400", subsets: ["latin"] });
 
 // Define font options
 const FONT_OPTIONS = [
-	{ name: "Default", value: "default", cssClass: "font-sans" },
+	{ name: "Serif", value: "serif", cssClass: noto_serif.className },
+	{ name: "Sans", value: "sans", cssClass: "font-sans" },
 	{ name: "Classic", value: "lora", cssClass: lora.className },
 	{ name: "Segoe UI", value: "segoe-ui", cssClass: "font-[Segoe_UI]" },
 	{ name: "Coding", value: "roboto-mono", cssClass: roboto_mono.className },

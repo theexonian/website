@@ -45,15 +45,14 @@ export default async function HorizontalArticleSection({
           
           {/* Header */}
           <div className="flex justify-between items-center mb-3">
-            <h2 className="font-bold text-red-700 text-xs tracking-widest uppercase">
+            <h2 className="font-bold text-red-700 text-md tracking-widest uppercase">
               {sectionTitle}
             </h2>
             <Link
               href={`/${sectionSlug}`}
-              className="group flex items-center gap-1 text-xs text-foreground hover:text-red-700 transition-colors"
+              className="group flex items-center gap-1 text-xs text-foreground hover:text-[rgb(158,158,158)] transition-colors"
             >
-              <span>View all</span>
-              <HiChevronRight className="h-4 w-4 rounded-full bg-gray-100 group-hover:bg-red-700 group-hover:text-white transition-all p-[2px]" />
+              <span className="font-sans text-[rgb(71,71,71)]">View all</span>
             </Link>
           </div>
 
@@ -93,13 +92,13 @@ export default async function HorizontalArticleSection({
                       
                       {/* Description */}
                       {article.description && (
-                        <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-[1.6] text-ellipsis font-serif font-thin">
+                        <p className="text-sm text-gray-600 line-clamp-3 leading-[1.6] text-ellipsis font-serif font-thin">
                           {article.description}
                         </p>
                       )}
 
                       {/* Authors */}
-                      <div className="mt-auto pt-3 border-t border-gray-100">
+                      <div className=" pt-3">
                         <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">
                           By {article.authors.map((author, index) => (
                             <span key={author.id}>

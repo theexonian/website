@@ -6,9 +6,10 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<>
+		<div className="p-6">
 			<FancyBigTitle title="Masthead" lowerText={"of the " + (Constants.BOARD_NUMBER) + " Board of The Exonian"}/>
 			<Image
-				src={"/Masthead.png"}
+				src={"/CurrentMasthead.png"}
 				width="0"
 				height="0"
 				sizes="100vw"
@@ -65,6 +66,7 @@ export default function Page() {
 					print <em>Letters to the Editor</em> in a timely fashion and to edit
 					them for content and clarity.
 				</p>
+			</div>
 			</div>
 		</>
 	);

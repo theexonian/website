@@ -29,8 +29,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
 	return (
 		<>
-			<div className="w-full px-10 mx-auto max-w-[50rem] flex justify-center">
-				<article className="prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+			<div className="w-full flex justify-center">
+				<article className="max-w-none w-[50rem] lg:w-[38rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						{article.authors.map((author, i) => {
 							return (
 								<Link
-									className="hover:text-red-500 duration-200 font-bold no-underline capitalize"
+									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline capitalize"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						<div className="flex items-center gap-2 text-red-700">
 							<FontChanger/>
 						</div>
-						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-red-700 text-red-700 no-underline">
+						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-[rgb(158,158,158)] text-red-700 no-underline">
 							<HiOutlineNewspaper className="text-xl" />
 							Publication
 						</Link>
@@ -92,9 +92,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 							<PrintArticle/>
 						</div>
 					</div>
-					<div className="py-1">
+					{/* <div className="py-1">
 						<Speechify inputText={article.content} />
-					</div>
+					</div> */}
 					
 					<hr className="border-neutral-400 mb-8 mt-2" />
 					
@@ -102,7 +102,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 					{paragraphs.map((paragraph, i) => (
 						<p
 							key={i}
-							className={`indent-8 text-[13pt] ${
+							className={`indent-8 text-[13pt] leading-[1.5] mt-2 ${
 								i === 0 ? "first-letter:text-2xl" : ""
 							}`}
 						>

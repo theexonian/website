@@ -21,7 +21,7 @@ export default async function ArticlePreviewImgRight({
   section,
   showSection = true,
   titleSize = "2",
-  imageRatio = 50,
+  imageRatio = 40,
   thumbnailRatio,
   credit,
   sectionOverride,
@@ -61,6 +61,19 @@ export default async function ArticlePreviewImgRight({
   const clampedImageRatio = Math.min(100, Math.max(0, imageRatio));
   const contentRatio = 100 - clampedImageRatio;
 
+  const titleSizeClass = {
+    '0': 'text-base',
+    '1': 'text-lg',
+    '2': 'text-xl',
+    '3': 'text-2xl',
+    '4': 'text-3xl',
+    '5': 'text-4xl',
+    '6': 'text-5xl',
+    '7': 'text-6xl',
+  }[titleSize] || 'text-2xl';
+
+  const titlePaddingClass = 'pb-1';
+
   showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
   return (
     <article className="w-full group @container">
@@ -73,7 +86,8 @@ export default async function ArticlePreviewImgRight({
           <div className='px-3 py-3 sm:p-0 flex sm:flex-col lg:flex-row items-start gap-4'>
           {/* Content column */}
           <div
-            className={`w-[50%] md:w-full min-w-0 ${showThumbnail ? 'shrink-0' : 'lg:w-[50%]'} showThumbnail ? w-${contentRatio}% : lg:w-[50%] `}
+            className="min-w-0"
+            style={{ width: showThumbnail ? `${contentRatio}%` : '100%' }}
           >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
@@ -81,21 +95,26 @@ export default async function ArticlePreviewImgRight({
             </span>
 
             {/* Section/Tag Info */}
-            <div className={`flex font-sans items-baseline leading-[1.6]`}>
-              {showSection && article.tag && !sectionOverride && (
+            {showSection && (
+              <div className={`flex font-sans items-baseline leading-[1.6] mb-1`}>
+              {article.tag && !sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
                   {article.tag.toUpperCase()}
                 </h3>
               )}
-              {showSection && sectionOverride && (
+              {sectionOverride && (
                 <h3 className="font-bold text-red-700 inline-block text-xs">
                   {(sectionOverride ?? '').toUpperCase()}
                 </h3>
               )}
             </div>
+            )}
+            
 
             {/* Article Title */}
-            <h1 className={`font-serif font-semibold text-${titleSize}xl text-foreground group-hover:text-[#404040] transition-colors duration-200 leading-1.6`}>
+            <h1 className={`font-test font-bold ${titleSizeClass} text-foreground 
+            group-hover:text-[#404040] transition-colors duration-200 leading-[1.3]
+            ${titlePaddingClass}`}>
               {article.title}
             </h1>
 
@@ -110,12 +129,12 @@ export default async function ArticlePreviewImgRight({
             )}
             
               {/* Author */}
-              <div className="text-xs text-foreground md:hidden">
-                <div className="flex flex-wrap items-center gap-1">
-                  <span className="text-[10px] uppercase tracking-wider text-gray-600 font-bold">By</span>
+              <div className="text-xs text-foreground">
+                <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
+                  <span>By</span>
                   {article.authors.map((author, i) => {
                     return (
-                      <p className="text-[10px] uppercase tracking-wider text-gray-600 font-bold" key={i}>
+                      <p key={i}>
                         {author.fullname + (article.authors.length - 1 !== i ? "," : "")}
                       </p>
                     );
@@ -136,7 +155,10 @@ export default async function ArticlePreviewImgRight({
           
           {/* Thumbnail Image, (off to the right) */}
           {showThumbnail && (
-            <div className="w-[50%] md:w-full lg:w-[50%] sm:order-first lg:order-last">
+            <div
+              className="sm:order-first lg:order-last"
+              style={{ width: `${clampedImageRatio}%` }}
+            >
               <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={

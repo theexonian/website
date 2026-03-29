@@ -144,7 +144,7 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 						hit.authors.map((author, i) => {
 							return (
 								<Link
-									className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
+									className="text-xs hover:text-[rgb(158,158,158)] duration-200 no-underline capitalize"
 									key={i}
 									href={`/writers/${author.slug}`}
 								>

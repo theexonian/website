@@ -46,24 +46,22 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
         </div>
 
         <Link href={`/articles/${slug}`} className="hover:no-underline">
-          <h1 className={`font-serif text-${titleSize}xl group-hover:text-red-700 transition-colors duration-200 font-medium`}>
+          <h1 className={`font-test text-${titleSize}xl group-hover:text-red-700 transition-colors duration-200 font-bold`}>
             {title}
           </h1>
-          <div className="py-2">
-            <p className="text-xs text-muted-foreground duration-200 line-clamp-4 overflow-hidden">
+          <div className="py-1">
+            <p className="text-xs text-muted-foreground text-ellipsis font-serif font-thin leading-[1.6] line-clamp-4 overflow-hidden">
               {description}
             </p>
           </div>
         </Link>
 
-        <div className="pt-2">
-          <div className="text-xs text-muted-foreground duration-200 font-sans">
-            <div className="flex flex-wrap items-center gap-1">
+        <div className="text-xs text-foreground">
+        <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
               <span>By</span>
               {authors &&
                 authors.map((author, i) => (
                   <Link
-                    className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
                     key={i}
                     href={`/writers/${author.slug}`}
                   >
@@ -74,11 +72,10 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
             </div>
           </div>
           {publishedAt && (
-            <p className="text-xs text-muted-foreground inline-block bg-clip-text mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               {new Date(publishedAt).toLocaleDateString()}
             </p>
           )}
-        </div>
       </div>
       {thumbnail?.url && (
         <Link href={`/articles/${slug}`}>
