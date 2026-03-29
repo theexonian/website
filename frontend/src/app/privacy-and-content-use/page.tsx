@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<>
+		<div className="p-6">
 			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto">
 				<FancyBigTitle title="Media and Content Use Policy" />
 				<p>
@@ -91,6 +92,7 @@ export default function Page() {
 					&nbsp;for more information on our newspaper’s standards and
 					practices.
 				</p>
+			</div>
 			</div>
 		</>
 	);

@@ -37,7 +37,7 @@ export default function SimpleThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-[5px] rounded-lg border border-border hover:bg-accent transition-colors duration-200"
+      className="p-[5px] rounded-lg hover:bg-accent transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {isDark ? (

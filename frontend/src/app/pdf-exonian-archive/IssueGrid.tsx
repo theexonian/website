@@ -60,64 +60,68 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
   });
 
   return (
-    <>
-      <div className="">
-        {Object.keys(groupedIssues)
-          .sort((a, b) => Number(b) - Number(a)) // Sort boards in descending order (newest first)
-          .map((board: string) => (
+    <div className="w-full">
+      {Object.keys(groupedIssues)
+        .sort((a, b) => Number(b) - Number(a))
+        .map((board: string) => (
           <div key={board} className="font-serif pt-3">
-            <h4 className="text-2xl">
-              <strong>
-                {`The ${board}${numberEnding(Number(board))} Exonian Board`}
-              </strong>
+            <h4 className="text-2xl font-bold">
+              {`The ${board}${numberEnding(Number(board))} Exonian Board`}
             </h4>
-            <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-5">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 py-5">
               {groupedIssues[Number(board)].map((issue, index) => (
-                <p key={index}>
-                  <Link href={issue.pdf.url} target="_blank">
-                    <div className="inline-block overflow-hidden h-[30rem] min-h-[4vh] relative border-y-0 min-w-full">
-                      <div className="relative inline-block overflow-hidden h-[400px] relative min-w-full">
-                        <Image
-                          src={issue.thumbnail.url}
-                          alt={`Thumbnail for ${issue.publishDate}`}
-                          fill
-                          style={{ objectFit: "cover", objectPosition: "top" }}
-                          className="transition-transform duration-300 ease-in-out hover:scale-[103%]"
-                        />
-                      </div>
-                      <div
-                        className={
-                          "bg-black bg-opacity-60 text-white bottom-3 right-5 text-right absolute pr-3 pt-1 text-xl grid grid-cols-10" +
-                          (windowSize.width < 768 ? "" : " pl-5")
-                        }
-                      >
-                        <span className="inline-block col-span-7 m-0">
-                          ISSUE #
-                          <br />
-                          <p className="text-sm mb-2 overflow-visible max-h-5">
-                            {new Date(issue.publishDate).toLocaleDateString(
-                              "en-US",
-                              {
-                                year: "numeric",
-                                month:
-                                  windowSize.width < 768 ? "short" : "long",
-                                day: "numeric",
-                              }
-                            )}
-                          </p>
-                        </span>
-                        <span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-serif">
-                          {String(issue.slug).slice(3, 5)}
-                        </span>
-                      </div>
+                <Link
+                  key={index}
+                  href={issue.pdf.url}
+                  target="_blank"
+                  className="group relative block h-[30rem] overflow-hidden"
+                >
+                  {/* Thumbnail Image */}
+                  <div className="relative h-[400px] w-full overflow-hidden">
+                    <Image
+                      src={issue.thumbnail.url}
+                      alt={`Thumbnail for ${issue.publishDate}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                      className="transition-transform duration-300 ease-in-out group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Progressive Blur Layer: Placed INSIDE the image container and BELOW the text */}
+                  {/* 1. The Blur Element: Uses mask to fade the backdrop-blur */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 z-10 h-1/2 pointer-events-none backdrop-blur-[30px]"
+                    style={{
+                      mask: "linear-gradient(to top, black, black, transparent)",
+                      WebkitMask: "linear-gradient(to top, black, black, transparent)"
+                    }}
+                  />
+
+                  {/* 2. The Contrast Element: Separate gradient for text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 z-10 h-1/2 pointer-events-none bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  {/* Info Overlay: Higher z-index to stay sharp */}
+                  <div className="absolute bottom-10 ml-3 z-10 grid grid-cols-10 p-3 text-white">
+                    <div className="col-span-7">
+                      <span className="block text-xl font-bold">ISSUE #</span>
+                      <p className="text-sm">
+                        {new Date(issue.publishDate).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
                     </div>
-                  </Link>
-                </p>
-              ))}{" "}
+                    <span className="col-span-3 ml-2 font-serif text-5xl leading-none">
+                      {String(issue.slug).slice(3, 5)}
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         ))}
-      </div>
-    </>
+    </div>
   );
-}
+}  

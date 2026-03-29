@@ -149,29 +149,31 @@ export default function Navbar() {
 						</div>
 
 						{/* Right side: Spacer */}
-						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-muted-foreground">
-							<div className="flex items-center pl-2 gap-1 text-foreground md:hidden">
-								<div className="hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-1 py-[5px] w-24 focus-within:gap-0 px-[5px] border rounded-lg border-border duration-300 group">
-									<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full group-focus-within:opacity-0 duration-300 w-[1.2em] h-[1.2em]" />{" "}
-									<input
-										type="text"
-										placeholder="Search"
-										className="text-muted-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent"
-										onKeyDown={(e) => {
-											if (e.key === "Enter") {
-												const input = e.target as HTMLInputElement;
-												const query = input.value;
-												router.push(`/search?=${query}`);
-												input.value = "";
-											}
-										}}
-									/>
-								</div>
+						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-foreground group-focus-within:text-muted-foreground">
+							<div className="flex-1 flex justify-end">
+								{ mounted && (
+									<div className="md:hidden hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-transparent focus-within:border-border duration-500 ease-in-out group w-24 focus-within:w-40 focus-within:gap-0">
+										<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full duration-300 w-[1.2em] h-[1.2em]" />{" "}
+										<input
+											type="text"
+											placeholder="Search"
+											className="text-foreground outline-none w-12 group-focus-within:w-full duration-300 bg-transparent focus:ring-0"
+											onKeyDown={(e) => {
+												if (e.key === "Enter") {
+													const input = e.target as HTMLInputElement;
+													const query = input.value;
+													router.push(`/search?=${query}`);
+													input.value = "";
+												}
+											}}
+										/>
+									</div>
+								)}
 							</div>
 							<div className="md:hidden ml-2">
 								<SimpleThemeToggle />
 							</div>
-							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2">
+							<div className="md:flex md:items-center md:text-xs md:py-1 md:text-muted-foreground md:gap-2 mt-[-2px]">
 								<div className="hidden md:flex">
 									{mounted && (
 										<Menubar>
@@ -182,31 +184,31 @@ export default function Navbar() {
 													</div>
 												</MenubarTrigger>
 												<MenubarContent>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/">Home</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/news">News</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/life">Life</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/oped">Opinion</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/sports">Sports</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/humor">Humor</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="https://crossword.theexonian.net">Crossword</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/pdf-exonian-archive">Archive</Link>
 													</MenubarItem>
-													<MenubarItem>
+													<MenubarItem asChild>
 														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 													</MenubarItem>
 													<MenubarItem asChild>
@@ -225,7 +227,7 @@ export default function Navbar() {
 					</div>
 				</div>
 
-				<ul className="flex flex-row md:hidden md:h-[100vh] text-xs gap-8 pt-4 pb-3 text-foreground">
+				<ul className="flex flex-row md:hidden md:h-[100vh] text-xs gap-8 pt-[14px] pb-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (

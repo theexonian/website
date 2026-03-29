@@ -17,15 +17,14 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 
 	return (
 		<>
-			<div className="mb-3 py-5 px-3 2xl:px-8">
+		<div className="p-6">
+			<div className="flex flex-row pb-4">
 				<h1
-					className={`inline-block text-7xl xl:text-5xl md:text-3xl font-bold bg-gradient-to-r from-[#B40A0A] to-[#f71e1e] text-transparent bg-clip-text ${
-						/[gjpqy]/i.test(tag) ? 'pb-3.5' : 'pb-1.5'
-					}`}
+					className={`inline-block text-3xl font-bold font-sans text-[#B40A0A] uppercase `}
 				>
 					{tag.charAt(0).toUpperCase() + tag.slice(1)}
 				</h1>
-				<span className="md:hidden font-serif text-sm xl:text-md inline px-[3rem] text-muted-foreground">
+				<span className="md:hidden font-serif text-sm xl:text-md inline text-muted-foreground items-start mt-auto ml-auto">
 					{tag.toLowerCase() == 'news'
 						? `Stay updated with the latest news articles on campus and the world.`
 						: tag.toLowerCase() == 'oped'
@@ -38,15 +37,13 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 						? `Read humorous takes on campus life and current events.`
 						: `Discover articles and stories related to ${tag}.`}
 				</span>
-				<hr className="border-red-700 w-3/4 md:w-full border-[1px]" />
+				
 			</div>
-			
-
-			
+			<hr className="border-border w-full mb-6" />
 			{/* Grid layout similar to home page */}
 			<div className="grid grid-cols-4 lg:grid-cols-1">
 				{/* Main featured article in center */}
-				<div className="flex col-span-4 px-4 2xl:px-8 border-border border-b md:border-none mb-7 md:mb-0">
+				<div className="flex col-span-4 px-4 2xl:px-8 border-border border-b md:border-none mb-4 pb-6">
 					{articles[0] && (
 						<>
 							{(() => {
@@ -82,18 +79,10 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 				</div>
 				{/* Left column - featured article */}
 				<div className="col-span-4 ">
-					<div className="grid grid-cols-2 lg:grid-cols-1">
+					<div className="grid grid-cols-2 lg:grid-cols-1 divide-y">
 						{articles.slice(1).map((article, i) =>
 							article ? (
-								<div
-									key={i + 1}
-									className={`h-full w-full px-4 2xl:px-8 py-2 
-										${i >= 2 ? 'border-t border-border' : ''} 
-										${i % 2 === 1 ? 'border-l border-border lg:border-l-0' : ''}
-									`}
-								>
 									<RowPreview article={article} border={false} />
-								</div>
 							) : null
 						)}
 					</div>
@@ -110,6 +99,7 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 					</div>
 				</div>
 			)} */}
+			</div>
 		</>
 	);
 }

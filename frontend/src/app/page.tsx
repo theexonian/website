@@ -74,7 +74,6 @@ export default async function Home() {
 			</div>
 			
 			{/* Horizontal Article Sections */}
-			<div className="mt-8">
 				<HorizontalArticleSection 
 					sectionTitle="News" 
 					sectionSlug="news" 
@@ -101,7 +100,6 @@ export default async function Home() {
 					limit={5}
 				/>
 			</div>
-		</div>
 	);
 }
 	  
