@@ -26,10 +26,10 @@ export default async function Home() {
 						<div className="col-span-4 md:px-0 md:col-span-1 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col md:gap-6">
-								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='3'/>
-								<ArticlePreviewImgRight z={4} thumbnailRatio="16/9" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='3'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
-								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="oped" titleSize='2'/>
 							</div>
 						</div>
@@ -41,8 +41,8 @@ export default async function Home() {
 								</div>
 							</div>
 							<div className="flex flex-col md:gap-6">
-								<ArticlePreview z={1} section="news" thumbnailRatio='16/9'/>
-								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9'/>
+								<ArticlePreview z={4} section="news" thumbnailRatio='16/9'/>
+								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>
 								<ArticlePreview z={1} section="humor" thumbnailRatio='16/9'/>
 							</div>
 						</div>	
@@ -78,8 +78,8 @@ export default async function Home() {
 						<div className="col-span-3 md:order-2 pl-4 md:pl-0 md:gap-6">
 							{ /* Middle Column */ }
 							<div className="flex flex-col">
-								<ArticlePreview z={1} section="oped" titleSize='2' thumbnailRatio='16/9'/>
-								<ArticlePreview z={1} section="life" thumbnailRatio='16/9'/>
+								<ArticlePreview z={6} section="oped" titleSize='2' thumbnailRatio='16/9'/>
+								<ArticlePreview z={2} section="life" thumbnailRatio='16/9'/>
 							</div>
 						</div>	
 					</div>
