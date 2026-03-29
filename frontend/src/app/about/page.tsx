@@ -53,6 +53,32 @@ export default function Page() {
 					<i>Letters to the Editor</i> in a timely fashion and to edit
 					them for content and clarity.
 				</p>
+
+				<h1 className="mt-3 text-lg"><b>Other Pages</b></h1>
+				<hr className="w-full mb-3"></hr>
+				<div className="flex flex-col gap-3">
+							<Link href="/webboard">
+								<span className="hover:text-foreground duration-200 font-serif">Web Board</span>
+							</Link>
+							<Link href="/masthead">
+								<span className="hover:text-foreground duration-200 font-serif">Masthead</span>
+							</Link>
+							<Link href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2">
+								<span className="hover:text-foreground duration-200 font-serif font-serif">Subscribe</span>
+							</Link>
+							<Link href="/pdf-exonian-archive">
+								<span className="hover:text-foreground duration-200 font-serif">Web Archive</span>
+							</Link>
+							<Link href="https://archive.theexonian.com">
+								<span className="hover:text-foreground duration-200 font-serif">Historical Archives</span>
+							</Link>
+							<Link href="/the-exonian-charter">
+								<span className="hover:text-foreground duration-200 font-serif">Exonian Charter</span>
+							</Link>
+							<Link href="/privacy-and-content-use">
+								<span className="hover:text-foreground duration-200 font-serif">Media Policy</span>
+							</Link>
+							</div>
 			</div>
 		</div>
 	);
