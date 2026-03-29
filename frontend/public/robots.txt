@@ -1,4 +1,3 @@
-# Block common AI training/summarization and scraping crawlers
 User-agent: GPTBot
 Disallow: /
 
@@ -54,4 +53,3 @@ Allow: /
 # XML sitemap
 Sitemap: https://theexonian.net/sitemap.xml
 
-# Add any other UA strings you see in logs/server analytics.
