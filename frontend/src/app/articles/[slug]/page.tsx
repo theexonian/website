@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						{article.authors.map((author, i) => {
 							return (
 								<Link
-									className="hover:text-red-500 duration-200 font-bold no-underline capitalize"
+									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline capitalize"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						<div className="flex items-center gap-2 text-red-700">
 							<FontChanger/>
 						</div>
-						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-red-700 text-red-700 no-underline">
+						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-[rgb(158,158,158)] text-red-700 no-underline">
 							<HiOutlineNewspaper className="text-xl" />
 							Publication
 						</Link>

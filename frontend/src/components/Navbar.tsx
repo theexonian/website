@@ -14,7 +14,6 @@ import {
 	MenubarContent,
 	MenubarItem,
 	MenubarMenu,
-	MenubarSeparator,
 	MenubarShortcut,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
@@ -136,7 +135,7 @@ export default function Navbar() {
 						</div>
 
 						{/* Center: Logo */}
-						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center pt-4 pb-1">
+						<div className="w-[17rem] hover:contrast-50 duration-300 flex justify-center items-center">
 							<Link href="/">
 								<Image
 								src={"/Exonian-logo.png"}
@@ -210,7 +209,6 @@ export default function Navbar() {
 													<MenubarItem>
 														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 													</MenubarItem>
-													<MenubarSeparator />
 													<MenubarItem asChild>
 														<div className="flex items-center gap-2 px-2 py-1">
 															<span className="text-sm">Theme</span>
@@ -227,7 +225,7 @@ export default function Navbar() {
 					</div>
 				</div>
 
-				<ul className="flex flex-row md:flex-col md:h-[100vh] text-xs gap-8 pt-4 pb-3 text-foreground">
+				<ul className="flex flex-row md:hidden md:h-[100vh] text-xs gap-8 pt-4 pb-3 text-foreground">
     				<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
    					     <Link href="/">Home</Link>
 						 {isActiveRoute('/') && (

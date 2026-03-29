@@ -50,10 +50,9 @@ export default async function HorizontalArticleSection({
             </h2>
             <Link
               href={`/${sectionSlug}`}
-              className="group flex items-center gap-1 text-xs text-foreground hover:text-red-700 transition-colors"
+              className="group flex items-center gap-1 text-xs text-foreground hover:text-[rgb(158,158,158)] transition-colors"
             >
-              <span>View all</span>
-              <HiChevronRight className="h-4 w-4 rounded-full bg-gray-100 group-hover:bg-red-700 group-hover:text-white transition-all p-[2px]" />
+              <span className="font-sans text-[rgb(71,71,71)]">View all</span>
             </Link>
           </div>
 

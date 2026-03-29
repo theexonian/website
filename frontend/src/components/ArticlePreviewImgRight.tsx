@@ -130,7 +130,7 @@ export default async function ArticlePreviewImgRight({
             
               {/* Author */}
               <div className="text-xs text-foreground md:hidden">
-                <div className="flex flex-wrap items-center mt-1 gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
+                <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
                   <span className="">By</span>
                   {article.authors.map((author, i) => {
                     return (
