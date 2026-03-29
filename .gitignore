@@ -2,3 +2,4 @@
 .env
 .gitignore
 /node_modules
+.env.local
