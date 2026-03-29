@@ -19,14 +19,17 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
+import { getIssues } from '@/actions/getIssues';
+
 interface NavbarProps {
 	latestIssuePdfUrl?: string;
 }
 
-export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
+export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '' }: NavbarProps) {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [clientDate, setClientDate] = useState<Date | null>(null);
 	const [mounted, setMounted] = useState<boolean>(false);
+	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>(initialLatestIssuePdfUrl);
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
