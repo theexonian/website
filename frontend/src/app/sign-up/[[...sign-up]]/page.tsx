@@ -1,4 +1,5 @@
 import { SignUp } from '@clerk/nextjs';
+import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -41,9 +42,11 @@ export default function Page() {
         {/* The Exonian Logo */}
         <div className="flex justify-center mt-8">
           <div className="text-center">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="The Exonian Logo" 
+              width={320}
+              height={96}
               className="h-24 w-auto mx-auto mb-3 drop-shadow-lg"
             />
             <p className="text-xs text-gray-500 font-serif">

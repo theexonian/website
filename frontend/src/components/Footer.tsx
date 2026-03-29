@@ -3,33 +3,22 @@
 import Image from "next/image";
 import "animate.css";
 import Link from "next/link";
-import { useState, useEffect } from 'react';
-import { getIssues } from '@/actions/getIssues';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
-export default function Navbar() {
-	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>('');
+interface FooterProps {
+	latestIssuePdfUrl?: string;
+}
+
+export default function Navbar({ latestIssuePdfUrl = '' }: FooterProps) {
 	const { isSignedIn } = useUser();
 	const router = useRouter();
 
-	useEffect(() => {
-		async function fetchLatestIssue() {
-			try {
-				const issues = await getIssues();
-				if (issues && issues.length > 0) {
-					// Issues are sorted by publishDate:desc, so first one is the latest
-					setLatestIssuePdfUrl(issues[0].pdf.url);
-				}
-			} catch (error) {
-				console.error('Failed to fetch latest issue:', error);
-			}
-		}
-		
-		fetchLatestIssue();
-	}, []);
-
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
+		if (!latestIssuePdfUrl) {
+			e.preventDefault();
+			return;
+		}
 		// Allow access in development mode or if signed in
 		const isDev = process.env.NODE_ENV === 'development';
 		if (!isSignedIn && !isDev) {

@@ -3,7 +3,7 @@
 export const EIC_NAME = "Andrew Yang"
 // Format: (apostrophe) Year of Graduation
 // Example: '25
-export const EIC_GRAD_YEAR = "'25"
+export const EIC_GRAD_YEAR = "'27"
 // Format: Email
 // Example: rhpark@exeter.edu
 export const EIC_EMAIL = "hyang6@exeter.edu"
