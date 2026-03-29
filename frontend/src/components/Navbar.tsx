@@ -152,7 +152,7 @@ export default function Navbar() {
 						<div className="flex-1 p-6 flex items-center justify-end text-xs py-1 text-foreground group-focus-within:text-muted-foreground">
 							<div className="flex-1 flex justify-end">
 								{mounted && (
-									<div className="md:hidden hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-transparent focus-within:border-border duration-500 ease-in-out group w-24 focus-within:w-40 focus-within:gap-0">
+									<div className="md:hidden hover:bg-[#f2f2f2] ml-[3px] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-border duration-500 ease-in-out group w-24 focus-within:w-40 focus-within:gap-0">
 										<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full duration-300 w-[1.2em] h-[1.2em]" />{" "}
 										<input
 											type="text"
@@ -170,9 +170,9 @@ export default function Navbar() {
 									</div>
 								)}
 							</div>
-							<div className="md:hidden h-[26px] ml-2 gap-1 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
+							{/* <div className="md:hidden h-[26px] ml-2 gap-1 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
 								<SimpleThemeToggle />
-							</div>
+							</div> */}
 							<div className="md:hidden ml-2 p-[5px] rounded-lg hover:bg-accent transition-colors duration-200">
 								<SignInButton />
 							</div>
@@ -214,11 +214,11 @@ export default function Navbar() {
 													<MenubarItem asChild>
 														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
 													</MenubarItem>
-													<MenubarItem asChild>
-														<div className="flex items-center">
-															<SimpleThemeToggle displayText={true} />
-														</div>
-													</MenubarItem>
+												{/* <MenubarItem asChild>
+															<div className="flex items-center">
+																<SimpleThemeToggle displayText={true} />
+															</div>
+														</MenubarItem> */}
 													<MenubarItem asChild>
 														<div className="flex items-center">
 															<SignInButton />
@@ -227,7 +227,7 @@ export default function Navbar() {
 													<MenubarItem>
 														<div className="flex justify-end">
 															{mounted && (
-																<div className=" hover:bg-[#f2f2f2] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-transparent focus-within:border-border duration-500 ease-in-out focus-within:gap-0">
+																<div className=" hover:bg-[#f2f2f2] flex flex-row items-center gap-2 py-[5px] px-[8px] rounded-lg border border-border duration-500 ease-in-out focus-within:gap-0">
 																	<FiSearch className="text-xs group-focus-within:text-[0px] group-focus-within:-translate-x-full duration-300 w-[1.2em] h-[1.2em]" />{" "}
 																	<input
 																		type="text"
