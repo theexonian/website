@@ -19,7 +19,7 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 		props.article;
 
 	return (
-		<div className="w-full p-3 border-border border-b">
+		<div className="w-full py-3 border-border border-b">
 			<div className="max-w-[600px]">
 				<Link href={`/articles/${slug}`}>
 					{thumbnail && (

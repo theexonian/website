@@ -111,7 +111,7 @@ export default function Page() {
 												})}
 												</p>
 											</span>
-											<span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-semibold font-[Inter]">
+											<span className="inline-block ml-1 col-span-3 min-h-full text-5xl m-0 align-text-top font-semibold font-[Segoe_UI]">
 												{String(issue.slug).slice(3, 5)}
 											</span>
 										</div>

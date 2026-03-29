@@ -13,6 +13,10 @@ export default function NewsletterPopup() {
     const { isLoaded, isSignedIn } = useUser();
 
     useEffect(() => {
+        // TEMPORARY: Disable newsletter popup
+        setVisibility(false);
+        return;
+        
         if (!isLoaded) {
             return;
         }
@@ -39,12 +43,12 @@ export default function NewsletterPopup() {
             setVisibility(true);
         }, 5000);
         // Re-show every 5 minutes if user hasn't subscribed
-        const intervalId = setInterval(() => {
+        /*const intervalId = setInterval(() => {
             setVisibility(true);
-        }, 300000);
+        }, 300000);*/
         return () => {
             clearTimeout(initialDelay);
-            clearInterval(intervalId);
+            //clearInterval(intervalId);
         };
     }, [isLoaded, isSignedIn]);
 
@@ -120,10 +124,11 @@ export default function NewsletterPopup() {
                     print:hidden
                     ${visible ? 'translate-y-0' : 'translate-y-full'}
                 `}
+                onClick={(e) => e.stopPropagation()}
             >
                 {/* Gradient shadow at top edge - only when visible */}
                 {visible && (
-                    <div className="absolute -top-8 left-0 right-0 h-8 bg-gradient-to-t from-black/20 via-black/10 to-transparent pointer-events-none print:hidden" />
+                    <div className="absolute -top-4 left-0 right-0 h-4 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
                 )}
                 
                 {/* Close button */}
@@ -133,7 +138,7 @@ export default function NewsletterPopup() {
                         setShowSuccess(false);
                         setError("");
                     }}
-                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-xl z-10"
+                    className="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-xl"
                 >
                     ×
                 </button>
@@ -199,7 +204,7 @@ export default function NewsletterPopup() {
                         <Button
                             onClick={addEmail}
                             disabled={!name.trim() || !email.trim()}
-                            className="w-full bg-foreground hover:bg-foreground/90 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:bg-muted disabled:cursor-not-allowed font-serif"
+                            className="w-full bg-red-500 hover:bg-red-500 text-background font-medium py-3 px-4 rounded-md transition-colors disabled:cursor-not-allowed font-serif"
                         >
                             Subscribe
                         </Button>

@@ -8,7 +8,25 @@ export default function Page() {
 					<i>The Exonian</i> Web Board
 				</h1>
 			</div>
-			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto">
+			<div className="prose prose-neutral dark:prose-invert md:prose-sm font-serif mx-auto space-y-6">
+					<hr className="border-neutral-600" />
+				<div>
+					<h2>The 17th Exonian Web Board</h2>
+					<h3>Chief Digital Editors</h3>
+					<p>Eric Aley '28</p>
+					<p>Gavin Zhao '28</p>
+					<h3>Technical Directors</h3>
+					<p>Aaditya Bilakanti '28</p>
+					<h3>Head Section Editor and Designers</h3>
+					<p>Evan Chen '28</p>
+					<p>Carol Lee '28</p>
+					<h3>Developers</h3>
+					<p>Max Wittayavanichai '28</p>
+					<h3>Section Editors</h3>
+					<p>Andy Liu '28</p>
+					<p>Lily Cui '29</p>
+					<p>Trip Lind '29</p>
+				</div>
 					<hr className="border-neutral-600" />
 				<div>
 					<h2>The 17th Exonian Web Board</h2>

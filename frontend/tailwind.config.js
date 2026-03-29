@@ -60,10 +60,11 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
       },
-	  fontFamily: {
-        bodoni: ["'Bodoni 72'", "serif"],
-      }
-    },
+    fontFamily: {
+        serif: ['"Georgia"'],
+        test: ['"GeorgiaPro"', '"Georgia"', 'serif'],
+        sans: ['"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
     screens: {
       "2xl": {
         max: "1535px",
@@ -84,10 +85,11 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
     function ({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
     require("tailwindcss-animate"),
   ],
-};
+}};

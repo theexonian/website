@@ -3,23 +3,25 @@
 @tailwind utilities;
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	@apply font-sans;
 }
 
 a {
 	@apply duration-100;
-	@apply hover:text-muted-foreground;
+}
+
+a:hover {
+	color: hsl(var(--muted-foreground));
 }
 
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
+		--background: 0 0% 99%;
+		--foreground: 0 0% 1%;
+		--card: 0 0% 99%;
+		--card-foreground: 0 0% 1%;
+		--popover: 0 0% 99%;
+		--popover-foreground: 0 0% 1%;
 		--primary: 0 0% 9%;
 		--primary-foreground: 0 0% 98%;
 		--secondary: 0 0% 96.1%;
@@ -41,8 +43,8 @@ a {
 		--radius: 0.5rem;
 	}
 	.dark {
-		--background: 0 0% 3.9%;
-		--foreground: 0 0% 98%;
+		--background: 0 0% 0%;
+		--foreground: 0 0% 99%;
 		--card: 0 0% 3.9%;
 		--card-foreground: 0 0% 98%;
 		--popover: 0 0% 3.9%;
@@ -70,10 +72,11 @@ a {
 
 @layer base {
 	* {
-		@apply border-border;
+		border-color: hsl(var(--border));
 	}
 	body {
-		@apply bg-background text-foreground;
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
 	}
 }
 
@@ -84,4 +87,84 @@ a {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-LightItalic.ttf") format("truetype");
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Italic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-SemiBold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-SemiBoldItalic.ttf") format("truetype");
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-BoldItalic.ttf") format("truetype");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-Black.ttf") format("truetype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeorgiaPro";
+	src: url("/fonts/Georgia%20Pro/GeorgiaPro-BlackItalic.ttf") format("truetype");
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
 }

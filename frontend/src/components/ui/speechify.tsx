@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { MdOutlineSpatialAudioOff } from "react-icons/md";
 
 // Function to get the audio stream from our secure API route
@@ -28,6 +28,16 @@ export function Speechify({ inputText }: SpeechifyProps) {
 
 	// Reference to the <audio> HTML element
 	const audioRef = useRef<HTMLAudioElement>(null);
+	const audioUrlRef = useRef<string | null>(null);
+
+	// Cleanup blob URL on unmount
+	useEffect(() => {
+		return () => {
+			if (audioUrlRef.current) {
+				URL.revokeObjectURL(audioUrlRef.current);
+			}
+		};
+	}, []);
 
 	const handleConvert = async () => {
 		if (!inputText) {
@@ -51,6 +61,12 @@ export function Speechify({ inputText }: SpeechifyProps) {
 			
 			const audioBlob = await response.blob();
 			const audioUrl = URL.createObjectURL(audioBlob);
+			
+			// Clean up previous URL if it exists
+			if (audioUrlRef.current) {
+				URL.revokeObjectURL(audioUrlRef.current);
+			}
+			audioUrlRef.current = audioUrl;
 			
 			if (audioRef.current) {
 				audioRef.current.src = audioUrl;

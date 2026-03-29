@@ -4,6 +4,7 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<>
+			<div className="p-6">
 			<div className="font-serif py-5 text-center">
 				<h1 className="text-6xl lg:text-5xl md:text-3xl font-semibold">
 					<i>The Exonian</i> Charter
@@ -267,6 +268,7 @@ export default function Page() {
 					</Link>
 					.
 				</p>
+			</div>
 			</div>
 		</>
 	);

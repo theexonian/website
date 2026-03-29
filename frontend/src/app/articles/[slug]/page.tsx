@@ -14,8 +14,8 @@ import * as Constants from "@/components/Constants";
 // Revalidate this page every 5 minutes
 export const revalidate = 300;
 
-export default async function Page({ params }: { params: { slug: string } }) {
-	const slug = params.slug;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
 	const article = await getArticleById(slug);
 
 	if (!article || !article.content) return null;
@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<div className="w-full flex justify-center">
-				<article className="max-w-none w-[45rem] lg:w-[35rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
+				<article className="max-w-none w-[50rem] lg:w-[38rem] prose prose-neutral dark:prose-invert pt-8 font-serif prose-figcaption:font-sans prose-p:indent-8">
 					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						{article.authors.map((author, i) => {
 							return (
 								<Link
-									className="hover:text-red-500 duration-200 font-bold no-underline capitalize"
+									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline capitalize"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						<div className="flex items-center gap-2 text-red-700">
 							<FontChanger/>
 						</div>
-						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-red-700 text-red-700 no-underline">
+						<Link target="_blank" href="/pdf-exonian-archive" className="flex items-center gap-2 hover:underline underline-offset-4 text-sm font-medium hover:text-[rgb(158,158,158)] text-red-700 no-underline">
 							<HiOutlineNewspaper className="text-xl" />
 							Publication
 						</Link>
@@ -102,7 +102,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 					{paragraphs.map((paragraph, i) => (
 						<p
 							key={i}
-							className={`indent-8 text-[13pt] ${
+							className={`indent-8 text-[13pt] leading-[1.5] mt-2 ${
 								i === 0 ? "first-letter:text-2xl" : ""
 							}`}
 						>
@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 			{/* Related Articles Section - Full width at bottom */}
 			<div className="w-full mt-16">
 				<HorizontalArticleSection 
-					sectionTitle={`More ${article.tag === 'oped' ? 'Opinions' : article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}`}
+					sectionTitle={`More ${article.tag === 'oped' ? 'Opinion' : article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}`}
 					sectionSlug={article.tag}
 					limit={5}
 				/>
