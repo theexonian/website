@@ -119,6 +119,8 @@ export default async function ArticlePreview2({
                         : `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
                     }
                     fill
+                    sizes="(max-width: 768px) 100vw, 30vw"
+                    loading={z === 1 ? 'eager' : 'lazy'}
                     className="absolute inset-0 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
                     alt={article.description ? article.description : 'Article image'}
                   />

@@ -35,6 +35,7 @@ export default function IssuePreview({issue}: {issue:Issue}) {
           src={issue.thumbnail.url}
           alt={`Thumbnail for ${issue.publishDate}`}
           fill
+          sizes="(max-width: 768px) 100vw, 33vw"
           style={{ objectFit: "cover", objectPosition: "top" }}
           className=""
         />

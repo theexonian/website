@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 							src={
 								article.thumbnail.url.startsWith("http")
 									? article.thumbnail.url 
-									: `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
+										: `http://${Constants.STRAPI_IP}:1337${article.thumbnail.url}`
 							}
 							width="0"
 							height="0"

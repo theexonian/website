@@ -88,6 +88,7 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
               }
               alt={title}
               fill
+              sizes="(max-width: 1024px) 96px, 128px"
               className="object-cover"
             />
           </div>
