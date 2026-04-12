@@ -17,19 +17,24 @@ interface HorizontalArticleSectionProps {
   sectionTitle: string;
   sectionSlug: string;
   limit?: number;
+  showArticlesWithoutImages?: boolean; // Control whether to force articles to have images
 }
 
 export default async function HorizontalArticleSection({
   sectionTitle,
   sectionSlug,
   limit = 5,
+  showArticlesWithoutImages = true,
 }: HorizontalArticleSectionProps) {
   let articles: Article[] = [];
 
   try {
-    const response = await getArticlesByTag(sectionSlug, limit);
+    const response = await getArticlesByTag(sectionSlug, 30);
     if (response && response.length > 0) {
-      articles = response.slice(0, limit);
+      const filteredArticles = showArticlesWithoutImages
+        ? response
+        : response.filter((article) => Boolean(article.thumbnail?.url));
+      articles = filteredArticles.slice(0, limit);
     }
   } catch (error) {
     console.error('Error fetching articles:', error);

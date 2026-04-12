@@ -126,17 +126,19 @@ export default async function Home() {
 					sectionTitle="News" 
 					sectionSlug="news" 
 					limit={5}
+					showArticlesWithoutImages={false}
 				/>
 				<HorizontalArticleSection 
 					sectionTitle="Life" 
 					sectionSlug="life" 
 					limit={5}
+					showArticlesWithoutImages={false}
 				/>
-				<HorizontalArticleSection 
+				{/* <HorizontalArticleSection 
 					sectionTitle="Opinion" 
 					sectionSlug="oped" 
 					limit={5}
-				/>
+				/> */}
 				<HorizontalArticleSection 
 					sectionTitle="Sports" 
 					sectionSlug="sports" 
