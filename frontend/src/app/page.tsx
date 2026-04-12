@@ -20,73 +20,108 @@ export default async function Home() {
 	return (
 		<div className="p-6 w-full">
 
-			<div className="grid grid-cols-9 lg:grid-cols-9 divide-x-[1px] md:divide-x-0 gap-4">
-				<div className="col-span-9 md:order-1 md:px-0" >
-					<div className="grid grid-cols-7 md:grid-cols-1 divide-x-[1px] md:divide-x-0 gap-4 md:gap-0">
-						<div className="col-span-4 md:px-0 md:col-span-1 md:order-1">
+			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+				<div className="col-span-7 md:order-1 md:px-0" >
+					{ /* Left Two Columns */ }
+					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-5 pr-3">
+						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='4' imageRatio={30}/>
+					</div>
+					
+					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
-							<div className="flex flex-col md:gap-6">
-								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='3'/>
-								<ArticlePreviewImgRight z={3} thumbnailRatio="16/9" section="life" titleSize='2'/>
-								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='2'/>
+							<div className="flex flex-col pr-3">
+								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
-								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="oped" titleSize='2'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 							</div>
 						</div>
-						<div className="col-span-3 md:order-2 pl-4 md:pl-0">
+						<div className="col-span-3 md:order-2 pl-4">
 							{ /* Middle Column */ }
-							<div className='md:border-t md:mt-4 md:mb-4'>
-								<div className="text-2xl flex font-serif p-3 border-b-[1px] md:border-none w-full border-[rgb(230,230,230)] leading-none">
+
+							{/* <div className='px-3 pt-3 pb-1'>
+								<div className="text-2xl flex font-serif pb-2 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
 									Editor's Picks
 								</div>
-							</div>
+							</div> */ }
 							<div className="flex flex-col md:gap-6">
-								<ArticlePreview z={4} section="news" thumbnailRatio='16/9'/>
-								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>
 								<ArticlePreview z={1} section="humor" thumbnailRatio='16/9'/>
+								<ArticlePreview z={2} section="humor" thumbnailRatio='16/9'/>
+								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9'/>
 							</div>
 						</div>	
 					</div>
-					<div className="w-full py-6 md:px-3 flex justify-center">
-						<div className="rounded-lg w-full">
-							<SpotifyEmbed theme="1" link="https://open.spotify.com/episode/7bCm0x4CvqdSDIDPcJxYCN?si=N0VHoMS1T0ypn96-qKRTQA" height="155"/>
-						</div>
+					<div className="ml-3 mr-3 my-3 py-5">
+						<SpotifyEmbed theme="1" link="https://open.spotify.com/episode/7jEciCwwK31k1zcLcIsGnU?si=bc5dfa1a57464ac6" height="155"/>
 					</div>
-
-					<div className="grid grid-cols-7 md:grid-cols-1 divide-x md:divide-x-0 gap-4 md:gap-0">
-						<div className="col-span-4 md:col-span-1 md:px-0 md:order-1">
+					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
-							<div className="flex flex-col md:gap-6">
-								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="humor" titleSize='2'/>
-								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="humor" titleSize='2'/>
+							<div className="flex flex-col">
+								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="sports" titleSize='2'/>
 								<ArticlePreviewImgRight z={4} thumbnailRatio="4/3" section="news" titleSize='2'/>
-								{ /* Design Suggestions Request */ } 
-
-								<div className=" mt-3 mb-3 rounded-lg bg-[rgb(246,246,246)] pl-5 pr-6 pt-5 pb-2 mr-5">
-									<div className="text-xl font-bold flex font-serif md:border-none w-full border-[rgb(230,230,230)] leading-none mb-2">
-										Have Suggestions For Our Website?
-										<a href="mailto:theexonianwb@gmail.com" className="ml-auto font-sans text-sm text-red-700 font-bold hover:underline text-right mr-2">
-											Contact Us
-										</a>
-									</div>
-									<div className="flex flex-col md:gap-6">
-										<p className="text-sm font-serif text-foreground mb-3">We’re always looking to improve the design of our website and would love to hear your suggestions! If you have any ideas or feedback, please don’t hesitate to reach out.</p>
-									</div>
-								</div>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='2'/>
 							</div>
 						</div>
-						<div className="col-span-3 md:order-2 pl-4 md:pl-0 md:gap-6">
+						<div className="col-span-3 md:order-2 pl-4">
 							{ /* Middle Column */ }
-							<div className="flex flex-col">
-								<ArticlePreview z={6} section="oped" titleSize='2' thumbnailRatio='16/9'/>
-								<ArticlePreview z={2} section="life" thumbnailRatio='16/9'/>
+							<div className="flex flex-col md:pl-0 md:gap-6">
+								<ArticlePreview z={2} section="sports" thumbnailRatio='16/9'/>
+								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>
+								<ArticlePreview z={3} section="humor" thumbnailRatio='16/9'/>
 							</div>
 						</div>	
+					</div>
+				</div>
+				<div className="col-span-2 md:order-2 md:px-0  rounded-md"> { /* bg-[#f8f8f8] */ }
+					{ /* Right Column */ }
+					<div className="pl-3 pt-3 font-serif ">
+						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}
+						{/* <div className="h-40"></div> */}
+
+						<div className="px-2 pb-3 mb-1 ">
+							<div className="flex items-center gap-2 text-[18px] text-foreground">
+								<a
+									href="https://www.instagram.com/theexonian/"
+									target="_blank"
+									rel="noreferrer"
+									aria-label="The Exonian on Instagram"
+									className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgb(230,230,230)] hover:bg-[#f4f4f4] transition-colors"
+								>
+									<FaInstagram />
+								</a>
+								<a
+									href="https://www.youtube.com/@theexonian"
+									target="_blank"
+									rel="noreferrer"
+									aria-label="The Exonian on YouTube"
+									className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgb(230,230,230)] hover:bg-[#f4f4f4] transition-colors"
+								>
+									<FaYoutube />
+								</a>
+								<a
+									href="https://open.spotify.com/show/7jEciCwwK31k1zcLcIsGnU"
+									target="_blank"
+									rel="noreferrer"
+									aria-label="The Exonian on Spotify"
+									className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgb(230,230,230)] hover:bg-[#f4f4f4] transition-colors"
+								>
+									<FaSpotify />
+								</a>
+							</div>
+						</div>
+						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinion</div>
+						{Array.from({ length: 14 }, (_, i) => i+1).map((i) => (
+							<ArticlePreviewImgRight key={i} relevance={i} section="oped" titleSize='0' showSection={false} showDescription={false} showThumbnail={false}/>						
+						))}
+
 					</div>
 				</div>
 			</div>
 			
 			{/* Horizontal Article Sections */}
+			<div className="mt-8">
 				<HorizontalArticleSection 
 					sectionTitle="News" 
 					sectionSlug="news" 
@@ -113,6 +148,7 @@ export default async function Home() {
 					limit={5}
 				/>
 			</div>
+		</div>
 	);
 }
 	  

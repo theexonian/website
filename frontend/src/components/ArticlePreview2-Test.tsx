@@ -1,10 +1,14 @@
 import { getArticleByZIndex } from '@/actions/getArticleByZIndex';
+import { getArticleByRelevance } from '@/actions/getArticleByRelevance';
 import Image from 'next/image';
 import * as Constants from '@/components/Constants';
 import Link from 'next/link';
 
-interface ArticlePreviewProps {
-  z: number;
+type PositionProps =
+  | { z: number; relevance?: never }
+  | { relevance: number; z?: never };
+
+interface ArticlePreviewBaseProps {
   section: string;
   showSection?: boolean;
   titleSize?: string;
@@ -15,8 +19,11 @@ interface ArticlePreviewProps {
   showThumbnail?: boolean; // Option to show/hide thumbnail
 }
 
+type ArticlePreviewProps = ArticlePreviewBaseProps & PositionProps;
+
 export default async function ArticlePreview2({
   z,
+  relevance,
   section,
   showSection = true,
   titleSize = "2",
@@ -26,7 +33,13 @@ export default async function ArticlePreview2({
   showDescription = true,
   showThumbnail = true,
 }: ArticlePreviewProps) {
-  const article = await getArticleByZIndex(z, section);
+  if (z === undefined && relevance === undefined) {
+    return null;
+  }
+
+  const article = relevance !== undefined
+    ? await getArticleByRelevance(relevance, section)
+    : await getArticleByZIndex(z as number, section);
 
   if (!article) {
     return null;
@@ -120,7 +133,7 @@ export default async function ArticlePreview2({
                     }
                     fill
                     sizes="(max-width: 768px) 100vw, 30vw"
-                    loading={z === 1 ? 'eager' : 'lazy'}
+                    loading={z === 1 || relevance === 1 ? 'eager' : 'lazy'}
                     className="absolute inset-0 object-cover transition-transform duration-300 ease-in-out hover:scale-[1.03]"
                     alt={article.description ? article.description : 'Article image'}
                   />
