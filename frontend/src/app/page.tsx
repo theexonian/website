@@ -53,7 +53,7 @@ export default async function Home() {
 						</div>	
 					</div>
 					<div className="ml-3 mr-3 my-3 py-5">
-						<SpotifyEmbed theme="1" link="https://open.spotify.com/episode/7jEciCwwK31k1zcLcIsGnU?si=bc5dfa1a57464ac6" height="155"/>
+						<SpotifyEmbed theme="1" link="latest" height="155"/>
 					</div>
 					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
@@ -101,7 +101,7 @@ export default async function Home() {
 									<FaYoutube />
 								</a>
 								<a
-									href="https://open.spotify.com/show/7jEciCwwK31k1zcLcIsGnU"
+									href="https://open.spotify.com/show/12aZWrrsg7ElO1UP8JoAcs"
 									target="_blank"
 									rel="noreferrer"
 									aria-label="The Exonian on Spotify"
