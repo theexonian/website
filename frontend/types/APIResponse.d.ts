@@ -35,6 +35,8 @@ interface Article {
 	publishedAt: string;
 	authors: Array<Author>;
 	tag: string;
+	sectionPick: boolean;
+
 
 	thumbnail: {
 		url: string;

@@ -88,6 +88,15 @@ export default async function ArticlePreviewImgRight({
   const titlePaddingClass = 'pb-1';
 
   showThumbnail = showThumbnail && !!article.thumbnail; // Only show thumbnail if it exists and option is true
+
+  let tagName = article.tag ? article.tag.toUpperCase() : '';
+  if (article.tag && article.sectionPick) {
+    // If the last letter is 's', then we do "' Pick" (i.e., news' pick)
+    tagName = article.tag.toLowerCase().slice(-1) == "s" ? article.tag.toUpperCase() + "' PICK" : article.tag.toUpperCase() + "'S PICK";
+  } 
+  
+  tagName = article.tag && !sectionOverride ? tagName : (sectionOverride ?? '').toUpperCase();
+  
   return (
     <article className="w-full group @container">
 
@@ -110,14 +119,9 @@ export default async function ArticlePreviewImgRight({
             {/* Section/Tag Info */}
             {showSection && (
               <div className={`flex font-sans items-baseline leading-[1.6] mb-1`}>
-              {article.tag && !sectionOverride && (
+              {article.tag && (
                 <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
-                  {article.tag.toUpperCase()}
-                </h3>
-              )}
-              {sectionOverride && (
-                <h3 className="font-bold text-red-700 inline-block text-xs">
-                  {(sectionOverride ?? '').toUpperCase()}
+                  {tagName}
                 </h3>
               )}
             </div>

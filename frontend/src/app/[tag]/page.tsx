@@ -70,9 +70,9 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 										/>
 										{/* shorter vertical border, centered */}
 										{/* <span className="absolute right-0 top-3/4 -translate-y-1/2 h-20 border-r border-border" aria-hidden /> */}
-									</div>
+									</div> 
 								);
-							})()}
+							})()} 
 							<RowPreview article={articles[0]} border={false} thumbnailRatio='16/9'/>
 						</>
 					)}
