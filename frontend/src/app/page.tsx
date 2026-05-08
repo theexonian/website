@@ -73,7 +73,7 @@ export default async function Home() {
 						</div>	
 					</div>
 				</div>
-				<div className="col-span-2 md:order-2 md:px-0  rounded-md"> { /* bg-[#f8f8f8] */ }
+				<div className="col-span-2 md:order-2 md:px-0 lg:hidden rounded-md"> { /* bg-[#f8f8f8] */ }
 					{ /* Right Column */ }
 					<div className="pl-3 pt-3 font-serif ">
 						{/* <div className="px-3 py-3"> Placeholder: it looks better with some content here. This column disappears when the window width isnt high enough. The following things are just ideas. </div> */}
