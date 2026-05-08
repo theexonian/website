@@ -91,8 +91,7 @@ export default async function ArticlePreviewImgRight({
 
   let tagName = article.tag ? article.tag.toUpperCase() : '';
   if (article.tag && article.sectionPick) {
-    // If the last letter is 's', then we do "' Pick" (i.e., news' pick)
-    tagName = article.tag.toLowerCase().slice(-1) == "s" ? article.tag.toUpperCase() + "' PICK" : article.tag.toUpperCase() + "'S PICK";
+    tagName = tagName + " PICK";
   } 
   
   tagName = article.tag && !sectionOverride ? tagName : (sectionOverride ?? '').toUpperCase();

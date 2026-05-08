@@ -24,17 +24,16 @@ export default async function Home() {
 				<div className="col-span-7 md:order-1 md:px-0" >
 					{ /* Left Two Columns */ }
 					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-5 pr-3">
-						<ArticlePreviewImgRight z={1} thumbnailRatio="16/9" section="news" titleSize='4' imageRatio={30}/>
+						<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='4' imageRatio={30}/>
 					</div>
 					
 					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col pr-3">
+								<ArticlePreviewImgRight z={4} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
-								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
-								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4">
@@ -59,15 +58,15 @@ export default async function Home() {
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col">
-								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="sports" titleSize='2'/>
-								<ArticlePreviewImgRight z={4} thumbnailRatio="4/3" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='2'/>
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4">
 							{ /* Middle Column */ }
 							<div className="flex flex-col md:pl-0 md:gap-6">
-								<ArticlePreview z={2} section="sports" thumbnailRatio='16/9'/>
+								<ArticlePreview z={4} section="life" thumbnailRatio='16/9'/>
 								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>
 								<ArticlePreview z={3} section="humor" thumbnailRatio='16/9'/>
 							</div>
