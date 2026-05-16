@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<Navbar latestIssuePdfUrl={latestIssuePdfUrl} />
 					{/* @TODO: up for optimization */}
 					<div className="flex w-screen h-auto items-center justify-center">
-						<main className="flex sm:w-full w-11/12 max-w-[1300px] h-auto min-h-screen">
+						<main className="flex sm:w-11/12 w-11/12 max-w-[1300px] h-auto min-h-screen">
 							<div className="w-full flex flex-col flex-wrap gap-1">
 								{children}
 							</div>

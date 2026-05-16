@@ -18,7 +18,7 @@ export default async function Home() {
 	// const recentMainPageLayout = mainPageLayout[0].layout; // Get the full layout JSON for this issue
 	// const layout = recentMainPageLayout ? recentMainPageLayout.layout : null; // get the actual layout component
 	return (
-		<div className="p-6 w-full">
+		<div className="px-4 sm:px-0 py-4 w-full">
 
 			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] gap-4">
 				<div className="col-span-7 md:order-1 md:px-1" >
