@@ -40,11 +40,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </div>
       <div className="w-full flex justify-center font-sans text-md items-center text-neutral-600 font-light">
 				<p>{author.position}</p>
-				<div className="p-2 font-xl">
+				{/* <div className="p-2 font-xl">
 					<Link href={'mailto:' + author.email}>
 						<MdOutlineEmail />
 					</Link>
-				</div>
+				</div> */}
 			</div>
       <div className="w-full flex justify-center font-serif text-neutral-500 font-thin">
         <div className="w-1/2 md:w-2/3 text-center text-sm md:text-xs">
