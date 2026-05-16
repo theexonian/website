@@ -6,18 +6,18 @@ export default function Page() {
 	return (
 		<div className="font-serif py-5 mx-auto p-6">
 			<FancyBigTitle title="About" lowerText="The Exonian, Established 1878"/>
-			<div className="max-w-[700px] prose prose-neutral dark:prose-invert md:prose-sm py-5">
+			<div className="max-w-[700px] prose prose-neutral dark:prose-invert md:prose-sm pb-5">
 				<h3>
 					<i>
 						The Exonian is the oldest continuously-running
 						preparatory school newspaper in America.
 					</i>
 				</h3>
-				<p>
+				<p className="my-2">
 					The paper is run by students at Phillips Exeter Academy in
 					Exeter, New Hampshire, and published bi-weekly.
 				</p>
-				<p>
+				<p className="my-2">
 					The paper is comprised of three main boards — the Editorial
 					board, the Web Board and the Business Board — directed by
 					the Editor-in-Chief. The Editorial Board, comprised of
@@ -28,30 +28,36 @@ export default function Page() {
 					<i>The Exonian</i>, including subscriptions and social
 					media.
 				</p>
-				<p>
+				<p className="my-2">
 					Since its inception, <i>The Exonian</i> has published news,
 					commentary, and content pertaining to the Exeter community.
 					Since 2010, it has published content online.
 				</p>
-				<h3>
+				<h1 className="text-lg font-bold mt-3">
 					Contacting <i>The Exonian</i>
-				</h3>
-				<p>
-					To subscribe to or advertise on <i>The Exonian</i>, contact{" "}
+				</h1>
+				<p className="mt-2">
+					To advertise on or contact <i>The Exonian</i>, contact{" "}
 					<Link href="mailto:exonian@gmail.com">exonian@gmail.com</Link> or call{" "}
 					<Link href="tel:6037774100">603-777-4100</Link>.
 				</p>
-				<p>
-					A subscription to the paper costs $112.
-				</p>
-				<p>
+				<p className="mt-2">
 					The Exonian welcomes <i>Letters to the Editor</i> sent to
 					the care of <Link href={"mailto:"+ (Constants.EIC_EMAIL)}>{Constants.EIC_EMAIL}</Link>.
 				</p>
-				<p>
+				<p className="mt-2">
 					The Exonian reserves the right to print{" "}
 					<i>Letters to the Editor</i> in a timely fashion and to edit
 					them for content and clarity.
+				</p>
+				<h1 className="text-lg font-bold mt-3">
+					Subscribing to <i>The Exonian</i>
+				</h1>
+				<p className="mt-2">
+					To subscribe to the Exonian, please use <Link className="underline" href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2" target="_blank" rel="noopener noreferrer">
+					this link
+					</Link> to make your purchase. 
+					A subscription to the paper costs $120 domestically and $200 internationally. This price includes shipping and handling for the entire year.
 				</p>
 
 				<h1 className="mt-3 text-lg"><b>Other Pages</b></h1>
@@ -63,8 +69,8 @@ export default function Page() {
 							<Link href="/masthead">
 								<span className="hover:text-foreground duration-200 font-serif">Masthead</span>
 							</Link>
-							<Link href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2">
-								<span className="hover:text-foreground duration-200 font-serif font-serif">Subscribe</span>
+							<Link href="https://secure.touchnet.com/C25385_ustores/web/store_main.jsp?STOREID=2" target="_blank" rel="noopener noreferrer">
+								<span className="hover:text-foreground duration-200 font-serif">Subscribe</span>
 							</Link>
 							<Link href="/pdf-exonian-archive">
 								<span className="hover:text-foreground duration-200 font-serif">Web Archive</span>

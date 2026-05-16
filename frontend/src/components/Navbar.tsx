@@ -215,13 +215,16 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 														<Link href="/humor">Humor</Link>
 													</MenubarItem>
 													<MenubarItem asChild>
-														<Link href="https://crossword.theexonian.net">Crossword</Link>
-													</MenubarItem>
-													<MenubarItem asChild>
 														<Link href="/pdf-exonian-archive">Archive</Link>
 													</MenubarItem>
 													<MenubarItem asChild>
 														<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+													</MenubarItem>
+													<MenubarItem asChild>
+														<Link href="https://crossword.theexonian.net">Crossword</Link>
+													</MenubarItem>
+													<MenubarItem asChild>
+														<Link href="/about">About</Link>
 													</MenubarItem>
 												{/* <MenubarItem asChild>
 															<div className="flex items-center">
@@ -272,12 +275,6 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						)}
 					</li>
-					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/about') ? 'text-red-700' : ''}`}>
-						<Link href="/about">About</Link>
-						{isActiveRoute('/about') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						)}
-					</li>
 					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/news') ? 'text-red-700' : ''}`}>
 						<Link href="/news">News</Link>
 						{isActiveRoute('/news') && (
@@ -308,9 +305,6 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						)}
 					</li>
-					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
-						<Link href="https://crossword.theexonian.net">Crossword</Link>
-					</li>
 					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/pdf-exonian-archive') ? 'text-red-700' : ''}`}>
 						<Link href="/pdf-exonian-archive">Archive</Link>
 						{isActiveRoute('/pdf-exonian-archive') && (
@@ -319,6 +313,15 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 					</li>
 					<li className="hover:text-muted-foreground duration-200 md:px-6">
 						<Link href={latestIssuePdfUrl} target="_blank" onClick={handleLatestIssueClick}>Latest Issue</Link>
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${pathname === 'https://crossword.theexonian.net' ? 'text-red-700' : ''}`}>
+						<Link href="https://crossword.theexonian.net">Crossword</Link>
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/about') ? 'text-red-700' : ''}`}>
+						<Link href="/about">About</Link>
+						{isActiveRoute('/about') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
 					</li>
 				</ul>
 			</div>
