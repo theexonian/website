@@ -58,15 +58,15 @@ export default async function ArticlePreview({
     : 'line-clamp-3';
 
   const titleSizeClass = {
-    '0': 'text-base',
-    '1': 'text-lg',
-    '2': 'text-xl',
-    '3': 'text-2xl',
-    '4': 'text-3xl',
-    '5': 'text-4xl',
-    '6': 'text-5xl',
-    '7': 'text-6xl',
-  }[titleSize] || 'text-2xl';
+    '0': 'text-base sm:text-base',
+    '1': 'text-lg sm:text-base',
+    '2': 'text-xl sm:text-lg',
+    '3': 'text-2xl sm:text-xl',
+    '4': 'text-3xl sm:text-2xl',
+    '5': 'text-4xl sm:text-3xl',
+    '6': 'text-5xl sm:text-4xl',
+    '7': 'text-6xl sm:text-5xl',
+  }[titleSize] || 'text-2xl sm:text-xl';
 
   const titlePaddingClass = 'pb-1';
 
@@ -83,7 +83,7 @@ export default async function ArticlePreview({
     <article className="w-full group @container">
       <div className="relative isolate flex flex-col items-start rounded-md">
         <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative">
-          <div className="px-3 py-3 sm:p-0 flex flex-col items-start gap-4">
+          <div className="px-3 py-3 flex flex-col items-start gap-4">
             {showThumbnail && (
               <div className="w-full">
                 <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>

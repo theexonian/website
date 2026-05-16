@@ -1,8 +1,8 @@
 import { getMainPageLayout } from '@/actions/getMainPageLayout';
 import ArticlePreview from '@/components/ArticlePreview';
-import ArticlePreview2 from '@/components/ArticlePreview2-Test';
 import ArticlePreviewImgRight from '@/components/ArticlePreviewImgRight';
 import HorizontalArticleSection from '@/components/HorizontalArticleSection';
+import SuggestionsBox from '@/components/SuggestionsBox';
 // import IssuePreview from '@/components/ArticlePreview';
 import Image from "next/image";
 import InstagramEmbedWrapper from '@/components/InstagramEmbedWrapper';
@@ -20,14 +20,14 @@ export default async function Home() {
 	return (
 		<div className="p-6 w-full">
 
-			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
-				<div className="col-span-7 md:order-1 md:px-0" >
+			<div className="grid grid-cols-9 lg:grid-cols-7 divide-x-[1.5px] gap-4">
+				<div className="col-span-7 md:order-1 md:px-1" >
 					{ /* Left Two Columns */ }
 					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-5 pr-3">
 						<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='4' imageRatio={30}/>
 					</div>
 					
-					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+					<div className="grid grid-cols-7 sm:grid-cols-4 divide-x-[1.5px] gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col pr-3">
@@ -36,7 +36,7 @@ export default async function Home() {
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
 							</div>
 						</div>
-						<div className="col-span-3 md:order-2 pl-4">
+						<div className="col-span-3 md:order-2 pl-4 sm:hidden">
 							{ /* Middle Column */ }
 
 							{/* <div className='px-3 pt-3 pb-1'>
@@ -44,7 +44,7 @@ export default async function Home() {
 									Editor's Picks
 								</div>
 							</div> */ }
-							<div className="flex flex-col md:gap-6">
+							<div className="flex flex-col">
 								<ArticlePreview z={1} section="humor" thumbnailRatio='16/9'/>
 								<ArticlePreview z={2} section="humor" thumbnailRatio='16/9'/>
 								<ArticlePreview z={1} section="sports" thumbnailRatio='16/9'/>
@@ -54,7 +54,7 @@ export default async function Home() {
 					<div className="ml-3 mr-3 my-3 py-5">
 						<SpotifyEmbed theme="1" link="latest" height="155"/>
 					</div>
-					<div className="grid grid-cols-7 divide-x-[1.5px] md:divide-x-0 gap-4">
+					<div className="grid grid-cols-7 sm:grid-cols-4 divide-x-[1.5px] gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col">
@@ -62,22 +62,11 @@ export default async function Home() {
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								{ /* Design Suggestions Request */ } 
-
-								<div className=" mt-6 mb-3 rounded-lg bg-[rgb(246,246,246)] pl-5 pr-6 pt-5 pb-2 mr-3">
-									<div className="text-xl font-bold flex font-serif md:border-none w-full border-[rgb(230,230,230)] leading-none mb-2">
-										Have Suggestions For Our Website?
-										<a href="mailto:theexonianwb@gmail.com" className="ml-auto font-sans text-sm text-red-700 font-bold hover:underline text-right mr-2">
-											Contact Us
-										</a>
-									</div>
-									<div className="flex flex-col md:gap-6">
-										<p className="text-sm font-serif text-foreground mb-3">We’re always looking to improve the design of our website and would love to hear your suggestions! If you have any ideas or feedback, please don’t hesitate to reach out.</p>
-									</div>
-								</div>
+								<SuggestionsBox />
 
 							</div>
 						</div>
-						<div className="col-span-3 md:order-2 pl-4">
+						<div className="col-span-3 md:order-2 pl-4 sm:hidden">
 							{ /* Middle Column */ }
 							<div className="flex flex-col md:pl-0 md:gap-6">
 								<ArticlePreview z={4} section="life" thumbnailRatio='16/9'/>
