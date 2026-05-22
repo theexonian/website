@@ -61,6 +61,7 @@ export default async function Home() {
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="humor" titleSize='2'/>
 								{ /* Design Suggestions Request */ } 
 								<SuggestionsBox />
 
@@ -71,9 +72,7 @@ export default async function Home() {
 							<div className="flex flex-col md:pl-0 md:gap-6">
 								<ArticlePreview z={4} section="life" thumbnailRatio='16/9'/>
 								<ArticlePreview z={5} section="news" thumbnailRatio='16/9'/>
-								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>
-								<ArticlePreview z={3} section="humor" thumbnailRatio='16/9'/>
-							</div>
+								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>							</div>
 						</div>	
 					</div>
 				</div>
