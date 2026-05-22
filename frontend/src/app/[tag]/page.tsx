@@ -15,6 +15,20 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 	if (!articles || articles.length == 0)
 		return <p>There aren't any articles in this category yet, check back later</p>;
 
+	/* Gets the Tag Banner Image */
+	const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL ?? process.env.STRAPI_URL ?? '';
+	const imageByTag: Record<string, string> = {
+		news: 'https://d2stzhv1hip58f.cloudfront.net/News_pick_13b4cd203f.png',
+		oped: 'https://d2stzhv1hip58f.cloudfront.net/oped_pick_63e8212271.png',
+		life: 'https://d2stzhv1hip58f.cloudfront.net/Life_pick_5d5ab0621c.png',
+		sports: 'https://d2stzhv1hip58f.cloudfront.net/Sports_pick_9a8dd1ac76.png',
+		humor: 'https://d2stzhv1hip58f.cloudfront.net/humor_pick_91f35c33fc.png',
+	};
+
+	const src = imageByTag[tag.toLowerCase()];
+	const finalSrc = src?.startsWith('http') ? src : (baseUrl ? `${baseUrl}${src}` : undefined);
+	if (!finalSrc) return null;
+	
 	return (
 		<>
 		<div className="p-6">
@@ -43,48 +57,46 @@ export default async function Page({ params }: { params: Promise<{ tag: string }
 			{/* Grid layout similar to home page */}
 			<div className="grid grid-cols-4 lg:grid-cols-1">
 				{/* Main featured article in center */}
-				<div className="flex col-span-4 px-4 2xl:px-8 border-border border-b md:border-none mb-4 pb-6">
+				<div className="flex col-span-4 border-border border-b md:border-none mb-4 pb-4">
 					{articles[0] && (
 						<>
-							{(() => {
-								const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL ?? process.env.STRAPI_URL ?? '';
-								const imageByTag: Record<string, string> = {
-									news: 'https://d2stzhv1hip58f.cloudfront.net/News_pick_13b4cd203f.png',
-									oped: 'https://d2stzhv1hip58f.cloudfront.net/oped_pick_63e8212271.png',
-									life: 'https://d2stzhv1hip58f.cloudfront.net/Life_pick_5d5ab0621c.png',
-									sports: 'https://d2stzhv1hip58f.cloudfront.net/Sports_pick_9a8dd1ac76.png',
-									humor: 'https://d2stzhv1hip58f.cloudfront.net/humor_pick_91f35c33fc.png',
-								};
-
-								const src = imageByTag[tag.toLowerCase()];
-								const finalSrc = src?.startsWith('http') ? src : (baseUrl ? `${baseUrl}${src}` : undefined);
-								if (!finalSrc) return null;
-
-								return (
-									<div className="relative h-[5rem] sm:h-[3.5rem] md:h-[4.5rem] xl:h-[5rem] flex items-center pr-3 lg:pr-4 xl:pr-6">
-										<img
-											src={finalSrc}
-											alt={`${tag} banner`}
-											className="h-full aspect-square object-cover"
-											loading="eager"
-										/>
-										{/* shorter vertical border, centered */}
-										{/* <span className="absolute right-0 top-3/4 -translate-y-1/2 h-20 border-r border-border" aria-hidden /> */}
-									</div> 
-								);
-							})()} 
+							{articles[0].sectionPick && 
+								<div className="relative h-[5rem] sm:h-[3.5rem] md:h-[4.5rem] xl:h-[5rem] flex items-center pr-3 lg:pr-4 xl:pr-6">
+									<img
+										src={finalSrc}
+										alt={`${tag} banner`}
+										className="h-full aspect-square object-cover"
+										loading="eager"
+									/>
+									{/* shorter vertical border, centered */}
+									{/* <span className="absolute right-0 top-3/4 -translate-y-1/2 h-20 border-r border-border" aria-hidden /> */}
+								</div> 
+							}
 							<RowPreview article={articles[0]} border={false} thumbnailRatio='16/9'/>
 						</>
 					)}
 				</div>
-				{/* Left column - featured article */}
-				<div className="col-span-4 ">
-					<div className="grid grid-cols-2 lg:grid-cols-1 divide-y gap-3">
-						{articles.slice(1).map((article, i) =>
-							article ? (
-									<RowPreview article={article} border={false} key={i}/>
-							) : null
-						)}
+				{/*Main Two Column Layout - Row by Row Loading*/}
+				<div className="col-span-4">
+					<div className="flex flex-col gap-3">
+						{(() => {
+							const remaining = articles.slice(1);
+							const rows: JSX.Element[] = [];
+							for (let i = 0; i < remaining.length; i += 2) {
+								const left = remaining[i];
+								const right = remaining[i + 1];
+								rows.push(
+									<div
+										key={i}
+										className={`grid grid-cols-2 gap-4 lg:grid-cols-1${i > 0 ? ' border-t border-border' : ''}`}
+									>
+										{left && <RowPreview article={left} border={false} />}
+										{right && <RowPreview article={right} border={false} />}
+									</div>
+								);
+							}
+							return rows;
+						})()}
 					</div>
 				</div>
 			</div>

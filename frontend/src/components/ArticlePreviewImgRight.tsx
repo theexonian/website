@@ -124,7 +124,7 @@ export default async function ArticlePreviewImgRight({
                   {tagName}
                 </h3>
               )}
-            </div>
+              </div>
             )}
             
 

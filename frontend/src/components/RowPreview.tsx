@@ -14,6 +14,7 @@ interface ArticleRowPreviewProps {
     thumbnail: {
       url: string;
     };
+    sectionPick?: boolean;
   };
   showSection?: boolean;
   titleSize?: number;
@@ -33,10 +34,9 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
   }[thumbnailRatio ?? ""] || "";
 
   return (
-    <div className={`w-full flex items-start p-3 ${border ? "border-border border-b" : ""} gap-4 group`}>
+    <div className={`relative w-full flex items-start p-3 ${border ? "border-border border-b" : ""} gap-4 group`}>
 
       <div className="flex flex-col w-full">
-       
         <div className="flex items-center gap-2">
           {showSection && (
             <h3 className="font-bold font-sans text-red-700 inline-block bg-clip-text">
@@ -46,6 +46,17 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
         </div>
 
         <Link href={`/articles/${slug}`} className="hover:no-underline">
+          {article.sectionPick && (
+            <>
+              <div className={`flex font-sans items-baseline leading-[1.6] mb-1`}>
+                {article.tag && (
+                  <h3 className="font-bold text-red-700 inline-block text-xs leading-none">
+                    Editor's Pick
+                  </h3>
+                )}
+              </div>
+            </>
+          )}
           <h1 className={`font-test text-${titleSize}xl group-hover:text-red-700 transition-colors duration-200 font-bold`}>
             {title}
           </h1>
@@ -94,6 +105,7 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
           </div>
         </Link>
       )}
+      
     </div>
   );
 }

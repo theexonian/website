@@ -10,7 +10,7 @@ export async function getArticlesByTag(tag: string, limit?: number) {
 				$eqi: tag,
 			},
 		},
-		fields: ['title', 'tag', 'slug', 'description', 'publishedAt'],
+		fields: ['title', 'tag', 'slug', 'description', 'publishedAt', 'sectionPick'],
 		sort: ['createdAt:desc', 'z:asc'],
 		...(limit ? { pagination: { pageSize: limit } } : {}),
 		populate: {
