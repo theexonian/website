@@ -114,7 +114,7 @@ export default async function Home() {
 							</div>
 						</div>
 						<div className="text-xl px-3 text-red-700 font-bold font-sans">Opinion</div>
-						{Array.from({ length: 14 }, (_, i) => i+1).map((i) => (
+						{Array.from({ length: 18 }, (_, i) => i+1).map((i) => (
 							<ArticlePreviewImgRight key={i} relevance={i} section="oped" titleSize='0' showSection={false} showDescription={false} showThumbnail={false}/>						
 						))}
 
