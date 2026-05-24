@@ -93,7 +93,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 							width="0"
 							height="0"
 							sizes="25vw"
-							className="mx-auto w-5/6 max-h-[30vh] object-contain my-2 mb-7 sm:mb-3"
+							className="mx-auto w-full object-contain my-2 mb-7 sm:mb-3"
 							alt={"Logo of The Exonian"}
 						/>
 					)}
