@@ -14,4 +14,11 @@ export default ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
+  config: {
+    vite: {
+      server: {
+        allowedHosts: ['server.theexonian.net'],
+      },
+    },
+  },
 });
