@@ -8,6 +8,7 @@ import Image from "next/image";
 import InstagramEmbedWrapper from '@/components/InstagramEmbedWrapper';
 import SpotifyEmbed from '@/components/SpotifyEmbed';
 import { FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa';
+import Link from 'next/dist/client/link';
 // import { getIssues } from '@/actions/getIssues';
 
 // Revalidate this page every 5 minutes
@@ -17,6 +18,7 @@ export default async function Home() {
 	// const mainPageLayout = await getMainPageLayout();
 	// const recentMainPageLayout = mainPageLayout[0].layout; // Get the full layout JSON for this issue
 	// const layout = recentMainPageLayout ? recentMainPageLayout.layout : null; // get the actual layout component
+
 	return (
 		<div className="px-4 sm:px-0 py-4 w-full">
 
@@ -24,7 +26,7 @@ export default async function Home() {
 				<div className="col-span-7 md:order-1 md:px-1" >
 					{ /* Left Two Columns */ }
 					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-5 pr-3">
-						<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='4' imageRatio={30}/>
+						<Link href="/grad">Here is the space to celebrate our seniors.</Link>
 					</div>
 					
 					<div className="grid grid-cols-7 sm:grid-cols-4 divide-x-[1.5px] gap-4">
@@ -72,7 +74,8 @@ export default async function Home() {
 							<div className="flex flex-col md:pl-0 md:gap-6">
 								<ArticlePreview z={4} section="life" thumbnailRatio='16/9'/>
 								<ArticlePreview z={5} section="news" thumbnailRatio='16/9'/>
-								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>							</div>
+								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>							
+							</div>
 						</div>	
 					</div>
 				</div>
