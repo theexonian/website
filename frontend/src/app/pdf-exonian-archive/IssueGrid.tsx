@@ -110,6 +110,7 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                           year: "numeric",
                           month: "short",
                           day: "numeric",
+                          timeZone: "UTC"
                         })}
                       </p>
                     </div>
