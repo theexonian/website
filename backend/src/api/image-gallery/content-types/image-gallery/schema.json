@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "image_galleries",
+  "info": {
+    "singularName": "image-gallery",
+    "pluralName": "image-galleries",
+    "displayName": "Image Gallery",
+    "description": "Curated collections of images for gallery pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "publishDate": {
+      "type": "date"
+    },
+    "tags": {
+      "type": "json"
+    }
+  }
+}
