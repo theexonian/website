@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function SeniorGrid({ urls }: { urls: string[] }) {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 py-5">
+      <div className="grid grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-4 py-5">
         {urls.map((url, index) => (
           <div key={index} className="group relative block aspect-[3/2] overflow-hidden">
             <div className="group relative block aspect-[4/3] overflow-hidden bg-neutral-100">
