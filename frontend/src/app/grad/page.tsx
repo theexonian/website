@@ -16,8 +16,8 @@ export default function GradPage() {
     "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_51_08_PM_cf9da5d03a.png"
   ];
   return (
-    <div className="px-4 sm:px-0 py-4 w-full">
-      <div className="max-w-4xl mx-auto">
+    <div className="px-7 md:px-5 py-4 w-full">
+      <div className=" mx-auto">
         <h1 className="text-3xl font-bold font-serif">Grad</h1>
         <SeniorGrid urls={urls} />
       </div>
