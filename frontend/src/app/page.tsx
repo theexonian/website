@@ -9,6 +9,7 @@ import InstagramEmbedWrapper from '@/components/InstagramEmbedWrapper';
 import SpotifyEmbed from '@/components/SpotifyEmbed';
 import { FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa';
 import Link from 'next/dist/client/link';
+import Celebration from '@/components/Celebration';
 // import { getIssues } from '@/actions/getIssues';
 
 // Revalidate this page every 5 minutes
@@ -26,7 +27,7 @@ export default async function Home() {
 				<div className="col-span-7 md:order-1 md:px-1" >
 					{ /* Left Two Columns */ }
 					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] pb-3 mb-5 pr-3">
-						<Link href="/grad">Here is the space to celebrate our seniors.</Link>
+						<Celebration />
 					</div>
 					
 					<div className="grid grid-cols-7 sm:grid-cols-4 divide-x-[1.5px] gap-4">
