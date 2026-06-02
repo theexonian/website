@@ -323,12 +323,6 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						)}
 					</li>
-					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/grad') ? 'text-red-700' : ''}`}>
-						<Link href="/grad">Senior Gallery</Link>
-						{isActiveRoute('/grad') && (
-							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
-						)}
-					</li>
 				</ul>
 			</div>
 		</>
