@@ -34,7 +34,7 @@ export default async function Home() {
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col pr-3">
-								<ArticlePreviewImgRight z={4} thumbnailRatio="4/3" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
 							</div>
