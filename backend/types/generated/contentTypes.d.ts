@@ -473,6 +473,42 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiImageGalleryImageGallery
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'image_galleries';
+  info: {
+    description: 'Curated collections of images for gallery pages';
+    displayName: 'Image Gallery';
+    pluralName: 'image-galleries';
+    singularName: 'image-gallery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    coverImage: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    images: Schema.Attribute.Media<'images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::image-gallery.image-gallery'
+    > &
+      Schema.Attribute.Private;
+    publishDate: Schema.Attribute.Date;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMainPageLayoutMainPageLayout
   extends Struct.CollectionTypeSchema {
   collectionName: 'main_page_layouts';
@@ -1053,6 +1089,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::image-gallery.image-gallery': ApiImageGalleryImageGallery;
       'api::main-page-layout.main-page-layout': ApiMainPageLayoutMainPageLayout;
       'api::past-issue.past-issue': ApiPastIssuePastIssue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
