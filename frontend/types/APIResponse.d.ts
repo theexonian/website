@@ -11,6 +11,9 @@ interface BaseAPIResponse extends Object {
 	data: Object[];
 }
 
+export interface ImageGalleryResponse extends BaseAPIResponse {
+	data: Array<ImageGallery>;
+}
 export interface ArticlesResponse extends BaseAPIResponse {
 	data: Array<Article>;
 }
@@ -90,4 +93,34 @@ interface MainPageLayoutItem {
 	z: number;
 	tag: string;
 	titleSize?: string;
+}
+
+interface ImageGallery {
+	id: number;
+	title: string;
+	slug: string;
+	description: string | null;
+	coverImage: {
+		data: MediaFormat | null;
+	};
+	images: {
+		data: MediaFormat[];
+	};
+	publishDate: string | null;
+	tags: Record<string, unknown> | null;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+}
+
+interface MediaFormat {
+	id: number;
+	url: string;
+	alternativeText: string | null;
+	name: string;
+	width: number;
+	height: number;
+	formats: Record<string, unknown> | null;
+	provider: string;
+	related?: unknown;
 }
