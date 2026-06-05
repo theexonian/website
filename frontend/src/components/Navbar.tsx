@@ -1,6 +1,5 @@
 "use client";
 
-import "animate.css";
 import Image from "next/image";
 import { FiSearch } from "react-icons/fi";
 import { RiArchive2Line, RiYoutubeLine, RiSpotifyLine } from "react-icons/ri";
@@ -200,6 +199,9 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 														<Link href="/">Home</Link>
 													</MenubarItem>
 													<MenubarItem asChild>
+														<Link href="/grad">Graduation '26</Link>
+													</MenubarItem>
+													<MenubarItem asChild>
 														<Link href="/news">News</Link>
 													</MenubarItem>
 													<MenubarItem asChild>
@@ -272,6 +274,12 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/') ? 'text-red-700' : ''}`}>
 						<Link href="/">Home</Link>
 						{isActiveRoute('/') && (
+							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
+						)}
+					</li>
+					<li className={`hover:text-muted-foreground duration-200 relative md:px-6 ${isActiveRoute('/grad') ? 'text-red-700' : ''}`}>
+						<Link href="/grad">Graduation '26</Link>
+						{isActiveRoute('/grad') && (
 							<div className="rounded-full absolute -bottom-[13px] left-1/2 transform -translate-x-1/2 w-full h-[1px] bg-red-700 md:hidden"></div>
 						)}
 					</li>
