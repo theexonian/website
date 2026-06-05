@@ -141,9 +141,8 @@ export default function SeniorGridClient({ images }: { images: SeniorImage[] }) 
             >
               <FiChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
-
             <div className="absolute bottom-4 left-4 rounded-full bg-black/70 px-3 py-1 font-sans text-xs font-semibold text-white">
-              {activeIndex + 1} of {images.length}
+              {activeIndex! + 1} of {images.length}
             </div>
           </div>
         </div>
