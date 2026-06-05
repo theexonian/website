@@ -12,7 +12,7 @@ export async function getImagesByGallery(slug: string) {
 		},
 		fields: ['title', 'slug'],
 		sort: ['createdAt:desc'],
-		populate: ['*']
+		populate: ['coverImage', 'images']
 	});
 
 	const body: ImageGalleryResponse = await fetchCached(

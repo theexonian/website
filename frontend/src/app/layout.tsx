@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import 'animate.css';
 import { Analytics } from "@vercel/analytics/react"
 import NewsletterPopup from '@/components/NewsletterPopup';
 import { ClerkProvider } from "@clerk/nextjs";

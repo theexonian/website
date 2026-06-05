@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import "animate.css";
 import Link from "next/link";
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';

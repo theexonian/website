@@ -1,25 +1,59 @@
 import SeniorGrid from "../../components/SeniorGrid"
 
-export default function GradPage() {
-  const urls:string[]=[
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_7_01_06_PM_95c867f811.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_7_00_30_PM_58d2f4b243.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_59_39_PM_21e4379e84.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_58_59_PM_856f5e5d57.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_58_16_PM_d3d1bd264b.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_57_22_PM_635f1ced0c.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_56_07_PM_6bdbbd57f6.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_55_17_PM_8c4f5fa5cb.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_54_08_PM_2b4fb4d1d8.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_53_17_PM_3e9c2be867.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_52_12_PM_1fa93e7d12.png",
-    "https://d2stzhv1hip58f.cloudfront.net/Screenshot_2026_05_21_at_6_51_08_PM_cf9da5d03a.png"
-  ];
+import { getImagesByGallery } from "@/actions/getImagesByGallery";
+import Link from "next/dist/client/link";
+import Image from "next/image";
+export default async function GradPage() {
   return (
-    <div className="px-7 md:px-5 py-4 w-full">
-      <div className=" mx-auto">
-        <h1 className="text-3xl font-bold font-serif">Grad</h1>
-        <SeniorGrid urls={urls} />
+    <div className="mt-4 px-7 md:px-5 py-4 w-full">
+      <div className="mx-auto">
+        <div className="flex flex-row pb-3 mt-2">
+          <h1
+            className={`inline-block text-4xl font-bold font-sans text-[#B40A0A] uppercase `}
+          >
+            Graduation
+          </h1>
+          <span className="md:hidden font-serif text-sm xl:text-md inline text-muted-foreground items-start mt-auto ml-auto">
+            Highlights from the Class of 2026 Graduation
+          </span>
+				
+			  </div>
+			<hr className="border-border w-full mb-8" />
+      { /* Main Content */ }
+      <div className="px-0 md:px-0">
+        <Link href="https://secure.touchnet.com/C25385_ustores/web/product_detail.jsp?PRODUCTID=566" target="_blank" className="block">
+          <div className="w-auto mb-9 border-l-[3px] border-red-700 px-6 pt-3 pb-4 bg-gradient-to-r from-red-50 to-background rounded-md">
+            <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <h2 className="font-serif text-xl font-bold text-foreground">
+                    <span className="line-through text-muted-foreground">Pre-Order our Graduation Issue</span>
+                  </h2>
+                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 font-sans text-xs font-semibold text-red-700 dark:bg-red-900/40 dark:text-red-400">
+                    Out of Stock
+                  </span>
+                </div>
+                <p className="mt-1 font-sans text-sm text-muted-foreground">
+                  Get featured articles from the year, all senior of the year articles, and more, delivered to your door for only $30.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Link>
+
+        <div className="mb-1 ">
+          <h1 className="text-2xl font-bold font-serif"> Photos from Graduation and Prom </h1>
+        </div>
+        <div className="w-full pr-6">
+          <SeniorGrid slug="prom-grad-live" />
+        </div>
+
+        <div className="mt-5 mb-3 ">
+          <h1 className="text-2xl font-bold font-serif"> Featured Articles Coming Soon </h1>
+        </div>
+      </div>
+      
+
       </div>
     </div>
   );

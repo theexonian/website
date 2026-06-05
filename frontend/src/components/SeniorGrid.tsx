@@ -1,20 +1,27 @@
-"use client";
+import { getImagesByGallery } from "@/actions/getImagesByGallery";
+import * as Constants from "@/components/Constants";
+import SeniorGridClient from "./SeniorGridClient";
 
-import Image from "next/image";
+export default async function SeniorGrid({ slug }: { slug: string }) {
+  const galleries = await getImagesByGallery(slug);
+  const gallery = galleries?.[0];
+  const images = gallery?.images ?? [];
 
-export default function SeniorGrid({ urls }: { urls: string[] }) {
-  return (
-    <div className="w-full">
-      <div className="grid grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-4 py-5">
-        {urls.map((url, index) => (
-          <div key={index} className="group relative block aspect-[3/2] overflow-hidden">
-            <div className="group relative block aspect-[4/3] overflow-hidden bg-neutral-100">
-              <Image src={url} alt={`Senior photo ${index + 1}`} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: "top" }} className="transition-transform duration-300 ease-in-out group-hover:scale-105"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  if (!images.length) {
+    return null;
+  }
+
+  const normalizedImages = images.map((image, index) => {
+    const url = image.url.startsWith("http")
+      ? image.url
+      : `http://${Constants.STRAPI_IP}:1337${image.url}`;
+
+    return {
+      id: image.id ?? `${index}`,
+      url,
+      alt: image.alternativeText ?? `Senior photo ${index + 1}`,
+    };
+  });
+
+  return <SeniorGridClient images={normalizedImages} />;
 }
