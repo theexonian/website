@@ -5,7 +5,7 @@ import SeniorGridClient from "./SeniorGridClient";
 export default async function SeniorGrid({ slug }: { slug: string }) {
   const galleries = await getImagesByGallery(slug);
   const gallery = galleries?.[0];
-  const images = gallery?.images ?? [];
+  const images = gallery?.images?.data ?? [];
 
   if (!images.length) {
     return null;
