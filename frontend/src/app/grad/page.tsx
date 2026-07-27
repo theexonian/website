@@ -21,25 +21,6 @@ export default async function GradPage() {
 			<hr className="border-border w-full mb-8" />
       { /* Main Content */ }
       <div className="px-0 md:px-0">
-        <Link href="https://secure.touchnet.com/C25385_ustores/web/product_detail.jsp?PRODUCTID=566" target="_blank" className="block">
-          <div className="w-auto mb-9 border-l-[3px] border-red-700 px-6 pt-3 pb-4 bg-gradient-to-r from-red-50 to-background rounded-md">
-            <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <h2 className="font-serif text-xl font-bold text-foreground">
-                    <span className="line-through text-muted-foreground">Pre-Order our Graduation Issue</span>
-                  </h2>
-                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 font-sans text-xs font-semibold text-red-700 dark:bg-red-900/40 dark:text-red-400">
-                    Out of Stock
-                  </span>
-                </div>
-                <p className="mt-1 font-sans text-sm text-muted-foreground">
-                  Get featured articles from the year, all senior of the year articles, and more, delivered to your door for only $30.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
 
         <div className="mb-1 ">
           <h1 className="text-2xl font-bold font-serif"> Photos from Graduation and Prom </h1>

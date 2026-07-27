@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
-  '/articles(.*)', '/tag(.*)', '/pdf-exonian-archive'
+  '/articles(.*)', '/tag(.*)', '/pdf-exonian-archive', '/grad'
 ]);
 
 const isPublicRoute = createRouteMatcher([

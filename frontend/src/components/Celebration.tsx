@@ -7,7 +7,7 @@ export default function Celebration() {
 			<div className="mt-6 mb-2 mr-3 rounded-xl px-4 pt-4 pb-2">
 				<div className="flex items-center gap-7 sm:flex-col sm:items-start sm:gap-3">
 					<div className="min-w-0 flex-1">
-						<p className="mb-1 font-sans text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Class of 2026 Graduation</p>
+						<p className="font-bold text-red-700 inline-block text-xs leading-none uppercase">Class of 2026 Graduation</p>
 						<h2 className="font-serif text-2xl font-bold leading-tight text-foreground sm:text-xl">Prom and Graduation Photo Gallery</h2>
 						<p className="text-md text-muted-foreground">See exclusive real-time picture highlights from graduation and featured articles on graduating seniors.</p>
 					</div>
