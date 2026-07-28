@@ -69,13 +69,13 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
               {`The ${board}${numberEnding(Number(board))} Exonian Board`}
             </h4>
 
-            <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 py-5">
+            <div className="grid grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-6 py-5">
               {groupedIssues[Number(board)].map((issue, index) => (
                 <Link
                   key={index}
                   href={issue.pdf.url}
                   target="_blank"
-                  className="group relative block h-[30rem] overflow-hidden"
+                  className={"group relative block h-[30rem] lg:h-[25rem] sm:h-[20rem] overflow-hidden"}
                 >
                   {/* Thumbnail Image */}
                   <div className="relative h-[400px] w-full overflow-hidden">
@@ -102,8 +102,20 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                   {/* 2. The Contrast Element: Separate gradient for text legibility */}
                   <div className="absolute inset-x-0 bottom-0 z-10 h-1/3 pointer-events-none bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   {/* Info Overlay: Higher z-index to stay sharp */}
-                  <div className="absolute w-[10rem] sm:w-[7rem] bottom-2 right-3 mr-3 z-10 grid grid-cols-10 p-3 text-white">
-                    <div className="col-span-7">
+                  <div className={(()=>{
+                    const isStringSlug = isNaN(parseInt(String(issue.slug).slice(3), 10))
+                    if (isStringSlug) {
+                      return "absolute w-[12rem] sm:w-[10rem] bottom-2 right-10 z-10 grid grid-cols-7 p-3 gap-1 text-white"
+                    } 
+                    return "absolute w-[10rem] sm:w-[7rem] bottom-2 right-5 z-10 grid grid-cols-10 p-3 gap-2 text-white"
+                  })()}>
+                    <div className={(() => {
+                      const isStringSlug = isNaN(parseInt(String(issue.slug).slice(3), 10))
+                      if (isStringSlug) {
+                        return "col-span-4 "
+                      } 
+                      return "col-span-7"
+                  })()}>
                       <span className="block text-xl font-bold">ISSUE #</span>
                       <p className="text-sm">
                         {new Date(issue.publishDate).toLocaleDateString("en-US", {
@@ -114,8 +126,12 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                         })}
                       </p>
                     </div>
-                    <span className="col-span-3 ml-2 font-serif text-5xl leading-none">
-                      {String(issue.slug).slice(3, 5)}
+                    <span className="col-span-3 font-serif text-5xl leading-none">
+                      {(() => {
+                        const sliced = String(issue.slug).slice(3);
+                        const parsed = parseInt(sliced, 10);
+                        return isNaN(parsed) ? sliced : parsed;
+                      })()}
                     </span>
                   </div>
                 </Link>
@@ -125,4 +141,4 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
         ))}
     </div>
   );
-}  
+}

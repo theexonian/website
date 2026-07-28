@@ -13,7 +13,10 @@ export const metadata = {
 		'The Exonian is the oldest continuously-running prepatory school newspaper in the country',
 };
 
-export const viewport = {
+export const viewport = {	
+	width: 'device-width',
+	height: 'device-height',
+	initialScale: 1,
 	themeColor: '#fdfdfd',
 };
 
