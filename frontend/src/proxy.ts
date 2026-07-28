@@ -31,6 +31,7 @@ export const config = {
     '/articles(.*)',
     '/tag(.*)',
     '/pdf-exonian-archive',
+    '/grad',
     '/(api|trpc)(.*)',
   ],
 };
