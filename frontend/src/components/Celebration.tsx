@@ -9,12 +9,12 @@ export default function Celebration() {
 					<div className="min-w-0 flex-1">
 						<p className="font-bold text-red-700 inline-block text-xs leading-none uppercase">Class of 2026 Graduation</p>
 						<h2 className="font-serif text-2xl font-bold leading-tight text-foreground sm:text-xl">Prom and Graduation Photo Gallery</h2>
-						<p className="text-md text-muted-foreground">See exclusive real-time picture highlights from graduation and featured articles on graduating seniors.</p>
+						<p className="text-md text-muted-foreground">See exclusive picture highlights from graduation and prom. Check out the archives for the full graduation issue.</p>
 					</div>
 					<span className="rounded-xl px-3 py-[.5rem] shrink-0 font-sans text-sm font-bold bg-[#B43030] text-white transition-colors hover:text-[#E0E0E0]">Check it Out </span>
 				</div>
 				<div>
-					<SlidingPhotoGallery slug="horizontalsr" className="mt-5" />
+					<SlidingPhotoGallery slug="prom-grad-live" className="mt-5" maxLength={10} />
 				</div>
 			</div>
 		</Link>

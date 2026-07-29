@@ -5,11 +5,13 @@ import * as Constants from "@/components/Constants";
 interface SlidingPhotoGalleryProps {
   slug: string;
   className?: string;
+  maxLength?: number;
 }
 
 export default async function SlidingPhotoGallery({
   slug,
   className,
+  maxLength,
 }: SlidingPhotoGalleryProps) {
   const galleries = await getImagesByGallery(slug);
   const gallery = galleries?.[0];
@@ -18,6 +20,10 @@ export default async function SlidingPhotoGallery({
 
   if (!images.length) {
     return null;
+  }
+
+  if (maxLength && images.length > maxLength) {
+    images.length = maxLength;
   }
 
   return (
