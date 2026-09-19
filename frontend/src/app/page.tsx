@@ -27,16 +27,16 @@ export default async function Home() {
 				<div className="col-span-7 md:order-1 md:px-1" >
 					{ /* Left Two Columns */ }
 					<div className="border-b-[1.5px] w-full border-[rgb(230,230,230)] mb-5 pr-3">
-						<Celebration />
+						<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='4' imageRatio={30}/>
 					</div>
 					
 					<div className="grid grid-cols-7 sm:grid-cols-4 divide-x-[1.5px] gap-4">
 						<div className="col-span-4 md:px-0 md:order-1">
 							{ /* Left Column */ }
 							<div className="flex flex-col pr-3">
-								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="news" titleSize='2'/>
-								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
+								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4 sm:hidden">
@@ -62,7 +62,7 @@ export default async function Home() {
 							{ /* Left Column */ }
 							<div className="flex flex-col">
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="life" titleSize='2'/>
-								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={4} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="humor" titleSize='2'/>
 								{ /* Design Suggestions Request */ } 

@@ -29,9 +29,6 @@ export default async function GradPage() {
           <SeniorGrid slug="prom-grad-live" />
         </div>
 
-        <div className="mt-5 mb-3 ">
-          <h1 className="text-2xl font-bold font-serif"> Featured Articles Coming Soon </h1>
-        </div>
       </div>
       
 
