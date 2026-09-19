@@ -26,9 +26,7 @@ export default function Page() {
 					<em>The Exonian</em>
 					&nbsp;are solely those of the original authors and do not
 					necessarily represent those of Phillips Exeter Academy, its
-					administrators, or Trustees. Those in the Exeter community
-					are encouraged to read and share&nbsp;<em>The Exonian</em>’s
-					content, made available online. We also encourage staff
+					administrators, or Trustees. We also encourage staff
 					of&nbsp;
 					<em>The Exonian</em>&nbsp;to pursue further opportunities in
 					journalism and media and to submit their written work to
