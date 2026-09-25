@@ -37,16 +37,13 @@ export default async function Home() {
 								<ArticlePreviewImgRight z={2} thumbnailRatio="4/3" section="news" titleSize='2'/>
 								<ArticlePreviewImgRight z={1} thumbnailRatio="4/3" section="life" titleSize='2'/>
 								<ArticlePreviewImgRight z={3} thumbnailRatio="4/3" section="news" titleSize='2'/>
+								<ArticlePreviewImgRight z={4} thumbnailRatio='4/3' section="life" titleSize='2'/>
+
 							</div>
 						</div>
 						<div className="col-span-3 md:order-2 pl-4 sm:hidden">
 							{ /* Middle Column */ }
 
-							{/* <div className='px-3 pt-3 pb-1'>
-								<div className="text-2xl flex font-serif pb-2 border-b-[1px] w-full border-[rgb(230,230,230)] leading-none">
-									Editor's Picks
-								</div>
-							</div> */ }
 							<div className="flex flex-col">
 								<ArticlePreview z={1} section="humor" thumbnailRatio='16/9'/>
 								<ArticlePreview z={2} section="humor" thumbnailRatio='16/9'/>
@@ -73,7 +70,6 @@ export default async function Home() {
 						<div className="col-span-3 md:order-2 pl-4 sm:hidden">
 							{ /* Middle Column */ }
 							<div className="flex flex-col md:pl-0 md:gap-6">
-								<ArticlePreview z={4} section="life" thumbnailRatio='16/9'/>
 								<ArticlePreview z={5} section="news" thumbnailRatio='16/9'/>
 								<ArticlePreview z={3} section="sports" thumbnailRatio='16/9'/>							
 							</div>
