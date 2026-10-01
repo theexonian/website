@@ -27,7 +27,7 @@
     "@strapi/plugin-users-permissions": "^5.40.0",
     "@strapi/provider-upload-aws-s3": "^5.40.0",
     "@strapi/strapi": "^5.40.0",
-    "axios": "^1.14.1",
+    "axios": "^1.20.0",
     "better-sqlite3": "^12.6.2",
     "cors": "^2.8.6",
     "express": "^5.2.1",
