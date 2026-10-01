@@ -77,6 +77,16 @@
     "fullname": {
       "type": "string"
     },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "firstinitial": {
+      "type": "string",
+      "maxLength": 8
+    },
     "slug": {
       "type": "string"
     },
