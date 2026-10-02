@@ -36,12 +36,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						{article.tag.toUpperCase()}
 					</h3>
 					<h1 className="sm:text-3xl text-4xl my-1 font-serif"><i>{article.title}</i></h1>
-					<span className="p-0 m-0 text-lg text-muted-foreground">
+					<span className="p-0 m-0 text-lg flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans text-muted-foreground">
 						By {" "}
 						{article.authors.map((author, i) => {
 							return (
 								<Link
-									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline capitalize"
+									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline uppercase"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
