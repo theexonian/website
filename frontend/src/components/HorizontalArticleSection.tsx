@@ -73,7 +73,7 @@ export default async function HorizontalArticleSection({
             {articles.map((article) => (
               <div 
                 key={article.id} 
-                className="w-[300px] min-w-[300px] md:w-[400px] md:min-w-[400px] flex-shrink-0 snap-start"
+                className="w-[300px] min-w-[300px] md:w-full md:min-w-none md:max-w-[300px] flex-shrink-0 snap-start"
               >
                 <Link href={`/articles/${article.slug}`} className="group flex flex-col h-full">
                   <article className="flex flex-col h-full">
