@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
 					</h3>
-					<h1 className="sm:text-3xl text-4xl mt-1 mb-3 font-test font-bold">{article.title}</h1>
+					<h1 className="sm:text-3xl text-4xl mt-1 mb-2 font-test font-bold">{article.title}</h1>
 					<span className="p-0 m-0 text-lg flex flex-wrap gap-1 leading-tight text-gray-600 tracking-wider font-[700] font-sans uppercase">
 						By {" "}
 						{article.authors.map((author, i) => {
