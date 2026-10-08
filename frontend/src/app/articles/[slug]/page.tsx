@@ -31,17 +31,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 		<>
 			<div className="px-4 w-full flex justify-center">
 				<article className="max-w-none w-[45rem] lg:w-[36rem] prose prose-neutral dark:prose-invert pt-7 sm:pt-3 font-serif prose-figcaption:font-sans prose-p:indent-8">
-					<h3 className="font-black font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
+					<h3 className="font-[700] font-sans text-xl text-red-700 inline-block bg-clip-text m-0">
 						{/* {article.tag.charAt(0).toUpperCase() + article.tag.slice(1)} */}
 						{article.tag.toUpperCase()}
 					</h3>
-					<h1 className="sm:text-3xl text-4xl my-1 font-serif"><i>{article.title}</i></h1>
-					<span className="p-0 m-0 text-lg flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans text-muted-foreground">
+					<h1 className="sm:text-3xl text-4xl mt-1 mb-3 font-test font-bold">{article.title}</h1>
+					<span className="p-0 m-0 text-lg flex flex-wrap gap-1 leading-tight text-gray-600 tracking-wider font-[700] font-sans uppercase">
 						By {" "}
 						{article.authors.map((author, i) => {
 							return (
 								<Link
-									className="hover:text-[rgb(158,158,158)] duration-200 font-bold no-underline uppercase"
+									className="hover:text-[rgb(158,158,158)] duration-200 no-underline"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
@@ -52,7 +52,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 							);
 						})}
 					</span>
-					<br />
 					<span className="p-0 pb-2 m-0 text-xs text-neutral-600">
 						{new Date(article.publishedAt)
 							.toUTCString()
