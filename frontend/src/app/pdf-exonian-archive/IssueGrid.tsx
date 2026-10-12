@@ -75,10 +75,10 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                   key={index}
                   href={issue.pdf.url}
                   target="_blank"
-                  className={"group relative block h-[30rem] lg:h-[25rem] sm:h-[20rem] overflow-hidden"}
+                  className={"group relative block h-[30rem] lg:h-[25rem] sm:h-[20rem] overflow-hidden border border-border"}
                 >
                   {/* Thumbnail Image */}
-                  <div className="relative h-[400px] w-full overflow-hidden">
+                  <div className="relative h-full w-full overflow-hidden">
                     <Image
                       src={issue.thumbnail.url}
                       alt={`Thumbnail for ${issue.publishDate}`}
@@ -92,22 +92,19 @@ export default function IssuesGrid({ issues }: { issues: Issue[] }) {
                   {/* Progressive Blur Layer: Placed INSIDE the image container and BELOW the text */}
                   {/* 1. The Blur Element: Uses mask to fade the backdrop-blur */}
                   <div
-                    className="absolute inset-x-0 bottom-0 z-10 h-1/3 pointer-events-none backdrop-blur-[30px]"
+                    className="absolute inset-x-0 bottom-0 z-10 h-[61.8%] pointer-events-none backdrop-blur-[30px]"
                     style={{
                       mask: "linear-gradient(to top, black, black, transparent)",
                       WebkitMask: "linear-gradient(to top, black, black, transparent)"
                     }}
                   />
-
-                  {/* 2. The Contrast Element: Separate gradient for text legibility */}
-                  <div className="absolute inset-x-0 bottom-0 z-10 h-1/3 pointer-events-none bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   {/* Info Overlay: Higher z-index to stay sharp */}
                   <div className={(()=>{
                     const isStringSlug = isNaN(parseInt(String(issue.slug).slice(3), 10))
                     if (isStringSlug) {
-                      return "absolute w-[12rem] sm:w-[10rem] bottom-2 right-10 z-10 grid grid-cols-7 p-3 gap-1 text-white"
+                      return "absolute w-[12rem] sm:w-[10rem] bottom-2 right-10 z-10 grid grid-cols-7 p-3 gap-1 text-foreground"
                     } 
-                    return "absolute w-[10rem] sm:w-[7rem] bottom-2 right-5 z-10 grid grid-cols-10 p-3 gap-2 text-white"
+                    return "absolute w-[10rem] sm:w-[7rem] bottom-2 right-5 z-10 grid grid-cols-10 p-3 gap-2 text-foreground"
                   })()}>
                     <div className={(() => {
                       const isStringSlug = isNaN(parseInt(String(issue.slug).slice(3), 10))

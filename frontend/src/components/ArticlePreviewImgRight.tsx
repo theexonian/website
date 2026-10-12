@@ -102,14 +102,14 @@ export default async function ArticlePreviewImgRight({
     <article className="w-full group @container">
 
       {/* The main content area that becomes a link target. */}
-      <div className="relative isolate flex lg:flex-col flex-row flex-row-reverse items-start rounded-md">
+      <div className="relative isolate flex lg:flex-col flex-row flex-row-reverse items-start">
         {/* The Link wraps the visible content */}
-        <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative lg:flex-col flex-row items-start">
+        <Link href={`/articles/${article.slug}`} className="block w-full active:bg-[#f8f8f8] relative flex-row items-start">
 
-          <div className='px-3 py-3 flex sm:flex-col lg:flex-row items-start gap-4'>
+          <div className='px-3 py-3 flex md:flex-col flex-row items-start gap-4'>
           {/* Content column */}
           <div
-            className={"min-w-0 " + contentRatioClass}
+            className={"min-w-0 w-3/5 md:w-full"}
           >
             {/* Screen Reader Title */}
             <span className="absolute inset-0 z-10 sr-only">
@@ -173,10 +173,10 @@ export default async function ArticlePreviewImgRight({
           {/* Thumbnail Image, (off to the right) */}
           {showThumbnail && (
             <div
-              className="sm:order-first lg:order-last sm:hidden"
-              style={{ width: `${clampedImageRatio}%` }}
+              className={`md:order-first order-last xs:hidden md:w-full w-[${clampedImageRatio}%]`}
+              //style={{ width: `${clampedImageRatio}%` }}
             >
-              <div className={`relative max-h-[25rem] w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
+              <div className={`relative md:w-full my-auto flex overflow-hidden ${responsiveRatioClass}`}>
                 <Image
                   src={
                     article.thumbnail.url.startsWith('http')
