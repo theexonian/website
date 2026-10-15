@@ -147,12 +147,12 @@ export default async function Home() {
 					limit={5}
 				/>
 				<HorizontalArticleSection 
-					sectionTitle="Humor" 
-					sectionSlug="humor" 
+					sectionTitle="Humor"
+					sectionSlug="humor"
 					limit={5}
+					showImages={false}
 				/>
 			</div>
 		</div>
 	);
 }
-	  
