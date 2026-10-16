@@ -8,7 +8,7 @@ interface Article {
   slug: string;
   description: string;
   thumbnail?: { url: string };
-  publishedAt: string;
+  createdAt: string;
   tag: string;
   authors: Array<{ id: number; fullname: string; slug: string }>;
 }

@@ -8,7 +8,7 @@ interface ArticleRowPreviewProps {
     title: string;
     tag?: string;
     description?: string;
-    publishedAt?: string;
+    createdAt?: string;
     authors?: Author[];
     slug: string;
     thumbnail: {
@@ -23,7 +23,7 @@ interface ArticleRowPreviewProps {
 }
 
 export default function RowPreview({ article, showSection = false, titleSize = 2, border = false, thumbnailRatio = "1/1" }: ArticleRowPreviewProps) {
-  const { title, tag, thumbnail, description, publishedAt, authors, slug } = article;
+  const { title, tag, thumbnail, description, createdAt, authors, slug } = article;
 
   const ratioClass = {
     "1/1": "aspect-square",
@@ -82,9 +82,11 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
                 ))}
             </div>
           </div>
-          {publishedAt && (
+          {createdAt && (
             <p className="text-xs text-muted-foreground mt-1">
-              {new Date(publishedAt).toLocaleDateString()}
+              {new Date(createdAt).toLocaleDateString("en-US", {
+                timeZone: "America/New_York"
+              })}
             </p>
           )}
       </div>

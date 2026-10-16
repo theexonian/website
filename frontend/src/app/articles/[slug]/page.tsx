@@ -53,11 +53,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 						})}
 					</span>
 					<span className="p-0 pb-2 m-0 text-xs text-neutral-600">
-						{new Date(article.publishedAt)
-							.toUTCString()
-							.split(" ")
-							.slice(0, 4)
-							.join(" ")}
+						{new Date(article.createdAt).toLocaleDateString("en-US", {
+							weekday: "short",
+							day: "2-digit",
+							month: "short",
+							year: "numeric",
+							timeZone: "America/New_York"
+						})}
 					</span>
 					
 					<div className="flex flex-row gap-5 my-2 child-hover:cursor-pointer print:hidden">
