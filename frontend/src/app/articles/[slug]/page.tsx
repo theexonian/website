@@ -119,6 +119,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 					sectionTitle={`More ${article.tag === 'oped' ? 'Opinion' : article.tag.charAt(0).toUpperCase() + article.tag.slice(1)}`}
 					sectionSlug={article.tag}
 					limit={5}
+					showImages={article.tag !== 'humor'}
 				/>
 			</div>
 		</>

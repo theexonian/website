@@ -17,13 +17,15 @@ interface HorizontalArticleSectionProps {
   sectionTitle: string;
   sectionSlug: string;
   limit?: number;
-  showArticlesWithoutImages?: boolean; // Control whether to force articles to have images
+  showImages?: boolean;
+  showArticlesWithoutImages?: boolean; // For now it is just a var.
 }
 
 export default async function HorizontalArticleSection({
   sectionTitle,
   sectionSlug,
   limit = 5,
+  showImages = true,
   showArticlesWithoutImages = true,
 }: HorizontalArticleSectionProps) {
   let articles: Article[] = [];
@@ -79,15 +81,17 @@ export default async function HorizontalArticleSection({
                   <article className="flex flex-col h-full">
                     
                     {/* Thumbnail Container */}
-                    <div className="aspect-video w-full mb-4 overflow-hidden bg-gray-100">
-                      {article.thumbnail?.url && (
-                        <img 
-                          src={article.thumbnail.url} 
-                          alt={article.title}
-                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                        />
-                      )}
-                    </div>
+                    {showImages ? (
+                      <div className="aspect-video w-full mb-4 overflow-hidden bg-gray-100">
+                        {article.thumbnail?.url && (
+                          <img
+                            src={article.thumbnail.url}
+                            alt={article.title}
+                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                          />
+                        )}
+                      </div>
+                    ) : null}
                     
                     <div className="flex flex-col flex-grow">
                       {/* Full Title */}
