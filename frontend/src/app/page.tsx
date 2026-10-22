@@ -145,6 +145,7 @@ export default async function Home() {
 					sectionTitle="Sports" 
 					sectionSlug="sports" 
 					limit={5}
+					showArticlesWithoutImages={false}
 				/>
 				<HorizontalArticleSection 
 					sectionTitle="Humor"
