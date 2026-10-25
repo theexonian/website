@@ -17,7 +17,8 @@ import { Suspense } from "react";
 
 const { searchClient } = instantMeiliSearch(
 	`${process.env.NEXT_PUBLIC_MEILISEARCH_URL}`,
-	`${process.env.NEXT_PUBLIC_MEILISEARCH_PK}`
+	`${process.env.NEXT_PUBLIC_MEILISEARCH_PK}`,
+	{ primaryKey: "id" }
 );
 
 interface Article {
