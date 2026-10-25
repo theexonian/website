@@ -18,17 +18,15 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
-import { getIssues } from '@/actions/getIssues';
 
 interface NavbarProps {
 	latestIssuePdfUrl?: string;
 }
 
-export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '' }: NavbarProps) {
+export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [showStickyLogo, setShowStickyLogo] = useState<boolean>(false);
 	const [clientDate, setClientDate] = useState<Date | null>(null);
 	const [mounted, setMounted] = useState<boolean>(false);
-	const [latestIssuePdfUrl, setLatestIssuePdfUrl] = useState<string>(initialLatestIssuePdfUrl);
 	const router = useRouter();
 	const pathname = usePathname();
 	const { isSignedIn } = useUser();
@@ -43,23 +41,8 @@ export default function Navbar({ latestIssuePdfUrl: initialLatestIssuePdfUrl = '
 		setMounted(true);
 		setClientDate(new Date());
 
-		async function fetchLatestIssue() {
-			try {
-				const issues = await getIssues();
-				if (issues && issues.length > 0) {
-					// Issues are sorted by publishDate:desc, so first one is the latest
-					setLatestIssuePdfUrl(issues[0].pdf.url);
-				}
-			} catch (error) {
-				console.error('Failed to fetch latest issue:', error);
-			}
-		}
-
-		fetchLatestIssue();
-
 		// Scroll detection for sticky logo
 		const handleScroll = () => {
-			// Show sticky logo when scrolled past the main logo area (approximately 200px)
 			setShowStickyLogo(window.scrollY > 200);
 		};
 
