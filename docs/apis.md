@@ -4,8 +4,6 @@ APIs used in the website:
 
 ## Front End `.env`
 
-Two classes of variable, and the distinction is load-bearing:
-
 - **`NEXT_PUBLIC_*`** values are inlined into the browser bundle at build time. They are public. Changing one requires a rebuild (on Vercel: a redeploy) because the old value is baked into the shipped JS.
 - **Everything else** is server-only and must stay that way.
 
