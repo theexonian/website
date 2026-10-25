@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getIssues } from "@/actions/getIssues";
 import { Issue } from "../../../types/APIResponse";
 import IssuePreview from "@/components/IssuePreview";
 
