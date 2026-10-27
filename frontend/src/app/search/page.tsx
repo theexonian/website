@@ -27,7 +27,7 @@ interface Article {
 	slug: string;
 	tag: string;
 	authors: { id: string; fullname: string; slug: string }[];
-	publishedAt: string;
+	createdAt: string;
 }
 
 function Search() {
@@ -154,9 +154,11 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 							);
 						})}
 				</p>
-				{hit.publishedAt && (
+				{hit.createdAt && (
 					<p className="text-xs text-muted-foreground">
-						{new Date(hit.publishedAt).toLocaleDateString()}
+						{new Date(hit.createdAt).toLocaleDateString("en-US", {
+							timeZone: "America/New_York"
+						})}
 					</p>
 				)}
 			</div>

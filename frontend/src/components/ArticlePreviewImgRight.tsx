@@ -161,10 +161,11 @@ export default async function ArticlePreviewImgRight({
 
             {/* Time stamp */}
               <p className="text-xs text-muted-foreground mt-1">
-                {new Date(article.publishedAt).toLocaleDateString('en-US', { 
+                {new Date(article.createdAt).toLocaleDateString('en-US', { 
                   year: 'numeric', 
                   month: 'short', 
-                  day: 'numeric' 
+                  day: 'numeric',
+                  timeZone: 'America/New_York'
                 })}
               </p>
 

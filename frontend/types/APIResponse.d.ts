@@ -35,7 +35,7 @@ interface Article {
 	content: string;
 	createdAt: string;
 	updatedAt: string;
-	publishedAt: string;
+	publishedAt?: string;
 	authors: Array<Author>;
 	tag: string;
 	sectionPick: boolean;
@@ -43,6 +43,8 @@ interface Article {
 
 	thumbnail: {
 		url: string;
+		width?: number;
+		height?: number;
 	};
 }
 

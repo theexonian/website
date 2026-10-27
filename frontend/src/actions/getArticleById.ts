@@ -12,7 +12,7 @@ export async function getArticleById(slug: string) {
 		},
 		populate: {
 			thumbnail: {
-				fields: ['url'],
+				fields: ['url', 'width', 'height'],
 			},
 			authors: {
 				fields: ['fullname', 'slug'],
