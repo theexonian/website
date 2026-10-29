@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { safeRedirectPath } from '@/lib/utils';
 
 interface FooterProps {
 	latestIssuePdfUrl?: string;
@@ -12,6 +13,7 @@ interface FooterProps {
 export default function Navbar({ latestIssuePdfUrl = '' }: FooterProps) {
 	const { isSignedIn } = useUser();
 	const router = useRouter();
+	const pathname = usePathname();
 
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
 		if (!latestIssuePdfUrl) {
@@ -22,7 +24,7 @@ export default function Navbar({ latestIssuePdfUrl = '' }: FooterProps) {
 		const isDev = process.env.NODE_ENV === 'development';
 		if (!isSignedIn && !isDev) {
 			e.preventDefault();
-			router.push('/sign-in');
+			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
 		}
 		// If signed in or in dev mode, the link will work normally
 	};

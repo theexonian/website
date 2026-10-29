@@ -4,6 +4,7 @@ import { SignIn } from '@clerk/nextjs';
 import CustomEmailSignIn from '@/components/CustomEmailSignIn';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import { safeRedirectPath } from '@/lib/utils';
 
 export default function Page() {
   // Redirect .com domains to .net for authentication
@@ -11,7 +12,8 @@ export default function Page() {
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
       if (host === 'new.theexonian.com' || host === 'theexonian.com' || host === 'www.theexonian.com') {
-        window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
+        const target = safeRedirectPath(window.location.pathname);
+        window.location.href = `https://theexonian.net/sign-in?redirect_url=${encodeURIComponent(target)}`;
         return;
       }
     }
@@ -64,7 +66,7 @@ export default function Page() {
               }}
               routing="path"
               path="/sign-in"
-              redirectUrl="/"
+              fallbackRedirectUrl="/"
               signUpUrl="/sign-up"
             />
           </div>

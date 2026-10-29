@@ -18,6 +18,7 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
+import { safeRedirectPath } from '@/lib/utils';
 
 interface NavbarProps {
 	latestIssuePdfUrl?: string;
@@ -62,7 +63,7 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 		const isDev = process.env.NODE_ENV === 'development';
 		if (!isSignedIn && !isDev) {
 			e.preventDefault();
-			router.push('/sign-in');
+			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
 		}
 		// If signed in or in dev mode, the link will work normally
 	};
