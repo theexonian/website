@@ -1,4 +1,5 @@
 .DS_Store
 .env
-.gitignore
 /node_modules
+.github/copilot-instructions.md
+/.vscode
