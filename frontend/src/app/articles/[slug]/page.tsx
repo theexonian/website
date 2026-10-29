@@ -10,15 +10,23 @@ import FontChanger from "@/components/ui/fontChanger";
 import PrintArticle from "@/components/ui/printArticle";
 import HorizontalArticleSection from "@/components/HorizontalArticleSection";
 import * as Constants from "@/components/Constants";
-
-// Revalidate this page every 5 minutes
-export const revalidate = 300;
+import { redirect } from "next/navigation";
+import { getViewer } from "@/lib/viewer";
+import { isPublicTag } from "@/lib/access";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
 	const article = await getArticleById(slug);
 
 	if (!article || !article.content) return null;
+
+	// Members-only sections are gated here because `tag` is data, not a route.
+	if (!isPublicTag(article.tag)) {
+		const { isAuthenticated } = await getViewer();
+		if (!isAuthenticated) {
+			redirect(`/sign-in?redirect_url=${encodeURIComponent(`/articles/${slug}`)}`);
+		}
+	}
 
 	const paragraphs = article.content.split("\n").filter((p) => p.trim());
 
@@ -39,16 +47,20 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 					<span className="p-0 m-0 text-lg flex flex-wrap gap-1 leading-tight text-gray-600 tracking-wider font-[700] font-sans uppercase">
 						By {" "}
 						{article.authors.map((author, i) => {
-							return (
+							const label =
+								i === article.authors.length - 1
+									? author.displayName
+									: author.displayName + ", ";
+							return author.slug ? (
 								<Link
 									className="hover:text-[rgb(158,158,158)] duration-200 no-underline"
 									href={`/writers/${author.slug}`}
 									key={i}
 								>
-									{i === article.authors.length - 1
-										? author.fullname
-										: author.fullname + ", "}
+									{label}
 								</Link>
+							) : (
+								<span key={i}>{label}</span>
 							);
 						})}
 					</span>

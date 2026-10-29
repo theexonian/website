@@ -27,7 +27,7 @@ interface Article {
 	description: string;
 	slug: string;
 	tag: string;
-	authors: { id: string; fullname: string; slug: string }[];
+	authors: { id: string; displayName?: string; fullname?: string; slug: string }[];
 	createdAt: string;
 }
 
@@ -149,7 +149,7 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 									key={i}
 									href={`/writers/${author.slug}`}
 								>
-									{author.fullname}
+									{author.displayName ?? author.fullname}
 									{hit.authors.length - 1 !== i && ", "}
 								</Link>
 							);

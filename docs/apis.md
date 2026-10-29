@@ -24,6 +24,32 @@ Strapi is never called from the browser: access goes through `src/lib/fetchReque
 
 `STRAPI_API` should be a read-only Strapi token scoped to the content types the front end reads. The write token used by the import scripts lives only in `backend/.env` as `STRAPI_API_UPLOAD`.
 
+## Access control
+
+The site is members-only by default; the public surface is listed in `src/proxy.ts`
+(`isPublicRoute`). Anything not listed redirects to sign-in.
+
+- **Identity source:** a Clerk session, created through Microsoft SSO restricted to `exeter.edu` by
+  the Clerk dashboard. That restriction is **not in this repository** — if the dashboard config is
+  loosened, the app treats the new account as a full member.
+- **`src/lib/viewer.ts` is the only module that reads auth state.** Everything else receives a
+  `Viewer`.
+- **Bylines are redacted in the actions**, before `toBylines` output leaves the server. Anonymous
+  viewers get first initial + last name and no author slug, so no `/writers/...` link can leak a name.
+  Never pass a raw author record to a client component; once a name is in props it is in the payload.
+- **Sections:** `news`, `life`, `sports` are public (`src/lib/access.ts`); `oped` and `humor` are
+  members-only. The `[tag]` pages are gated in middleware; `/articles/[slug]` is gated in the page
+  because its section is data, not a route.
+- **Caching:** Strapi responses are still cached (`revalidate: 300`), which is safe because every page
+  that renders per-viewer content calls `auth()` and is therefore rendered dynamically. Do not add a
+  static `revalidate` export to those pages.
+- **Search:** `/search` is members-only. Meilisearch is still queried from the browser with a public
+  key — a key holder does not need the page — so the index itself must be safe. `backend/config/plugins.ts`
+  keeps members-only sections out of the index and indexes only `{ displayName, slug }` per author.
+
+`BYPASS_AUTH=true` disables the middleware gate for local work. It is server-only and has no effect on
+Vercel.
+
 ## Back End `.env`
 
 ```sh

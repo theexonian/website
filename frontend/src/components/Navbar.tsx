@@ -30,7 +30,7 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [mounted, setMounted] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
-	const { isSignedIn } = useUser();
+	const { isLoaded, isSignedIn } = useUser();
 
 	// Helper function to check if a route is active
 	const isActiveRoute = (route: string) => {
@@ -59,13 +59,11 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 			e.preventDefault();
 			return;
 		}
-		// Allow access in development mode or if signed in
-		const isDev = process.env.NODE_ENV === 'development';
-		if (!isSignedIn && !isDev) {
+		// The PDF link is external, so middleware cannot gate it.
+		if (isLoaded && !isSignedIn) {
 			e.preventDefault();
 			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
 		}
-		// If signed in or in dev mode, the link will work normally
 	};
 
 	const monthNames = [

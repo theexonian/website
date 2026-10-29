@@ -4,11 +4,14 @@ import Image from 'next/image';
 import { MdOutlineEmail } from 'react-icons/md';
 import * as Constants from "@/components/Constants"
 import Link from "next/link";
+import { notFound } from 'next/navigation';
 import RowPreview from '@/components/RowPreview';
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
 	const author = await getAuthorBySlug(slug);
+
+	if (!author) notFound();
 
 	return (
     <>
@@ -20,7 +23,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 ? author.picture.url
                 : `http://${Constants.STRAPI_IP}:1337${author.picture.url}`
             }
-            alt={author.fullname}
+            alt={author.displayName}
             height={96}
             width={96}
             className="rounded-full w-24 h-24 object-cover"
@@ -36,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         )}
       </div>
       <div className="w-full flex justify-center font-serif text-4xl">
-        <h1>{author.fullname}</h1>
+        <h1>{author.displayName}</h1>
       </div>
       <div className="w-full flex justify-center font-sans text-md items-center text-neutral-600 font-light">
 				<p>{author.position}</p>

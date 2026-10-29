@@ -1,9 +1,13 @@
 import { fetchCached } from '@/lib/fetchRequests';
 import { stringify } from 'qs';
-import { Author } from '../../types/APIResponse';
+import { Author, AuthorProfile } from '../../types/APIResponse';
 import * as Constants from "@/components/Constants"
+import { getViewer } from '@/lib/viewer';
+import { toBylines } from '@/lib/bylines';
 
-export async function getAuthorBySlug(slug: string) {
+export async function getAuthorBySlug(slug: string): Promise<AuthorProfile | null> {
+	const viewer = await getViewer();
+
 	const query = stringify({
 		filters: {
 			slug: {
@@ -35,11 +39,22 @@ export async function getAuthorBySlug(slug: string) {
 	});
 
 	const author = body[0];
-	if (author && author.articles) {
-		author.articles = Array.from(
-			new Map(author.articles.map(article => [article.slug, article])).values()
-		);
-	}
+	if (!author) return null;
 
-	return author;
+	const articles = Array.from(
+		new Map((author.articles ?? []).map((article) => [article.slug, article])).values()
+	);
+
+	return {
+		id: author.id,
+		slug: author.slug,
+		description: author.description,
+		position: author.position,
+		picture: author.picture,
+		displayName: toBylines([author], viewer)[0].displayName,
+		articles: articles.map((article) => ({
+			...article,
+			authors: toBylines(article.authors, viewer),
+		})),
+	};
 }
