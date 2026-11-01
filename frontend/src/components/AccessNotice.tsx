@@ -20,7 +20,7 @@ export default function AccessNotice() {
 
 	return (
 		<div className="w-full bg-r[#f0f0f0]">
-			<p className="mx-auto flex max-w-[1300px] items-center justify-center gap-1.5 px-4 py-1.5 font-sans text-xs text-muted-foreground">
+			<p className="mx-auto flex max-w-[1300px] items-center justify-center gap-1.5 px-4 pt-1.5 font-sans text-xs text-muted-foreground">
 				<FiInfo aria-hidden className="h-3 w-3.5 shrink-0" />
 				<span className="text-center">
 					You&apos;re viewing a limited version of The Exonian.{' '}
@@ -28,9 +28,9 @@ export default function AccessNotice() {
 						href={`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`}
 						className="font-semibold text-red-700 hover:underline"
 					>
-						Sign in with your Exeter account
+						Sign in
 					</Link>{' '}
-					for full access.
+					with your Exonian account for full access.
 				</span>
 			</p>
 		</div>
