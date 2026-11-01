@@ -127,7 +127,7 @@ export default async function ArticlePreview({
                 {article.title}
               </h1>
 
-              {showDescription && (
+              {showDescription && article.description && (
                 <div className="max-w-[600px] py-1">
                   <p className={`text-xs text-muted-foreground text-ellipsis ${descriptionClampClass} font-serif font-thin leading-[1.6]`}>
                     {article.description}
@@ -135,27 +135,31 @@ export default async function ArticlePreview({
                 </div>
               )}
 
-              <div className="text-xs text-foreground md:hidden">
-                <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
-                  <span>By</span>
-                  {article.authors.map((author, i) => {
-                    return (
-                      <p key={i}>
-                        {author.fullname + (article.authors.length - 1 !== i ? ',' : '')}
-                      </p>
-                    );
-                  })}
+              {article.authors.length > 0 && (
+                <div className="text-xs text-foreground md:hidden">
+                  <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
+                    <span>By</span>
+                    {article.authors.map((author, i) => {
+                      return (
+                        <p key={i}>
+                          {author.displayName + (article.authors.length - 1 !== i ? ',' : '')}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <p className="text-xs text-muted-foreground mt-1">
-                {new Date(article.createdAt).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                  timeZone: 'America/New_York'
-                })}
-              </p>
+              {article.createdAt && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  {new Date(article.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    timeZone: 'America/New_York'
+                  })}
+                </p>
+              )}
             </div>
           </div>
         </Link>

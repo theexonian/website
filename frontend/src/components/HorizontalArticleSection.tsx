@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getArticlesByTag } from '@/actions/getArticlesByTag';
+import { Byline } from '../../types/APIResponse';
 import { HiChevronRight } from 'react-icons/hi';
 
 interface Article {
@@ -10,7 +11,7 @@ interface Article {
   thumbnail?: { url: string };
   createdAt: string;
   tag: string;
-  authors: Array<{ id: number; fullname: string; slug: string }>;
+  authors: Byline[];
 }
 
 interface HorizontalArticleSectionProps {
@@ -38,9 +39,11 @@ export default async function HorizontalArticleSection({
         : response.filter((article) => Boolean(article.thumbnail?.url));
       articles = filteredArticles.slice(0, limit);
     }
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-  }
+	} catch (error) {
+		// Let Next bail out of static generation; only swallow real fetch failures.
+		if ((error as { digest?: string })?.digest === 'DYNAMIC_SERVER_USAGE') throw error;
+		console.error('Error fetching articles:', error);
+	}
 
   if (!articles.length) return null;
 
@@ -107,15 +110,17 @@ export default async function HorizontalArticleSection({
                       )}
 
                       {/* Authors */}
-                      <div className=" pt-3">
-                        <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">
-                          By {article.authors.map((author, index) => (
-                            <span key={author.id}>
-                              {author.fullname}{index < article.authors.length - 1 ? ", " : ""}
-                            </span>
-                          ))}
-                        </span>
-                      </div>
+                      {article.authors.length > 0 && (
+                        <div className=" pt-3">
+                          <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">
+                            By {article.authors.map((author, index) => (
+                              <span key={index}>
+                                {author.displayName}{index < article.authors.length - 1 ? ", " : ""}
+                              </span>
+                            ))}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                   </article>

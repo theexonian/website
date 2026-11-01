@@ -2,8 +2,17 @@ import { fetchCached } from '@/lib/fetchRequests';
 import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 import * as Constants from "@/components/Constants"
+import { getViewer } from '@/lib/viewer';
+import { toBylines } from '@/lib/bylines';
+import { isPublicTag } from '@/lib/access';
 
 export async function getArticleByZIndex(z: number, section: string) {
+	const viewer = await getViewer();
+
+	// Members-only sections keep the (shortened) byline in previews, but not the
+	// description or thumbnail.
+	const restricted = !viewer.isAuthenticated && !isPublicTag(section);
+
 	const query = stringify({
 		filters: {
 			z: {
@@ -14,7 +23,11 @@ export async function getArticleByZIndex(z: number, section: string) {
             },
 		},
 		sort: ['createdAt:desc'],
-		populate: '*',
+		fields: ['title', 'slug', 'tag', 'createdAt', 'sectionPick', ...(restricted ? [] : ['description'])],
+		populate: {
+			authors: { fields: ['fullname', 'slug'] },
+			...(restricted ? {} : { thumbnail: { fields: ['url'] } }),
+		},
 	});
 
 	const body: ArticlesResponse = await fetchCached(
@@ -29,5 +42,7 @@ export async function getArticleByZIndex(z: number, section: string) {
 	if (!body || !body.data || body.data.length === 0) {
 		return null;
 	}
-	return body?.data[0];
+
+	const article = body.data[0];
+	return { ...article, authors: toBylines(article.authors, viewer) };
 }

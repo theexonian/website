@@ -1,3 +1,9 @@
+/**
+ * Shared Strapi fetch. Responses are cached server-side; per-viewer redaction
+ * happens in the actions afterwards, and pages that depend on the viewer are
+ * rendered dynamically (they call `auth()`), so a cached response is never
+ * served as another viewer's page.
+ */
 export async function fetchCached(url: string, options: RequestInit) {
 	// Use revalidate instead of cache for better performance in production
 	const controller = new AbortController();

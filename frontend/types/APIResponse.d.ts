@@ -26,6 +26,12 @@ export interface MainPageLayoutResponse extends BaseAPIResponse {
 	data: Array<MainPageLayout>;
 }
 
+/** What a page may render. Produced by `toBylines`, never raw Strapi data. */
+export interface Byline {
+	displayName: string;
+	slug?: string;
+}
+
 interface Article {
 	id: number;
 
@@ -36,7 +42,7 @@ interface Article {
 	createdAt: string;
 	updatedAt: string;
 	publishedAt?: string;
-	authors: Array<Author>;
+	authors: Array<Byline>;
 	tag: string;
 	sectionPick: boolean;
 
@@ -46,22 +52,36 @@ interface Article {
 	};
 }
 
+/** Raw Strapi user record. Server-side only; `fullname` must not reach a component. */
 interface Author {
 	id: number;
-	username: string;
-	email: string;
-	description: string;
 	fullname: string;
+	slug: string;
+	description: string;
 	position: string;
 	picture: {
 		url: string;
 	};
 
-	slug: string;
 	articles: Array<Article>;
 }
 
-interface Issue {
+/** RowPreview and PreviewCenter take a byline array. */
+export type { Author };
+
+export interface AuthorProfile {
+	id: number;
+	slug: string;
+	description: string;
+	position: string;
+	picture: {
+		url: string;
+	};
+	displayName: string;
+	articles: Array<Article>;
+}
+
+export interface Issue {
 	id: number;
 	slug: number;
 	board: number;

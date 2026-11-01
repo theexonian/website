@@ -1,37 +1,37 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-const isProtectedRoute = createRouteMatcher([
-  '/articles(.*)', '/tag(.*)', '/pdf-exonian-archive', '/grad'
-]);
-
+// Everything not listed here requires a session (default-deny).
 const isPublicRoute = createRouteMatcher([
-  '/sign-in(.*)', '/sign-up(.*)', '/', '/masthead', '/about', '/webboard', '/the-exonian-charter', '/privacy-and-content-use'
+	'/',
+	'/about',
+	'/masthead',
+	'/webboard',
+	'/the-exonian-charter',
+	'/privacy-and-content-use',
+	'/alumni-faculty-archives-feature',
+	'/speechify',
+	'/api/speechify',
+	'/news',
+	'/life',
+	'/sports',
+	// Article access depends on the article's section, which middleware cannot know.
+	// `articles/[slug]/page.tsx` gates members-only sections itself.
+	'/articles(.*)',
+	'/sign-in(.*)',
+	'/sign-up(.*)',
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  // In development mode, bypass authentication for all routes
-  if (process.env.NODE_ENV === 'development') {
-    return;
-  }
+	// Explicit opt-in so the gate can be exercised locally: BYPASS_AUTH=true npm run dev
+	if (process.env.BYPASS_AUTH === 'true') return;
+	if (isPublicRoute(req)) return;
 
-  // Always allow public routes
-  if (isPublicRoute(req)) {
-    return;
-  }
+	const { userId, redirectToSignIn } = await auth();
 
-  const { userId, redirectToSignIn } = await auth();
-
-  if (!userId && isProtectedRoute(req)) {
-    return redirectToSignIn();
-  }
+	// redirectToSignIn() defaults its return URL to the current request.
+	if (!userId) return redirectToSignIn();
 });
 
 export const config = {
-  matcher: [
-    '/articles(.*)',
-    '/tag(.*)',
-    '/pdf-exonian-archive',
-    '/grad',
-    '/(api|trpc)(.*)',
-  ],
+	matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 };
