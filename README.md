@@ -20,7 +20,10 @@ Ensure `frontend/.env` and `backend/.env` contain valid keys. Please see the cor
 cd frontend
 npm install # installs all dependencies necessary
 npm run dev
+npm run dev:clean # deletes .next first, then runs the same dev server
 ```
+
+`npm run dev:clean` deletes the Turbopack `.next` cache before starting the dev server. That cache remembers the Tailwind content file list, so switching branches while the dev server is running (or after an interrupted one) can leave a stale entry and every page 500s with `Error evaluating Node.js code: ENOENT: no such file or directory, stat '.../src/app/...'` from `tailwindcss/lib/lib/content.js`. If that happens, stop the dev server and run `npm run dev:clean`; the cleanest habit is to stop `npm run dev` before switching branches.
 
 ### Backend
 
