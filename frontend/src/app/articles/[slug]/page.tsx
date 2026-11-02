@@ -61,6 +61,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 		<>
 			{useHero && photoSrc && (
 				<header
+					data-hero-header=""
 					className="relative isolate flex w-full items-end bg-neutral-900"
 					style={{
 						minHeight: "calc(100dvh - var(--navbar-height, 0px))",

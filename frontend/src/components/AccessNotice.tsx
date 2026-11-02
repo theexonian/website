@@ -19,7 +19,7 @@ export default function AccessNotice() {
 	if (pathname.startsWith('/sign-in') || pathname.startsWith('/sign-up')) return null;
 
 	return (
-		<div className="w-full bg-r[#f0f0f0]">
+		<div data-access-notice="" className="w-full bg-r[#f0f0f0]">
 			<p className="mx-auto flex max-w-[1300px] items-center justify-center gap-1.5 px-4 pt-1.5 font-sans text-xs text-muted-foreground">
 				<FiInfo aria-hidden className="h-3 w-3.5 shrink-0" />
 				<span className="text-center">
