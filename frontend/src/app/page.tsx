@@ -12,9 +12,6 @@ import Link from 'next/dist/client/link';
 import Celebration from '@/components/Celebration';
 // import { getIssues } from '@/actions/getIssues';
 
-// Revalidate this page every 5 minutes
-export const revalidate = 300;
-
 export default async function Home() {
 	// const mainPageLayout = await getMainPageLayout();
 	// const recentMainPageLayout = mainPageLayout[0].layout; // Get the full layout JSON for this issue

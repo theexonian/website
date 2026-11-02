@@ -1,24 +1,27 @@
 'use client';
 
 import { useUser, useClerk } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import { safeRedirectPath } from '@/lib/utils';
 
 export default function SignInButton() {
   const { user, isLoaded } = useUser();
   const clerk = useClerk();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSignIn = () => {
     // Redirect .com domains to .net for authentication
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
       if (host === 'new.theexonian.com' || host === 'theexonian.com' || host === 'www.theexonian.com') {
-        window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
+        const target = safeRedirectPath(pathname);
+        window.location.href = `https://theexonian.net/sign-in?redirect_url=${encodeURIComponent(target)}`;
         return;
       }
     }
-    router.push('/sign-in');
+    router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
   };
 
   if (isLoaded && user) {

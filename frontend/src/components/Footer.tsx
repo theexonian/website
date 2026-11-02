@@ -3,28 +3,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { safeRedirectPath } from '@/lib/utils';
 
 interface FooterProps {
 	latestIssuePdfUrl?: string;
 }
 
 export default function Navbar({ latestIssuePdfUrl = '' }: FooterProps) {
-	const { isSignedIn } = useUser();
+	const { isLoaded, isSignedIn } = useUser();
 	const router = useRouter();
+	const pathname = usePathname();
 
 	const handleLatestIssueClick = (e: React.MouseEvent) => {
 		if (!latestIssuePdfUrl) {
 			e.preventDefault();
 			return;
 		}
-		// Allow access in development mode or if signed in
-		const isDev = process.env.NODE_ENV === 'development';
-		if (!isSignedIn && !isDev) {
+		// The PDF link is external, so middleware cannot gate it.
+		if (isLoaded && !isSignedIn) {
 			e.preventDefault();
-			router.push('/sign-in');
+			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
 		}
-		// If signed in or in dev mode, the link will work normally
 	};
 
 	return (
