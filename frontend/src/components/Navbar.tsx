@@ -18,7 +18,6 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
-import { safeRedirectPath } from '@/lib/utils';
 
 interface NavbarProps {
 	latestIssuePdfUrl?: string;
@@ -30,7 +29,7 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [mounted, setMounted] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
-	const { isLoaded, isSignedIn } = useUser();
+	const { isSignedIn } = useUser();
 
 	// Helper function to check if a route is active
 	const isActiveRoute = (route: string) => {
@@ -85,11 +84,13 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 			e.preventDefault();
 			return;
 		}
-		// The PDF link is external, so middleware cannot gate it.
-		if (isLoaded && !isSignedIn) {
+		// Allow access in development mode or if signed in
+		const isDev = process.env.NODE_ENV === 'development';
+		if (!isSignedIn && !isDev) {
 			e.preventDefault();
-			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
+			router.push('/sign-in');
 		}
+		// If signed in or in dev mode, the link will work normally
 	};
 
 	const monthNames = [

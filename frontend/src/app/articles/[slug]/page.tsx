@@ -10,9 +10,9 @@ import FontChanger from "@/components/ui/fontChanger";
 import PrintArticle from "@/components/ui/printArticle";
 import HorizontalArticleSection from "@/components/HorizontalArticleSection";
 import * as Constants from "@/components/Constants";
-import { redirect } from "next/navigation";
-import { getViewer } from "@/lib/viewer";
-import { isPublicTag } from "@/lib/access";
+
+// Revalidate this page every 5 minutes
+export const revalidate = 300;
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
@@ -20,14 +20,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
 	if (!article || !article.content) return null;
 
-  // Members-only sections are gated here because `tag` is data, not a route.
-	if (!isPublicTag(article.tag)) {
-		const { isAuthenticated } = await getViewer();
-		if (!isAuthenticated) {
-			redirect(`/sign-in?redirect_url=${encodeURIComponent(`/articles/${slug}`)}`);
-		}
-	}
-  
 	const displayDate = new Date(article.createdAt).toLocaleDateString("en-US", {
 		weekday: "short",
 		day: "2-digit",
@@ -48,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 		? photo.url.startsWith("http")
 			? photo.url
 			: `http://${Constants.STRAPI_IP}:1337${photo.url}`
-		: null;	
+		: null;
 
 	const paragraphs = article.content.split("\n").filter((p) => p.trim());
 

@@ -2,12 +2,8 @@ import { fetchCached } from '@/lib/fetchRequests';
 import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 import * as Constants from "@/components/Constants"
-import { getViewer } from '@/lib/viewer';
-import { toBylines } from '@/lib/bylines';
 
 export async function getArticleById(slug: string) {
-	const viewer = await getViewer();
-
 	const query = stringify({
 		filters: {
 			slug: {
@@ -33,8 +29,5 @@ export async function getArticleById(slug: string) {
 		}
 	);
 
-	const article = body.data[0];
-	if (!article) return null;
-
-	return { ...article, authors: toBylines(article.authors, viewer) };
+	return body.data[0];
 }

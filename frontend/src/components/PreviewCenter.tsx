@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Byline } from "../../types/APIResponse";
+import { Author } from "../../types/APIResponse";
 import * as Constants from "@/components/Constants";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ interface PreviewCenterProps {
 		thumbnail?: { url: string };
 		description?: string;
 		createdAt?: string;
-		authors?: Byline[];
+		authors?: Author[];
 		slug: string;
 	};
 }
@@ -55,21 +55,19 @@ export default function PreviewCenter(props: PreviewCenterProps) {
 					)}
 				</Link>
 				<div className="pt-2">
-					{authors && authors.length > 0 && (
+					{authors && (
 						<p className="text-xs text-muted-foreground duration-200">
 							By:&nbsp;
 							{authors.map((author, i) => {
-								const label = author.displayName + (authors.length - 1 !== i ? ", " : "");
-								return author.slug ? (
+								return (
 									<Link
 										className="text-xs hover:text-red-500 duration-200 no-underline capitalize"
 										key={i}
 										href={`/writers/${author.slug}`}
 									>
-										{label}
+										{author.fullname}
+										{authors.length - 1 !== i && ", "}
 									</Link>
-								) : (
-									<span key={i}>{label}</span>
 								);
 							})}
 						</p>

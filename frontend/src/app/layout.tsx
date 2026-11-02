@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import AccessNotice from '@/components/AccessNotice';
 import { Analytics } from "@vercel/analytics/react"
 import NewsletterPopup from '@/components/NewsletterPopup';
 import { ClerkProvider } from "@clerk/nextjs";
@@ -31,7 +30,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 				<body className="font-sans overflow-x-hidden animate__animated animate__fadeIn">
 					<Analytics/>
 					<Navbar latestIssuePdfUrl={latestIssuePdfUrl} />
-					<AccessNotice />
 					{/* @TODO: up for optimization */}
 					<div className="flex w-screen h-auto items-center justify-center">
 						<main className="flex sm:w-11/12 w-11/12 max-w-[1300px] h-auto min-h-screen">
