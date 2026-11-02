@@ -6,7 +6,7 @@ import { RiArchive2Line, RiYoutubeLine, RiSpotifyLine } from "react-icons/ri";
 import { TbMenu } from "react-icons/tb";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
 	Menubar,
 	MenubarContent,
@@ -18,7 +18,6 @@ import {
 import { useUser } from '@clerk/nextjs';
 import SignInButton from '@/components/SignIn';
 import SimpleThemeToggle from '@/components/SimpleThemeToggle';
-import { safeRedirectPath } from '@/lib/utils';
 
 interface NavbarProps {
 	latestIssuePdfUrl?: string;
@@ -30,13 +29,39 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 	const [mounted, setMounted] = useState<boolean>(false);
 	const router = useRouter();
 	const pathname = usePathname();
-	const { isLoaded, isSignedIn } = useUser();
+	const { isSignedIn } = useUser();
 
 	// Helper function to check if a route is active
 	const isActiveRoute = (route: string) => {
 		if (route === '/') return pathname === '/';
 		return pathname.startsWith(route);
 	};
+
+	const navbarRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const navbar = navbarRef.current;
+		if (!navbar) return;
+
+		const updateHeight = () => {
+			const height = navbar.getBoundingClientRect().height;
+
+			document.documentElement.style.setProperty(
+				"--navbar-height",
+				`${height}px`
+			);
+		};
+
+		updateHeight();
+
+		const observer = new ResizeObserver(updateHeight);
+		observer.observe(navbar);
+
+		return () => {
+			observer.disconnect();
+			document.documentElement.style.removeProperty("--navbar-height");
+		};
+	}, []);
 
 	useEffect(() => {
 		setMounted(true);
@@ -59,11 +84,13 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 			e.preventDefault();
 			return;
 		}
-		// The PDF link is external, so middleware cannot gate it.
-		if (isLoaded && !isSignedIn) {
+		// Allow access in development mode or if signed in
+		const isDev = process.env.NODE_ENV === 'development';
+		if (!isSignedIn && !isDev) {
 			e.preventDefault();
-			router.push(`/sign-in?redirect_url=${encodeURIComponent(safeRedirectPath(pathname))}`);
+			router.push('/sign-in');
 		}
+		// If signed in or in dev mode, the link will work normally
 	};
 
 	const monthNames = [
@@ -112,7 +139,7 @@ export default function Navbar({ latestIssuePdfUrl = '' }: NavbarProps) {
 
 	return (
 		<>
-			<div className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] dark:bg-[rgba(4,4,4,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
+			<div ref={navbarRef} className="flex justify-start sticky items-center md:items-start flex-col w-full h-auto top-0 bg-[rgba(252,252,252,0.945)] dark:bg-[rgba(4,4,4,0.945)] backdrop-blur-[36px] z-50 border-b border-border pt-0 relative">
 				{/* Sticky Logo in top left corner - Only show on desktop */}
 
 				<div className="flex justify-center items-center sticky top-0 flex-col w-full h-auto">

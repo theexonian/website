@@ -2,17 +2,8 @@ import { fetchCached } from '@/lib/fetchRequests';
 import { ArticlesResponse } from '../../types/APIResponse';
 import { stringify } from 'qs';
 import * as Constants from "@/components/Constants"
-import { getViewer } from '@/lib/viewer';
-import { toBylines } from '@/lib/bylines';
-import { isPublicTag } from '@/lib/access';
 
 export async function getArticleByRelevance(relevance: number, section: string) {
-	const viewer = await getViewer();
-
-	// Members-only sections keep the (shortened) byline in previews, but not the
-	// description or thumbnail.
-	const restricted = !viewer.isAuthenticated && !isPublicTag(section);
-
 	const query = stringify({
 		filters: {
 			tag: {
@@ -24,11 +15,7 @@ export async function getArticleByRelevance(relevance: number, section: string) 
 			start: Math.max(0, relevance - 1),
 			limit: 1,
 		},
-		fields: ['title', 'slug', 'tag', 'createdAt', 'sectionPick', ...(restricted ? [] : ['description'])],
-		populate: {
-			authors: { fields: ['fullname', 'slug'] },
-			...(restricted ? {} : { thumbnail: { fields: ['url'] } }),
-		},
+		populate: '*',
 	});
 
 	const body: ArticlesResponse = await fetchCached(
@@ -44,6 +31,5 @@ export async function getArticleByRelevance(relevance: number, section: string) 
 		return null;
 	}
 
-	const article = body.data[0];
-	return { ...article, authors: toBylines(article.authors, viewer) };
+	return body.data[0];
 }

@@ -1,9 +1,9 @@
 'use client';
 
 import { SignIn } from '@clerk/nextjs';
+import CustomEmailSignIn from '@/components/CustomEmailSignIn';
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { safeRedirectPath } from '@/lib/utils';
 
 export default function Page() {
   // Redirect .com domains to .net for authentication
@@ -11,8 +11,7 @@ export default function Page() {
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
       if (host === 'new.theexonian.com' || host === 'theexonian.com' || host === 'www.theexonian.com') {
-        const target = safeRedirectPath(window.location.pathname);
-        window.location.href = `https://theexonian.net/sign-in?redirect_url=${encodeURIComponent(target)}`;
+        window.location.href = 'https://theexonian.net/sign-in?redirect_url=' + encodeURIComponent(window.location.href);
         return;
       }
     }
@@ -20,6 +19,9 @@ export default function Page() {
 
   // In development, show a message about Clerk configuration
   const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  // Use Clerk's default component since it works reliably
+  const useDefaultClerkUI = true;
   
   return (
     <div className="flex min-h-screen items-start justify-center bg-white pt-20">
@@ -42,29 +44,33 @@ export default function Page() {
           )}
         </div>
         
-        <div className="flex justify-center">
-          <SignIn
-            appearance={{
-              elements: {
-                formButtonPrimary: "bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
-                card: "shadow-lg border-0 bg-white rounded-lg",
-                headerTitle: "font-serif text-2xl font-bold text-gray-900",
-                headerSubtitle: "text-gray-600",
-                socialButtonsBlockButton: "border border-gray-300 hover:bg-gray-50",
-                formFieldLabel: "text-gray-700 font-medium",
-                formFieldInput: "border border-gray-300 focus:border-black focus:ring-black rounded py-2 px-3",
-                footerActionLink: "text-black hover:text-gray-700",
-              },
-              layout: {
-                socialButtonsPlacement: "bottom",
-              }
-            }}
-            routing="path"
-            path="/sign-in"
-            fallbackRedirectUrl="/"
-            signUpUrl="/sign-up"
-          />
-        </div>
+        {useDefaultClerkUI ? (
+          <div className="flex justify-center">
+            <SignIn 
+              appearance={{
+                elements: {
+                  formButtonPrimary: "bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+                  card: "shadow-lg border-0 bg-white rounded-lg",
+                  headerTitle: "font-serif text-2xl font-bold text-gray-900",
+                  headerSubtitle: "text-gray-600",
+                  socialButtonsBlockButton: "border border-gray-300 hover:bg-gray-50",
+                  formFieldLabel: "text-gray-700 font-medium",
+                  formFieldInput: "border border-gray-300 focus:border-black focus:ring-black rounded py-2 px-3",
+                  footerActionLink: "text-black hover:text-gray-700",
+                },
+                layout: {
+                  socialButtonsPlacement: "bottom",
+                }
+              }}
+              routing="path"
+              path="/sign-in"
+              redirectUrl="/"
+              signUpUrl="/sign-up"
+            />
+          </div>
+        ) : (
+          <CustomEmailSignIn />
+        )}
         
         {/* The Exonian Logo */}
         <div className="flex justify-center mt-8">
