@@ -16,8 +16,9 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 const { searchClient } = instantMeiliSearch(
-	`${process.env.MEILISEARCH_URL}`,
-	`${process.env.MEILISEARCH_PK}`
+	`${process.env.NEXT_PUBLIC_MEILISEARCH_URL}`,
+	`${process.env.NEXT_PUBLIC_MEILISEARCH_PK}`,
+	{ primaryKey: "id" }
 );
 
 interface Article {
@@ -26,8 +27,8 @@ interface Article {
 	description: string;
 	slug: string;
 	tag: string;
-	authors: { id: string; fullname: string; slug: string }[];
-	publishedAt: string;
+	authors: { id: string; displayName?: string; fullname?: string; slug: string }[];
+	createdAt: string;
 }
 
 function Search() {
@@ -148,15 +149,17 @@ const Hit: React.FC<HitProps> = ({ hit }) => (
 									key={i}
 									href={`/writers/${author.slug}`}
 								>
-									{author.fullname}
+									{author.displayName ?? author.fullname}
 									{hit.authors.length - 1 !== i && ", "}
 								</Link>
 							);
 						})}
 				</p>
-				{hit.publishedAt && (
+				{hit.createdAt && (
 					<p className="text-xs text-muted-foreground">
-						{new Date(hit.publishedAt).toLocaleDateString()}
+						{new Date(hit.createdAt).toLocaleDateString("en-US", {
+							timeZone: "America/New_York"
+						})}
 					</p>
 				)}
 			</div>

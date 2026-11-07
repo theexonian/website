@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Author } from "../../types/APIResponse";
+import { Byline } from "../../types/APIResponse";
 import * as Constants from "@/components/Constants";
 import Link from "next/link";
 
@@ -8,8 +8,8 @@ interface ArticleRowPreviewProps {
     title: string;
     tag?: string;
     description?: string;
-    publishedAt?: string;
-    authors?: Author[];
+    createdAt?: string;
+    authors?: Byline[];
     slug: string;
     thumbnail: {
       url: string;
@@ -23,7 +23,7 @@ interface ArticleRowPreviewProps {
 }
 
 export default function RowPreview({ article, showSection = false, titleSize = 2, border = false, thumbnailRatio = "1/1" }: ArticleRowPreviewProps) {
-  const { title, tag, thumbnail, description, publishedAt, authors, slug } = article;
+  const { title, tag, thumbnail, description, createdAt, authors, slug } = article;
 
   const ratioClass = {
     "1/1": "aspect-square",
@@ -67,24 +67,26 @@ export default function RowPreview({ article, showSection = false, titleSize = 2
           </div>
         </Link>
 
-        <div className="text-xs text-foreground">
-        <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
+        {authors && authors.length > 0 && (
+          <div className="text-xs text-foreground">
+          <div className="flex flex-wrap items-center gap-1 leading-tight text-[10px] uppercase tracking-wider text-gray-600 font-bold font-sans">
               <span>By</span>
-              {authors &&
-                authors.map((author, i) => (
-                  <Link
-                    key={i}
-                    href={`/writers/${author.slug}`}
-                  >
-                    {author.fullname}
-                    {authors.length - 1 !== i && ","}
-                  </Link>
-                ))}
+              {authors.map((author, i) => {
+                const label = author.displayName + (authors.length - 1 !== i ? "," : "");
+                return author.slug ? (
+                  <Link key={i} href={`/writers/${author.slug}`}>{label}</Link>
+                ) : (
+                  <span key={i}>{label}</span>
+                );
+              })}
             </div>
           </div>
-          {publishedAt && (
+        )}
+          {createdAt && (
             <p className="text-xs text-muted-foreground mt-1">
-              {new Date(publishedAt).toLocaleDateString()}
+              {new Date(createdAt).toLocaleDateString("en-US", {
+                timeZone: "America/New_York"
+              })}
             </p>
           )}
       </div>

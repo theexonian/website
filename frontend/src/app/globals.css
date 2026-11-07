@@ -14,6 +14,13 @@ a:hover {
 	color: hsl(var(--muted-foreground));
 }
 
+/* Hero article headers are full-bleed (100dvh), so the limited-access bar would
+   push them down. The article page runs on the server, so the flag it sets on
+   the hero lives in the markup and this rule never flashes. */
+body:has([data-hero-header]) [data-access-notice] {
+	display: none;
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 99%;
