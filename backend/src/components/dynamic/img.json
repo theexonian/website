@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_dynamic_imgs",
+  "info": {
+    "displayName": "Image Carousel",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "picture": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "maxLength": 100,
+      "required": false
+    },
+    "specific_credits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  },
+  "config": {}
+}

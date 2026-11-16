@@ -473,6 +473,49 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDynamicArticleDynamicArticle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dynamic_articles';
+  info: {
+    displayName: 'Dynamic Article';
+    pluralName: 'dynamic-articles';
+    singularName: 'dynamic-article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    authors: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    credits: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dynamic-article.dynamic-article'
+    > &
+      Schema.Attribute.Private;
+    main: Schema.Attribute.DynamicZone<['dynamic.img']>;
+    publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.Enumeration<
+      ['news', 'sotw', 'sports', 'life', 'oped', 'humor']
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    z: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiImageGalleryImageGallery
   extends Struct.CollectionTypeSchema {
   collectionName: 'image_galleries';
@@ -1031,6 +1074,10 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
+    articles_dynamic: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dynamic-article.dynamic-article'
+    >;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1038,6 +1085,10 @@ export interface PluginUsersPermissionsUser
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    dynamic_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dynamic-article.dynamic-article'
+    >;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -1089,6 +1140,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::dynamic-article.dynamic-article': ApiDynamicArticleDynamicArticle;
       'api::image-gallery.image-gallery': ApiImageGalleryImageGallery;
       'api::main-page-layout.main-page-layout': ApiMainPageLayoutMainPageLayout;
       'api::past-issue.past-issue': ApiPastIssuePastIssue;

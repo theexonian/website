@@ -11,6 +11,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "username": {
       "type": "string",
@@ -84,14 +85,26 @@
       "type": "string"
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "dynamic_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dynamic-article.dynamic-article",
+      "inversedBy": "authors"
+    },
+    "articles_dynamic": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dynamic-article.dynamic-article",
+      "inversedBy": "credits"
     }
   }
 }
