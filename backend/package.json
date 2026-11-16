@@ -27,7 +27,7 @@
     "@strapi/plugin-users-permissions": "^5.40.0",
     "@strapi/provider-upload-aws-s3": "^5.40.0",
     "@strapi/strapi": "^5.40.0",
-    "axios": "^1.14.1",
+    "axios": "^1.14.0",
     "better-sqlite3": "^12.6.2",
     "cors": "^2.8.6",
     "express": "^5.2.1",
@@ -38,7 +38,8 @@
     "react-router-dom": "^6.30.3",
     "strapi-plugin-config-sync": "^3.1.2",
     "strapi-plugin-meilisearch": "^0.13.4",
-    "styled-components": "^6.3.12"
+    "styled-components": "^6.3.12",
+    "zod": "^3.25.76"
   },
   "author": {
     "name": "Byran Huang and Eric Li, The 15th Exonian Web Board"

@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dynamic_articles",
+  "info": {
+    "singularName": "dynamic-article",
+    "pluralName": "dynamic-articles",
+    "displayName": "Dynamic Article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "dynamic_articles"
+    },
+    "credits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "articles_dynamic"
+    },
+    "tag": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "news",
+        "sotw",
+        "sports",
+        "life",
+        "oped",
+        "humor"
+      ]
+    },
+    "z": {
+      "type": "integer"
+    },
+    "main": {
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.img"
+      ]
+    }
+  }
+}
