@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import {
 	FacebookShareButton,
-	TwitterShareButton,
+	XShareButton,
 	LinkedinShareButton,
 	WhatsappShareButton,
 	RedditShareButton,
@@ -11,13 +11,13 @@ import {
 } from "react-share";
 import {
 	FaFacebook,
-	FaTwitter,
 	FaLinkedin,
 	FaWhatsapp,
 	FaReddit,
 } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
+import { FaXTwitter } from "react-icons/fa6";
 import { IoShareSocialOutline, IoMail } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -37,13 +37,45 @@ export default function SocialShareDropdown({
 	const [shareUrl, setShareUrl] = useState<string>("");
 	const [isHydrated, setIsHydrated] = useState(false);
 
+	// react-share v6 replaced the shared `title` prop with per-network payload
+	// props, so each platform carries its own.
 	const socialPlatforms = [
-		{ name: "Facebook", Button: FacebookShareButton, Icon: FaFacebook },
-		{ name: "Twitter", Button: TwitterShareButton, Icon: FaTwitter },
-		{ name: "LinkedIn", Button: LinkedinShareButton, Icon: FaLinkedin },
-		{ name: "WhatsApp", Button: WhatsappShareButton, Icon: FaWhatsapp },
-		{ name: "Reddit", Button: RedditShareButton, Icon: FaReddit },
-		{ name: "Email", Button: EmailShareButton, Icon: IoMail },
+		{
+			name: "Facebook",
+			Button: FacebookShareButton,
+			Icon: FaFacebook,
+			payload: {},
+		},
+		{
+			name: "X",
+			Button: XShareButton,
+			Icon: FaXTwitter,
+			payload: { text: title },
+		},
+		{
+			name: "LinkedIn",
+			Button: LinkedinShareButton,
+			Icon: FaLinkedin,
+			payload: {},
+		},
+		{
+			name: "WhatsApp",
+			Button: WhatsappShareButton,
+			Icon: FaWhatsapp,
+			payload: { message: title },
+		},
+		{
+			name: "Reddit",
+			Button: RedditShareButton,
+			Icon: FaReddit,
+			payload: { shareTitle: title },
+		},
+		{
+			name: "Email",
+			Button: EmailShareButton,
+			Icon: IoMail,
+			payload: { subject: title },
+		},
 	];
 
   const pathname = usePathname();
@@ -81,12 +113,12 @@ export default function SocialShareDropdown({
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="p-2 text-red-700">
-				{socialPlatforms.map(({ name, Button: ShareButton, Icon }) => (
+				{socialPlatforms.map(({ name, Button: ShareButton, Icon, payload }) => (
 					<DropdownMenuItem
 						key={name}
 						onSelect={() => setIsOpen(false)}
 					>
-						<ShareButton url={shareUrl} title={title} className="w-full">
+						<ShareButton url={shareUrl} {...payload} className="w-full">
 							<div className="flex items-center">
 								<Icon className="h-4 w-4" />
 								<span className="ml-2 text-xs">{name}</span>

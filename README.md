@@ -10,7 +10,7 @@ This github repository is a monorepo, containing the self-contained `frontend` a
 
 ## Running the Repo while developing
 
-Use Node 22 (see `.nvmrc`).
+Use Node 22 (see `.nvmrc`). The backend requires Node `>=22 <=26`; Strapi 5.61+ dropped Node 20 support.
 
 Ensure `frontend/.env` and `backend/.env` contain valid keys. Please see the corresponding `.env.example` files for structure.
 

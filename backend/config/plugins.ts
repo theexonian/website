@@ -54,11 +54,11 @@ module.exports = ({ env }) => ({
             secretAccessKey: env('AWS_ACCESS_SECRET'),
           },
           region: env('AWS_REGION'),
-        },
-        params: {
-          Bucket: env('AWS_BUCKET'),
-          ACL: env('AWS_ACL', 'public-read'),
-          signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+          params: {
+            Bucket: env('AWS_BUCKET'),
+            ACL: env('AWS_ACL', 'public-read'),
+            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+          },
         },
         baseUrl: env('AWS_CLOUDFRONT_URL'),
       },

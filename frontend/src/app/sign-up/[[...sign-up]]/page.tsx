@@ -27,7 +27,7 @@ export default function Page() {
                 formFieldInput: "border border-gray-300 focus:border-black focus:ring-black rounded py-2 px-3",
                 footerActionLink: "text-black hover:text-gray-700",
               },
-              layout: {
+              options: {
                 socialButtonsPlacement: "bottom",
                 showOptionalFields: true,
               }

@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function SimpleSignInPage() {
-  const { signIn, isLoaded, setActive } = useSignIn();
+  const { signIn, fetchStatus } = useSignIn();
+  const isLoaded = fetchStatus === 'idle';
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -21,14 +22,20 @@ export default function SimpleSignInPage() {
     setError('');
 
     try {
-      const result = await signIn.create({
+      const { error: signInError } = await signIn.password({
         identifier: emailAddress,
         password,
       });
 
-      if (result.status === 'complete') {
-        await setActive({ session: result.createdSessionId });
-        router.push('/');
+      if (signInError) {
+        setError(signInError.longMessage || signInError.message);
+      } else if (signIn.status === 'complete') {
+        const { error: finalizeError } = await signIn.finalize();
+        if (finalizeError) {
+          setError(finalizeError.longMessage || finalizeError.message);
+        } else {
+          router.push('/');
+        }
       } else {
         setError('Sign in failed. Please check your credentials and try again.');
       }
@@ -37,7 +44,6 @@ export default function SimpleSignInPage() {
       const errorMessage = err.errors?.[0]?.message || err.message || 'Invalid email or password.';
       setError(errorMessage);
     }
-
     setIsLoading(false);
   };
 

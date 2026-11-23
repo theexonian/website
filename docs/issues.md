@@ -6,10 +6,6 @@ List of issues present (that may present future fixes/headaches)
 
 [Strapi Issue #21393](https://github.com/strapi/strapi/issues/21393)
 
-## Front End: NextJS 15 + React 19 Blocked
-
-Many front end components depend on React 18, so updating to NextJS 15 (which requires React 19) doesn't work for now.
-
 ## Search: Meilisearch index exposes full author records
 
 **Fixed in code, needs a reindex.** `src/app/search/page.tsx` queries Meilisearch directly from the
