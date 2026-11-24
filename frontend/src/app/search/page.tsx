@@ -17,8 +17,29 @@ import { Suspense } from "react";
 
 const { searchClient } = instantMeiliSearch(
 	`${process.env.NEXT_PUBLIC_MEILISEARCH_URL}`,
-	`${process.env.NEXT_PUBLIC_MEILISEARCH_PK}`,
-	{ primaryKey: "id" }
+	// The real key is injected by /api/search; this placeholder only satisfies
+	// instant-meilisearch's argument validation.
+	"proxied",
+	{
+		primaryKey: "id",
+		// The index contains members-only sections, so every query goes through the
+		// authenticated proxy instead of hitting Meilisearch from the browser.
+		httpClient: async (input, init) => {
+			const pathname = new URL(input instanceof Request ? input.url : input).pathname;
+			const response = await fetch(
+				`/api/search?path=${encodeURIComponent(pathname)}`,
+				{
+					method: init?.method ?? "POST",
+					headers: { "Content-Type": "application/json" },
+					body: typeof init?.body === "string" ? init.body : undefined,
+				}
+			);
+			if (!response.ok) {
+				throw new Error(`Search failed (${response.status})`);
+			}
+			return response.json();
+		},
+	}
 );
 
 interface Article {

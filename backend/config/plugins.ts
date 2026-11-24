@@ -1,13 +1,11 @@
-// Mirrors frontend/src/lib/bylines.ts. Search is queried from the browser with a
-// public key, so the index itself must never contain a full author name.
+// Mirrors frontend/src/lib/bylines.ts. Search is proxied through the front end
+// (src/app/api/search/route.ts) with a server-only key, but the index is still
+// transformed so a leaked key cannot expose full author records.
 const shortenName = (fullname?: string) => {
   const parts = (fullname ?? '').trim().split(/\s+/).filter(Boolean);
   if (parts.length < 2) return parts[0] ?? '';
   return `${parts[0][0]}. ${parts[parts.length - 1]}`;
 };
-
-// Sections anonymous visitors may reach. Keep in sync with frontend/src/lib/access.ts.
-const PUBLIC_TAGS = ['news', 'life', 'sports'];
 
 module.exports = ({ env }) => ({
   meilisearch: {
@@ -15,8 +13,9 @@ module.exports = ({ env }) => ({
       // Key is the content-type name (`api::article.article`). The index name is
       // left at its default, `article`, which is what /search queries.
       article: {
-        // Search is unauthenticated, so members-only sections stay out of the index.
-        filterEntry: ({ entry }) => PUBLIC_TAGS.includes(entry.tag),
+        // Every section is indexed. /search is members-only and reaches
+        // Meilisearch through a server-side proxy, so members-only sections are
+        // no longer filtered out here.
         transformEntry({ entry }) {
           const { authors, ...rest } = entry;
           return {

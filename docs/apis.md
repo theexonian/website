@@ -12,9 +12,11 @@ APIs used in the website:
 # the value into client bundles. Rotate in Strapi admin > Settings > API Tokens.
 STRAPI_API=INSERT_KEY
 
-# Public by design (browser-side search). Use a search-only key.
+# Public by design: the Meilisearch host is not a secret.
 NEXT_PUBLIC_MEILISEARCH_URL=https://meilisearch.theexonian.net
-NEXT_PUBLIC_MEILISEARCH_PK=INSERT_KEY
+
+# Server-only. The index contains members-only sections, so this key must never reach the browser. /search queries Meilisearch through src/app/api/search/route.ts,which is gated by Clerk. This is a search-only key scoped to the `article` index.
+MEILISEARCH_SEARCH_KEY=INSERT_KEY
 
 # Server-only, read by src/app/api/speechify/route.ts.
 SPEECHIFY_API_KEY=INSERT_KEY
@@ -43,9 +45,14 @@ The site is members-only by default; the public surface is listed in `src/proxy.
 - **Caching:** Strapi responses are still cached (`revalidate: 300`), which is safe because every page
   that renders per-viewer content calls `auth()` and is therefore rendered dynamically. Do not add a
   static `revalidate` export to those pages.
-- **Search:** `/search` is members-only. Meilisearch is still queried from the browser with a public
-  key — a key holder does not need the page — so the index itself must be safe. `backend/config/plugins.ts`
-  keeps members-only sections out of the index and indexes only `{ displayName, slug }` per author.
+- **Search:** `/search` is members-only and the index contains every section, including `oped` and
+  `humor`. Meilisearch is therefore **never** queried from the browser: `src/app/search/page.tsx`
+  passes a custom `httpClient` to `instantMeiliSearch` that posts to `src/app/api/search/route.ts`,
+  which checks the Clerk session and forwards to Meilisearch with the server-only
+  `MEILISEARCH_SEARCH_KEY`. The proxy only allows `multi-search`, `indexes/*/search` and
+  `indexes/*/facet-search`. `backend/config/plugins.ts` still rewrites each author to
+  `{ displayName, slug }` and restricts `displayedAttributes`, so a leaked key cannot expose full
+  author records.
 
 `BYPASS_AUTH=true` disables the middleware gate for local work. It is server-only and has no effect on
 Vercel.
