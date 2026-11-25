@@ -13,27 +13,30 @@
   "pluginOptions": {},
   "attributes": {
     "board": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "publishDate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
       ]
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "pdf": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",

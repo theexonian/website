@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_article_bodies",
+  "info": {
+    "displayName": "Article Body",
+    "icon": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "BodyText": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -45,7 +45,8 @@
     "main": {
       "type": "dynamiczone",
       "components": [
-        "dynamic.img"
+        "dynamic.img",
+        "dynamic.article-body"
       ]
     }
   }

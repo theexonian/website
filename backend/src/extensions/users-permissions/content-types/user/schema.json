@@ -66,12 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "inversedBy": "authors"
-    },
     "description": {
       "type": "text"
     },
@@ -79,7 +73,8 @@
       "type": "string"
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "unique": false
     },
     "position": {
       "type": "string"
@@ -93,6 +88,12 @@
         "videos",
         "audios"
       ]
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "inversedBy": "authors"
     },
     "dynamic_articles": {
       "type": "relation",

@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface DynamicArticleBody extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_article_bodies';
+  info: {
+    displayName: 'Article Body';
+    icon: 'quote';
+  };
+  attributes: {
+    BodyText: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
 export interface DynamicImg extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_imgs';
   info: {
@@ -24,8 +35,9 @@ export interface DynamicImg extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
+      'dynamic.article-body': DynamicArticleBody;
       'dynamic.img': DynamicImg;
     }
   }

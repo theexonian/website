@@ -28,6 +28,7 @@
     },
     "tag": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "news",
         "sotw",
@@ -35,11 +36,11 @@
         "life",
         "oped",
         "humor"
-      ],
-      "required": true
+      ]
     },
     "z": {
-      "type": "integer"
+      "type": "integer",
+      "default": 11
     },
     "thumbnail": {
       "type": "media",
@@ -54,7 +55,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "description": {
       "type": "text"
