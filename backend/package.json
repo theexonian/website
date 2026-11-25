@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package --error-on-fail",
     "import:articles": "node scripts/import-articles.js",
     "import:articles:enhanced": "node scripts/import-articles-enhanced.js",
     "import:dry-run": "DRY_RUN=true node scripts/import-articles-enhanced.js",
