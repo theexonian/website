@@ -1,0 +1,57 @@
+name: Deploy backend
+
+# The Strapi admin panel bundles content-type metadata at build time, so a
+# schema change is not live until the app is rebuilt and restarted. This
+# replaces SSHing into EC2 to run `git pull` and restart the app by hand.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull, build, and restart on EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            cd website
+
+            git fetch --prune origin main
+            git reset --hard origin/main
+
+            cd backend
+            npm ci
+
+            # The admin panel build OOMs on the default heap. Scoped to this
+            # command so it does not leak into the pm2 restart below.
+            NODE_OPTIONS='--max-old-space-size=3072' npm run build
+
+            pm2 restart strapi || pm2 start npm --name strapi -- start
+            pm2 save
+
+            # Strapi answers 204 on /_health once the schema sync has finished.
+            for i in $(seq 1 30); do
+              if curl -fsS -o /dev/null http://127.0.0.1:1337/_health; then
+                echo "Backend healthy after ${i}s"
+                exit 0
+              fi
+              sleep 1
+            done
+
+            echo "Backend did not become healthy within 30s" >&2
+            pm2 logs strapi --lines 50 --nostream >&2
+            exit 1

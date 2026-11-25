@@ -1,5 +1,6 @@
 .DS_Store
 .env
+*.pem
 /node_modules
 .github/copilot-instructions.md
 /.vscode
