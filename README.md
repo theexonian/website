@@ -56,9 +56,11 @@ If backend changes need to be deployed to production, you must redeploy on the E
 git pull # pulls updated code from the main branch
 cd backend
 npm install # needed whenever package.json or package-lock.json changed
-pm2 stop 0 # stops the strapi instance; confirm the id against `pm2 list` first
-npm run build # builds admin panel
-pm2 start 0
+pm2 stop strapi # stops the strapi instance (confirm the name against `pm2 list` first)
+npm run build # builds admin panel; needs ~3.5 GB of RAM+swap
+pm2 start strapi
 ```
+
+There must be exactly one `strapi` entry in `pm2 list`, and it must run node directly (`node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start`), not `npm ... start`. Running it through npm makes the real server a grandchild of pm2 (`daemon -> npm -> sh -c strapi start -> node ...`), and pm2 restarts only signal the npm process, leaving `sh` and `node` running and holding their memory and swap. After a restart, `ps -eo pid,ppid,args | grep '[s]trapi'` should show a single `node .../strapi.js start` owning port 1337 per `ss -lptn 'sport = :1337'`.
 
 If strapi needs to be run in develop mode, please temporarily use `npm run dev` instead of the pm2 instance.

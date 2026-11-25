@@ -25,33 +25,125 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script_stop: true
+          command_timeout: 20m
           script: |
             set -euo pipefail
             cd website
 
+            # Matches the server under either entrypoint: the old npm wrapper's
+            # `node .../node_modules/.bin/strapi start` and the direct
+            # `node .../@strapi/strapi/bin/strapi.js start` used below. The
+            # bracket stops it matching this script's own command line.
+            strapi_match='strap[i](\.js)? start'
+
             git fetch --prune origin main
             git reset --hard origin/main
 
+            # The instance has 4GB of RAM and the admin panel build peaks near
+            # 3.5GB, so Strapi can stay up for the build and the only
+            # interruption is the restart. Swap is now a safety net for
+            # Meilisearch reindexing rather than a requirement. Best-effort
+            # throughout: sudo -n avoids hanging on a password prompt, and a
+            # failure only means less headroom.
+            ensure_swap() {
+              target_mb=4608
+              extra=/swapfile.extra
+              mem_mb=$(awk '/^MemTotal:/ {print int($2 / 1024)}' /proc/meminfo)
+              swap_mb=$(awk '/^SwapTotal:/ {print int($2 / 1024)}' /proc/meminfo)
+              need_mb=$(( target_mb - mem_mb - swap_mb ))
+              if [ "${need_mb:-0}" -le 0 ]; then
+                echo "swap: ${mem_mb}MB RAM + ${swap_mb}MB swap already covers the build"
+                return 0
+              fi
+              # A leftover file from an earlier run is reused rather than grown,
+              # since an active swapfile cannot be resized.
+              if [ -f "$extra" ] && ! swapon --show=NAME --noheadings | grep -qx "$extra"; then
+                sudo -n swapon "$extra" 2>/dev/null || true
+                swap_mb=$(awk '/^SwapTotal:/ {print int($2 / 1024)}' /proc/meminfo)
+                need_mb=$(( target_mb - mem_mb - swap_mb ))
+                if [ "$need_mb" -le 0 ]; then
+                  echo "swap: re-enabled $extra"
+                  return 0
+                fi
+              fi
+              if swapon --show=NAME --noheadings | grep -qx "$extra"; then
+                echo "swap: $extra already active, ${need_mb}MB short" >&2
+                return 0
+              fi
+              # /swapfile belongs to the running app, so add a second file
+              # instead of touching it.
+              if sudo -n fallocate -l "${need_mb}M" "$extra" &&
+                 sudo -n chmod 600 "$extra" &&
+                 sudo -n mkswap "$extra" >/dev/null &&
+                 sudo -n swapon "$extra"; then
+                grep -q "^${extra}[[:space:]]" /etc/fstab ||
+                  echo "$extra none swap sw 0 0" | sudo -n tee -a /etc/fstab >/dev/null ||
+                  echo "swap: could not persist $extra in /etc/fstab" >&2
+                echo "swap: added ${need_mb}MB at $extra"
+              else
+                echo "swap: could not add ${need_mb}MB, continuing with ${swap_mb}MB" >&2
+                sudo -n rm -f "$extra" 2>/dev/null || true
+              fi
+            }
+            ensure_swap
+
             cd backend
+
+            # Needs almost no memory, so it never falls inside a downtime window.
             npm ci
 
-            # The admin panel build OOMs on the default heap. Scoped to this
-            # command so it does not leak into the pm2 restart below.
-            NODE_OPTIONS='--max-old-space-size=3072' npm run build
+            # Strapi can only stay up for the build if the box has room for it;
+            # otherwise the OOM killer gets to choose a victim, and it may pick
+            # Strapi. Stop it up front in that case so the deploy still lands.
+            # On the 4GB instance this normally passes, keeping the API up.
+            down_at=""
+            avail_mb=$(awk '/^(MemAvailable|SwapFree):/ {sum += int($2 / 1024)} END {print sum + 0}' /proc/meminfo)
+            if [ "${avail_mb:-0}" -lt 3600 ]; then
+              echo "memory: only ${avail_mb}MB available, stopping Strapi for the build" >&2
+              down_at=$(date +%s)
+              pm2 delete strapi >/dev/null 2>&1 || true
+              pkill -f "$strapi_match" 2>/dev/null || true
+              sleep 2
+              free -m || true
+            fi
 
-            pm2 restart strapi || pm2 start npm --name strapi -- start
+            # The heap cap makes a runaway build fail instead of taking the box
+            # with it. 3GB is enough for the admin panel and leaves the rest of
+            # the 4GB for Strapi and Meilisearch. Note the admin panel is served
+            # from build/, which this rewrites, so /admin may 404 for a moment;
+            # the API is unaffected.
+            if ! NODE_OPTIONS='--max-old-space-size=3072' npm run build; then
+              echo "Admin panel build failed; Strapi still serves the previous build" >&2
+              free -m >&2 || true
+              if [ -n "$down_at" ]; then
+                pm2 start node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start
+                pm2 save
+              fi
+              exit 1
+            fi
+
+            # Only one process can hold port 1337, so this is the interruption.
+            # pm2 used to run `npm --name strapi -- start`, which puts the real
+            # server behind a wrapper. Restarting that entry signalled only npm
+            # and left `sh -c strapi start` and node running, still holding
+            # their memory and swap. Start the CLI entrypoint directly so a
+            # restart actually stops the server.
+            [ -n "$down_at" ] || down_at=$(date +%s)
+            pm2 delete strapi >/dev/null 2>&1 || true
+            pkill -f "$strapi_match" 2>/dev/null || true
+            pm2 start node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start
             pm2 save
+            ps -eo pid,ppid,etime,rss,args | grep '[s]trapi' || echo "no strapi process listed" >&2
 
             # Strapi answers 204 on /_health once the schema sync has finished.
-            for i in $(seq 1 30); do
+            for i in $(seq 1 60); do
               if curl -fsS -o /dev/null http://127.0.0.1:1337/_health; then
-                echo "Backend healthy after ${i}s"
+                echo "Backend healthy; down for $(( $(date +%s) - down_at ))s"
                 exit 0
               fi
               sleep 1
             done
 
-            echo "Backend did not become healthy within 30s" >&2
+            echo "Backend did not become healthy within 60s" >&2
             pm2 logs strapi --lines 50 --nostream >&2
             exit 1
