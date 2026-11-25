@@ -28,6 +28,9 @@ jobs:
           command_timeout: 20m
           script: |
             set -euo pipefail
+            # Without this, a failing command under `set -e` exits with no
+            # message at all, which is how a silent exit 1 cost several runs.
+            trap 'echo "deploy failed at line $LINENO (exit $?)" >&2' ERR
             cd website
 
             git fetch --prune origin main
@@ -92,7 +95,10 @@ jobs:
             # kills the deploy itself. The port owner is unambiguous.
             stop_strapi() {
               pm2 delete strapi >/dev/null 2>&1 || true
-              pids=$(ss -lptnH 'sport = :1337' 2>/dev/null | grep -o 'pid=[0-9]*' | cut -d= -f2 | sort -u)
+              # `|| true` matters: once pm2 has stopped the server, ss prints
+              # nothing, grep exits 1, and `set -euo pipefail` would abort the
+              # deploy here with no message at all.
+              pids=$(ss -lptnH 'sport = :1337' 2>/dev/null | grep -o 'pid=[0-9]*' | cut -d= -f2 | sort -u || true)
               if [ -n "$pids" ]; then
                 echo "stopping server on port 1337 (pid $pids)"
                 kill $pids 2>/dev/null || true
