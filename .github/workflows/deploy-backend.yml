@@ -30,12 +30,6 @@ jobs:
             set -euo pipefail
             cd website
 
-            # Matches the server under either entrypoint: the old npm wrapper's
-            # `node .../node_modules/.bin/strapi start` and the direct
-            # `node .../@strapi/strapi/bin/strapi.js start` used below. The
-            # bracket stops it matching this script's own command line.
-            strapi_match='strap[i](\.js)? start'
-
             git fetch --prune origin main
             git reset --hard origin/main
 
@@ -92,6 +86,31 @@ jobs:
             # Needs almost no memory, so it never falls inside a downtime window.
             npm ci
 
+            # Stops the server without matching this script's own command line.
+            # `pkill -f` cannot be used here: the script is passed to `sh -c`,
+            # so its own argv contains any pattern written in it and pkill
+            # kills the deploy itself. The port owner is unambiguous.
+            stop_strapi() {
+              pm2 delete strapi >/dev/null 2>&1 || true
+              pids=$(ss -lptnH 'sport = :1337' 2>/dev/null | grep -o 'pid=[0-9]*' | cut -d= -f2 | sort -u)
+              if [ -n "$pids" ]; then
+                echo "stopping server on port 1337 (pid $pids)"
+                kill $pids 2>/dev/null || true
+              fi
+              # Catch a server that is still booting and not yet listening.
+              for pid in $(pgrep -f 'node_modules/(\.bin/strapi|@strapi/strapi/bin/strapi\.js) start' 2>/dev/null || true); do
+                if [ "$pid" != "$$" ] && [ "$pid" != "$PPID" ]; then
+                  kill "$pid" 2>/dev/null || true
+                fi
+              done
+              sleep 2
+            }
+
+            start_strapi() {
+              pm2 start node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start
+              pm2 save
+            }
+
             # Strapi can only stay up for the build if the box has room for it;
             # otherwise the OOM killer gets to choose a victim, and it may pick
             # Strapi. Stop it up front in that case so the deploy still lands.
@@ -101,9 +120,7 @@ jobs:
             if [ "${avail_mb:-0}" -lt 3600 ]; then
               echo "memory: only ${avail_mb}MB available, stopping Strapi for the build" >&2
               down_at=$(date +%s)
-              pm2 delete strapi >/dev/null 2>&1 || true
-              pkill -f "$strapi_match" 2>/dev/null || true
-              sleep 2
+              stop_strapi
               free -m || true
             fi
 
@@ -116,8 +133,7 @@ jobs:
               echo "Admin panel build failed; Strapi still serves the previous build" >&2
               free -m >&2 || true
               if [ -n "$down_at" ]; then
-                pm2 start node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start
-                pm2 save
+                start_strapi
               fi
               exit 1
             fi
@@ -129,10 +145,8 @@ jobs:
             # their memory and swap. Start the CLI entrypoint directly so a
             # restart actually stops the server.
             [ -n "$down_at" ] || down_at=$(date +%s)
-            pm2 delete strapi >/dev/null 2>&1 || true
-            pkill -f "$strapi_match" 2>/dev/null || true
-            pm2 start node_modules/@strapi/strapi/bin/strapi.js --name strapi -- start
-            pm2 save
+            stop_strapi
+            start_strapi
             ps -eo pid,ppid,etime,rss,args | grep '[s]trapi' || echo "no strapi process listed" >&2
 
             # Strapi answers 204 on /_health once the schema sync has finished.
